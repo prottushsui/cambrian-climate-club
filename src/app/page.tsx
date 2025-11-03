@@ -1,3 +1,4 @@
+"use client";
 import { Header } from '@/components/ui/21st-navbar'; // Adjust path if you move it
 import { Typewriter } from '@/components/ui/typewriter-text';
 import { TextCursorProximity } from '@/components/ui/text-cursor-proximity';
