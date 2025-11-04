@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
-import React, { useState } from "react";
+
+import { cn } from "@/lib/utils";
 import {
   motion,
   useTransform,
@@ -8,7 +8,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { cn } from "@/lib/utils";
+import React, { useState } from "react";
 
 export const AnimatedTooltip = ({
   items,
@@ -33,6 +33,7 @@ export const AnimatedTooltip = ({
     useTransform(x, [-100, 100], [-50, 50]),
     springConfig
   );
+
   const handleMouseMove = (event: any) => {
     const halfWidth = event.target.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth);
@@ -43,7 +44,7 @@ export const AnimatedTooltip = ({
       {items.map((item) => (
         <div
           className="-mr-4 relative group"
-          key={item.name}
+          key={item.id} // Use item.id if unique, otherwise use item.name or a combination
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -80,13 +81,16 @@ export const AnimatedTooltip = ({
               </motion.div>
             )}
           </AnimatePresence>
-          <Image
+          {/* Replaced next/image with standard img tag */}
+          <img
             onMouseMove={handleMouseMove}
-            height={100}
-            width={100}
+            height={100} // Provide explicit height for layout consistency
+            width={100}  // Provide explicit width for layout consistency
             src={item.image}
             alt={item.name}
             className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-background relative transition duration-500"
+            // Ensure image loads even if CORS issues occur (optional, depending on image source)
+            crossOrigin="anonymous"
           />
         </div>
       ))}
