@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, Variants } from 'framer-motion';
 import type { Project } from '../types';
 
@@ -18,7 +18,7 @@ const itemVariants: Variants = {
   }
 };
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, isFeatured = false }) => {
+const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = false }) => {
   return (
     <motion.div 
         className="relative group bg-white rounded-2xl shadow-lg overflow-hidden"
@@ -66,6 +66,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, isFeatured = false }
       )}
     </motion.div>
   );
-};
+});
 
 export default ProjectCard;

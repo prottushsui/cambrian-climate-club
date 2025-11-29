@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, memo } from 'react';
 import { motion, Variants } from 'framer-motion';
 import type { Gallery } from '../types';
 import Lightbox from './Lightbox';
@@ -9,7 +9,7 @@ interface ImageGalleryProps {
   galleries: Gallery[];
 }
 
-const Carousel: React.FC<{ images: string[]; onImageClick: (img: string) => void; title: string }> = ({ images, onImageClick, title }) => {
+const Carousel: React.FC<{ images: string[]; onImageClick: (img: string) => void; title: string }> = memo(({ images, onImageClick, title }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -84,9 +84,9 @@ const Carousel: React.FC<{ images: string[]; onImageClick: (img: string) => void
       </div>
     </div>
   );
-};
+});
 
-const ImageGallery: React.FC<ImageGalleryProps> = ({ galleries }) => {
+const ImageGallery: React.FC<ImageGalleryProps> = memo(({ galleries }) => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   return (
@@ -112,6 +112,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ galleries }) => {
       {lightboxImage && <Lightbox imageUrl={lightboxImage} onClose={() => setLightboxImage(null)} />}
     </div>
   );
-};
+});
 
 export default ImageGallery;

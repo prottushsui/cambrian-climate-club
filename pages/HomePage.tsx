@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, Variants, useInView } from 'framer-motion';
 import { projects, currentMembers } from '../data/content';
@@ -60,15 +60,14 @@ const statItemVariants: Variants = {
 };
 
 
-const Counter: React.FC<{ end: number, duration?: number }> = ({ end, duration = 2000 }) => {
+const Counter: React.FC<{ end: number, duration?: number }> = memo(({ end, duration = 2000 }) => {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true });
 
     useEffect(() => {
-        if (isInView) {
+        if (isInView && count !== end) {
             let start = 0;
-            if (start === end) return;
             const range = end - start;
             let current = start;
             const increment = end > start ? 1 : -1;
@@ -82,13 +81,13 @@ const Counter: React.FC<{ end: number, duration?: number }> = ({ end, duration =
             }, stepTime > 0 ? stepTime : 1);
             return () => clearInterval(timer);
         }
-    }, [isInView, end, duration]);
+    }, [isInView, end, count, duration]);
 
     return <span ref={ref}>{count}</span>;
-};
+});
 
 
-const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, label }) => (
+const StatCard: React.FC<{ value: React.ReactNode; label: string }> = memo(({ value, label }) => (
     <motion.div 
         className="bg-primary-50 p-6 rounded-2xl text-center shadow-lg border border-primary-100"
         variants={statItemVariants}
@@ -101,7 +100,7 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, 
         <p className="text-4xl font-bold text-primary-700">{value}</p>
         <p className="text-slate-600 mt-2 font-medium">{label}</p>
     </motion.div>
-);
+));
 
 const imageContainerVariants: Variants = {
   hidden: {},
@@ -129,7 +128,7 @@ const imageVariants: Variants = {
 };
 
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC = memo(() => {
   const heroTitle = "Cambrian Climate Club — Campus 2".split("—");
   const titleWords = heroTitle.map(part => part.trim().split(" "));
 
@@ -302,6 +301,6 @@ const HomePage: React.FC = () => {
       </section>
     </div>
   );
-};
+});
 
 export default HomePage;
