@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, Variants } from 'framer-motion';
 import type { Member } from '../types';
 
@@ -17,7 +17,7 @@ const itemVariants: Variants = {
   }
 };
 
-const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
+const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
   return (
     <motion.div 
       className="bg-white rounded-2xl shadow-lg overflow-hidden text-center h-full flex flex-col transform-gpu"
@@ -57,6 +57,6 @@ const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
       </div>
     </motion.div>
   );
-};
+});
 
 export default MemberCard;

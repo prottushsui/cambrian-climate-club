@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 
 interface SectionHeaderProps {
@@ -7,7 +7,7 @@ interface SectionHeaderProps {
   subtitle?: string;
 }
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle }) => {
+const SectionHeader: React.FC<SectionHeaderProps> = memo(({ title, subtitle }) => {
   return (
     <div className="text-center mb-12">
       <motion.h2 
@@ -31,6 +31,6 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle }) => {
       )}
     </div>
   );
-};
+});
 
 export default SectionHeader;

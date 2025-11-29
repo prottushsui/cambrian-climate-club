@@ -11,18 +11,18 @@ import AdvisoryCommitteePage from './pages/AdvisoryCommitteePage';
 import ProjectsPage from './pages/ProjectsPage';
 import AchievementsPage from './pages/AchievementsPage';
 
-const ScrollToTop = () => {
+const ScrollToTop = memo(() => {
   const { pathname } = useLocation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
-};
+});
 
 
-function App() {
+const App = () => {
   return (
     <HashRouter>
       <ScrollToTop />
@@ -43,6 +43,6 @@ function App() {
       </div>
     </HashRouter>
   );
-}
+};
 
 export default App;

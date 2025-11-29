@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -35,7 +35,7 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
   </NavLink>
 );
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -129,6 +129,6 @@ const Navbar: React.FC = () => {
       </AnimatePresence>
     </nav>
   );
-};
+});
 
 export default Navbar;

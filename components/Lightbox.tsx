@@ -1,12 +1,12 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 
 interface LightboxProps {
   imageUrl: string;
   onClose: () => void;
 }
 
-const Lightbox: React.FC<LightboxProps> = ({ imageUrl, onClose }) => {
+const Lightbox: React.FC<LightboxProps> = memo(({ imageUrl, onClose }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -49,6 +49,6 @@ const Lightbox: React.FC<LightboxProps> = ({ imageUrl, onClose }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Lightbox;
