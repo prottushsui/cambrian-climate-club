@@ -1,5 +1,5 @@
 
-import React, { memo } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -31,7 +31,7 @@ const FooterLink: React.FC<{ to: string; children: React.ReactNode }> = ({ to, c
     </motion.li>
 );
 
-const Footer: React.FC = memo(() => {
+const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -102,6 +102,6 @@ const Footer: React.FC = memo(() => {
       </div>
     </footer>
   );
-});
+}
 
 export default Footer;
