@@ -14,7 +14,7 @@ import {
   statItemVariants 
 } from '../constants/animation';
 
-const Counter: React.FC<{ end: number, duration?: number }> = ({ end, duration = 2000 }) => {
+const Counter: React.FC<{ end: number; duration?: number }> = ({ end, duration = 2000 }) => {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true });
