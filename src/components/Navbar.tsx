@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { buttonHoverVariants } from '../constants/animation';
+import { buttonHoverVariants } from '@/constants/animation';
 
 const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => void; isMobile?: boolean }> = ({ to, children, onClick, isMobile }) => (
   <NavLink

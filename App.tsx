@@ -1,16 +1,16 @@
 
 import React, { memo } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import LeadershipPage from './pages/LeadershipPage';
-import ExecutiveCommitteePage from './pages/ExecutiveCommitteePage';
-import AdvisoryCommitteePage from './pages/AdvisoryCommitteePage';
-import ProjectsPage from './pages/ProjectsPage';
-import AchievementsPage from './pages/AchievementsPage';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
+import HomePage from '@/pages/HomePage';
+import AboutPage from '@/pages/AboutPage';
+import LeadershipPage from '@/pages/LeadershipPage';
+import ExecutiveCommitteePage from '@/pages/ExecutiveCommitteePage';
+import AdvisoryCommitteePage from '@/pages/AdvisoryCommitteePage';
+import ProjectsPage from '@/pages/ProjectsPage';
+import AchievementsPage from '@/pages/AchievementsPage';
 
 
 const App = () => {
