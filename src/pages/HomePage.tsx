@@ -181,6 +181,10 @@ const HomePage: React.FC = () => {
                         alt="Campus Cleanliness Drive" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/placeholder.jpg'; // fallback image
+                        }}
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.5 }}
                     />
@@ -197,6 +201,10 @@ const HomePage: React.FC = () => {
                         alt="Campus Greening Initiative" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/placeholder.jpg'; // fallback image
+                        }}
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.5 }}
                     />
@@ -213,6 +221,10 @@ const HomePage: React.FC = () => {
                         alt="Climate Action E-Magazine" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/placeholder.jpg'; // fallback image
+                        }}
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.5 }}
                     />
@@ -248,6 +260,11 @@ const HomePage: React.FC = () => {
                   src={project.imageUrl} 
                   alt={project.title} 
                   className="w-full h-60 object-cover transition-transform duration-700"
+                  loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/images/placeholder.jpg'; // fallback image
+                  }}
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.7 }}
                 />
