@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import { motion, Variants } from 'framer-motion';
-import type { Project } from '../types';
+import type { Project } from '../types/types';
 import { cardHoverVariants } from '../constants/animation';
 
 interface ProjectCardProps {

@@ -9,7 +9,7 @@ export const createImageProxyUrl = (url: string): string => {
   try {
     // Remove protocol and handle the URL properly
     const cleanUrl = url.replace(/^https?:\/\//, '');
-    return `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}`;
+    return `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&output=webp&maxage=1d`;
   } catch (error) {
     console.warn('Error creating image proxy URL:', error);
     return url; // Return original URL if proxy creation fails
