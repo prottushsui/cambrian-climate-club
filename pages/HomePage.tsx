@@ -5,60 +5,14 @@ import { motion, Variants, useInView } from 'framer-motion';
 import { projects, currentMembers } from '../data/content';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeader from '../components/SectionHeader';
-
-// Variants definitions
-const titleContainerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.04, delayChildren: i * 0.1 },
-    }),
-};
-  
-const titleChildVariants: Variants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 50,
-      scale: 0.8,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-};
-
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
-    }
-};
-
-const statItemVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.5, y: 20 },
-    visible: {
-        opacity: 1, 
-        scale: 1,
-        y: 0,
-        transition: { type: "spring", stiffness: 200, damping: 15 }
-    }
-};
-
+import { 
+  fadeInUpVariants, 
+  scaleInVariants, 
+  slideInLeftVariants, 
+  slideInRightVariants, 
+  containerVariants, 
+  statItemVariants 
+} from '../constants/animation';
 
 const Counter: React.FC<{ end: number, duration?: number }> = ({ end, duration = 2000 }) => {
     const [count, setCount] = useState(0);
@@ -84,61 +38,34 @@ const Counter: React.FC<{ end: number, duration?: number }> = ({ end, duration =
     }, [isInView, end, count, duration]);
 
     return <span ref={ref}>{count}</span>;
-});
-
+};
 
 const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, label }) => (
     <motion.div 
-        className="bg-primary-50 p-6 rounded-2xl text-center shadow-lg border border-primary-100"
+        className="bg-white p-6 rounded-2xl text-center shadow-lg border border-gray-100 apple-card"
         variants={statItemVariants}
         whileHover={{ 
             y: -8, 
-            scale: 1.05,
-            boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" 
+            scale: 1.03,
+            boxShadow: "0 12px 24px rgba(0, 0, 0, 0.12)" 
         }}
     >
-        <p className="text-4xl font-bold text-primary-700">{value}</p>
+        <p className="text-4xl font-bold text-blue-600">{value}</p>
         <p className="text-slate-600 mt-2 font-medium">{label}</p>
     </motion.div>
 ));
-
-const imageContainerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.5,
-    },
-  },
-};
-
-const imageVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.8, rotate: -10, y: 50 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    rotate: 0,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 120,
-      damping: 20
-    },
-  },
-};
-
 
 const HomePage: React.FC = () => {
   const heroTitle = "Cambrian Climate Club — Campus 2".split("—");
   const titleWords = heroTitle.map(part => part.trim().split(" "));
 
   return (
-    <div className="bg-white">
+    <div className="bg-slate-50/60">
       {/* Hero Section */}
-      <section className="relative bg-primary-50 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative bg-gradient-to-br from-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center">
         {/* Animated Background Blobs */}
         <motion.div 
-            className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary-200 rounded-full opacity-20 filter blur-3xl"
+            className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 rounded-full opacity-30 filter blur-3xl"
             animate={{ 
                 y: [0, 40, 0], 
                 x: [0, 20, 0],
@@ -147,7 +74,7 @@ const HomePage: React.FC = () => {
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div 
-            className="absolute bottom-[-10%] right-[-5%] w-80 h-80 bg-emerald-300 rounded-full opacity-20 filter blur-3xl"
+            className="absolute bottom-[-10%] right-[-5%] w-80 h-80 bg-emerald-300 rounded-full opacity-30 filter blur-3xl"
             animate={{ 
                 y: [0, -50, 0], 
                 x: [0, -30, 0],
@@ -156,7 +83,7 @@ const HomePage: React.FC = () => {
             transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
         <motion.div 
-            className="absolute top-[20%] right-[10%] w-32 h-32 bg-teal-200 rounded-full opacity-30 filter blur-xl"
+            className="absolute top-[20%] right-[10%] w-32 h-32 bg-teal-200 rounded-full opacity-40 filter blur-xl"
             animate={{ 
                 y: [0, 20, 0], 
                 scale: [1, 1.5, 1], 
@@ -166,20 +93,25 @@ const HomePage: React.FC = () => {
         />
 
         <div className="container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center gap-12 relative z-10">
-            <div className="lg:w-1/2 text-center lg:text-left">
+            <motion.div 
+              className="lg:w-1/2 text-center lg:text-left"
+              initial="hidden"
+              animate="visible"
+              variants={slideInLeftVariants}
+            >
                 <motion.h1 
-                    className="text-4xl md:text-6xl font-extrabold text-primary-900 tracking-tight min-h-[144px] md:min-h-[192px]"
-                    variants={titleContainerVariants}
+                    className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight min-h-[144px] md:min-h-[192px] apple-title"
+                    variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                 >
                     {titleWords.map((part, partIndex) => (
-                        <span key={partIndex} className={partIndex > 0 ? "block text-primary-700 mt-2" : "block"}>
+                        <span key={partIndex} className={partIndex > 0 ? "block text-blue-700 mt-2" : "block"}>
                              {partIndex > 0 ? "— " : ""}
                              {part.map((word, wordIndex) => (
                                 <span key={wordIndex} className="inline-block whitespace-nowrap mr-2 md:mr-4">
                                     {word.split("").map((char, charIndex) => (
-                                        <motion.span key={charIndex} className="inline-block" variants={titleChildVariants}>
+                                        <motion.span key={charIndex} className="inline-block" variants={scaleInVariants}>
                                             {char}
                                         </motion.span>
                                     ))}
@@ -204,9 +136,9 @@ const HomePage: React.FC = () => {
                 >
                     <Link to="/projects" className="w-full sm:w-auto block">
                         <motion.div 
-                            className="w-full sm:w-auto bg-primary-600 text-center text-white font-bold py-3 px-8 rounded-full shadow-lg shadow-primary-500/30"
-                            whileHover={{ scale: 1.05, backgroundColor: "#047857", y: -2 }}
-                            whileTap={{ scale: 0.95 }}
+                            className="w-full sm:w-auto bg-blue-600 text-center text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-blue-500/30 apple-button apple-button-primary"
+                            whileHover={{ scale: 1.05, backgroundColor: "#0056b3", y: -2 }}
+                            whileTap={{ scale: 0.97 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         >
                             Explore Projects
@@ -214,23 +146,23 @@ const HomePage: React.FC = () => {
                     </Link>
                     <Link to="/leadership" className="w-full sm:w-auto block">
                         <motion.div 
-                            className="w-full sm:w-auto bg-white text-center text-primary-600 font-bold py-3 px-8 rounded-full shadow-md border-2 border-transparent hover:border-primary-100"
+                            className="w-full sm:w-auto bg-white text-center text-blue-600 font-semibold py-4 px-8 rounded-full shadow-md border border-gray-200 apple-button apple-button-secondary"
                             whileHover={{ scale: 1.05, backgroundColor: "#f8fafc", y: -2 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileTap={{ scale: 0.97 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         >
                             Meet the Team
                         </motion.div>
                     </Link>
                 </motion.div>
-            </div>
+            </motion.div>
             <motion.div 
                 className="lg:w-1/2 grid grid-cols-2 grid-rows-2 gap-4 h-[400px] md:h-[500px]"
-                variants={imageContainerVariants}
                 initial="hidden"
                 animate="visible"
+                variants={containerVariants}
             >
-                <motion.div className="col-span-1 row-span-2 relative group" variants={imageVariants}>
+                <motion.div className="col-span-1 row-span-2 relative group" variants={slideInRightVariants}>
                      <motion.img 
                         src="https://images.weserv.nl/?url=i.imgur.com/h5rD6wS.jpeg" 
                         alt="Campus Cleanliness Drive" 
@@ -241,7 +173,7 @@ const HomePage: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-black/10 rounded-3xl group-hover:bg-transparent transition-colors duration-300"></div>
                 </motion.div>
-                <motion.div className="col-span-1 row-span-1 relative group" variants={imageVariants}>
+                <motion.div className="col-span-1 row-span-1 relative group" variants={slideInRightVariants}>
                     <motion.img 
                         src="https://images.weserv.nl/?url=i.imgur.com/9v1zG1N.jpeg" 
                         alt="Campus Greening Initiative" 
@@ -251,7 +183,7 @@ const HomePage: React.FC = () => {
                         transition={{ duration: 0.3 }}
                     />
                 </motion.div>
-                <motion.div className="col-span-1 row-span-1 relative group" variants={imageVariants}>
+                <motion.div className="col-span-1 row-span-1 relative group" variants={slideInRightVariants}>
                     <motion.img 
                         src="https://images.weserv.nl/?url=i.imgur.com/2s3Kz2T.jpeg" 
                         alt="Climate Action E-Magazine" 
@@ -282,7 +214,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Quick Stats Section */}
-      <section className="bg-gradient-to-br from-slate-50 to-primary-50 py-24">
+      <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-24">
         <div className="container mx-auto px-4">
             <SectionHeader title="Our Journey in Numbers" />
             <motion.div 
@@ -302,7 +234,5 @@ const HomePage: React.FC = () => {
     </div>
   );
 };
-
-export default HomePage;
 
 export default HomePage;
