@@ -5,42 +5,41 @@ node_modules/
 # Build artifacts
 dist/
 build/
-*.js.map
+target/
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Logs
-*.log
-
-# Python (if applicable)
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
+venv/
+.venv/
+.env
+.env.local
+.env.*
 
-# Temporary files
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
 *.tmp
-*.temp
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Coverage
 coverage/
 htmlcov/
 .coverage
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Testing
-*.pytest_cache/
-.mypy_cache/
+# TypeScript/JavaScript
+*.tsbuildinfo
+.next/
+.nuxt/
 ```

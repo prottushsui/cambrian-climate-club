@@ -1,5 +1,4 @@
 import type { Member, ExecutiveMember, Advisor, Project, Achievement, Gallery } from '../types';
-import { createImageProxyUrl } from '../utils/imageProxy';
 
 const proxy = (url: string) => `https://images.weserv.nl/?url=${url.replace(/^https?:\/\//, '')}`;
 
