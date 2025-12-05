@@ -2,9 +2,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, Variants, useInView } from 'framer-motion';
-import { projects, currentMembers } from '../data/content';
-import ProjectCard from '../components/ProjectCard';
-import SectionHeader from '../components/SectionHeader';
+import { projects, currentMembers } from '@/data/content';
+import ProjectCard from '@/components/ProjectCard';
+import SectionHeader from '@/components/SectionHeader';
 import { 
   fadeInUpVariants, 
   scaleInVariants, 
@@ -12,7 +12,7 @@ import {
   slideInRightVariants, 
   containerVariants, 
   statItemVariants 
-} from '../constants/animation';
+} from '@/constants/animation';
 
 const Counter: React.FC<{ end: number; duration?: number }> = ({ end, duration = 2000 }) => {
     const [count, setCount] = useState(0);

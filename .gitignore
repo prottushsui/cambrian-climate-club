@@ -5,42 +5,88 @@ node_modules/
 # Build artifacts
 dist/
 build/
-*.js.map
+*.tsbuildinfo
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
 .vscode/
 .idea/
-*.swp
-*.swo
 
 # Logs
 *.log
 
-# Python (if applicable)
+# Python (in case Python files are added later)
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Temporary files
-*.tmp
-*.temp
+# OS generated files
+.DS_Store
+Thumbs.db
 
 # Coverage
 coverage/
 htmlcov/
 .coverage
 
-# OS
-.DS_Store
-Thumbs.db
+# Temporary files
+*.tmp
+*.swp
+*.swo
 
 # Testing
-*.pytest_cache/
 .mypy_cache/
+.pytest_cache/
+.nyc_output/
+coverage/
+
+# Distribution / packaging
+*.tar.gz
+*.whl
+*.egg
+*.egg-info/
+
+# IDE
+.vs/
+*.sublime-project
+*.sublime-workspace
+
+# Browser extensions
+*.crx
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Vite specific
+!.vite/
+vite.config.ts
+
+# TypeScript specific
+tsconfig.json
 ```
