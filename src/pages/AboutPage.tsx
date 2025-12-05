@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
                 transition={{ type: "spring", bounce: 0.5, duration: 1.5, delay: 0.2 }}
                 whileHover={{ rotate: 5, scale: 1.05 }}
             >
-                <img src="https://images.weserv.nl/?url=i.imgur.com/RUb1nRX.png" alt="Club Logo" className="h-48 w-auto object-contain drop-shadow-lg rounded-2xl"/>
+                <img src="/images/club-logo.svg" alt="Club Logo" className="h-48 w-auto object-contain drop-shadow-lg rounded-2xl"/>
             </motion.div>
             <div className="md:col-span-2 space-y-4">
                 <motion.h3 
