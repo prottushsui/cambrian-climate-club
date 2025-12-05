@@ -11,6 +11,7 @@ import {
   slideInLeftVariants, 
   slideInRightVariants, 
   containerVariants, 
+  itemVariants,
   statItemVariants 
 } from '@/constants/animation';
 
@@ -235,6 +236,8 @@ const HomePage: React.FC = () => {
             <motion.div
               key={project.title}
               variants={itemVariants}
+              initial="hidden"
+              animate="visible"
               className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20"
               whileHover={{ y: -10, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
