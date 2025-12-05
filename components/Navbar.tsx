@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-white/80 backdrop-blur-xl border-b border-gray-200/60 fixed w-full z-50 top-0 start-0 transition-all duration-300 apple-navbar" aria-label="Main navigation">
+    <nav className="bg-white/80 backdrop-blur-xl border-b border-white/30 fixed w-full z-50 top-0 start-0 transition-all duration-300 apple-navbar glass-effect shadow-sm" aria-label="Main navigation">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link 
           to="/" 
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
         <button
           onClick={toggleMenu}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-full md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-200 z-50 relative transition-all duration-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-full md:hidden hover:bg-gray-100/50 focus:outline-none focus:ring-2 focus:ring-blue-200 z-50 relative transition-all duration-200 apple-button"
           aria-controls="navbar-default"
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close main menu" : "Open main menu"}
@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
             <motion.div
-                className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-gray-200/60 shadow-xl md:hidden overflow-hidden"
+                className="absolute top-full left-0 w-full bg-white/90 backdrop-blur-xl border-b border-white/30 shadow-xl md:hidden overflow-hidden glass-effect"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}

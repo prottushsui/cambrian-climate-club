@@ -22,46 +22,28 @@ const itemVariants: Variants = {
 const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = false }) => {
   return (
     <motion.div 
-        className="relative group bg-white rounded-2xl shadow-lg overflow-hidden apple-card"
-        variants={cardHoverVariants}
-        initial="rest"
-        whileHover="hover"
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20"
+        whileHover={{ y: -10, scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <div className="overflow-hidden h-64">
+      <div className="relative overflow-hidden">
         <motion.img 
-            src={project.imageUrl} 
-            alt={project.title} 
-            className="w-full h-full object-cover" 
-            loading="lazy" 
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+          src={project.imageUrl} 
+          alt={project.title} 
+          className="w-full h-60 object-cover transition-transform duration-700" 
+          loading="lazy" 
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.7 }}
         />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 p-6">
-            <motion.h3 
-                className="text-white text-2xl font-semibold drop-shadow-md apple-title"
-                initial={{ y: 20, opacity: 0.9 }}
-                whileHover={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.3 }}
-            >
-                {project.title}
-            </motion.h3>
+            <h3 className="text-2xl font-bold text-white">{project.title}</h3>
         </div>
       </div>
-      {!isFeatured && (
-         <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center backdrop-blur-sm z-10">
-            <motion.span 
-                className="text-white text-2xl font-semibold border-2 border-white/30 p-4 rounded-xl shadow-xl apple-title"
-                initial={{ rotate: -8, scale: 0.95 }}
-                whileHover={{ rotate: 0, scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-            >
-                Coming Soon
-            </motion.span>
-        </div>
-      )}
+      <div className="p-6">
+        <p className="text-slate-600">Join us in our mission to create a sustainable campus environment through innovative projects and community engagement.</p>
+      </div>
     </motion.div>
   );
 });
