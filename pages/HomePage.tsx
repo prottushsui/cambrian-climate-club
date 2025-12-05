@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef, memo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, Variants, useInView } from 'framer-motion';
 import { projects, currentMembers } from '../data/content';
@@ -60,7 +60,7 @@ const statItemVariants: Variants = {
 };
 
 
-const Counter: React.FC<{ end: number, duration?: number }> = memo(({ end, duration = 2000 }) => {
+const Counter: React.FC<{ end: number, duration?: number }> = ({ end, duration = 2000 }) => {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true });
@@ -87,7 +87,7 @@ const Counter: React.FC<{ end: number, duration?: number }> = memo(({ end, durat
 });
 
 
-const StatCard: React.FC<{ value: React.ReactNode; label: string }> = memo(({ value, label }) => (
+const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, label }) => (
     <motion.div 
         className="bg-primary-50 p-6 rounded-2xl text-center shadow-lg border border-primary-100"
         variants={statItemVariants}
@@ -128,7 +128,7 @@ const imageVariants: Variants = {
 };
 
 
-const HomePage: React.FC = memo(() => {
+const HomePage: React.FC = () => {
   const heroTitle = "Cambrian Climate Club — Campus 2".split("—");
   const titleWords = heroTitle.map(part => part.trim().split(" "));
 
@@ -301,6 +301,8 @@ const HomePage: React.FC = memo(() => {
       </section>
     </div>
   );
-});
+};
+
+export default HomePage;
 
 export default HomePage;
