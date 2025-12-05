@@ -29,7 +29,7 @@ const AboutPage: React.FC = () => {
       />
 
       <motion.div 
-        className="max-w-5xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-gray-100 apple-card"
+        className="max-w-5xl mx-auto bg-white/80 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-lg border border-white/20 apple-card glass-card"
         initial={{ opacity: 0, scale: 0.95, y: 30 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true }}
@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
                 transition={{ type: "spring", bounce: 0.5, duration: 1.5, delay: 0.2 }}
                 whileHover={{ rotate: 5, scale: 1.05 }}
             >
-                <img src="https://images.weserv.nl/?url=i.imgur.com/RUb1nRX.png" alt="Club Logo" className="h-48 w-auto object-contain drop-shadow-lg"/>
+                <img src="https://images.weserv.nl/?url=i.imgur.com/RUb1nRX.png" alt="Club Logo" className="h-48 w-auto object-contain drop-shadow-lg rounded-2xl"/>
             </motion.div>
             <div className="md:col-span-2 space-y-4">
                 <motion.h3 
@@ -86,9 +86,9 @@ const AboutPage: React.FC = () => {
                 {['Sustainability Projects', 'Climate Literacy Workshops', 'Environmental Education', 'Tree Plantation Drives', 'Plastic-Free Campus Initiatives', 'Rooftop Gardening', 'Community Workshops', 'Climate Conferences'].map((activity) => (
                     <motion.li 
                         key={activity} 
-                        className="flex items-center p-4 bg-slate-50 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow apple-card"
+                        className="flex items-center p-4 bg-slate-50/60 backdrop-blur-sm rounded-2xl border border-gray-100 hover:shadow-md transition-shadow apple-card glass-effect"
                         variants={itemVariants}
-                        whileHover={{ scale: 1.02, backgroundColor: "#f8fafc", x: 3 }}
+                        whileHover={{ scale: 1.02, backgroundColor: "rgba(248, 250, 252, 0.8)", x: 3 }}
                     >
                         <motion.div 
                             className="bg-blue-100 p-2 rounded-full mr-4 text-blue-600"
