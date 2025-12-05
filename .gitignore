@@ -1,65 +1,42 @@
 ```
-# Dependencies
-node_modules/
-
-# Build artifacts
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
 dist/
 build/
-*.tsbuildinfo
+target/
 
-# Environment
+# Dependencies
+node_modules/
+venv/
+.venv/
 .env
 .env.local
 .env.*
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
 
 # Editors
 .vscode/
 .idea/
 
-# Logs
-*.log
-
-# Python (in case Python files are added later)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# OS generated files
+# OS
 .DS_Store
 Thumbs.db
 
-# Coverage
+# Testing and coverage
+.coverage
 coverage/
 htmlcov/
-.coverage
-
-# Temporary files
-*.tmp
-*.swp
-*.swo
-
-# Testing
-.mypy_cache/
 .pytest_cache/
-.nyc_output/
-coverage/
+.mypy_cache/
 
-# Distribution / packaging
-*.tar.gz
-*.whl
-*.egg
-*.egg-info/
-
-# IDE
-.vs/
-*.sublime-project
-*.sublime-workspace
-
-# Browser extensions
-*.crx
-
-# Compressed files
+# Archives
 *.zip
 *.gz
 *.tar
@@ -82,11 +59,4 @@ coverage/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-
-# Vite specific
-!.vite/
-vite.config.ts
-
-# TypeScript specific
-tsconfig.json
 ```
