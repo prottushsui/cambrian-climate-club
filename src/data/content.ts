@@ -11,7 +11,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: proxy('https://i.imgur.com/3j3b7Z2.jpeg'),
+    imageUrl: '/people/president.jpg',
   },
   {
     name: 'Maria Anamika Bairagee',
@@ -20,7 +20,7 @@ export const leadershipTeam: Member[] = [
     term: '2023–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: proxy('https://i.imgur.com/kS9Qk7g.jpeg'),
+    imageUrl: '/people/vice-president.jpg',
   },
   {
     name: 'H.M Towfiquzzaman',
@@ -29,7 +29,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 BV (B)',
     campus: 'Campus 2',
-    imageUrl: proxy('https://i.imgur.com/W2Cg3x8.jpeg'),
+    imageUrl: '/people/general-secretary.jpg',
   },
   {
     name: 'Md. Mottakin Bin Arif',
@@ -38,7 +38,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 9 EV',
     campus: 'Campus 2',
-    imageUrl: proxy('https://i.imgur.com/f0mGvY6.jpeg'),
+    imageUrl: '/people/publicity-secretary.jpg',
     specialRecognition: true
   },
   {
@@ -48,7 +48,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 BV (G)',
     campus: 'Campus 2',
-    imageUrl: proxy('https://i.imgur.com/J419J8d.jpeg'),
+    imageUrl: '/people/office-secretary.jpg',
   },
   {
     name: 'Samirah Subha',
@@ -57,7 +57,7 @@ export const leadershipTeam: Member[] = [
     term: '2025',
     classInfo: 'Class 9 BV (G)',
     campus: 'Campus 2',
-    imageUrl: proxy('https://i.imgur.com/tL7P2m3.jpeg'),
+    imageUrl: '/people/organizing-secretary.jpg',
   },
   {
     name: 'Kishore Sutradhar',
@@ -66,7 +66,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 9 BV (B)',
     campus: 'Campus 2',
-    imageUrl: proxy('https://i.imgur.com/tL7P2m3.jpeg'),
+    imageUrl: '/people/treasurer.jpg',
   },
 ];
 
@@ -122,18 +122,18 @@ export const currentMembers: ExecutiveMember[] = [
 ];
 
 export const advisoryCommittee: Advisor[] = [
-  { name: 'Rumana Khanam', role: 'Chief Advisor (Vice Principal)', imageUrl: proxy('https://i.imgur.com/K3ZDV2H.jpeg') },
-  { name: 'Md. Kamruzzaman', role: 'Advisor', imageUrl: proxy('https://i.imgur.com/z2xJ5Y5.jpeg') },
-  { name: 'Jakir Hoissain', role: 'Advisor', imageUrl: proxy('https://i.imgur.com/W2x0QJb.jpeg') },
-  { name: 'Monirul Islam', role: 'Advisor', imageUrl: proxy('https://i.imgur.com/dK5uLgB.jpeg') },
-  { name: 'Md. S H Khokon Mia', role: 'Advisor & Club Coordinator', imageUrl: proxy('https://i.imgur.com/i9u3A39.jpeg') },
-  { name: 'Hiren Sarkar', role: 'Advisor', imageUrl: proxy('https://i.imgur.com/eQz4n1Q.jpeg') },
+  { name: 'Rumana Khanam', role: 'Chief Advisor (Vice Principal)', imageUrl: '/people/advisor-chief.jpg' },
+  { name: 'Md. Kamruzzaman', role: 'Advisor', imageUrl: '/people/advisor-1.jpg' },
+  { name: 'Jakir Hoissain', role: 'Advisor', imageUrl: '/people/advisor-2.jpg' },
+  { name: 'Monirul Islam', role: 'Advisor', imageUrl: '/people/advisor-3.jpg' },
+  { name: 'Md. S H Khokon Mia', role: 'Advisor & Club Coordinator', imageUrl: '/people/advisor-4.jpg' },
+  { name: 'Hiren Sarkar', role: 'Advisor', imageUrl: '/people/advisor-5.jpg' },
 ];
 
 export const projects: Project[] = [
-  { title: 'Campus Cleanliness Drive', imageUrl: proxy('https://i.imgur.com/h5rD6wS.jpeg') },
-  { title: 'Campus Greening Initiative', imageUrl: proxy('https://i.imgur.com/9v1zG1N.jpeg') },
-  { title: 'Climate Action E-Magazine', imageUrl: proxy('https://i.imgur.com/2s3Kz2T.jpeg') },
+  { title: 'Campus Cleanliness Drive', imageUrl: '/people/project-cleanliness.jpg' },
+  { title: 'Campus Greening Initiative', imageUrl: '/people/project-greening.jpg' },
+  { title: 'Climate Action E-Magazine', imageUrl: '/people/project-magazine.jpg' },
 ];
 
 export const achievements: Achievement[] = [
