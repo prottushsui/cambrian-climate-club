@@ -177,13 +177,13 @@ const HomePage: React.FC = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                      <motion.img 
-                        src="https://images.weserv.nl/?url=i.imgur.com/h5rD6wS.jpeg" 
+                        src="https://i.imgur.com/h5rD6wS.jpeg" 
                         alt="Campus Cleanliness Drive" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = '/images/placeholder.jpg'; // fallback image
+                          target.src = 'https://i.imgur.com/xxxxxxx.jpg'; // fallback image
                         }}
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.5 }}
@@ -197,13 +197,13 @@ const HomePage: React.FC = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                     <motion.img 
-                        src="https://images.weserv.nl/?url=i.imgur.com/9v1zG1N.jpeg" 
+                        src="https://i.imgur.com/9v1zG1N.jpeg" 
                         alt="Campus Greening Initiative" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = '/images/placeholder.jpg'; // fallback image
+                          target.src = 'https://i.imgur.com/xxxxxxx.jpg'; // fallback image
                         }}
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.5 }}
@@ -217,13 +217,13 @@ const HomePage: React.FC = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                     <motion.img 
-                        src="https://images.weserv.nl/?url=i.imgur.com/2s3Kz2T.jpeg" 
+                        src="https://i.imgur.com/2s3Kz2T.jpeg" 
                         alt="Climate Action E-Magazine" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = '/images/placeholder.jpg'; // fallback image
+                          target.src = 'https://i.imgur.com/xxxxxxx.jpg'; // fallback image
                         }}
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.5 }}
@@ -263,7 +263,7 @@ const HomePage: React.FC = () => {
                   loading="lazy"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = '/images/placeholder.jpg'; // fallback image
+                    target.src = 'https://i.imgur.com/xxxxxxx.jpg'; // fallback image
                   }}
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.7 }}

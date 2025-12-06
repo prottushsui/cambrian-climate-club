@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
             whileHover={{ rotate: 5, scale: 1.05 }} 
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           >
-             <img src="/images/club-logo.svg" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
+             <img src="https://i.imgur.com/xxxxxxx.png" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
           </motion.div>
           <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-900 hidden sm:block apple-title">Cambrian Climate Club</span>
         </Link>

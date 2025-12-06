@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
           {/* Column 1: Brand & About */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse" aria-label="Cambrian Climate Club Home">
-              <img src="/images/club-logo.svg" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
+              <img src="https://i.imgur.com/xxxxxxx.png" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
               <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-900 apple-title">Cambrian Climate Club</span>
             </Link>
             <p className="text-slate-600 text-sm leading-relaxed">
