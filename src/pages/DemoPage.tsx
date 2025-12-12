@@ -1,6 +1,7 @@
 import { AnimatedFolder } from "@/components/ui/3d-folder"
 import ParticleEffectForHero from "@/components/ui/particle-effect-for-hero"
 import GlowingShadowDemo from "@/components/ui/demo"
+import { BentoGridGalleryDemo } from "@/components/ui/bento-grid-gallery-demo"
 
 const portfolioData = [
   {
@@ -44,6 +45,11 @@ export default function DemoPage() {
         {/* Glowing Shadow Component */}
         <div className="mb-20">
           <GlowingShadowDemo />
+        </div>
+        
+        {/* Interactive Bento Gallery */}
+        <div className="mb-20">
+          <BentoGridGalleryDemo />
         </div>
         
         <div className="flex flex-wrap items-center justify-center gap-8 w-full">
