@@ -11,6 +11,7 @@ import ExecutiveCommitteePage from '@/pages/ExecutiveCommitteePage';
 import AdvisoryCommitteePage from '@/pages/AdvisoryCommitteePage';
 import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
+import DemoPage from '@/pages/DemoPage';
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/advisory-committee" element={<AdvisoryCommitteePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/achievements" element={<AchievementsPage />} />
+            <Route path="/demo" element={<DemoPage />} />
           </Routes>
         </main>
         <Footer />
