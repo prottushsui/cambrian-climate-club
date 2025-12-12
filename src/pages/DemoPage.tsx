@@ -1,5 +1,6 @@
 import { AnimatedFolder } from "@/components/ui/3d-folder"
 import ParticleEffectForHero from "@/components/ui/particle-effect-for-hero"
+import GlowingShadowDemo from "@/components/ui/demo"
 
 const portfolioData = [
   {
@@ -39,6 +40,12 @@ export default function DemoPage() {
       {/* Main content */}
       <section className="max-w-6xl mx-auto px-6 py-16 mt-64 z-10 relative">
         <h1 className="text-4xl font-bold text-center mb-12 text-white">Interactive Demos</h1>
+        
+        {/* Glowing Shadow Component */}
+        <div className="mb-20">
+          <GlowingShadowDemo />
+        </div>
+        
         <div className="flex flex-wrap items-center justify-center gap-8 w-full">
           {portfolioData.map((folder) => (
             <AnimatedFolder 
