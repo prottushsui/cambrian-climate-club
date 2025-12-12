@@ -201,7 +201,6 @@ export function AnimatedFolder({ title, projects, className }: AnimatedFolderPro
 import type React from "react"
 import { useEffect, useLayoutEffect, useCallback } from "react"
 import { X, ExternalLink, ChevronLeft, ChevronRight } from "@/components/icons/LucideIcons"
-import { cn } from "@/lib/utils"
 
 interface Project {
   id: string
