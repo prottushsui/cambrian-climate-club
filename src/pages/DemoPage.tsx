@@ -1,4 +1,5 @@
 import { AnimatedFolder } from "@/components/ui/3d-folder"
+import ParticleEffectForHero from "@/components/ui/particle-effect-for-hero"
 
 const portfolioData = [
   {
@@ -30,9 +31,14 @@ const portfolioData = [
 export default function DemoPage() {
   return (
     <main className="min-h-screen bg-background flex items-center justify-center w-full p-4">
-     
+      {/* Particle Effect Hero Section */}
+      <div className="fixed top-0 left-0 w-full h-1/2 z-0">
+        <ParticleEffectForHero />
+      </div>
+      
       {/* Main content */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      <section className="max-w-6xl mx-auto px-6 py-16 mt-64 z-10 relative">
+        <h1 className="text-4xl font-bold text-center mb-12 text-white">Interactive Demos</h1>
         <div className="flex flex-wrap items-center justify-center gap-8 w-full">
           {portfolioData.map((folder) => (
             <AnimatedFolder 
