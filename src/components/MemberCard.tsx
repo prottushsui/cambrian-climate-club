@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import { motion, Variants } from 'framer-motion';
-import type { Member } from '../types';
+import type { Member } from '../types/types';
 
 interface MemberCardProps {
   member: Member;

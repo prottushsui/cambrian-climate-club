@@ -3,7 +3,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { advisoryCommittee } from '../data/content';
 import SectionHeader from '../components/SectionHeader';
-import type { Advisor } from '../types';
+import type { Advisor } from '../types/types';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

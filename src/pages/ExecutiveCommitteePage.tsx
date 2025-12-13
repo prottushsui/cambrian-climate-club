@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { alumniMembers, currentMembers } from '../data/content';
 import SectionHeader from '../components/SectionHeader';
-import type { ExecutiveMember } from '../types';
+import type { ExecutiveMember } from '../types/types';
 
 const MemberTable: React.FC<{ members: ExecutiveMember[], hasSerial?: boolean }> = ({ members, hasSerial = false }) => (
     <motion.div 
