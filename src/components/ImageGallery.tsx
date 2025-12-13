@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, memo } from 'react';
 import { motion, Variants } from 'framer-motion';
-import type { Gallery } from '../types';
+import type { Gallery } from '../types/types';
 import Lightbox from './Lightbox';
 import SectionHeader from './SectionHeader';
 
