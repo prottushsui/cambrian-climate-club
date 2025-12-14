@@ -3,86 +3,102 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: oklch(0.98 0.005 260);
-    --foreground: oklch(0.15 0.01 260);
-    --card: oklch(0.98 0.005 260);
-    --card-foreground: oklch(0.15 0.01 260);
-    --popover: oklch(0.98 0.005 260);
-    --popover-foreground: oklch(0.15 0.01 260);
-    --primary: oklch(0.55 0.15 250);
-    --primary-foreground: oklch(0.98 0 0);
-    --secondary: oklch(0.96 0.01 260);
-    --secondary-foreground: oklch(0.25 0.01 260);
-    --muted: oklch(0.94 0.01 260);
-    --muted-foreground: oklch(0.5 0.02 260);
-    --accent: oklch(0.75 0.12 45);
-    --accent-foreground: oklch(0.25 0.05 45);
-    --destructive: oklch(0.396 0.141 25.723);
-    --destructive-foreground: oklch(0.577 0.245 27.325);
-    --border: oklch(0.9 0.01 260);
-    --input: oklch(0.9 0.01 260);
-    --ring: oklch(0.55 0.15 250);
+    /* Climate-focused color system */
+    --background: 240 4.35% 97.84%; /* Light slate */
+    --foreground: 240 8.33% 10%; /* Deep slate */
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 240 8.33% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 8.33% 10%;
+    --primary: 160 60% 35%; /* Deep forest green */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 90%; /* Soft sky blue */
+    --secondary-foreground: 240 5.88% 12.94%;
+    --muted: 210 20% 95%; /* Very light blue */
+    --muted-foreground: 240 4.76% 46.67%;
+    --accent: 180 40% 50%; /* Ocean teal */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.21% 43.14%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 160 60% 35%;
     --radius: 0.75rem;
-    --folder-back: oklch(0.75 0.12 45);
-    --folder-front: oklch(0.8 0.14 50);
-    --folder-tab: oklch(0.7 0.1 40);
+    --folder-back: 160 60% 35%;
+    --folder-front: 160 50% 40%;
+    --folder-tab: 160 40% 30%;
+    
+    /* Climate-themed gradients */
+    --climate-gradient-1: linear-gradient(135deg, #0d9488 0%, #10b981 50%, #22c55e 100%);
+    --climate-gradient-2: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0891b2 100%);
+    --climate-gradient-3: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
+    --climate-gradient-4: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
   }
 
   .dark {
-    --background: oklch(0.12 0.01 260);
-    --foreground: oklch(0.95 0.01 260);
-    --card: oklch(0.16 0.01 260);
-    --card-foreground: oklch(0.95 0.01 260);
-    --popover: oklch(0.16 0.01 260);
-    --popover-foreground: oklch(0.95 0.01 260);
-    --primary: oklch(0.65 0.15 250);
-    --primary-foreground: oklch(0.12 0 0);
-    --secondary: oklch(0.22 0.01 260);
-    --secondary-foreground: oklch(0.9 0.01 260);
-    --muted: oklch(0.22 0.01 260);
-    --muted-foreground: oklch(0.65 0.02 260);
-    --accent: oklch(0.7 0.12 45);
-    --accent-foreground: oklch(0.98 0.01 45);
-    --destructive: oklch(0.396 0.141 25.723);
-    --destructive-foreground: oklch(0.637 0.237 25.331);
-    --border: oklch(0.25 0.01 260);
-    --input: oklch(0.25 0.01 260);
-    --ring: oklch(0.65 0.15 250);
-    --folder-back: oklch(0.65 0.12 45);
-    --folder-front: oklch(0.7 0.14 50);
-    --folder-tab: oklch(0.6 0.1 40);
+    --background: 240 8.33% 10%;
+    --foreground: 240 5.88% 90%;
+    --card: 240 8.33% 12%;
+    --card-foreground: 240 5.88% 90%;
+    --popover: 240 8.33% 8%;
+    --popover-foreground: 240 5.88% 90%;
+    --primary: 160 60% 45%;
+    --primary-foreground: 240 8.33% 10%;
+    --secondary: 210 15% 15%;
+    --secondary-foreground: 240 5.88% 90%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 4.76% 53.33%;
+    --accent: 180 40% 40%;
+    --accent-foreground: 240 5.88% 90%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 240 5.88% 90%;
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 160 60% 45%;
+    --folder-back: 160 60% 45%;
+    --folder-front: 160 50% 50%;
+    --folder-tab: 160 40% 40%;
+    
+    /* Dark mode climate gradients */
+    --climate-gradient-1: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #047857 100%);
+    --climate-gradient-2: linear-gradient(135deg, #0369a1 0%, #0891b2 50%, #0e7490 100%);
+    --climate-gradient-3: linear-gradient(135deg, #7e22ce 0%, #9333ea 50%, #a855f7 100%);
+    --climate-gradient-4: linear-gradient(135deg, #047857 0%, #0e7490 100%);
   }
 }
 
-/* Apple-style typography - using SF Pro fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* Climate-inspired typography - using Inter for better readability */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --apple-font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-  --apple-accent-color: #0071e3;
-  --apple-accent-color-rgb: 0, 113, 227;
-  --apple-background-color: #ffffff;
-  --apple-secondary-background-color: #f5f5f7;
-  --apple-tertiary-background-color: #e8e8e8;
-  --apple-text-color: #1d1d1f;
-  --apple-secondary-text-color: #86868b;
-  --apple-system-blue: #007AFF;
-  --apple-system-gray: #8e8e93;
-  --apple-system-gray2: #aeaeb2;
-  --apple-system-gray3: #c7c7cc;
-  --apple-system-gray4: #d1d1d6;
-  --apple-system-gray5: #e5e5ea;
-  --apple-system-gray6: #f2f2f7;
-  --apple-border-radius: 14px;
-  --apple-border-radius-medium: 12px;
-  --apple-border-radius-small: 10px;
-  --apple-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --apple-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --apple-shadow-large: 0 16px 40px rgba(0, 0, 0, 0.16);
-  --apple-transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-  --apple-glass-bg: rgba(255, 255, 255, 0.7);
-  --apple-glass-border: rgba(255, 255, 255, 0.8);
-  --apple-glass-backdrop: blur(20px);
+  --climate-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --climate-accent-color: 160 60% 35%; /* Deep forest green */
+  --climate-accent-color-rgb: 13, 148, 136;
+  --climate-background-color: 240 4.35% 97.84%;
+  --climate-secondary-background-color: 210 20% 95%;
+  --climate-tertiary-background-color: 210 20% 90%;
+  --climate-text-color: 240 8.33% 10%;
+  --climate-secondary-text-color: 240 4.76% 46.67%;
+  --climate-primary-green: 160 60% 35%;
+  --climate-secondary-green: 160 50% 45%;
+  --climate-tertiary-green: 160 40% 55%;
+  --climate-sky-blue: 200 100% 70%;
+  --climate-ocean-teal: 180 60% 40%;
+  --climate-forest-green: 160 60% 30%;
+  --climate-leaf-green: 140 70% 45%;
+  --climate-sunset-orange: 20 80% 60%;
+  --climate-border-radius: 16px;
+  --climate-border-radius-medium: 12px;
+  --climate-border-radius-small: 8px;
+  --climate-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --climate-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --climate-shadow-large: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --climate-shadow-climate: 0 8px 32px rgba(13, 148, 136, 0.15);
+  --climate-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  --climate-glass-bg: rgba(255, 255, 255, 0.85);
+  --climate-glass-border: rgba(255, 255, 255, 0.9);
+  --climate-glass-backdrop: blur(24px);
+  --climate-gradient-bg: linear-gradient(135deg, hsl(160, 60%, 95%) 0%, hsl(200, 60%, 95%) 100%);
 }
 
 * {
@@ -91,10 +107,164 @@
 }
 
 body {
-  font-family: var(--apple-font-family);
-  background-color: var(--apple-secondary-background-color);
-  color: var(--apple-text-color);
+  font-family: var(--climate-font-family);
+  background: var(--climate-gradient-bg);
+  color: hsl(var(--foreground));
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Climate-themed background patterns */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(at 27% 70%, hsla(160, 60%, 80%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 72% 20%, hsla(180, 60%, 80%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 30% 30%, hsla(200, 60%, 80%, 0.1) 0px, transparent 50%);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Climate-inspired animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1) rotate(0.5deg); }
+  50% { transform: scale(1.01) rotate(-0.5deg); }
+}
+
+.climate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.climate-pulse {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.climate-breathe {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+/* Enhanced climate-themed buttons */
+.climate-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--climate-border-radius-medium);
+  font-weight: 500;
+  transition: var(--climate-transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  font-family: var(--climate-font-family);
+  box-shadow: var(--climate-shadow);
+  padding: 14px 28px;
+  font-size: 16px;
   line-height: 1.5;
+}
+
+.climate-button-primary {
+  background: linear-gradient(135deg, hsl(160, 60%, 40%) 0%, hsl(160, 60%, 35%) 100%);
+  color: white;
+  border: 1px solid hsl(160, 60%, 30%);
+}
+
+.climate-button-primary:hover {
+  background: linear-gradient(135deg, hsl(160, 60%, 35%) 0%, hsl(160, 60%, 30%) 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--climate-shadow-medium), 0 0 20px rgba(13, 148, 136, 0.3);
+}
+
+.climate-button-secondary {
+  background: transparent;
+  color: hsl(160, 60%, 35%);
+  border: 1px solid hsl(160, 60%, 50%);
+}
+
+.climate-button-secondary:hover {
+  background: hsla(160, 60%, 50%, 0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--climate-shadow-medium);
+}
+
+/* Enhanced climate-themed cards */
+.climate-card {
+  background: hsl(var(--card));
+  border-radius: var(--climate-border-radius);
+  box-shadow: var(--climate-shadow);
+  transition: var(--climate-transition);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid hsla(210, 20%, 90%, 0.5);
+}
+
+.climate-card:hover {
+  box-shadow: var(--climate-shadow-medium);
+  transform: translateY(-6px);
+  transition: var(--climate-transition);
+  border-color: hsla(160, 60%, 50%, 0.3);
+}
+
+/* Enhanced glassmorphism effect with climate colors */
+.climate-glass {
+  background: var(--climate-glass-bg);
+  backdrop-filter: var(--climate-glass-backdrop);
+  -webkit-backdrop-filter: var(--climate-glass-backdrop);
+  border: 1px solid var(--climate-glass-border);
+  border-radius: var(--climate-border-radius-medium);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.climate-glass-card {
+  background: hsla(0, 0%, 100%, 0.3);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsla(0, 0%, 100%, 0.25);
+  border-radius: var(--climate-border-radius-medium);
+  box-shadow: var(--climate-shadow-climate);
+}
+
+/* Climate-themed navigation */
+.climate-navbar {
+  background: hsla(0, 0%, 100%, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid hsla(210, 20%, 90%, 0.7);
+  transition: var(--climate-transition);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* Climate-themed typography */
+.climate-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-family: var(--climate-font-family);
+  background: linear-gradient(135deg, hsl(240, 8.33%, 10%) 0%, hsl(160, 60%, 35%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.climate-subtitle {
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+  font-family: var(--climate-font-family);
 }
 
 /* Apple-style animations */
@@ -234,22 +404,22 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--apple-system-gray6);
+  background: hsl(210, 20%, 95%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--apple-system-gray3);
+  background: hsl(160, 60%, 50%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--apple-system-gray2);
+  background: hsl(160, 60%, 40%);
 }
 
 /* Focus styles for accessibility */
 *:focus-visible {
-  outline: 2px solid var(--apple-system-blue);
+  outline: 2px solid hsl(160, 60%, 35%);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -268,12 +438,6 @@ html {
 
 .slide-up {
   animation: slideUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
 }
 
 @keyframes kenburns {
@@ -306,5 +470,59 @@ html {
   .smooth-animation {
     animation-duration: 0.3s;
     animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+}
+
+/* Climate-specific utility classes */
+.bg-climate-gradient {
+  background: var(--climate-gradient-1);
+}
+
+.bg-climate-gradient-2 {
+  background: var(--climate-gradient-2);
+}
+
+.bg-climate-gradient-3 {
+  background: var(--climate-gradient-3);
+}
+
+.bg-climate-gradient-4 {
+  background: var(--climate-gradient-4);
+}
+
+.text-climate-primary {
+  color: hsl(160, 60%, 35%);
+}
+
+.text-climate-secondary {
+  color: hsl(180, 60%, 40%);
+}
+
+.border-climate {
+  border-color: hsl(160, 60%, 50%);
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: var(--climate-transition);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--climate-shadow-medium);
+}
+
+.hover-glow {
+  transition: var(--climate-transition);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .climate-card:hover {
+    transform: translateY(0);
   }
 }

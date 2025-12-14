@@ -51,7 +51,7 @@ const Counter: React.FC<{ end: number; duration?: number }> = ({ end, duration =
 
 const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, label }) => (
     <motion.div 
-        className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-lg border border-white/20 apple-card glass-card"
+        className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-lg border border-white/20 climate-card climate-glass"
         variants={statItemVariants}
         whileHover={{ 
             y: -10, 
@@ -98,7 +98,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="bg-slate-50/60">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center climate-breathe">
         {/* Animated Background Blobs */}
         <motion.div 
             className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-gradient-to-r from-blue-200/30 to-emerald-200/30 rounded-full opacity-50 filter blur-3xl"
@@ -177,7 +177,7 @@ const HomePage: React.FC = () => {
                 >
                     <Link to="/projects" className="w-full sm:w-auto block">
                         <motion.div 
-                            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 text-center text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-blue-500/30 apple-button apple-button-primary transition-all duration-300"
+                            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 text-center text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-blue-500/30 climate-button climate-button-primary transition-all duration-300"
                             whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 113, 227, 0.4)" }}
                             whileTap={{ scale: 0.97 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -187,7 +187,7 @@ const HomePage: React.FC = () => {
                     </Link>
                     <Link to="/leadership" className="w-full sm:w-auto block">
                         <motion.div 
-                            className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-center text-blue-600 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 apple-button apple-button-secondary transition-all duration-300"
+                            className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-center text-blue-600 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 climate-button climate-button-secondary transition-all duration-300"
                             whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)" }}
                             whileTap={{ scale: 0.97 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -265,7 +265,7 @@ const HomePage: React.FC = () => {
               variants={itemVariants}
               initial="hidden"
               animate="visible"
-              className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20"
+              className="climate-card climate-glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20"
               whileHover={{ y: -10, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}

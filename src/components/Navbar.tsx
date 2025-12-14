@@ -54,7 +54,7 @@ const Navbar: React.FC = memo(() => {
   ];
 
   return (
-    <nav className="bg-white/80 backdrop-blur-xl border-b border-white/30 fixed w-full z-50 top-0 start-0 transition-all duration-300 apple-navbar glass-effect shadow-sm" aria-label="Main navigation">
+    <nav className="bg-white/85 backdrop-blur-xl border-b border-white/30 fixed w-full z-50 top-0 start-0 transition-all duration-300 climate-navbar climate-glass shadow-sm" aria-label="Main navigation">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link 
           to="/" 

@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-50/80 backdrop-blur-sm border-t border-slate-200/60 pt-16 pb-8">
+    <footer className="bg-slate-50/80 backdrop-blur-sm border-t border-slate-200/60 pt-16 pb-8 climate-glass">
       <div className="max-w-screen-xl mx-auto p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse" aria-label="Cambrian Climate Club Home">
               <img src="/images/Club logo.png" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-900 apple-title">Cambrian Climate Club</span>
+              <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-900 climate-title">Cambrian Climate Club</span>
             </Link>
             <p className="text-slate-600 text-sm leading-relaxed">
               Empowering students to take action for a sustainable future through education, innovation, and community service at Cambrian School & College, Campus 2.
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-slate-800 font-semibold mb-4 uppercase text-xs tracking-wider apple-title">Quick Links</h3>
+            <h3 className="text-slate-800 font-semibold mb-4 uppercase text-xs tracking-wider climate-title">Quick Links</h3>
             <ul className="space-y-2 text-sm text-slate-600">
               <FooterLink to="/about">About Us</FooterLink>
               <FooterLink to="/projects">Our Projects</FooterLink>
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
 
           {/* Column 3: Contact Info */}
           <div>
-            <h3 className="text-slate-800 font-semibold mb-4 uppercase text-xs tracking-wider apple-title">Contact Us</h3>
+            <h3 className="text-slate-800 font-semibold mb-4 uppercase text-xs tracking-wider climate-title">Contact Us</h3>
             <ul className="space-y-3 text-sm text-slate-600">
               <li className="flex items-start space-x-3">
                  <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
 
           {/* Column 4: Social Media */}
           <div>
-            <h3 className="text-slate-800 font-semibold mb-4 uppercase text-xs tracking-wider apple-title">Follow Us</h3>
+            <h3 className="text-slate-800 font-semibold mb-4 uppercase text-xs tracking-wider climate-title">Follow Us</h3>
             <p className="text-slate-600 text-sm mb-4">Stay connected with our latest updates, events, and environmental tips.</p>
             <div className="flex space-x-4">
               <SocialLink href="#" label="Facebook" path="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
