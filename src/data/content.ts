@@ -144,12 +144,70 @@ export const achievements: Achievement[] = [
 ];
 
 export const galleries: Gallery[] = [
-    { title: 'Climate Club Logo', images: ['https://imgur.com/a/RUb1nRX'] },
-    { title: 'Achievements', images: ['https://imgur.com/a/NWcQL2E', 'https://imgur.com/a/RUSDYnO', 'https://imgur.com/a/un4BCK0', 'https://imgur.com/a/g61ZFIR', 'https://imgur.com/a/yW9JTl3', 'https://imgur.com/a/4BzEgeK', 'https://imgur.com/a/VtN68rc', 'https://imgur.com/a/hrmnBnN', 'https://imgur.com/a/oStgmGv', 'https://imgur.com/a/hLowapm', 'https://imgur.com/a/ubGD6us', 'https://imgur.com/a/GGlI46G', 'https://imgur.com/a/R8GN0EQ'] },
-    { title: 'NCCA 2024', images: ['https://imgur.com/a/uYV7Onf', 'https://imgur.com/a/Ud5wMYK', 'https://imgur.com/a/GOp6GcN', 'https://imgur.com/a/Gzetf7v', 'https://imgur.com/a/JVw5eJn', 'https://imgur.com/a/r1nRLaC', 'https://imgur.com/a/2qvzXAx', 'https://imgur.com/a/lMf3VXS', 'https://imgur.com/a/dQmlq2r', 'https://imgur.com/a/dgtvwjy', 'https://imgur.com/a/T28XyXp', 'https://imgur.com/a/48kihXf', 'https://imgur.com/a/sWxyEmz', 'https://imgur.com/a/m23quDW'] },
-    { title: 'Training Days 1-4', images: ['https://imgur.com/a/uXHCGaT', 'https://imgur.com/a/mUfhbqZ', 'https://imgur.com/a/55AYmRf', 'https://imgur.com/a/tAJLUCN', 'https://imgur.com/a/5PO9x2E', 'https://imgur.com/a/UnmqNDS', 'https://imgur.com/a/faAvfe8', 'https://imgur.com/a/faAvfe8'] },
-    { title: 'MGM', images: ['https://imgur.com/a/ag5Tah0', 'https://imgur.com/a/1MCUaDi', 'https://imgur.com/a/p8haI7J', 'https://imgur.com/a/3BD0jDM', 'https://imgur.com/a/sP51xwM', 'https://imgur.com/a/fu5f9rl'] },
-    { title: 'Campus Greening', images: ['https://imgur.com/a/XVsGyLy', 'https://imgur.com/a/i3e6TYZ', 'https://imgur.com/a/iUTIvVd', 'https://imgur.com/a/5jxf7YP'] },
-    { title: 'Cleaning Activities', images: ['https://imgur.com/a/cT9tHtY', 'https://imgur.com/a/U7b9Wjz', 'https://imgur.com/a/F6S0Iqb', 'https://imgur.com/a/aE3C0ia'] },
-    { title: 'Conference', images: ['https://imgur.com/a/yjDNYsB', 'https://imgur.com/a/VaRegQf', 'https://imgur.com/a/chqkD79', 'https://imgur.com/a/Dk8keVb', 'https://imgur.com/a/QoBF5NP', 'https://imgur.com/a/llrXnwq', 'https://imgur.com/a/8ALJWdd', 'https://imgur.com/a/Wb63e6Q', 'https://imgur.com/a/Dy0k1lp', 'https://imgur.com/a/ZuWztaI', 'https://imgur.com/a/eBDIuoa'] },
+    { title: 'Climate Club Logo', images: ['/images/Club logo.png'] },
+    { title: 'Achievements', images: [
+        '/images/achivement/Achievement- 1.jpg',
+        '/images/achivement/Achievement- 2.jpg',
+        '/images/achivement/Achievement- 3.jpg',
+        '/images/achivement/Achievement- 4.jpg',
+        '/images/achivement/Achievement- 5.jpg',
+        '/images/achivement/Achievement- 6.jpg',
+        '/images/achivement/Achievement- 7.jpg',
+        '/images/achivement/Achievement- 8.jpg',
+        '/images/achivement/Achievement- 9.jpg',
+        '/images/achivement/Achievement- 10.png',
+        '/images/achivement/Achievement- 11.png',
+        '/images/achivement/Achievement- 12.png',
+        '/images/achivement/Achievement- 13.png'
+    ]},
+    { title: 'NCCA 2024', images: [
+        '/images/NCCA2024/NCCA- 1.jpg',
+        '/images/NCCA2024/NCCA- 2.jpg',
+        '/images/NCCA2024/NCCA- 3.jpg',
+        '/images/NCCA2024/NCCA- 4.jpg',
+        '/images/NCCA2024/NCCA- 5.jpg',
+        '/images/NCCA2024/NCCA- 6.jpg',
+        '/images/NCCA2024/NCCA- 7.jpg',
+        '/images/NCCA2024/NCCA- 8.jpg',
+        '/images/NCCA2024/NCCA- 9.jpg',
+        '/images/NCCA2024/NCCA- 10.jpg',
+        '/images/NCCA2024/NCCA- 11.jpg',
+        '/images/NCCA2024/NCCA- 12.jpg',
+        '/images/NCCA2024/NCCA- 13.jpg',
+        '/images/NCCA2024/NCCA- 14.jpg'
+    ]},
+    { title: 'Training Days 1-4', images: [
+        '/images/TRAINING/Training- 1.jpg',
+        '/images/TRAINING/Training- 2.jpg',
+        '/images/TRAINING/Training- 3.jpg',
+        '/images/TRAINING/Training- 4.jpg',
+        '/images/TRAINING/Training- 5.jpg',
+        '/images/TRAINING/Training- 6.jpg',
+        '/images/TRAINING/Training- 7.jpg',
+        '/images/TRAINING/Training- 8.jpg'
+    ]},
+    { title: 'MGM', images: [
+        '/images/MGM/MGM- 1.png',
+        '/images/MGM/MGM- 2.jpg',
+        '/images/MGM/MGM- 3.jpg',
+        '/images/MGM/MGM- 4.jpg',
+        '/images/MGM/MGM- 5.jpg',
+        '/images/MGM/MGM- 6.jpg'
+    ]},
+    { title: 'Greening Activities', images: [
+        '/images/greening/Greening- 1.jpg',
+        '/images/greening/Greening- 2.jpg',
+        '/images/greening/Greening- 3.jpg',
+        '/images/greening/Greening- 4.jpg',
+        '/images/greening/Greening- 5.jpg',
+        '/images/greening/Greening- 6.jpg',
+        '/images/greening/Greening- 7.jpg',
+        '/images/greening/Greening- 8.jpg'
+    ]},
+    { title: 'Cleaning Activities', images: [
+        '/images/cleaning/Cleaning- 1.jpg',
+        '/images/cleaning/Cleaning- 2.jpg',
+        '/images/cleaning/Cleaning- 3.jpg',
+        '/images/cleaning/Cleaning- 4.jpg'
+    ]}
 ];
