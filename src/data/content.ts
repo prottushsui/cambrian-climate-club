@@ -119,12 +119,12 @@ export const currentMembers: ExecutiveMember[] = [
 ];
 
 export const advisoryCommittee: Advisor[] = [
-  { name: 'Rumana Khanam', role: 'Chief Advisor (Vice Principal)', imageUrl: 'https://imgur.com/a/Lz5OWVZ' },
-  { name: 'Md. Kamruzzaman', role: 'Advisor', imageUrl: 'https://imgur.com/a/XvawcZ6' },
-  { name: 'Jakir Hoissain', role: 'Advisor', imageUrl: 'https://imgur.com/a/dutsyA1' },
-  { name: 'Monirul Islam', role: 'Advisor', imageUrl: 'https://imgur.com/a/wRhlwPN' },
-  { name: 'Md. S H Khokon Mia', role: 'Advisor & Club Coordinator', imageUrl: 'https://imgur.com/a/gNpaVKd' },
-  { name: 'Hiren Sarkar', role: 'Advisor', imageUrl: 'https://imgur.com/a/G8AZP4n' },
+  { name: 'Rumana Khanam', role: 'Chief Advisor (Vice Principal)', imageUrl: '/images/advisor&leadership/Rumana Khanam.jpg' },
+  { name: 'Md. Kamruzzaman', role: 'Advisor', imageUrl: '/images/advisor&leadership/Md. Kamruzzaman.jpg' },
+  { name: 'Jakir Hoissain', role: 'Advisor', imageUrl: '/images/advisor&leadership/Zakir Hossain.jpg' },
+  { name: 'Monirul Islam', role: 'Advisor', imageUrl: '/images/advisor&leadership/Monirul Islam.jpg' },
+  { name: 'Md. S H Khokon Mia', role: 'Advisor & Club Coordinator', imageUrl: '/images/advisor&leadership/Md. S H Khokon Mia.jpg' },
+  { name: 'Hiren Sarkar', role: 'Advisor', imageUrl: '/images/advisor&leadership/Hiren Sarkar.jpeg' },
 ];
 
 export const projects: Project[] = [
