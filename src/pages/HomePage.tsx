@@ -6,6 +6,7 @@ import { useData } from '@/hooks/useData';
 import ProjectCard from '@/components/ProjectCard';
 import SectionHeader from '@/components/SectionHeader';
 import OptimizedImage from '@/components/ui/OptimizedImage';
+import HeroSection from '@/components/HeroSection';
 import { 
   fadeInUpVariants, 
   scaleInVariants, 
@@ -51,7 +52,7 @@ const Counter: React.FC<{ end: number; duration?: number; 'data-testid'?: string
 
 const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?: string }> = ({ value, label, 'data-testid': testId }) => (
     <motion.div 
-        className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-lg border border-white/20 apple-card glass-card"
+        className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-lg border border-white/20 apple-card glass-card dark:bg-slate-800/70 dark:border-slate-700/50"
         variants={statItemVariants}
         whileHover={{ 
             y: -10, 
@@ -64,8 +65,8 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
         role="listitem"
         aria-label={`${label}: ${typeof value === 'number' ? value : label}`}
     >
-        <p className="text-4xl font-bold text-blue-600" aria-live="polite">{value}</p>
-        <p className="text-slate-600 mt-2 font-medium">{label}</p>
+        <p className="text-4xl font-bold text-emerald-600 dark:text-emerald-400" aria-live="polite">{value}</p>
+        <p className="text-slate-600 dark:text-slate-300 mt-2 font-medium">{label}</p>
     </motion.div>
 );
 
@@ -80,14 +81,12 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
  */
 const HomePage: React.FC = () => {
   const { projects, members, loading, error } = useData();
-  const heroTitle = "Cambrian Climate Club — Campus 2".split("—");
-  const titleWords = heroTitle.map(part => part.trim().split(" "));
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen bg-slate-50/60" data-testid="home-loading">
+      <div className="flex justify-center items-center h-screen bg-slate-50/60 dark:bg-slate-900/60" data-testid="home-loading">
         <div 
-          className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"
+          className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"
           role="status"
           aria-label="Loading homepage content"
         ></div>
@@ -97,12 +96,12 @@ const HomePage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-screen bg-slate-50/60" data-testid="home-error">
+      <div className="flex justify-center items-center h-screen bg-slate-50/60 dark:bg-slate-900/60" data-testid="home-error">
         <div className="text-red-500 text-center">
           <p role="alert">Error loading data: {error}</p>
           <button 
             onClick={() => window.location.reload()} 
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="mt-4 px-4 py-2 bg-emerald-500 text-white rounded hover:bg-emerald-600"
             aria-label="Retry loading data"
           >
             Retry
@@ -113,163 +112,9 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="bg-slate-50/60" data-testid="homepage-container">
-      {/* Hero Section */}
-      <section 
-        className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center" 
-        aria-labelledby="hero-heading"
-      >
-        {/* Animated Background Blobs */}
-        <motion.div 
-            className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-gradient-to-r from-blue-200/30 to-emerald-200/30 rounded-full opacity-50 filter blur-3xl"
-            animate={{ 
-                y: [0, 40, 0], 
-                x: [0, 20, 0],
-                scale: [1, 1.1, 1] 
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-            className="absolute bottom-[-10%] right-[-5%] w-80 h-80 bg-gradient-to-r from-emerald-200/30 to-teal-200/30 rounded-full opacity-50 filter blur-3xl"
-            animate={{ 
-                y: [0, -50, 0], 
-                x: [0, -30, 0],
-                scale: [1, 1.2, 1] 
-            }}
-            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <motion.div 
-            className="absolute top-[20%] right-[10%] w-32 h-32 bg-gradient-to-r from-teal-200/40 to-cyan-200/40 rounded-full opacity-60 filter blur-2xl"
-            animate={{ 
-                y: [0, 20, 0], 
-                scale: [1, 1.5, 1], 
-                rotate: [0, 180, 360] 
-            }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        />
-
-        <div className="container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center gap-12 relative z-10">
-            <motion.div 
-              className="lg:w-1/2 text-center lg:text-left"
-              initial="hidden"
-              animate="visible"
-              variants={slideInLeftVariants}
-            >
-                <motion.h1 
-                    id="hero-heading"
-                    className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight min-h-[144px] md:min-h-[192px] apple-title leading-tight"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    {titleWords.map((part, partIndex) => (
-                        <span key={partIndex} className={partIndex > 0 ? "block text-blue-700 mt-2" : "block"}>
-                             {partIndex > 0 ? "— " : ""}
-                             {part.map((word, wordIndex) => (
-                                <span key={wordIndex} className="inline-block whitespace-nowrap mr-2 md:mr-4">
-                                    {word.split("").map((char, charIndex) => (
-                                        <motion.span 
-                                            key={charIndex} 
-                                            className="inline-block" 
-                                            variants={scaleInVariants}
-                                            style={{ display: 'inline-block' }}
-                                        >
-                                            {char}
-                                        </motion.span>
-                                    ))}
-                                </span>
-                            ))}
-                        </span>
-                    ))}
-                </motion.h1>
-                <motion.p 
-                    className="mt-6 text-lg md:text-xl text-slate-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
-                >
-                    A student-led environmental initiative promoting sustainability, climate awareness, and community action since 2023.
-                </motion.p>
-                <motion.div 
-                    className="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start gap-5"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.4, duration: 0.8 }}
-                >
-                    <Link to="/projects" className="w-full sm:w-auto block">
-                        <motion.div 
-                            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 text-center text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-blue-500/30 apple-button apple-button-primary transition-all duration-300"
-                            whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 113, 227, 0.4)" }}
-                            whileTap={{ scale: 0.97 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        >
-                            Explore Projects
-                        </motion.div>
-                    </Link>
-                    <Link to="/leadership" className="w-full sm:w-auto block">
-                        <motion.div 
-                            className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-center text-blue-600 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 apple-button apple-button-secondary transition-all duration-300"
-                            whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)" }}
-                            whileTap={{ scale: 0.97 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        >
-                            Meet the Team
-                        </motion.div>
-                    </Link>
-                </motion.div>
-            </motion.div>
-            <motion.div 
-                className="lg:w-1/2 grid grid-cols-2 grid-rows-2 gap-6 h-[400px] md:h-[500px]"
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-            >
-                <motion.div 
-                    className="col-span-1 row-span-2 relative group overflow-hidden rounded-3xl"
-                    variants={slideInRightVariants}
-                    whileHover={{ y: -10 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                >
-                     <OptimizedImage 
-                        src="/images/Campus Cleanliness Drive.jpg" 
-                        alt="Campus Cleanliness Drive" 
-                        className="w-full h-full object-cover" 
-                        placeholder="/images/homepagepicture1.jpg"
-                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
-                </motion.div>
-                <motion.div 
-                    className="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl"
-                    variants={slideInRightVariants}
-                    whileHover={{ y: -8 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                >
-                    <OptimizedImage 
-                        src="/images/Campus Greening Initiative.jpg" 
-                        alt="Campus Greening Initiative" 
-                        className="w-full h-full object-cover" 
-                        placeholder="/images/homepagepicture2.jpg"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
-                </motion.div>
-                <motion.div 
-                    className="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl"
-                    variants={slideInRightVariants}
-                    whileHover={{ y: -8 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                >
-                    <OptimizedImage 
-                        src="/images/homepagepicture3.jpg" 
-                        alt="Climate Action E-Magazine" 
-                        className="w-full h-full object-cover" 
-                        placeholder="/images/homepagepicture3.jpg"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
-                </motion.div>
-            </motion.div>
-        </div>
-      </section>
-
+    <div className="bg-slate-50/60 dark:bg-slate-900/60" data-testid="homepage-container">
+      <HeroSection />
+      
       {/* Featured Initiatives Section */}
       <section 
         className="container mx-auto px-4 py-24" 
@@ -291,7 +136,7 @@ const HomePage: React.FC = () => {
               variants={itemVariants}
               initial="hidden"
               animate="visible"
-              className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20"
+              className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20 dark:bg-slate-800/80 dark:border-slate-700/50"
               whileHover={{ y: -10, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -311,7 +156,7 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-slate-600">Join us in our mission to create a sustainable campus environment through innovative projects and community engagement.</p>
+                <p className="text-slate-600 dark:text-slate-300">Join us in our mission to create a sustainable campus environment through innovative projects and community engagement.</p>
               </div>
             </motion.div>
           ))}
@@ -320,7 +165,7 @@ const HomePage: React.FC = () => {
 
       {/* Quick Stats Section */}
       <section 
-        className="bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 py-24" 
+        className="bg-gradient-to-br from-slate-50 via-emerald-50 to-blue-50 py-24 dark:from-slate-900 dark:via-emerald-900 dark:to-blue-900" 
         aria-labelledby="stats-heading"
         data-testid="stats-section"
       >
