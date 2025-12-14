@@ -8,9 +8,9 @@ const SocialLink: React.FC<{ href: string; label: string; path: string }> = ({ h
         href={href} 
         target="_blank"
         rel="noopener noreferrer"
-        className="text-slate-500 hover:text-blue-600 transition-colors block"
+        className="text-slate-500 hover:text-emerald-600 transition-colors block dark:text-slate-400 dark:hover:text-emerald-400"
         aria-label={label}
-        whileHover={{ scale: 1.15, color: '#007AFF' }}
+        whileHover={{ scale: 1.15, color: '#10B981' }}
         whileTap={{ scale: 0.95 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
@@ -25,8 +25,8 @@ const FooterLink: React.FC<{ to: string; children: React.ReactNode }> = ({ to, c
         whileHover={{ x: 3 }} 
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-        <Link to={to} className="hover:text-blue-600 transition-colors flex items-center text-sm">
-            <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>
+        <Link to={to} className="hover:text-emerald-600 transition-colors flex items-center text-sm dark:text-slate-300 dark:hover:text-emerald-400">
+            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>
             {children}
         </Link>
     </motion.li>
