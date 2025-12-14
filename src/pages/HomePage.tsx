@@ -1,10 +1,11 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, Variants, useInView } from 'framer-motion';
-import { projects, currentMembers } from '@/data/content';
+import { useData } from '@/hooks/useData';
 import ProjectCard from '@/components/ProjectCard';
 import SectionHeader from '@/components/SectionHeader';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 import { 
   fadeInUpVariants, 
   scaleInVariants, 
@@ -66,8 +67,33 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, 
 );
 
 const HomePage: React.FC = () => {
+  const { projects, members, loading, error } = useData();
   const heroTitle = "Cambrian Climate Club — Campus 2".split("—");
   const titleWords = heroTitle.map(part => part.trim().split(" "));
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-slate-50/60">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-slate-50/60">
+        <div className="text-red-500 text-center">
+          <p>Error loading data: {error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-slate-50/60">
@@ -183,18 +209,12 @@ const HomePage: React.FC = () => {
                     whileHover={{ y: -10 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
-                     <motion.img 
+                     <OptimizedImage 
                         src="/images/Campus Cleanliness Drive.jpg" 
                         alt="Campus Cleanliness Drive" 
                         className="w-full h-full object-cover" 
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = '/images/homepagepicture1.jpg'; // fallback image
-                        }}
-                        whileHover={{ scale: 1.08 }}
-                        transition={{ duration: 0.5 }}
-                    />
+                        placeholder="/images/homepagepicture1.jpg"
+                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
                 </motion.div>
                 <motion.div 
@@ -203,17 +223,11 @@ const HomePage: React.FC = () => {
                     whileHover={{ y: -8 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
-                    <motion.img 
+                    <OptimizedImage 
                         src="/images/Campus Greening Initiative.jpg" 
                         alt="Campus Greening Initiative" 
                         className="w-full h-full object-cover" 
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = '/images/homepagepicture2.jpg'; // fallback image
-                        }}
-                        whileHover={{ scale: 1.08 }}
-                        transition={{ duration: 0.5 }}
+                        placeholder="/images/homepagepicture2.jpg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
                 </motion.div>
@@ -223,17 +237,11 @@ const HomePage: React.FC = () => {
                     whileHover={{ y: -8 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
-                    <motion.img 
+                    <OptimizedImage 
                         src="/images/homepagepicture3.jpg" 
                         alt="Climate Action E-Magazine" 
                         className="w-full h-full object-cover" 
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = '/images/homepagepicture3.jpg'; // fallback image
-                        }}
-                        whileHover={{ scale: 1.08 }}
-                        transition={{ duration: 0.5 }}
+                        placeholder="/images/homepagepicture3.jpg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
                 </motion.div>
@@ -263,17 +271,11 @@ const HomePage: React.FC = () => {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="relative overflow-hidden">
-                <motion.img 
+                <OptimizedImage 
                   src={project.imageUrl} 
                   alt={project.title} 
                   className="w-full h-60 object-cover transition-transform duration-700"
-                  loading="lazy"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = '/images/homepagepicture1.jpg'; // fallback image
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.7 }}
+                  placeholder="/images/homepagepicture1.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -300,7 +302,7 @@ const HomePage: React.FC = () => {
                 viewport={{ once: true, margin: "-50px" }}
             >
                 <StatCard value="2023" label="Founded" />
-                <StatCard value={<><Counter end={currentMembers.length} /></>} label="Active Members" />
+                <StatCard value={<><Counter end={members.length} /></>} label="Active Members" />
                 <StatCard value={<><Counter end={100} />+</>} label="Trees Planted" />
                 <StatCard value={<><Counter end={7} />+</>} label="Awards Won" />
             </motion.div>
