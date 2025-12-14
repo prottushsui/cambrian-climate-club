@@ -1,3 +1,25 @@
-```ts
+# Examples and test files
+*.example.*
 
-```
+# Backup and swap files
+*.swp
+*.swo
+*.bak
+*.backup
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+.directory
+*.directory
+
+# Temporary files
+*.tmp
+*~
+.\#*
+# Project specific temporary files
+cambrian_climate_club_example.html
+cambrian_climate_club_brand_guide.md
+cambrian_climate_club_colors.css
