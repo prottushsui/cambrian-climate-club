@@ -14,14 +14,23 @@ import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
 import DemoPage from '@/pages/DemoPage';
 
+/**
+ * Main App component - Root component that handles routing and global context
+ * 
+ * @component
+ * @example
+ * return (
+ *   <App />
+ * )
+ */
 const App = () => {
   return (
     <HashRouter>
       <AppProvider>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen" data-testid="app-container">
           <Navbar />
-          <main className="flex-grow pt-20">
+          <main className="flex-grow pt-20" role="main">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />

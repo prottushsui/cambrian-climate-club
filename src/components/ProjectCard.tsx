@@ -19,6 +19,17 @@ const itemVariants: Variants = {
   }
 };
 
+/**
+ * ProjectCard component - Displays a project with title, description, and image
+ * 
+ * @component
+ * @param {Project} project - The project object containing title and imageUrl
+ * @param {boolean} [isFeatured=false] - Whether this is a featured project
+ * @example
+ * return (
+ *   <ProjectCard project={project} isFeatured={true} />
+ * )
+ */
 const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = false }) => {
   return (
     <motion.div 
@@ -26,15 +37,17 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = fa
         whileHover={{ y: -10, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        data-testid={`project-card-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
+        role="listitem"
+        aria-label={project.title}
     >
       <div className="relative overflow-hidden">
-        <motion.img 
+        <OptimizedImage 
           src={project.imageUrl} 
           alt={project.title} 
           className="w-full h-60 object-cover transition-transform duration-700" 
-          loading="lazy" 
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.7 }}
+          placeholder="/images/homepagepicture1.jpg"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 p-6">
