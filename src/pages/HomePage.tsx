@@ -24,6 +24,13 @@ const Counter: React.FC<{ end: number; duration?: number }> = ({ end, duration =
         if (isInView && count !== end) {
             let start = 0;
             const range = end - start;
+            
+            // Handle case where range is 0 to prevent infinite loop
+            if (range === 0) {
+                setCount(end);
+                return;
+            }
+            
             let current = start;
             const increment = end > start ? 1 : -1;
             const stepTime = Math.abs(Math.floor(duration / range));
@@ -177,7 +184,7 @@ const HomePage: React.FC = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                      <motion.img 
-                        src="https://i.imgur.com/h5rD6wS.jpeg" 
+                        src={projects[0]?.imageUrl || "https://i.imgur.com/h5rD6wS.jpeg"} 
                         alt="Campus Cleanliness Drive" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
@@ -197,7 +204,7 @@ const HomePage: React.FC = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                     <motion.img 
-                        src="https://i.imgur.com/9v1zG1N.jpeg" 
+                        src={projects[1]?.imageUrl || "https://i.imgur.com/9v1zG1N.jpeg"} 
                         alt="Campus Greening Initiative" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
@@ -217,7 +224,7 @@ const HomePage: React.FC = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                     <motion.img 
-                        src="https://i.imgur.com/2s3Kz2T.jpeg" 
+                        src={projects[2]?.imageUrl || "https://i.imgur.com/2s3Kz2T.jpeg"} 
                         alt="Climate Action E-Magazine" 
                         className="w-full h-full object-cover" 
                         loading="lazy"
