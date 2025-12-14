@@ -8,7 +8,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: 'https://i.imgur.com/xxxxxxx.jpg',
+    imageUrl: 'https://imgur.com/a/VGxA4LW',
   },
   {
     name: 'Maria Anamika Bairagee',
@@ -17,7 +17,7 @@ export const leadershipTeam: Member[] = [
     term: '2023–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: 'https://i.imgur.com/xxxxxxx.jpg',
+    imageUrl: 'https://imgur.com/a/Crjb0ne',
   },
   {
     name: 'H.M Towfiquzzaman',
@@ -26,7 +26,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 BV (B)',
     campus: 'Campus 2',
-    imageUrl: 'https://i.imgur.com/xxxxxxx.jpg',
+    imageUrl: 'https://imgur.com/a/RlP6b6n',
   },
   {
     name: 'Md. Mottakin Bin Arif',
@@ -35,7 +35,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 9 EV',
     campus: 'Campus 2',
-    imageUrl: 'https://i.imgur.com/xxxxxxx.jpg',
+    imageUrl: 'https://imgur.com/a/aChhzcj',
     specialRecognition: true
   },
   {
@@ -45,7 +45,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 BV (G)',
     campus: 'Campus 2',
-    imageUrl: 'https://i.imgur.com/xxxxxxx.jpg',
+    imageUrl: 'https://imgur.com/a/VQtf9SH',
   },
   {
     name: 'Samirah Subha',
@@ -54,7 +54,7 @@ export const leadershipTeam: Member[] = [
     term: '2025',
     classInfo: 'Class 9 BV (G)',
     campus: 'Campus 2',
-    imageUrl: 'https://i.imgur.com/xxxxxxx.jpg',
+    imageUrl: 'https://imgur.com/a/CN0Q7k9',
   },
   {
     name: 'Kishore Sutradhar',
@@ -63,7 +63,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 9 BV (B)',
     campus: 'Campus 2',
-    imageUrl: 'https://i.imgur.com/xxxxxxx.jpg',
+    imageUrl: 'https://imgur.com/a/sPrrvAs',
   },
 ];
 
@@ -119,18 +119,18 @@ export const currentMembers: ExecutiveMember[] = [
 ];
 
 export const advisoryCommittee: Advisor[] = [
-  { name: 'Rumana Khanam', role: 'Chief Advisor (Vice Principal)', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
-  { name: 'Md. Kamruzzaman', role: 'Advisor', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
-  { name: 'Jakir Hoissain', role: 'Advisor', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
-  { name: 'Monirul Islam', role: 'Advisor', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
-  { name: 'Md. S H Khokon Mia', role: 'Advisor & Club Coordinator', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
-  { name: 'Hiren Sarkar', role: 'Advisor', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
+  { name: 'Rumana Khanam', role: 'Chief Advisor (Vice Principal)', imageUrl: 'https://imgur.com/a/Lz5OWVZ' },
+  { name: 'Md. Kamruzzaman', role: 'Advisor', imageUrl: 'https://imgur.com/a/XvawcZ6' },
+  { name: 'Jakir Hoissain', role: 'Advisor', imageUrl: 'https://imgur.com/a/dutsyA1' },
+  { name: 'Monirul Islam', role: 'Advisor', imageUrl: 'https://imgur.com/a/wRhlwPN' },
+  { name: 'Md. S H Khokon Mia', role: 'Advisor & Club Coordinator', imageUrl: 'https://imgur.com/a/gNpaVKd' },
+  { name: 'Hiren Sarkar', role: 'Advisor', imageUrl: 'https://imgur.com/a/G8AZP4n' },
 ];
 
 export const projects: Project[] = [
-  { title: 'Campus Cleanliness Drive', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
-  { title: 'Campus Greening Initiative', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
-  { title: 'Climate Action E-Magazine', imageUrl: 'https://i.imgur.com/xxxxxxx.jpg' },
+  { title: 'Campus Cleanliness Drive', imageUrl: 'https://imgur.com/a/aE3C0ia' },
+  { title: 'Campus Greening Initiative', imageUrl: 'https://imgur.com/a/5jxf7YP' },
+  { title: 'Climate Action E-Magazine', imageUrl: 'https://imgur.com/a/vLgE8oa' },
 ];
 
 export const achievements: Achievement[] = [
@@ -144,11 +144,12 @@ export const achievements: Achievement[] = [
 ];
 
 export const galleries: Gallery[] = [
-    { title: 'Achievements pt2', images: ['https://i.imgur.com/z0a5W4t.jpeg', 'https://i.imgur.com/O4q5t1w.jpeg', 'https://i.imgur.com/o7z3j7q.jpeg', 'https://i.imgur.com/d5q9x3J.jpeg', 'https://i.imgur.com/f2t4e7H.jpeg', 'https://i.imgur.com/x0u4g0J.jpeg', 'https://i.imgur.com/s6Z1F7f.jpeg', 'https://i.imgur.com/s4j4X8h.jpeg', 'https://i.imgur.com/j1x5j1G.jpeg', 'https://i.imgur.com/p9f7d6A.jpeg', 'https://i.imgur.com/r5u7R4w.jpeg', 'https://i.imgur.com/k6K4U8E.jpeg', 'https://i.imgur.com/c6c2y9K.jpeg'] },
-    { title: 'Training Days / Club Moments', images: ['https://i.imgur.com/k6l9h3H.jpeg', 'https://i.imgur.com/d2G1v6m.jpeg', 'https://i.imgur.com/u3t4R5J.jpeg', 'https://i.imgur.com/h2G6P8c.jpeg', 'https://i.imgur.com/d4g5a7T.jpeg', 'https://i.imgur.com/v8t9n9P.jpeg', 'https://i.imgur.com/z0b1K2E.jpeg'] },
-    { title: 'NCCA 2024', images: ['https://i.imgur.com/t3o5w7O.jpeg', 'https://i.imgur.com/p1u4M9j.jpeg', 'https://i.imgur.com/k5N8V4L.jpeg', 'https://i.imgur.com/f0mGvY6.jpeg', 'https://i.imgur.com/l4u8M9J.jpeg', 'https://i.imgur.com/d6S7v8B.jpeg', 'https://i.imgur.com/r7P9z0F.jpeg', 'https://i.imgur.com/a9h0H1K.jpeg', 'https://i.imgur.com/b3d4F5G.jpeg', 'https://i.imgur.com/w2I3J4o.jpeg', 'https://i.imgur.com/c5D6F7H.jpeg', 'https://i.imgur.com/n6Y7Z8i.jpeg', 'https://i.imgur.com/j8n9L0p.jpeg', 'https://i.imgur.com/s9T0V1u.jpeg'] },
-    { title: 'MGM', images: ['https://i.imgur.com/L1d2c3B.jpeg', 'https://i.imgur.com/M4E5f6G.jpeg', 'https://i.imgur.com/K7h8i9J.jpeg', 'https://i.imgur.com/P0q1r2S.jpeg', 'https://i.imgur.com/U3v4w5X.jpeg', 'https://i.imgur.com/Y6z7a8B.jpeg'] },
-    { title: 'Campus Greening', images: ['https://i.imgur.com/9v1zG1N.jpeg', 'https://i.imgur.com/B3d4e5F.jpeg', 'https://i.imgur.com/C6g7h8I.jpeg', 'https://i.imgur.com/D9j0k1L.jpeg'] },
-    { title: 'Cleaning Activities', images: ['https://i.imgur.com/h5rD6wS.jpeg', 'https://i.imgur.com/F3g4h5I.jpeg', 'https://i.imgur.com/G6j7k8L.jpeg', 'https://i.imgur.com/H9m0n1P.jpeg'] },
-    { title: 'Conference', images: ['https://i.imgur.com/Q3r4s5T.jpeg', 'https://i.imgur.com/R6t7u8V.jpeg', 'https://i.imgur.com/S9w0x1Y.jpeg', 'https://i.imgur.com/T2z3a4B.jpeg', 'https://i.imgur.com/U5c6d7E.jpeg', 'https://i.imgur.com/V8f9g0H.jpeg', 'https://i.imgur.com/W1i2j3K.jpeg', 'https://i.imgur.com/X4l5m6N.jpeg', 'https://i.imgur.com/Y7o8p9Q.jpeg', 'https://i.imgur.com/Z0r1s2T.jpeg', 'https://i.imgur.com/A3u4v5X.jpeg'] },
+    { title: 'Climate Club Logo', images: ['https://imgur.com/a/RUb1nRX'] },
+    { title: 'Achievements', images: ['https://imgur.com/a/NWcQL2E', 'https://imgur.com/a/RUSDYnO', 'https://imgur.com/a/un4BCK0', 'https://imgur.com/a/g61ZFIR', 'https://imgur.com/a/yW9JTl3', 'https://imgur.com/a/4BzEgeK', 'https://imgur.com/a/VtN68rc', 'https://imgur.com/undefined', 'https://imgur.com/a/hrmnBnN', 'https://imgur.com/a/oStgmGv', 'https://imgur.com/a/hLowapm', 'https://imgur.com/a/ubGD6us', 'https://imgur.com/a/GGlI46G', 'https://imgur.com/a/R8GN0EQ'] },
+    { title: 'NCCA 2024', images: ['https://imgur.com/a/uYV7Onf', 'https://imgur.com/a/Ud5wMYK', 'https://imgur.com/a/GOp6GcN', 'https://imgur.com/a/Gzetf7v', 'https://imgur.com/a/JVw5eJn', 'https://imgur.com/a/r1nRLaC', 'https://imgur.com/a/2qvzXAx', 'https://imgur.com/a/lMf3VXS', 'https://imgur.com/a/dQmlq2r', 'https://imgur.com/a/dgtvwjy', 'https://imgur.com/a/T28XyXp', 'https://imgur.com/a/48kihXf', 'https://imgur.com/a/sWxyEmz', 'https://imgur.com/a/m23quDW'] },
+    { title: 'Training Days 1-4', images: ['https://imgur.com/a/uXHCGaT', 'https://imgur.com/a/mUfhbqZ', 'https://imgur.com/a/55AYmRf', 'https://imgur.com/a/tAJLUCN', 'https://imgur.com/a/5PO9x2E', 'https://imgur.com/a/UnmqNDS', 'https://imgur.com/a/faAvfe8', 'https://imgur.com/a/faAvfe8'] },
+    { title: 'MGM', images: ['https://imgur.com/a/ag5Tah0', 'https://imgur.com/a/1MCUaDi', 'https://imgur.com/a/p8haI7J', 'https://imgur.com/a/3BD0jDM', 'https://imgur.com/a/sP51xwM', 'https://imgur.com/a/fu5f9rl'] },
+    { title: 'Campus Greening', images: ['https://imgur.com/a/XVsGyLy', 'https://imgur.com/a/i3e6TYZ', 'https://imgur.com/a/iUTIvVd', 'https://imgur.com/a/5jxf7YP'] },
+    { title: 'Cleaning Activities', images: ['https://imgur.com/a/cT9tHtY', 'https://imgur.com/a/U7b9Wjz', 'https://imgur.com/a/F6S0Iqb', 'https://imgur.com/a/aE3C0ia'] },
+    { title: 'Conference', images: ['https://imgur.com/a/yjDNYsB', 'https://imgur.com/a/VaRegQf', 'https://imgur.com/a/chqkD79', 'https://imgur.com/a/Dk8keVb', 'https://imgur.com/a/QoBF5NP', 'https://imgur.com/a/llrXnwq', 'https://imgur.com/a/8ALJWdd', 'https://imgur.com/a/Wb63e6Q', 'https://imgur.com/a/Dy0k1lp', 'https://imgur.com/a/ZuWztaI', 'https://imgur.com/a/eBDIuoa'] },
 ];
