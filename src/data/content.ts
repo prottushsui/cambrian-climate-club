@@ -128,9 +128,9 @@ export const advisoryCommittee: Advisor[] = [
 ];
 
 export const projects: Project[] = [
-  { title: 'Campus Cleanliness Drive', imageUrl: 'https://imgur.com/a/aE3C0ia' },
-  { title: 'Campus Greening Initiative', imageUrl: 'https://imgur.com/a/5jxf7YP' },
-  { title: 'Climate Action E-Magazine', imageUrl: 'https://imgur.com/a/vLgE8oa' },
+  { title: 'Campus Cleanliness Drive', imageUrl: '/images/Campus Cleanliness Drive.jpg' },
+  { title: 'Campus Greening Initiative', imageUrl: '/images/Campus Greening Initiative.jpg' },
+  { title: 'Climate Action E-Magazine', imageUrl: '/images/homepagepicture3.jpg' },
 ];
 
 export const achievements: Achievement[] = [
