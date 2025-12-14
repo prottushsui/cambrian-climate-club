@@ -16,7 +16,7 @@ import {
   statItemVariants 
 } from '@/constants/animation';
 
-const Counter: React.FC<{ end: number; duration?: number }> = ({ end, duration = 2000 }) => {
+const Counter: React.FC<{ end: number; duration?: number; 'data-testid'?: string }> = ({ end, duration = 2000, 'data-testid': testId }) => {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true });
@@ -46,10 +46,10 @@ const Counter: React.FC<{ end: number; duration?: number }> = ({ end, duration =
         }
     }, [isInView, end, count, duration]);
 
-    return <span ref={ref}>{count}</span>;
+    return <span ref={ref} data-testid={testId}>{count}</span>;
 };
 
-const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, label }) => (
+const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?: string }> = ({ value, label, 'data-testid': testId }) => (
     <motion.div 
         className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-lg border border-white/20 apple-card glass-card"
         variants={statItemVariants}
@@ -60,12 +60,24 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string }> = ({ value, 
         }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        data-testid={testId}
+        role="listitem"
+        aria-label={`${label}: ${typeof value === 'number' ? value : label}`}
     >
-        <p className="text-4xl font-bold text-blue-600">{value}</p>
+        <p className="text-4xl font-bold text-blue-600" aria-live="polite">{value}</p>
         <p className="text-slate-600 mt-2 font-medium">{label}</p>
     </motion.div>
 );
 
+/**
+ * HomePage component - Main landing page for Cambrian Climate Club
+ * 
+ * @component
+ * @example
+ * return (
+ *   <HomePage />
+ * )
+ */
 const HomePage: React.FC = () => {
   const { projects, members, loading, error } = useData();
   const heroTitle = "Cambrian Climate Club — Campus 2".split("—");
@@ -73,20 +85,25 @@ const HomePage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen bg-slate-50/60">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="flex justify-center items-center h-screen bg-slate-50/60" data-testid="home-loading">
+        <div 
+          className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"
+          role="status"
+          aria-label="Loading homepage content"
+        ></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-screen bg-slate-50/60">
+      <div className="flex justify-center items-center h-screen bg-slate-50/60" data-testid="home-error">
         <div className="text-red-500 text-center">
-          <p>Error loading data: {error}</p>
+          <p role="alert">Error loading data: {error}</p>
           <button 
             onClick={() => window.location.reload()} 
             className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            aria-label="Retry loading data"
           >
             Retry
           </button>
@@ -96,9 +113,12 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="bg-slate-50/60">
+    <div className="bg-slate-50/60" data-testid="homepage-container">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center">
+      <section 
+        className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center" 
+        aria-labelledby="hero-heading"
+      >
         {/* Animated Background Blobs */}
         <motion.div 
             className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-gradient-to-r from-blue-200/30 to-emerald-200/30 rounded-full opacity-50 filter blur-3xl"
@@ -136,6 +156,7 @@ const HomePage: React.FC = () => {
               variants={slideInLeftVariants}
             >
                 <motion.h1 
+                    id="hero-heading"
                     className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight min-h-[144px] md:min-h-[192px] apple-title leading-tight"
                     variants={containerVariants}
                     initial="hidden"
@@ -250,7 +271,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Initiatives Section */}
-      <section className="container mx-auto px-4 py-24">
+      <section 
+        className="container mx-auto px-4 py-24" 
+        aria-labelledby="featured-initiatives-heading"
+        data-testid="featured-initiatives-section"
+      >
         <SectionHeader title="Featured Initiatives" subtitle="Our core projects making a tangible impact on our campus and community." />
         <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16"
@@ -258,6 +283,7 @@ const HomePage: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
+            data-testid="projects-grid"
         >
           {projects.map((project, index) => (
             <motion.div
@@ -269,6 +295,8 @@ const HomePage: React.FC = () => {
               whileHover={{ y: -10, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              data-testid={`project-card-${index}`}
+              role="listitem"
             >
               <div className="relative overflow-hidden">
                 <OptimizedImage 
@@ -291,7 +319,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Quick Stats Section */}
-      <section className="bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 py-24">
+      <section 
+        className="bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 py-24" 
+        aria-labelledby="stats-heading"
+        data-testid="stats-section"
+      >
         <div className="container mx-auto px-4">
             <SectionHeader title="Our Journey in Numbers" />
             <motion.div 
@@ -300,11 +332,13 @@ const HomePage: React.FC = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
+                role="list"
+                data-testid="stats-grid"
             >
-                <StatCard value="2023" label="Founded" />
-                <StatCard value={<><Counter end={members.length} /></>} label="Active Members" />
-                <StatCard value={<><Counter end={100} />+</>} label="Trees Planted" />
-                <StatCard value={<><Counter end={7} />+</>} label="Awards Won" />
+                <StatCard value="2023" label="Founded" data-testid="stat-founded" />
+                <StatCard value={<Counter end={members.length} data-testid="counter-members" />} label="Active Members" data-testid="stat-members" />
+                <StatCard value={<span><Counter end={100} data-testid="counter-trees" />+</span>} label="Trees Planted" data-testid="stat-trees" />
+                <StatCard value={<span><Counter end={7} data-testid="counter-awards" />+</span>} label="Awards Won" data-testid="stat-awards" />
             </motion.div>
         </div>
       </section>

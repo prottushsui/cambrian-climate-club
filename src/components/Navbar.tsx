@@ -4,6 +4,16 @@ import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { buttonHoverVariants } from '@/constants/animation';
 
+/**
+ * NavItem component - Individual navigation item with active state and animations
+ * 
+ * @component
+ * @param {string} to - The route path
+ * @param {React.ReactNode} children - The content to display in the nav item
+ * @param {function} onClick - Function to call when clicked
+ * @param {boolean} [isMobile=false] - Whether this is for mobile navigation
+ */
+
 const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => void; isMobile?: boolean }> = ({ to, children, onClick, isMobile }) => (
   <NavLink
     to={to}
@@ -37,6 +47,15 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
   </NavLink>
 );
 
+/**
+ * Navbar component - Main navigation for the application
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Navbar />
+ * )
+ */
 const Navbar: React.FC = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
 
