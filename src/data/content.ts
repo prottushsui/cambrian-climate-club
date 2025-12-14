@@ -8,7 +8,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: 'https://imgur.com/a/VGxA4LW',
+    imageUrl: '/people/Md. Motammim Bin Arif.jpg',
   },
   {
     name: 'Maria Anamika Bairagee',
@@ -17,7 +17,7 @@ export const leadershipTeam: Member[] = [
     term: '2023–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: 'https://imgur.com/a/Crjb0ne',
+    imageUrl: '/people/Maria Anamika Bairagee.jpg',
   },
   {
     name: 'H.M Towfiquzzaman',
@@ -26,7 +26,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 BV (B)',
     campus: 'Campus 2',
-    imageUrl: 'https://imgur.com/a/RlP6b6n',
+    imageUrl: '/people/H.M Towfiquzzaman.jpg',
   },
   {
     name: 'Md. Mottakin Bin Arif',
@@ -35,7 +35,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 9 EV',
     campus: 'Campus 2',
-    imageUrl: 'https://imgur.com/a/aChhzcj',
+    imageUrl: '/people/Md. Mottakin Bin Arif.jpg',
     specialRecognition: true
   },
   {
@@ -45,7 +45,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 10 BV (G)',
     campus: 'Campus 2',
-    imageUrl: 'https://imgur.com/a/VQtf9SH',
+    imageUrl: '/people/Kazi Tasfia Priota.jpg',
   },
   {
     name: 'Samirah Subha',
@@ -54,7 +54,7 @@ export const leadershipTeam: Member[] = [
     term: '2025',
     classInfo: 'Class 9 BV (G)',
     campus: 'Campus 2',
-    imageUrl: 'https://imgur.com/a/CN0Q7k9',
+    imageUrl: '/people/Samirah Subha.jpeg',
   },
   {
     name: 'Kishore Sutradhar',
@@ -63,7 +63,7 @@ export const leadershipTeam: Member[] = [
     term: '2024–2025',
     classInfo: 'Class 9 BV (B)',
     campus: 'Campus 2',
-    imageUrl: 'https://imgur.com/a/sPrrvAs',
+    imageUrl: '/people/Kishore Sutradhar.jpg',
   },
 ];
 
