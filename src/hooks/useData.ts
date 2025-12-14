@@ -29,7 +29,7 @@ export const useData = (): UseDataReturn => {
   const [projectList, setProjectList] = useState<Project[]>([]);
   const [achievementList, setAchievementList] = useState<Achievement[]>([]);
   const [galleryList, setGalleryList] = useState<Gallery[]>([]);
-  const [loading, setLoading] = useState<boolean(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const loadData = useCallback(async () => {
