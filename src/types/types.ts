@@ -25,6 +25,7 @@ export interface Advisor {
 export interface Project {
   title: string;
   imageUrl: string;
+  description?: string;
 }
 
 export interface Achievement {
