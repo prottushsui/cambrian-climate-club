@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import { motion, Variants } from 'framer-motion';
 import type { Project } from '../types/types';
 import { cardHoverVariants } from '../constants/animation';
+import OptimizedImage from './ui/OptimizedImage';
 
 interface ProjectCardProps {
   project: Project;
@@ -55,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = fa
         </div>
       </div>
       <div className="p-6">
-        <p className="text-slate-600">Join us in our mission to create a sustainable campus environment through innovative projects and community engagement.</p>
+        {project.description && <p className="text-slate-600">{project.description}</p>}
       </div>
     </motion.div>
   );

@@ -128,9 +128,21 @@ export const advisoryCommittee: Advisor[] = [
 ];
 
 export const projects: Project[] = [
-  { title: 'Campus Cleanliness Drive', imageUrl: '/images/Campus Cleanliness Drive.jpg' },
-  { title: 'Campus Greening Initiative', imageUrl: '/images/Campus Greening Initiative.jpg' },
-  { title: 'Climate Action E-Magazine', imageUrl: '/images/homepagepicture3.jpg' },
+  { 
+    title: 'Campus Cleanliness Drive', 
+    imageUrl: '/images/Campus Cleanliness Drive.jpg',
+    description: 'Our ongoing initiative to maintain cleanliness across the campus, organizing regular cleanup drives and promoting waste segregation practices among students and staff.'
+  },
+  { 
+    title: 'Campus Greening Initiative', 
+    imageUrl: '/images/Campus Greening Initiative.jpg',
+    description: 'A comprehensive program to increase green cover on campus by planting native trees and creating small gardens in designated areas around the school.'
+  },
+  { 
+    title: 'Climate Action E-Magazine', 
+    imageUrl: '/images/homepagepicture3.jpg',
+    description: 'Our digital magazine highlighting climate issues, environmental success stories, and educational content to raise awareness among students and the community.'
+  },
 ];
 
 export const achievements: Achievement[] = [
