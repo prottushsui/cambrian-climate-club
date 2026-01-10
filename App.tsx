@@ -1,6 +1,7 @@
 
 import React, { memo } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { AppProvider } from '@/context/AppContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -44,6 +45,7 @@ const App = () => {
           </main>
           <Footer />
         </div>
+        <Analytics />
       </AppProvider>
     </HashRouter>
   );
