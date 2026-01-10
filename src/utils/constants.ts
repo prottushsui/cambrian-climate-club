@@ -118,9 +118,9 @@ export const UI_CONFIG = {
 
 // Feature flags for future enhancements
 export const FEATURE_FLAGS = {
-  ENABLE_SEO_UPDATES: false,
+  ENABLE_SEO_UPDATES: true,
   ENABLE_ANALYTICS: false,
-  ENABLE_PERFORMANCE_MONITORING: false,
+  ENABLE_PERFORMANCE_MONITORING: true,
   ENABLE_ACCESSIBILITY_UPDATES: true,
-  ENABLE_TESTING_UPDATES: false,
+  ENABLE_TESTING_UPDATES: true,
 };

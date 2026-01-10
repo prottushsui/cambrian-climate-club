@@ -1,19 +1,21 @@
 export interface Member {
   name: string;
-  id: string;
   role: string;
   term?: string;
-  classInfo?: string;
-  campus?: string;
   imageUrl: string;
   specialRecognition?: boolean;
+  // Optional fields that can be loaded separately for privacy
+  id?: string;
+  classInfo?: string;
+  campus?: string;
 }
 
 export interface ExecutiveMember {
   serial?: number;
   name: string;
-  id: string;
   role: string;
+  // Optional field that can be loaded separately for privacy
+  id?: string;
 }
 
 export interface Advisor {
