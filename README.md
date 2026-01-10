@@ -1,6 +1,17 @@
-# Cambrian Climate Club Website
+# Cambrian Climate Club - Security-Hardened Website
 
-The official website for the Cambrian Climate Club, a student-led environmental and sustainability organization at Cambrian School & College, Campus 2.
+This is a security-hardened version of the Cambrian Climate Club website built with React and Vite. The application has been enhanced with comprehensive security measures to protect against common vulnerabilities while maintaining full functionality.
+
+## Security Features
+
+- **Server Hardening**: Helmet.js, CORS, rate limiting, and security headers
+- **Data Protection**: Sensitive member information removed from client bundles
+- **Input Validation**: Comprehensive validation and sanitization utilities
+- **Secure APIs**: Protected endpoints with proper validation
+- **Content Security**: Strict CSP and XSS protection
+- **Performance Safeguards**: Input bounds checking to prevent degradation
+
+For detailed security implementation, see [SECURITY.md](./SECURITY.md).
 
 ## About
 

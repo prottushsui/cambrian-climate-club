@@ -7,13 +7,17 @@
  */
 
 import { SEO_CONFIG } from './constants';
+import { sanitizeHtml } from './security';
+import { validateStringInput } from './validation';
 
-/**
+/** 
  * Updates the document title with a new title, while preserving the site name
  * @param title - The new title to set
  */
 export const updateDocumentTitle = (title: string) => {
-  document.title = title ? `${title} | ${SEO_CONFIG.defaultTitle}` : SEO_CONFIG.defaultTitle;
+  // Sanitize the title to prevent injection
+  const sanitizedTitle = validateStringInput(title, 120);
+  document.title = sanitizedTitle ? `${sanitizedTitle} | ${SEO_CONFIG.defaultTitle}` : SEO_CONFIG.defaultTitle;
 };
 
 /**
@@ -37,40 +41,48 @@ export const setMetaTags = (metaTags: {
 }) => {
   // Update title
   if (metaTags.title) {
-    updateDocumentTitle(metaTags.title);
+    // Sanitize the title
+    const sanitizedTitle = validateStringInput(metaTags.title, 120);
+    updateDocumentTitle(sanitizedTitle);
   }
 
   // Update or create description meta tag
   let descriptionMeta = document.querySelector('meta[name="description"]');
   if (metaTags.description) {
+    // Sanitize the description
+    const sanitizedDescription = validateStringInput(metaTags.description, 320);
     if (!descriptionMeta) {
       descriptionMeta = document.createElement('meta');
       descriptionMeta.setAttribute('name', 'description');
       document.head.appendChild(descriptionMeta);
     }
-    descriptionMeta.setAttribute('content', metaTags.description);
+    descriptionMeta.setAttribute('content', sanitizedDescription);
   }
 
   // Update or create keywords meta tag
   if (metaTags.keywords) {
+    // Sanitize keywords
+    const sanitizedKeywords = validateStringInput(metaTags.keywords, 200);
     let keywordsMeta = document.querySelector('meta[name="keywords"]');
     if (!keywordsMeta) {
       keywordsMeta = document.createElement('meta');
       keywordsMeta.setAttribute('name', 'keywords');
       document.head.appendChild(keywordsMeta);
     }
-    keywordsMeta.setAttribute('content', metaTags.keywords);
+    keywordsMeta.setAttribute('content', sanitizedKeywords);
   }
 
   // Update or create canonical URL
   if (metaTags.canonicalUrl) {
+    // Validate the URL
+    const url = new URL(metaTags.canonicalUrl, window.location.origin).toString();
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
       canonicalLink = document.createElement('link');
       canonicalLink.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalLink);
     }
-    canonicalLink.setAttribute('href', metaTags.canonicalUrl);
+    canonicalLink.setAttribute('href', url);
   }
 
   // Open Graph tags
@@ -84,13 +96,15 @@ export const setMetaTags = (metaTags: {
 
   ogTags.forEach(tag => {
     if (tag.content) {
+      // Sanitize content before setting
+      const sanitizedContent = validateStringInput(tag.content as string, 500);
       let ogMeta = document.querySelector(`meta[property="${tag.property}"]`);
       if (!ogMeta) {
         ogMeta = document.createElement('meta');
         ogMeta.setAttribute('property', tag.property);
         document.head.appendChild(ogMeta);
       }
-      ogMeta.setAttribute('content', tag.content);
+      ogMeta.setAttribute('content', sanitizedContent);
     }
   });
 
@@ -104,13 +118,15 @@ export const setMetaTags = (metaTags: {
 
   twitterTags.forEach(tag => {
     if (tag.content) {
+      // Sanitize content before setting
+      const sanitizedContent = validateStringInput(tag.content as string, 500);
       let twitterMeta = document.querySelector(`meta[name="${tag.name}"]`);
       if (!twitterMeta) {
         twitterMeta = document.createElement('meta');
         twitterMeta.setAttribute('name', tag.name);
         document.head.appendChild(twitterMeta);
       }
-      twitterMeta.setAttribute('content', tag.content);
+      twitterMeta.setAttribute('content', sanitizedContent);
     }
   });
 };
