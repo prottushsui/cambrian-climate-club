@@ -33,7 +33,7 @@ const LeadershipPage: React.FC = () => {
         viewport={{ once: true, margin: "-50px" }}
       >
         {leadershipTeam.map((member) => (
-          <MemberCard key={member.id} member={member} />
+          <MemberCard key={member.name} member={member} />
         ))}
       </motion.div>
       

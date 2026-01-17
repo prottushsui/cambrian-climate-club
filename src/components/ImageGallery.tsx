@@ -4,6 +4,7 @@ import { motion, Variants } from 'framer-motion';
 import type { Gallery } from '../types/types';
 import Lightbox from './Lightbox';
 import SectionHeader from './SectionHeader';
+import OptimizedImage from './ui/OptimizedImage';
 
 interface ImageGalleryProps {
   galleries: Gallery[];
@@ -62,11 +63,12 @@ const Carousel: React.FC<{ images: string[]; onImageClick: (img: string) => void
             transition={{ duration: 0.3 }}
             onClick={() => onImageClick(image)}
           >
-            <img
+            <OptimizedImage
                 src={image}
                 alt={`${title} image ${index + 1}`}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                objectFit="cover"
             />
             <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
                  <motion.div

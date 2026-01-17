@@ -35,7 +35,7 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         data-testid={testId}
         role="listitem"
-        aria-label={`${label}: ${typeof value === 'number' ? value : label}`}
+        aria-label={`${label}: ${typeof value === 'number' ? value : String(value)}`}
     >
         <p className="text-4xl font-bold text-emerald-600 dark:text-emerald-400" aria-live="polite">{value}</p>
         <p className="text-slate-600 dark:text-slate-300 mt-2 font-medium">{label}</p>

@@ -50,7 +50,7 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member, isLoading = false 
       }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
       role="article"
-      aria-labelledby={`member-name-${member.id.replace(/\s+/g, '-')}`}
+      aria-labelledby={`member-name-${member.name.replace(/\s+/g, '-')}`}
     >
       <div className="relative h-64 bg-slate-100 dark:bg-gray-700 overflow-hidden flex items-center justify-center">
         {!imageLoaded && !imageError && (
@@ -97,8 +97,8 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member, isLoading = false 
         <p className="text-primary-700 dark:text-primary-300 font-semibold mt-1">
           {member.role} {member.term && `(${member.term})`}
         </p>
-        <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">{member.id}</p>
-        <p className="text-slate-500 dark:text-slate-400 text-sm">{member.classInfo}, {member.campus}</p>
+        <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">{member.id || ''}</p>
+        <p className="text-slate-500 dark:text-slate-400 text-sm">{member.classInfo || ''}{member.classInfo && member.campus ? ', ' : ''}{member.campus || ''}</p>
       </div>
     </motion.div>
   );

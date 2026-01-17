@@ -8,7 +8,7 @@ export const leadershipTeam: Omit<Member, 'id' | 'classInfo' | 'campus'>[] = [
     imageUrl: '/people/Md. Motammim Bin Arif.jpg',
   },
   {
-    name: 'Maria Anamika Boiragee',
+    name: 'Maria Anamika Bairagee',
     role: 'Vice-President',
     term: '2023–2025',
     imageUrl: '/people/Maria Anamika Bairagee.jpg',
