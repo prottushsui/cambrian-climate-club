@@ -14,7 +14,7 @@ export const leadershipTeam: Omit<Member, 'id' | 'classInfo' | 'campus'>[] = [
     imageUrl: '/people/Maria Anamika Bairagee.jpg',
   },
   {
-    name: 'Towfiquzaman',
+    name: 'H.M Towfiquzzaman',
     role: 'General Secretary',
     term: '2024–2025',
     imageUrl: '/people/H.M Towfiquzzaman.jpg',
@@ -33,7 +33,7 @@ export const leadershipTeam: Omit<Member, 'id' | 'classInfo' | 'campus'>[] = [
     imageUrl: '/people/Kazi Tasfia Priota.jpg',
   },
   {
-    name: 'Samira Subha',
+    name: 'Samirah Subha',
     role: 'Organizing Secretary',
     term: '2025',
     imageUrl: '/people/Samirah Subha.jpeg',
@@ -56,7 +56,7 @@ export const alumniMembers: ExecutiveMember[] = [
 export const currentMembers: Omit<ExecutiveMember, 'id'>[] = [
     { serial: 1, name: "Md. Motammim Bin Arif", role: "President" },
     { serial: 2, name: "Maria Anamika Boiragee", role: "Vice-President" },
-    { serial: 3, name: "Towfiquzaman", role: "General Secretary" },
+    { serial: 3, name: "H.M Towfiquzzaman", role: "General Secretary" },
     { serial: 4, name: "Maryam Jannati Tisha", role: "Organizing Secretary" },
     { serial: 5, name: "Kazi Tasfia Priota", role: "Office Secretary" },
     { serial: 6, name: "Md. Muttakin Bin Arif Prottush", role: "Publicity Secretary" },
@@ -75,7 +75,7 @@ export const currentMembers: Omit<ExecutiveMember, 'id'>[] = [
     { serial: 19, name: "Afra Tahsin Ilma", role: "Executive Member" },
     { serial: 20, name: "Nahida Haque Nedha", role: "Executive Member" },
     { serial: 21, name: "Sabika Ayub", role: "Executive Member" },
-    { serial: 22, name: "Samira Subha", role: "Executive Member" },
+    { serial: 22, name: "Samirah Subha", role: "Executive Member" },
     { serial: 23, name: "Azana Hasan Adhora", role: "Executive Member" },
     { serial: 24, name: "AZM Mashnobi", role: "Executive Member" },
     { serial: 25, name: "Ahmad Zarir", role: "Executive Member" },
@@ -90,7 +90,7 @@ export const currentMembers: Omit<ExecutiveMember, 'id'>[] = [
 export const advisoryCommittee: Advisor[] = [
   { name: 'Rumana Khanam', role: 'Chief Advisor (Vice Principal)', imageUrl: '/images/advisor&leadership/Rumana Khanam.jpg' },
   { name: 'Md. Kamruzzaman', role: 'Advisor', imageUrl: '/images/advisor&leadership/Md. Kamruzzaman.jpg' },
-  { name: 'Jakir Hoissain', role: 'Advisor', imageUrl: '/images/advisor&leadership/Zakir Hossain.jpg' },
+  { name: 'Zakir Hossain', role: 'Advisor', imageUrl: '/images/advisor&leadership/Zakir Hossain.jpg' },
   { name: 'Monirul Islam', role: 'Advisor', imageUrl: '/images/advisor&leadership/Monirul Islam.jpg' },
   { name: 'Md. S H Khokon Mia', role: 'Advisor & Club Coordinator', imageUrl: '/images/advisor&leadership/Md. S H Khokon Mia.jpg' },
   { name: 'Hiren Sarkar', role: 'Advisor', imageUrl: '/images/advisor&leadership/Hiren Sarkar.jpeg' },
