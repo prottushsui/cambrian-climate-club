@@ -8,6 +8,7 @@ import {
   slideInRightVariants
 } from '@/constants/animation';
 import OptimizedImage from './ui/OptimizedImage';
+import LoadingSpinner from './ui/LoadingSpinner';
 
 const HeroSection: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -23,6 +24,7 @@ const HeroSection: React.FC = () => {
     <section 
       className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center dark:from-slate-900 dark:via-blue-900 dark:to-emerald-900"
       aria-labelledby="hero-heading"
+      role="banner"
     >
       {/* Animated Background Elements */}
       <motion.div 
@@ -33,6 +35,7 @@ const HeroSection: React.FC = () => {
           scale: [1, 1.1, 1] 
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
       />
       <motion.div 
         className="absolute bottom-[-10%] right-[-5%] w-80 h-80 bg-gradient-to-r from-blue-200/30 to-cyan-200/30 rounded-full opacity-50 filter blur-3xl dark:from-blue-800/30 dark:to-cyan-800/30"
@@ -42,6 +45,7 @@ const HeroSection: React.FC = () => {
           scale: [1, 1.2, 1] 
         }}
         transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        aria-hidden="true"
       />
       <motion.div 
         className="absolute top-[20%] right-[10%] w-32 h-32 bg-gradient-to-r from-green-200/40 to-emerald-200/40 rounded-full opacity-60 filter blur-2xl dark:from-green-700/40 dark:to-emerald-700/40"
@@ -51,6 +55,7 @@ const HeroSection: React.FC = () => {
           rotate: [0, 180, 360] 
         }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        aria-hidden="true"
       />
 
       <div className="container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center gap-12 relative z-10">
@@ -66,6 +71,7 @@ const HeroSection: React.FC = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            aria-label="Cambrian Climate Club - Campus 2"
           >
             {titleWords.map((part, partIndex) => (
               <span key={partIndex} className={partIndex > 0 ? "block text-emerald-700 dark:text-emerald-400 mt-2" : "block"}>
@@ -102,24 +108,26 @@ const HeroSection: React.FC = () => {
             transition={{ delay: 1.4, duration: 0.8 }}
           >
             <Link to="/projects" className="w-full sm:w-auto block">
-              <motion.div 
+              <motion.button 
                 className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 text-center text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-emerald-500/30 apple-button apple-button-primary transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(16, 185, 129, 0.4)" }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                aria-label="Explore Projects"
               >
                 Explore Projects
-              </motion.div>
+              </motion.button>
             </Link>
             <Link to="/leadership" className="w-full sm:w-auto block">
-              <motion.div 
+              <motion.button 
                 className="w-full sm:w-auto bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 text-center text-emerald-600 dark:text-emerald-400 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 apple-button apple-button-secondary transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)" }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                aria-label="Meet the Team"
               >
                 Meet the Team
-              </motion.div>
+              </motion.button>
             </Link>
           </motion.div>
         </motion.div>
@@ -137,9 +145,10 @@ const HeroSection: React.FC = () => {
           >
             <OptimizedImage 
               src="/images/Campus Cleanliness Drive.jpg" 
-              alt="Campus Cleanliness Drive" 
+              alt="Students participating in campus cleanliness drive" 
               className="w-full h-full object-cover" 
               placeholder="/images/homepagepicture1.jpg"
+              objectFit="cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
           </motion.div>
@@ -151,9 +160,10 @@ const HeroSection: React.FC = () => {
           >
             <OptimizedImage 
               src="/images/Campus Greening Initiative.jpg" 
-              alt="Campus Greening Initiative" 
+              alt="Campus greening initiative with students planting trees" 
               className="w-full h-full object-cover" 
               placeholder="/images/homepagepicture2.jpg"
+              objectFit="cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
           </motion.div>
@@ -165,9 +175,10 @@ const HeroSection: React.FC = () => {
           >
             <OptimizedImage 
               src="/images/homepagepicture3.jpg" 
-              alt="Climate Action E-Magazine" 
+              alt="Climate action e-magazine design" 
               className="w-full h-full object-cover" 
               placeholder="/images/homepagepicture3.jpg"
+              objectFit="cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
           </motion.div>
