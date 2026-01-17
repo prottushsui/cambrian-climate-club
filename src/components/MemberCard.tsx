@@ -29,11 +29,11 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
       }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
     >
-      <div className="relative h-64 bg-slate-100 overflow-hidden">
+      <div className="relative h-64 bg-slate-100 overflow-hidden flex items-center justify-center">
         <motion.img
           src={member.imageUrl}
           alt={member.name}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-contain"
           loading="lazy"
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.6 }}
