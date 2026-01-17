@@ -3,6 +3,7 @@ import React, { useState, memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { buttonHoverVariants } from '@/constants/animation';
+import ThemeToggle from './ThemeToggle';
 
 /**
  * NavItem component - Individual navigation item with active state and animations
@@ -90,35 +91,39 @@ const Navbar: React.FC = memo(() => {
           <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-900 hidden sm:block apple-title">Cambrian Climate Club</span>
         </Link>
         
-        <button
-          onClick={toggleMenu}
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-full md:hidden hover:bg-gray-100/50 focus:outline-none focus:ring-2 focus:ring-blue-200 z-50 relative transition-all duration-200 apple-button"
-          aria-controls="navbar-default"
-          aria-expanded={isOpen}
-          aria-label={isOpen ? "Close main menu" : "Open main menu"}
-        >
-          <span className="sr-only">Open main menu</span>
-          <motion.div
-            initial={false}
-            animate={isOpen ? "open" : "closed"}
-            variants={{
-                open: { rotate: 180 },
-                closed: { rotate: 0 }
-            }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        <div className="flex items-center space-x-2">
+          <ThemeToggle />
+          
+          <button
+            onClick={toggleMenu}
+            type="button"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-full md:hidden hover:bg-gray-100/50 focus:outline-none focus:ring-2 focus:ring-blue-200 z-50 relative transition-all duration-200 apple-button"
+            aria-controls="navbar-default"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? "Close main menu" : "Open main menu"}
           >
-              {isOpen ? (
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-              ) : (
-                  <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
-                  </svg>
-              )}
-          </motion.div>
-        </button>
+            <span className="sr-only">Open main menu</span>
+            <motion.div
+              initial={false}
+              animate={isOpen ? "open" : "closed"}
+              variants={{
+                  open: { rotate: 180 },
+                  closed: { rotate: 0 }
+              }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+                {isOpen ? (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                ) : (
+                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                )}
+            </motion.div>
+          </button>
+        </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:block w-full md:w-auto" id="navbar-default">

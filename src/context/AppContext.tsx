@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 import { Member, ExecutiveMember, Advisor, Project, Achievement, Gallery } from '@/types/types';
+import { ThemeProvider } from './ThemeContext';
+import { NotificationProvider } from './NotificationContext';
 
 // Define the shape of our app state
 interface AppState {
@@ -72,9 +74,13 @@ export const AppProvider: React.FC<{ children: ReactNode; initialState?: Partial
   });
 
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
-      {children}
-    </AppContext.Provider>
+    <ThemeProvider>
+      <NotificationProvider>
+        <AppContext.Provider value={{ state, dispatch }}>
+          {children}
+        </AppContext.Provider>
+      </NotificationProvider>
+    </ThemeProvider>
   );
 };
 
