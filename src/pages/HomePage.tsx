@@ -17,37 +17,9 @@ import {
   statItemVariants 
 } from '@/constants/animation';
 
+// Static counter component with no animation
 const Counter: React.FC<{ end: number; duration?: number; 'data-testid'?: string }> = ({ end, duration = 2000, 'data-testid': testId }) => {
-    const [count, setCount] = useState(0);
-    const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, { once: true });
-
-    useEffect(() => {
-        if (isInView && count !== end) {
-            let start = 0;
-            const range = end - start;
-            
-            // Handle case where range is 0 to prevent infinite loop
-            if (range === 0) {
-                setCount(end);
-                return;
-            }
-            
-            let current = start;
-            const increment = end > start ? 1 : -1;
-            const stepTime = Math.abs(Math.floor(duration / range));
-            const timer = setInterval(() => {
-                current += increment;
-                setCount(current);
-                if (current === end) {
-                    clearInterval(timer);
-                }
-            }, stepTime > 0 ? stepTime : 1);
-            return () => clearInterval(timer);
-        }
-    }, [isInView, end, count, duration]);
-
-    return <span ref={ref} data-testid={testId}>{count}</span>;
+    return <span data-testid={testId}>{end}</span>;
 };
 
 const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?: string }> = ({ value, label, 'data-testid': testId }) => (
@@ -181,9 +153,9 @@ const HomePage: React.FC = () => {
                 data-testid="stats-grid"
             >
                 <StatCard value="2023" label="Founded" data-testid="stat-founded" />
-                <StatCard value={<Counter end={members.length} data-testid="counter-members" />} label="Active Members" data-testid="stat-members" />
-                <StatCard value={<span><Counter end={100} data-testid="counter-trees" />+</span>} label="Trees Planted" data-testid="stat-trees" />
-                <StatCard value={<span><Counter end={7} data-testid="counter-awards" />+</span>} label="Awards Won" data-testid="stat-awards" />
+                <StatCard value="37 Active Students" label="Active Members" data-testid="stat-members" />
+                <StatCard value="100+ Trees Planted" label="Trees Planted" data-testid="stat-trees" />
+                <StatCard value="3 Awards" label="Awards Won" data-testid="stat-awards" />
             </motion.div>
         </div>
       </section>
