@@ -83,7 +83,7 @@ const AboutPage: React.FC = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
             >
-                {['Sustainability Projects', 'Climate Literacy Workshops', 'Environmental Education', 'Tree Plantation Drives', 'Plastic-Free Campus Initiatives', 'Rooftop Gardening', 'Community Workshops', 'Climate Conferences'].map((activity) => (
+                {['Sustainability Projects', 'Environmental Education', 'Tree Plantation Drives', 'Plastic-Free Campus Initiatives', 'Rooftop Gardening', 'Climate Conferences'].map((activity) => (
                     <motion.li 
                         key={activity} 
                         className="flex items-center p-4 bg-slate-50/60 backdrop-blur-sm rounded-2xl border border-gray-100 hover:shadow-md transition-shadow apple-card glass-effect"

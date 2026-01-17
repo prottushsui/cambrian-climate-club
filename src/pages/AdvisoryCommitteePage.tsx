@@ -40,12 +40,11 @@ const AdvisoryCard: React.FC<{ advisor: Advisor }> = ({ advisor }) => (
             <motion.img 
                 src={advisor.imageUrl} 
                 alt={advisor.name} 
-                className="w-full h-full object-cover object-top" 
+                className="w-full h-full object-contain" 
                 loading="lazy"
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
         </div>
         <div className="p-8 flex-grow relative -mt-10 mx-4 mb-4 bg-white rounded-xl shadow-md">
             <h3 className="text-xl font-bold text-primary-900">{advisor.name}</h3>
