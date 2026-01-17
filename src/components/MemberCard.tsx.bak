@@ -50,7 +50,7 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member, isLoading = false 
       }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
       role="article"
-      aria-labelledby={`member-name-${typeof member.name === 'string' ? member.name.replace(/\s+/g, '-') : 'unknown-member'}`}
+      aria-labelledby={`member-name-${member.name.replace(/\s+/g, '-')}`}
     >
       <div className="relative h-64 bg-slate-100 dark:bg-gray-700 overflow-hidden flex items-center justify-center">
         {!imageLoaded && !imageError && (
@@ -89,7 +89,7 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member, isLoading = false 
       </div>
       <div className="p-6 flex-grow flex flex-col justify-center relative z-10 bg-white dark:bg-gray-800">
         <h3 
-          id={`member-name-${typeof member.id === 'string' ? member.id.replace(/\s+/g, '-') : `member-${member.name.replace(/\s+/g, '-').toLowerCase()}-unknown-id`}`} 
+          id={`member-name-${member.id.replace(/\s+/g, '-')}`} 
           className="text-xl font-bold text-primary-900 dark:text-white"
         >
           {member.name}
