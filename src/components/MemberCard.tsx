@@ -33,9 +33,9 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
         <motion.img
           src={member.imageUrl}
           alt={member.name}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-contain" // Changed from object-cover to object-contain
           loading="lazy"
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6 }}
         />
         {member.specialRecognition && (
