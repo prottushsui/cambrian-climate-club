@@ -26,13 +26,6 @@ const TimelineItem: React.FC<{ item: Achievement, index: number }> = ({ item, in
         <div className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-100">
             <time className="mb-2 text-sm font-bold leading-none text-primary-600 block">{item.year}</time>
             <h3 className="text-lg font-medium text-gray-800">{item.description}</h3>
-            {item.videoUrl && (
-                <VideoPlayer 
-                    src={item.videoUrl} 
-                    title={`${item.year} Achievement`}
-                    description={item.description}
-                />
-            )}
         </div>
     </motion.li>
 );
