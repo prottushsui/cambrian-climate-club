@@ -31,6 +31,7 @@ export interface Project {
 export interface Achievement {
   year: string;
   description: string;
+  videoUrl?: string;
 }
 
 export interface Gallery {

@@ -137,13 +137,13 @@ export const projects: Project[] = [
 ];
 
 export const achievements: Achievement[] = [
-    { year: '2023', description: 'Club founded with 20+ dedicated students.' },
-    { year: 'Early 2024', description: 'The 2nd club election was successfully held.' },
-    { year: 'August 2024', description: 'Planted over 100 trees on the school rooftop.' },
-    { year: '2024', description: 'Won 5 medals (3 silver, 2 bronze) at the National Nature Conservation Association (NNCA) Olympiad.' },
-    { year: 'January 2025', description: 'Awarded "Best Club" and "Best Climate Leader" at the GCFILS Conference.' },
-    { year: 'February 2025', description: 'Featured on the Channel i News Portal for environmental contributions.' },
-    { year: 'April 2025', description: 'The 3rd club election was successfully held.' },
+    { year: '2023', description: 'Club founded with 20+ dedicated students.', videoUrl: '/video/achievement_2023.mp4' },
+    { year: 'Early 2024', description: 'The 2nd club election was successfully held.', videoUrl: '/video/achievement_2024.mp4' },
+    { year: 'August 2024', description: 'Planted over 100 trees on the school rooftop.', videoUrl: '/video/achievement_2024.mp4' },
+    { year: '2024', description: 'Won 5 medals (3 silver, 2 bronze) at the National Nature Conservation Association (NNCA) Olympiad.', videoUrl: '/video/achievement_2024.mp4' },
+    { year: 'January 2025', description: 'Awarded "Best Club" and "Best Climate Leader" at the GCFILS Conference.', videoUrl: '/video/achievement_2025.mp4' },
+    { year: 'February 2025', description: 'Featured on the Channel i News Portal for environmental contributions.', videoUrl: '/video/achievement_2025.mp4' },
+    { year: 'April 2025', description: 'The 3rd club election was successfully held.', videoUrl: '/video/achievement_2025.mp4' },
 ];
 
 export const galleries: Gallery[] = [
