@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { achievements, galleries } from '../data/content';
 import SectionHeader from '../components/SectionHeader';
 import ImageGallery from '../components/ImageGallery';
+import VideoPlayer from '../components/VideoPlayer';
 import type { Achievement } from '../types/types';
 
 const TimelineItem: React.FC<{ item: Achievement, index: number }> = ({ item, index }) => (
