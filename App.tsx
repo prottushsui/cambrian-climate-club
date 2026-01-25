@@ -14,6 +14,7 @@ import AdvisoryCommitteePage from '@/pages/AdvisoryCommitteePage';
 import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
 import DemoPage from '@/pages/DemoPage';
+import ColorPaletteDemo from '@/pages/ColorPaletteDemo';
 
 /**
  * Main App component - Root component that handles routing and global context
@@ -41,6 +42,7 @@ const App = () => {
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/achievements" element={<AchievementsPage />} />
               <Route path="/demo" element={<DemoPage />} />
+              <Route path="/color-palette" element={<ColorPaletteDemo />} />
             </Routes>
           </main>
           <Footer />
