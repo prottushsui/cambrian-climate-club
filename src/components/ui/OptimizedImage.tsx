@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -22,14 +22,14 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoading(false);
-  };
+  }, []);
 
-  const handleError = () => {
+  const handleError = useCallback(() => {
     setHasError(true);
     setIsLoading(false);
-  };
+  }, []);
 
   // Reset loading state when src changes
   useEffect(() => {
@@ -59,6 +59,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           isLoading ? 'opacity-0' : 'opacity-100'
         } ${hasError ? 'hidden' : ''}`}
         loading="lazy"
+        decoding="async"
         {...props}
       />
       

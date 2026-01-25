@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
@@ -9,7 +9,7 @@ import {
 } from '@/constants/animation';
 import OptimizedImage from './ui/OptimizedImage';
 
-const HeroSection: React.FC = () => {
+const HeroSection: React.FC = memo(() => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
             className="mt-6 text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
+            transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }} // Reduced delay and duration for better performance
           >
             A student-led environmental initiative promoting sustainability, climate awareness, and community action since 2023.
           </motion.p>
@@ -99,14 +99,14 @@ const HeroSection: React.FC = () => {
             className="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start gap-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
+            transition={{ delay: 1.0, duration: 0.6 }} // Reduced delay and duration for better performance
           >
             <Link to="/projects" className="w-full sm:w-auto block">
               <motion.div 
                 className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 text-center text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-emerald-500/30 apple-button apple-button-primary transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(16, 185, 129, 0.4)" }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                whileHover={{ scale: 1.03, y: -2, boxShadow: "0 10px 25px rgba(16, 185, 129, 0.4)" }} // Reduced scale and shadow for performance
+                whileTap={{ scale: 0.98 }} // Reduced scale for performance
+                transition={{ type: "spring", stiffness: 350, damping: 12 }} // Optimized values
               >
                 Explore Projects
               </motion.div>
@@ -114,9 +114,9 @@ const HeroSection: React.FC = () => {
             <Link to="/leadership" className="w-full sm:w-auto block">
               <motion.div 
                 className="w-full sm:w-auto bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 text-center text-emerald-600 dark:text-emerald-400 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 apple-button apple-button-secondary transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)" }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                whileHover={{ scale: 1.03, y: -2, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)" }} // Reduced scale and shadow for performance
+                whileTap={{ scale: 0.98 }} // Reduced scale for performance
+                transition={{ type: "spring", stiffness: 350, damping: 12 }} // Optimized values
               >
                 Meet the Team
               </motion.div>
@@ -175,6 +175,6 @@ const HeroSection: React.FC = () => {
       </div>
     </section>
   );
-};
+}
 
 export default HeroSection;
