@@ -37,8 +37,8 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
         role="listitem"
         aria-label={`${label}: ${typeof value === 'number' ? value : label}`}
     >
-        <p className="text-4xl font-bold text-emerald-600 dark:text-emerald-400" aria-live="polite">{value}</p>
-        <p className="text-slate-600 dark:text-slate-300 mt-2 font-medium">{label}</p>
+        <p className="text-4xl font-bold text-primary-600 dark:text-primary-300" aria-live="polite">{value}</p>
+        <p className="text-text-600 dark:text-text-300 mt-2 font-medium">{label}</p>
     </motion.div>
 );
 
@@ -56,9 +56,9 @@ const HomePage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen bg-slate-50/60 dark:bg-slate-900/60" data-testid="home-loading">
+      <div className="flex justify-center items-center h-screen bg-background-50 dark:bg-background-950" data-testid="home-loading">
         <div 
-          className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"
+          className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"
           role="status"
           aria-label="Loading homepage content"
         ></div>
@@ -68,12 +68,12 @@ const HomePage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-screen bg-slate-50/60 dark:bg-slate-900/60" data-testid="home-error">
+      <div className="flex justify-center items-center h-screen bg-background-50 dark:bg-background-950" data-testid="home-error">
         <div className="text-red-500 text-center">
           <p role="alert">Error loading data: {error}</p>
           <button 
             onClick={() => window.location.reload()} 
-            className="mt-4 px-4 py-2 bg-emerald-500 text-white rounded hover:bg-emerald-600"
+            className="mt-4 px-4 py-2 bg-primary-500 text-white rounded hover:bg-primary-600"
             aria-label="Retry loading data"
           >
             Retry
@@ -84,12 +84,12 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="bg-slate-50/60 dark:bg-slate-900/60" data-testid="homepage-container">
+    <div className="bg-background-50 dark:bg-background-950 min-h-screen" data-testid="homepage-container">
       <HeroSection />
       
       {/* Featured Initiatives Section */}
       <section 
-        className="container mx-auto px-4 py-24" 
+        className="container mx-auto px-4 py-24 bg-highlight dark:bg-background-900 rounded-3xl my-16" 
         aria-labelledby="featured-initiatives-heading"
         data-testid="featured-initiatives-section"
       >
@@ -128,7 +128,7 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-slate-600 dark:text-slate-300">Join us in our mission to create a sustainable campus environment through innovative projects and community engagement.</p>
+                <p className="text-text-600 dark:text-text-300">Join us in our mission to create a sustainable campus environment through innovative projects and community engagement.</p>
               </div>
             </motion.div>
           ))}
@@ -137,7 +137,7 @@ const HomePage: React.FC = () => {
 
       {/* Quick Stats Section */}
       <section 
-        className="bg-gradient-to-br from-slate-50 via-emerald-50 to-blue-50 py-24 dark:from-slate-900 dark:via-emerald-900 dark:to-blue-900" 
+        className="bg-gradient-to-br from-background-100 via-primary-50 to-secondary-50 py-24 dark:from-background-900 dark:via-primary-900 dark:to-secondary-900 rounded-3xl my-16" 
         aria-labelledby="stats-heading"
         data-testid="stats-section"
       >

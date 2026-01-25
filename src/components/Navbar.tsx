@@ -21,8 +21,8 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
     className={({ isActive }) =>
       `relative block py-3 px-4 rounded-full transition-all duration-300 ${
         isMobile
-            ? isActive ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-700 hover:bg-gray-50'
-            : isActive ? 'text-blue-600 font-semibold' : 'text-slate-700 hover:text-blue-600'
+            ? isActive ? 'bg-primary-50 text-primary-600 font-semibold' : 'text-text-700 hover:bg-background-50'
+            : isActive ? 'text-primary-600 font-semibold' : 'text-text-700 hover:text-primary-600'
       }`
     }
   >
@@ -36,7 +36,7 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
             {children}
             {!isMobile && (
               <motion.div
-                  className="absolute left-0 right-0 -bottom-1 h-0.5 bg-blue-600 rounded-full"
+                  className="absolute left-0 right-0 -bottom-1 h-0.5 bg-primary-600 rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={isActive ? { scaleX: 1 } : { scaleX: 0 }}
                   transition={{ duration: 0.3 }}
@@ -73,7 +73,7 @@ const Navbar: React.FC = memo(() => {
   ];
 
   return (
-    <nav className="bg-white/80 backdrop-blur-xl border-b border-white/30 fixed w-full z-50 top-0 start-0 transition-all duration-300 apple-navbar glass-effect shadow-sm" aria-label="Main navigation">
+    <nav className="bg-background/80 backdrop-blur-xl border-b border-background/30 fixed w-full z-50 top-0 start-0 transition-all duration-300 apple-navbar glass-effect shadow-sm" aria-label="Main navigation">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link 
           to="/" 
@@ -87,7 +87,7 @@ const Navbar: React.FC = memo(() => {
           >
              <img src="/images/Club logo.png" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
           </motion.div>
-          <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-900 hidden sm:block apple-title">Cambrian Climate Club</span>
+          <span className="self-center text-xl font-semibold whitespace-nowrap text-text-900 hidden sm:block apple-title">Cambrian Climate Club</span>
         </Link>
         
         <button
@@ -136,7 +136,7 @@ const Navbar: React.FC = memo(() => {
       <AnimatePresence>
         {isOpen && (
             <motion.div
-                className="absolute top-full left-0 w-full bg-white/90 backdrop-blur-xl border-b border-white/30 shadow-xl md:hidden overflow-hidden glass-effect"
+                className="absolute top-full left-0 w-full bg-background/90 backdrop-blur-xl border-b border-background/30 shadow-xl md:hidden overflow-hidden glass-effect"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
