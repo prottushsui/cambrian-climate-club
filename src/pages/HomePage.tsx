@@ -6,7 +6,7 @@ import { useData } from '@/hooks/useData';
 import ProjectCard from '@/components/ProjectCard';
 import SectionHeader from '@/components/SectionHeader';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-import HeroSection from '@/components/HeroSection';
+import ClimateHero from '@/components/hero/ClimateHero';
 import { 
   fadeInUpVariants, 
   scaleInVariants, 
@@ -85,7 +85,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="bg-slate-50/60 dark:bg-slate-900/60" data-testid="homepage-container">
-      <HeroSection />
+      <ClimateHero />
       
       {/* Featured Initiatives Section */}
       <section 
