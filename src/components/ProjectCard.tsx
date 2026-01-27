@@ -34,8 +34,8 @@ const itemVariants: Variants = {
 const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = false }) => {
   return (
     <motion.div 
-        className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20"
-        whileHover={{ y: -10, scale: 1.02 }}
+        className="card card-hover overflow-hidden shadow-lg border border-border rounded-xl"
+        whileHover={{ y: -8, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         data-testid={`project-card-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
@@ -56,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = fa
         </div>
       </div>
       <div className="p-6">
-        {project.description && <p className="text-slate-600">{project.description}</p>}
+        {project.description && <p className="text-foreground/70">{project.description}</p>}
       </div>
     </motion.div>
   );

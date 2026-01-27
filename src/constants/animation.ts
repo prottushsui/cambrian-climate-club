@@ -1,19 +1,19 @@
 import { Variants } from 'framer-motion';
 
-// Apple-style animation variants with smooth, premium motion
+// Premium animation variants with smooth, elegant motion
 export const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
       delayChildren: 0.1
     }
   }
 };
 
 export const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
   visible: { 
     opacity: 1, 
     y: 0,
@@ -23,7 +23,7 @@ export const itemVariants: Variants = {
       stiffness: 80, 
       damping: 18, 
       mass: 1,
-      duration: 0.6
+      duration: 0.5
     }
   }
 };
@@ -32,7 +32,7 @@ export const titleContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: (i = 1) => ({
     opacity: 1,
-    transition: { staggerChildren: 0.05, delayChildren: i * 0.12 },
+    transition: { staggerChildren: 0.03, delayChildren: i * 0.08 },
   }),
 };
 
@@ -49,8 +49,8 @@ export const titleChildVariants: Variants = {
   },
   hidden: {
     opacity: 0,
-    y: 40,
-    scale: 0.9,
+    y: 20,
+    scale: 0.95,
     transition: {
       type: "spring",
       damping: 15,
@@ -60,7 +60,7 @@ export const titleChildVariants: Variants = {
 };
 
 export const statItemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.7, y: 20 },
+  hidden: { opacity: 0, scale: 0.8, y: 20 },
   visible: {
     opacity: 1, 
     scale: 1,
@@ -78,14 +78,14 @@ export const imageContainerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.25,
-      delayChildren: 0.4,
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
 
 export const imageVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.85, y: 40 },
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -98,9 +98,9 @@ export const imageVariants: Variants = {
   },
 };
 
-// Apple-style fade in up animation
+// Premium fade in up animation
 export const fadeInUpVariants: Variants = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
@@ -113,9 +113,9 @@ export const fadeInUpVariants: Variants = {
   }
 };
 
-// Apple-style scale in animation
+// Premium scale in animation
 export const scaleInVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
+  hidden: { opacity: 0, scale: 0.85 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -128,9 +128,9 @@ export const scaleInVariants: Variants = {
   }
 };
 
-// Apple-style slide in from left
+// Premium slide in from left
 export const slideInLeftVariants: Variants = {
-  hidden: { opacity: 0, x: -50 },
+  hidden: { opacity: 0, x: -30 },
   visible: {
     opacity: 1,
     x: 0,
@@ -143,9 +143,9 @@ export const slideInLeftVariants: Variants = {
   }
 };
 
-// Apple-style slide in from right
+// Premium slide in from right
 export const slideInRightVariants: Variants = {
-  hidden: { opacity: 0, x: 50 },
+  hidden: { opacity: 0, x: 30 },
   visible: {
     opacity: 1,
     x: 0,
@@ -158,15 +158,15 @@ export const slideInRightVariants: Variants = {
   }
 };
 
-// Apple-style hover effect for cards
+// Premium hover effect for cards
 export const cardHoverVariants = {
   rest: {
     y: 0,
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)"
+    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05)"
   },
   hover: {
-    y: -8,
-    boxShadow: "0 12px 24px rgba(0, 0, 0, 0.12)",
+    y: -6,
+    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     transition: {
       type: "spring",
       damping: 10,
@@ -175,7 +175,7 @@ export const cardHoverVariants = {
   }
 };
 
-// Apple-style button hover effect
+// Premium button hover effect
 export const buttonHoverVariants = {
   rest: {
     scale: 1,
@@ -183,7 +183,7 @@ export const buttonHoverVariants = {
   },
   hover: {
     scale: 1.03,
-    y: -2,
+    y: -1,
     transition: {
       type: "spring",
       damping: 12,

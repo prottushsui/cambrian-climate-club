@@ -19,10 +19,10 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
     to={to}
     onClick={onClick}
     className={({ isActive }) =>
-      `relative block py-3 px-4 rounded-full transition-all duration-300 ${
+      `relative px-4 py-2 rounded-lg transition-all duration-300 ${
         isMobile
-            ? isActive ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-700 hover:bg-gray-50'
-            : isActive ? 'text-blue-600 font-semibold' : 'text-slate-700 hover:text-blue-600'
+            ? `block text-lg ${isActive ? 'bg-primary text-primary-foreground' : 'text-foreground hover:bg-muted'}`
+            : `${isActive ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`
       }`
     }
   >
@@ -36,7 +36,7 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
             {children}
             {!isMobile && (
               <motion.div
-                  className="absolute left-0 right-0 -bottom-1 h-0.5 bg-blue-600 rounded-full"
+                  className="absolute left-0 right-0 -bottom-1 h-0.5 bg-primary rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={isActive ? { scaleX: 1 } : { scaleX: 0 }}
                   transition={{ duration: 0.3 }}
@@ -75,27 +75,22 @@ const Navbar: React.FC = memo(() => {
   ];
 
   return (
-    <nav className="bg-white/80 backdrop-blur-xl border-b border-white/30 fixed w-full z-50 top-0 start-0 transition-all duration-300 apple-navbar glass-effect shadow-sm" aria-label="Main navigation">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="navbar sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border" aria-label="Main navigation">
+      <div className="container flex flex-wrap items-center justify-between py-4">
         <Link 
           to="/" 
-          className="flex items-center space-x-3 rtl:space-x-reverse z-50 relative" 
+          className="navbar-brand" 
           onClick={closeMenu}
           aria-label="Cambrian Climate Club Home"
         >
-          <motion.div 
-            whileHover={{ rotate: 5, scale: 1.05 }} 
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          >
-             <img src="/images/Club logo.png" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
-          </motion.div>
-          <span className="self-center text-xl font-semibold whitespace-nowrap text-slate-900 hidden sm:block apple-title">Cambrian Climate Club</span>
+          <img src="/images/Club logo.png" className="h-12 w-auto" alt="Cambrian Climate Club Logo" />
+          <span className="text-xl font-bold">Cambrian Climate Club</span>
         </Link>
         
         <button
           onClick={toggleMenu}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-full md:hidden hover:bg-gray-100/50 focus:outline-none focus:ring-2 focus:ring-blue-200 z-50 relative transition-all duration-200 apple-button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-foreground rounded-lg md:hidden hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
           aria-controls="navbar-default"
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close main menu" : "Open main menu"}
@@ -111,11 +106,11 @@ const Navbar: React.FC = memo(() => {
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           >
               {isOpen ? (
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
               ) : (
-                  <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
                   </svg>
               )}
@@ -123,8 +118,8 @@ const Navbar: React.FC = memo(() => {
         </button>
 
         {/* Desktop Menu */}
-        <div className="hidden md:block w-full md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-row space-x-2 p-0 mt-0 border-0 bg-transparent">
+        <div className="hidden md:flex md:items-center md:space-x-1" id="navbar-default">
+          <ul className="flex flex-row space-x-1 p-0 mt-0">
             {navLinks.map((link) => (
                 <li key={link.to}>
                     <NavItem to={link.to} onClick={closeMenu}>{link.label}</NavItem>
@@ -138,15 +133,15 @@ const Navbar: React.FC = memo(() => {
       <AnimatePresence>
         {isOpen && (
             <motion.div
-                className="absolute top-full left-0 w-full bg-white/90 backdrop-blur-xl border-b border-white/30 shadow-xl md:hidden overflow-hidden glass-effect"
+                className="md:hidden bg-background border-t border-border"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-                <ul className="flex flex-col p-4 font-medium">
+                <ul className="py-4 space-y-2">
                     {navLinks.map((link) => (
-                        <li key={link.to} className="mb-1 last:mb-0">
+                        <li key={link.to}>
                             <NavItem to={link.to} onClick={closeMenu} isMobile={true}>{link.label}</NavItem>
                         </li>
                     ))}
