@@ -1,12 +1,10 @@
 // Climate Club Front Page with Shader Integration
-// This file was replaced by the React Router implementation in /src/pages/HomePage.tsx
+// This is now the main homepage with advanced shader effects
 
-import ClimateHero from '@/components/hero/ClimateHero';
+import NewHomepage from '@/pages/NewHomepage';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-900">
-      <ClimateHero />
-    </div>
+    <NewHomepage />
   );
 }

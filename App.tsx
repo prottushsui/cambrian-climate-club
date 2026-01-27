@@ -6,7 +6,7 @@ import { AppProvider } from '@/context/AppContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
-import HomePage from '@/pages/HomePage';
+import NewHomepage from '@/pages/NewHomepage';
 import AboutPage from '@/pages/AboutPage';
 import LeadershipPage from '@/pages/LeadershipPage';
 import ExecutiveCommitteePage from '@/pages/ExecutiveCommitteePage';
@@ -35,7 +35,7 @@ const App = () => {
           <Navbar />
           <main className="flex-grow pt-20" role="main">
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<NewHomepage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/leadership" element={<LeadershipPage />} />
               <Route path="/executive-committee" element={<ExecutiveCommitteePage />} />
