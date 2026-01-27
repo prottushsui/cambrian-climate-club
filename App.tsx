@@ -31,7 +31,7 @@ const App = () => {
     <HashRouter>
       <AppProvider>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen" data-testid="app-container">
+        <div className="flex flex-col min-h-screen bg-background" data-testid="app-container">
           <Navbar />
           <main className="flex-grow pt-20" role="main">
             <Routes>
