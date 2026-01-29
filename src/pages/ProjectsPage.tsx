@@ -17,22 +17,24 @@ const containerVariants = {
 
 const ProjectsPage: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <SectionHeader
-        title="Our Projects"
-        subtitle="Key initiatives we are working on to promote sustainability. More details coming soon!"
-      />
-      <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-      >
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
-        ))}
-      </motion.div>
+    <div className="container mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          title="Our Projects"
+          subtitle="Key initiatives we are working on to promote sustainability. More details coming soon!"
+        />
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };

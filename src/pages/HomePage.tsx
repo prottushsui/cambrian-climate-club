@@ -23,7 +23,7 @@ const StaticCounter: React.FC<{ value: number | string; 'data-testid'?: string }
 
 const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?: string }> = ({ value, label, 'data-testid': testId }) => (
     <motion.div 
-        className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-sm border border-white/20 transition-all duration-300"
+        className="bg-white/80 backdrop-blur-xl p-5 rounded-xl text-center shadow-sm border border-white/20 transition-all duration-300"
         variants={itemVariants}
         whileHover={{ 
             y: -4, 
@@ -36,8 +36,8 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
         role="listitem"
         aria-label={`${label}: ${typeof value === 'number' ? value : label}`}
     >
-        <p className="text-4xl font-bold text-primary-600 dark:text-primary-400" aria-live="polite">{value}</p>
-        <p className="text-slate-600 dark:text-slate-300 mt-2 font-medium">{label}</p>
+        <p className="text-3xl font-bold text-primary-600 dark:text-primary-400" aria-live="polite">{value}</p>
+        <p className="text-slate-600 dark:text-slate-300 mt-2 font-medium text-sm">{label}</p>
     </motion.div>
 );
 
@@ -88,62 +88,65 @@ const HomePage: React.FC = () => {
       
       {/* Featured Initiatives Section */}
       <section 
-        className="container mx-auto px-4 py-24" 
+        className="container mx-auto px-4 py-16" 
         aria-labelledby="featured-initiatives-heading"
         data-testid="featured-initiatives-section"
       >
-        <SectionHeader title="Featured Initiatives" subtitle="Our core projects making a tangible impact on our campus and community." />
-        <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            data-testid="projects-grid"
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              variants={itemVariants}
+        <div className="max-w-6xl mx-auto">
+          <SectionHeader title="Featured Initiatives" subtitle="Our core projects making a tangible impact on our campus and community." />
+          <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+              variants={containerVariants}
               initial="hidden"
-              animate="visible"
-              className="bg-white rounded-xl border border-border shadow-sm transition-all duration-300 overflow-hidden"
-              whileHover={{ y: -4, scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              data-testid={`project-card-${index}`}
-              role="listitem"
-            >
-              <div className="relative overflow-hidden">
-                <OptimizedImage 
-                  src={project.imageUrl} 
-                  alt={project.title} 
-                  className="w-full h-60 object-cover transition-transform duration-500"
-                  placeholder="/images/homepagepicture1.jpg"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              data-testid="projects-grid"
+          >
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                className="bg-white rounded-xl border border-border shadow-sm transition-all duration-300 overflow-hidden"
+                whileHover={{ y: -4, scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                data-testid={`project-card-${index}`}
+                role="listitem"
+              >
+                <div className="relative overflow-hidden">
+                  <OptimizedImage 
+                    src={project.imageUrl} 
+                    alt={project.title} 
+                    className="w-full h-48 object-cover transition-transform duration-500"
+                    placeholder="/images/homepagepicture1.jpg"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                  </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <p className="text-slate-600 dark:text-slate-300">Join us in our mission to create a sustainable campus environment through innovative projects and community engagement.</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div className="p-4">
+                  <p className="text-slate-600 dark:text-slate-300 text-sm">{project.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* Quick Stats Section */}
       <section 
-        className="bg-gradient-to-br from-slate-50 via-emerald-50 to-blue-50 py-24 dark:from-slate-900 dark:via-emerald-900 dark:to-blue-900" 
+        className="bg-gradient-to-br from-slate-50 via-emerald-50 to-blue-50 py-16 dark:from-slate-900 dark:via-emerald-900 dark:to-blue-900" 
         aria-labelledby="stats-heading"
         data-testid="stats-section"
       >
         <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
             <SectionHeader title="Our Journey in Numbers" />
             <motion.div 
-                className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mt-16"
+                className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mt-12"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -156,6 +159,7 @@ const HomePage: React.FC = () => {
                 <StatCard value={<StaticCounter value="100+ Trees Planted" data-testid="counter-trees" />} label="Trees Planted" data-testid="stat-trees" />
                 <StatCard value={<StaticCounter value="3 Awards" data-testid="counter-awards" />} label="Awards Won" data-testid="stat-awards" />
             </motion.div>
+          </div>
         </div>
       </section>
     </div>
