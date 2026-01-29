@@ -16,11 +16,13 @@ This website serves as the digital home for the Cambrian Climate Club, providing
 
 ## Technology Stack
 
-- **Frontend**: React 19.2.0 with TypeScript
-- **Routing**: React Router DOM
-- **Styling**: Framer Motion for animations and smooth transitions
+- **Frontend**: React 18 with TypeScript
+- **Routing**: React Router DOM for SPA navigation
+- **Styling**: Tailwind CSS with custom design system integration
+- **Animations**: Framer Motion for sophisticated motion design
 - **Build Tool**: Vite 6.2.0
 - **Development Server**: Vite dev server
+- **Analytics**: Vercel Analytics
 
 ## Project Structure
 
