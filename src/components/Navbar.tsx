@@ -66,8 +66,6 @@ const Navbar: React.FC = memo(() => {
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/leadership', label: 'Leadership' },
-    { to: '/executive-committee', label: 'Committee' },
-    { to: '/advisory-committee', label: 'Advisors' },
     { to: '/projects', label: 'Projects' },
     { to: '/achievements', label: 'Achievements' },
     { to: '/leaderboard', label: 'Leaderboard' },
