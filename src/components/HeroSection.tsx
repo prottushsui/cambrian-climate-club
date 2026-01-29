@@ -95,6 +95,18 @@ const HeroSection: React.FC = () => {
           >
             A student-led environmental initiative promoting sustainability, climate awareness, and community action since 2023.
           </motion.p>
+          
+          {/* Clear mission statement */}
+          <motion.div 
+            className="mt-8 p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 dark:bg-slate-800/80 max-w-2xl mx-auto lg:mx-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+          >
+            <p className="text-lg font-semibold text-center text-emerald-700 dark:text-emerald-400">
+              <strong>Mission:</strong> Empowering students to become proactive leaders in sustainability and climate action through hands-on projects and community engagement.
+            </p>
+          </motion.div>
           <motion.div 
             className="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start gap-5"
             initial={{ opacity: 0, y: 20 }}
