@@ -1,8 +1,7 @@
 
 import React, { useState, memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { buttonHoverVariants } from '@/constants/animation';
+import { AnimatePresence } from 'framer-motion';
 
 /**
  * NavItem component - Individual navigation item with active state and animations

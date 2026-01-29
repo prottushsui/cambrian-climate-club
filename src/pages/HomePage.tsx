@@ -13,8 +13,7 @@ import {
   slideInLeftVariants, 
   slideInRightVariants, 
   containerVariants, 
-  itemVariants,
-  statItemVariants 
+  itemVariants
 } from '@/constants/animation';
 
 // Static counter component - no animation
@@ -24,12 +23,12 @@ const StaticCounter: React.FC<{ value: number | string; 'data-testid'?: string }
 
 const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?: string }> = ({ value, label, 'data-testid': testId }) => (
     <motion.div 
-        className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-lg border border-white/20 apple-card glass-card dark:bg-slate-800/70 dark:border-slate-700/50"
-        variants={statItemVariants}
+        className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl text-center shadow-sm border border-white/20 transition-all duration-300"
+        variants={itemVariants}
         whileHover={{ 
-            y: -10, 
-            scale: 1.05,
-            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)" 
+            y: -4, 
+            scale: 1.02,
+            boxShadow: "0 12px 24px rgba(0, 0, 0, 0.08)" 
         }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -37,7 +36,7 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
         role="listitem"
         aria-label={`${label}: ${typeof value === 'number' ? value : label}`}
     >
-        <p className="text-4xl font-bold text-emerald-600 dark:text-emerald-400" aria-live="polite">{value}</p>
+        <p className="text-4xl font-bold text-primary-600 dark:text-primary-400" aria-live="polite">{value}</p>
         <p className="text-slate-600 dark:text-slate-300 mt-2 font-medium">{label}</p>
     </motion.div>
 );
@@ -108,9 +107,9 @@ const HomePage: React.FC = () => {
               variants={itemVariants}
               initial="hidden"
               animate="visible"
-              className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20 dark:bg-slate-800/80 dark:border-slate-700/50"
-              whileHover={{ y: -10, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="bg-white rounded-xl border border-border shadow-sm transition-all duration-300 overflow-hidden"
+              whileHover={{ y: -4, scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               data-testid={`project-card-${index}`}
               role="listitem"
@@ -119,7 +118,7 @@ const HomePage: React.FC = () => {
                 <OptimizedImage 
                   src={project.imageUrl} 
                   alt={project.title} 
-                  className="w-full h-60 object-cover transition-transform duration-700"
+                  className="w-full h-60 object-cover transition-transform duration-500"
                   placeholder="/images/homepagepicture1.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
