@@ -103,8 +103,72 @@ body {
   font-family: var(--apple-font-family);
   background-color: hsl(var(--climate-neutral));
   color: var(--foreground);
-  line-height: 1.6;
+  line-height: 1.7;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+}
+
+/* Enhanced readability and typography */
+p {
+  margin-bottom: 1.2em;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-bottom: 0.8em;
+  margin-top: 1.5em;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+/* Section spacing for better visual hierarchy */
+section {
+  margin-bottom: 4rem;
+}
+
+.container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Card content spacing */
+.card-content {
+  padding: 1.5rem;
+}
+
+/* List styling for better readability */
+ul, ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* Vertical rhythm adjustments */
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.text-block {
+  margin-bottom: 1.5rem;
 }
 
 /* Apple-style animations */
