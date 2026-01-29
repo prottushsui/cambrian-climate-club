@@ -23,7 +23,7 @@ const StaticCounter: React.FC<{ value: number | string; 'data-testid'?: string }
 
 const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?: string }> = ({ value, label, 'data-testid': testId }) => (
     <motion.div 
-        className="bg-white/80 backdrop-blur-xl p-5 rounded-xl text-center shadow-sm border border-white/20 transition-all duration-300"
+        className="bg-white/80 backdrop-blur-xl p-6 rounded-xl text-center shadow-sm border border-white/20 transition-all duration-300"
         variants={itemVariants}
         whileHover={{ 
             y: -4, 
@@ -36,8 +36,8 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
         role="listitem"
         aria-label={`${label}: ${typeof value === 'number' ? value : label}`}
     >
-        <p className="text-3xl font-bold text-primary-600 dark:text-primary-400" aria-live="polite">{value}</p>
-        <p className="text-slate-600 dark:text-slate-300 mt-2 font-medium text-sm">{label}</p>
+        <p className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2" aria-live="polite">{value}</p>
+        <p className="text-slate-700 dark:text-slate-300 font-medium text-base">{label}</p>
     </motion.div>
 );
 
@@ -88,7 +88,7 @@ const HomePage: React.FC = () => {
       
       {/* Featured Initiatives Section */}
       <section 
-        className="container mx-auto px-4 py-16" 
+        className="container mx-auto px-4 py-20" 
         aria-labelledby="featured-initiatives-heading"
         data-testid="featured-initiatives-section"
       >
@@ -108,8 +108,8 @@ const HomePage: React.FC = () => {
                 variants={itemVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-white rounded-xl border border-border shadow-sm transition-all duration-300 overflow-hidden"
-                whileHover={{ y: -4, scale: 1.01 }}
+                className="bg-white rounded-2xl border border-border shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full"
+                whileHover={{ y: -8, scale: 1.02 }}
                 whileTap={{ scale: 0.99 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 data-testid={`project-card-${index}`}
@@ -119,16 +119,16 @@ const HomePage: React.FC = () => {
                   <OptimizedImage 
                     src={project.imageUrl} 
                     alt={project.title} 
-                    className="w-full h-48 object-cover transition-transform duration-500"
+                    className="w-full h-48 object-cover transition-transform duration-500" 
                     placeholder="/images/homepagepicture1.jpg"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
                     <h3 className="text-xl font-bold text-white">{project.title}</h3>
                   </div>
                 </div>
-                <div className="p-4">
-                  <p className="text-slate-600 dark:text-slate-300 text-sm">{project.description}</p>
+                <div className="p-5 flex-grow">
+                  <p className="text-slate-700 dark:text-slate-300 text-base">{project.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -138,7 +138,7 @@ const HomePage: React.FC = () => {
 
       {/* Quick Stats Section */}
       <section 
-        className="bg-gradient-to-br from-slate-50 via-emerald-50 to-blue-50 py-16 dark:from-slate-900 dark:via-emerald-900 dark:to-blue-900" 
+        className="bg-gradient-to-br from-slate-50 via-emerald-50 to-blue-50 py-20 dark:from-slate-900 dark:via-emerald-900 dark:to-blue-900" 
         aria-labelledby="stats-heading"
         data-testid="stats-section"
       >
@@ -146,7 +146,7 @@ const HomePage: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <SectionHeader title="Our Journey in Numbers" />
             <motion.div 
-                className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mt-12"
+                className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mt-16"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"

@@ -8,6 +8,7 @@ import {
   slideInRightVariants
 } from '@/constants/animation';
 import OptimizedImage from './ui/OptimizedImage';
+import { Button } from './ui/Button';
 
 const HeroSection: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -114,24 +115,26 @@ const HeroSection: React.FC = () => {
             transition={{ delay: 1.4, duration: 0.8 }}
           >
             <Link to="/projects" className="w-full sm:w-auto block">
-              <motion.div 
-                className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 text-center text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-emerald-500/30 apple-button apple-button-primary transition-all duration-300"
+              <motion.button
+                className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-emerald-500/30 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(16, 185, 129, 0.4)" }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                onClick={() => window.location.hash = '#/projects'}
               >
                 Explore Projects
-              </motion.div>
+              </motion.button>
             </Link>
             <Link to="/leadership" className="w-full sm:w-auto block">
-              <motion.div 
-                className="w-full sm:w-auto bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 text-center text-emerald-600 dark:text-emerald-400 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 apple-button apple-button-secondary transition-all duration-300"
+              <motion.button
+                className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-emerald-600 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)" }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                onClick={() => window.location.hash = '#/leadership'}
               >
                 Meet the Team
-              </motion.div>
+              </motion.button>
             </Link>
           </motion.div>
         </motion.div>
