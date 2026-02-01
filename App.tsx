@@ -8,12 +8,12 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import HomePage from '@/pages/HomePage';
 import AboutPage from '@/pages/AboutPage';
-import LeadershipPage from '@/pages/LeadershipPage';
-import ExecutiveCommitteePage from '@/pages/ExecutiveCommitteePage';
-import AdvisoryCommitteePage from '@/pages/AdvisoryCommitteePage';
+import CombinedLeadershipPage from '@/pages/CombinedLeadershipPage';
 import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
 import DemoPage from '@/pages/DemoPage';
+import LeaderboardPage from '@/pages/LeaderboardPage';
+import QuizPage from '@/pages/QuizPage';
 
 /**
  * Main App component - Root component that handles routing and global context
@@ -35,12 +35,12 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/leadership" element={<LeadershipPage />} />
-              <Route path="/executive-committee" element={<ExecutiveCommitteePage />} />
-              <Route path="/advisory-committee" element={<AdvisoryCommitteePage />} />
+              <Route path="/leadership" element={<CombinedLeadershipPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/achievements" element={<AchievementsPage />} />
               <Route path="/demo" element={<DemoPage />} />
+              <Route path="/leaderboard" element={<LeaderboardPage />} />
+              <Route path="/quiz" element={<QuizPage />} />
             </Routes>
           </main>
           <Footer />

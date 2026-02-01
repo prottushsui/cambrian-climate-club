@@ -3,77 +3,63 @@
 @tailwind utilities;
 @layer base {
   :root {
-    /* Climate-themed color palette */
-    --background: 0 0% 100%; /* Pure white */
-    --foreground: 222.2 84% 4.9%; /* Dark gray */
+    /* Cambrian Climate Club Design System - Refined, Calm, Academic */
+    --background: 214 12% 86%; /* Sandstone Beige (#D9C7A0) converted to HSL */
+    --foreground: 0 0% 10%; /* Darker charcoal grey for better contrast */
     --card: 0 0% 100%; /* White */
-    --card-foreground: 222.2 84% 4.9%; /* Dark gray */
+    --card-foreground: 0 0% 10%; /* Darker charcoal grey for better contrast */
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 222.2 84% 4.9%; /* Dark gray */
-    --primary: 142 76% 36%; /* Deep green */
-    --primary-foreground: 210 40% 98%; /* Light gray */
-    --secondary: 210 40% 96.1%; /* Light blue */
-    --secondary-foreground: 222.2 47.4% 11.2%; /* Medium gray */
-    --muted: 210 40% 96.1%; /* Light blue */
-    --muted-foreground: 215.4 16.3% 46.9%; /* Muted blue */
-    --accent: 142 65% 28%; /* Darker green */
-    --accent-foreground: 210 40% 98%; /* Light gray */
+    --popover-foreground: 0 0% 10%; /* Darker charcoal grey for better contrast */
+    --primary: 204 65% 16%; /* Deep Ocean Blue (#0F3D5C) converted to HSL */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 180 33% 42%; /* Misty Teal (#4C8C8C) converted to HSL */
+    --secondary-foreground: 0 0% 100%; /* White */
+    --muted: 214 12% 86%; /* Sandstone Beige */
+    --muted-foreground: 0 0% 30%; /* Darker muted charcoal for better contrast */
+    --accent: 5 58% 71%; /* Sunset Coral (#E68A7D) converted to HSL */
+    --accent-foreground: 0 0% 100%; /* White */
     --destructive: 0 84.2% 60.2%; /* Red */
-    --destructive-foreground: 210 40% 98%; /* Light gray */
-    --border: 214.3 31.8% 91.4%; /* Light gray */
-    --input: 214.3 31.8% 91.4%; /* Light gray */
-    --ring: 142 76% 36%; /* Deep green */
-    --radius: 0.5rem;
-    --folder-back: 142 76% 36%;
-    --folder-front: 145 80% 40%;
-    --folder-tab: 140 70% 30%;
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 210 8% 65%; /* Darker border for better contrast */
+    --input: 210 8% 65%; /* Input field */
+    --ring: 204 65% 16%; /* Deep Ocean Blue */
+    --radius: 0.625rem; /* Slightly larger radius for refined look */
     
-    /* Climate-themed variables */
-    --climate-primary: 142 76% 36%; /* Deep green */
-    --climate-secondary: 180 50% 40%; /* Ocean teal */
-    --climate-accent: 200 70% 50%; /* Sky blue */
-    --climate-warm: 30 80% 50%; /* Warm earth tone */
-    --climate-neutral: 210 20% 98%; /* Light neutral */
-    --climate-dark: 200 30% 10%; /* Dark blue */
+    /* Climate Theme Variables */
+    --climate-neutral: 214 12% 86%; /* Sandstone Beige (#D9C7A0) converted to HSL */
+    --climate-primary: 204 65% 16%; /* Deep Ocean Blue (#0F3D5C) converted to HSL */
+    --climate-secondary: 180 33% 42%; /* Misty Teal (#4C8C8C) converted to HSL */
+    --climate-accent: 5 58% 71%; /* Sunset Coral (#E68A7D) converted to HSL */
+    --climate-text: 0 0% 10%; /* Darker charcoal grey for better contrast */
+    --climate-highlight: 60 17% 95%; /* Cloud White (#F4F4F2) converted to HSL */
     
     /* Premium gradients */
-    --gradient-climate: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(180, 50%, 40%));
-    --gradient-sky: linear-gradient(135deg, hsl(200, 70%, 50%), hsl(180, 50%, 60%));
-    --gradient-earth: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(30, 80%, 50%));
-    --gradient-ocean: linear-gradient(135deg, hsl(180, 50%, 40%), hsl(200, 70%, 50%));
+    --gradient-climate: linear-gradient(135deg, hsl(204, 65%, 16%), hsl(180, 33%, 42%));
+    --gradient-sandstone: linear-gradient(135deg, hsl(214, 12%, 86%), hsl(210, 10%, 82%));
+    --gradient-sunset: linear-gradient(135deg, hsl(180, 33%, 42%), hsl(5, 58%, 71%));
+    --gradient-depth: linear-gradient(135deg, hsl(204, 65%, 16%), hsl(0, 0%, 10%));
   }
 
   .dark {
-    --background: 224 71% 4%; /* Dark blue */
-    --foreground: 213 31% 91%; /* Light gray */
-    --card: 224 71% 4%; /* Dark blue */
-    --card-foreground: 213 31% 91%; /* Light gray */
-    --popover: 224 71% 4%; /* Dark blue */
-    --popover-foreground: 213 31% 91%; /* Light gray */
-    --primary: 142 70% 45%; /* Light green */
-    --primary-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-    --secondary: 217.2 32.6% 17.5%; /* Dark blue */
-    --secondary-foreground: 210 40% 98%; /* Light gray */
-    --muted: 217.2 32.6% 17.5%; /* Dark blue */
-    --muted-foreground: 215 20.2% 65.1%; /* Medium gray */
-    --accent: 142 70% 50%; /* Light green */
-    --accent-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-    --destructive: 0 62.8% 30.6%; /* Dark red */
-    --destructive-foreground: 210 40% 98%; /* Light gray */
-    --border: 217.2 32.6% 17.5%; /* Dark blue */
-    --input: 217.2 32.6% 17.5%; /* Dark blue */
-    --ring: 142 70% 45%; /* Light green */
-    --folder-back: 142 70% 45%;
-    --folder-front: 145 75% 50%;
-    --folder-tab: 140 65% 40%;
-    
-    /* Climate-themed variables for dark mode */
-    --climate-primary: 142 70% 45%; /* Light green */
-    --climate-secondary: 180 60% 50%; /* Light teal */
-    --climate-accent: 200 80% 60%; /* Light sky blue */
-    --climate-warm: 30 90% 60%; /* Light warm tone */
-    --climate-neutral: 220 20% 15%; /* Dark neutral */
-    --climate-dark: 200 40% 90%; /* Light blue */
+    --background: 0 0% 12%; /* Dark background */
+    --foreground: 0 0% 95%; /* Light foreground */
+    --card: 0 0% 18%; /* Dark card */
+    --card-foreground: 0 0% 95%; /* Light card text */
+    --popover: 0 0% 15%; /* Dark popover */
+    --popover-foreground: 0 0% 95%; /* Light popover text */
+    --primary: 204 70% 30%; /* Lighter ocean blue */
+    --primary-foreground: 0 0% 95%; /* Light text */
+    --secondary: 180 40% 55%; /* Lighter misty teal */
+    --secondary-foreground: 0 0% 5%; /* Dark text */
+    --muted: 0 0% 15%; /* Dark muted */
+    --muted-foreground: 0 0% 65%; /* Muted light text */
+    --accent: 5 65% 75%; /* Lighter sunset coral */
+    --accent-foreground: 0 0% 5%; /* Dark text */
+    --destructive: 0 70% 50%; /* Lighter red */
+    --destructive-foreground: 0 0% 95%; /* Light text */
+    --border: 0 0% 25%; /* Dark border */
+    --input: 0 0% 20%; /* Dark input */
+    --ring: 204 70% 30%; /* Lighter ocean blue */
   }
 }
 
@@ -115,10 +101,74 @@
 
 body {
   font-family: var(--apple-font-family);
-  background-color: var(--climate-neutral);
+  background-color: hsl(var(--climate-neutral));
   color: var(--foreground);
-  line-height: 1.6;
+  line-height: 1.7;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+}
+
+/* Enhanced readability and typography */
+p {
+  margin-bottom: 1.2em;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-bottom: 0.8em;
+  margin-top: 1.5em;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+/* Section spacing for better visual hierarchy */
+section {
+  margin-bottom: 4rem;
+}
+
+.container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Card content spacing */
+.card-content {
+  padding: 1.5rem;
+}
+
+/* List styling for better readability */
+ul, ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* Vertical rhythm adjustments */
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.text-block {
+  margin-bottom: 1.5rem;
 }
 
 /* Apple-style animations */
@@ -172,14 +222,14 @@ body {
 }
 
 .apple-button-primary:hover {
-  background: var(--climate-primary);
+  background: hsl(var(--climate-primary));
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(142, 176, 54, 0.35);
 }
 
 .apple-button-secondary {
   background-color: transparent;
-  color: var(--climate-primary);
+  color: hsl(var(--climate-primary));
   padding: 16px 32px;
   font-weight: 500;
   border: 1px solid var(--border);
@@ -206,7 +256,7 @@ body {
   box-shadow: var(--apple-shadow-medium);
   transform: translateY(-6px);
   transition: var(--apple-transition);
-  border-color: var(--climate-secondary);
+  border-color: hsl(var(--climate-secondary));
 }
 
 /* Enhanced glassmorphism effect with climate theme */
@@ -276,8 +326,8 @@ html {
 
 /* Focus styles for accessibility with climate theme */
 *:focus-visible {
-  outline: 2px solid var(--climate-primary);
-  outline-offset: 2px;
+  outline: 3px solid hsl(var(--climate-primary));
+  outline-offset: 3px;
   border-radius: 4px;
 }
 
@@ -326,6 +376,31 @@ html {
 
 .timeline-line-progress.is-visible {
   transform: scaleY(1);
+}
+
+/* Respect prefers-reduced-motion at OS level */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animated-element,
+  .fade-in-up,
+  .slideUp,
+  .slide-up,
+  .smooth-animation,
+  .parallax-element,
+  .kenburns-effect,
+  .float,
+  .glass-card,
+  .apple-card {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* High frame rate animations */

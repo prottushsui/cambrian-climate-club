@@ -34,9 +34,9 @@ const itemVariants: Variants = {
 const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = false }) => {
   return (
     <motion.div 
-        className="apple-card glass-card rounded-3xl overflow-hidden shadow-xl border border-white/20"
-        whileHover={{ y: -10, scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        className="apple-card glass-card rounded-2xl overflow-hidden shadow-lg border border-white/20"
+        whileHover={{ y: -8, scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         data-testid={`project-card-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
         role="listitem"
@@ -46,17 +46,17 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = fa
         <OptimizedImage 
           src={project.imageUrl} 
           alt={project.title} 
-          className="w-full h-60 object-cover transition-transform duration-700" 
+          className="w-full h-44 object-cover transition-transform duration-700" 
           placeholder="/images/homepagepicture1.jpg"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-            <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+            <h3 className="text-xl font-bold text-white">{project.title}</h3>
         </div>
       </div>
-      <div className="p-6">
-        {project.description && <p className="text-slate-600">{project.description}</p>}
+      <div className="p-4">
+        {project.description && <p className="text-slate-600 text-sm">{project.description}</p>}
       </div>
     </motion.div>
   );
