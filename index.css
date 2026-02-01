@@ -1,3 +1,6 @@
+/* Google Fonts Import - MUST come first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -130,11 +133,11 @@
   }
 
   .btn-primary {
-    @apply bg-ocean text-cloud hover:bg-opacity-90 shadow-md hover:shadow-lg active:scale-95;
+    @apply bg-ocean text-cloud hover:opacity-90 shadow-md hover:shadow-lg active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-teal text-cloud hover:bg-opacity-90 shadow-md hover:shadow-lg active:scale-95;
+    @apply bg-teal text-cloud hover:opacity-90 shadow-md hover:shadow-lg active:scale-95;
   }
 
   .btn-outline {
