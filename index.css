@@ -1,291 +1,269 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================
+   Design System: Cambrian Climate Club
+   ============================================ */
+
 @layer base {
   :root {
-    /* Climate-themed color palette */
-    --background: 0 0% 100%; /* Pure white */
-    --foreground: 222.2 84% 4.9%; /* Dark gray */
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 222.2 84% 4.9%; /* Dark gray */
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 222.2 84% 4.9%; /* Dark gray */
-    --primary: 142 76% 36%; /* Deep green */
-    --primary-foreground: 210 40% 98%; /* Light gray */
-    --secondary: 210 40% 96.1%; /* Light blue */
-    --secondary-foreground: 222.2 47.4% 11.2%; /* Medium gray */
-    --muted: 210 40% 96.1%; /* Light blue */
-    --muted-foreground: 215.4 16.3% 46.9%; /* Muted blue */
-    --accent: 142 65% 28%; /* Darker green */
-    --accent-foreground: 210 40% 98%; /* Light gray */
-    --destructive: 0 84.2% 60.2%; /* Red */
-    --destructive-foreground: 210 40% 98%; /* Light gray */
-    --border: 214.3 31.8% 91.4%; /* Light gray */
-    --input: 214.3 31.8% 91.4%; /* Light gray */
-    --ring: 142 76% 36%; /* Deep green */
-    --radius: 0.5rem;
-    --folder-back: 142 76% 36%;
-    --folder-front: 145 80% 40%;
-    --folder-tab: 140 70% 30%;
-    
-    /* Climate-themed variables */
-    --climate-primary: 142 76% 36%; /* Deep green */
-    --climate-secondary: 180 50% 40%; /* Ocean teal */
-    --climate-accent: 200 70% 50%; /* Sky blue */
-    --climate-warm: 30 80% 50%; /* Warm earth tone */
-    --climate-neutral: 210 20% 98%; /* Light neutral */
-    --climate-dark: 200 30% 10%; /* Dark blue */
-    
-    /* Premium gradients */
-    --gradient-climate: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(180, 50%, 40%));
-    --gradient-sky: linear-gradient(135deg, hsl(200, 70%, 50%), hsl(180, 50%, 60%));
-    --gradient-earth: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(30, 80%, 50%));
-    --gradient-ocean: linear-gradient(135deg, hsl(180, 50%, 40%), hsl(200, 70%, 50%));
+    /* Climate Club Brand Palette */
+    --color-ocean: #0F3D5C;
+    --color-teal: #4C8C8C;
+    --color-sand: #D9C7A0;
+    --color-coral: #E68A7D;
+    --color-charcoal: #2E2E2E;
+    --color-cloud: #F4F4F2;
+
+    /* Semantic tokens */
+    --bg-primary: #F4F4F2;
+    --bg-secondary: #FFFFFF;
+    --text-primary: #2E2E2E;
+    --text-secondary: #4C8C8C;
+    --text-muted: #7A7A7A;
+    --border-color: #D9C7A0;
+    --border-color-light: #E8E0CE;
+
+    /* Premium transitions */
+    --transition-base: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(15, 61, 92, 0.08);
+    --shadow-md: 0 4px 16px rgba(15, 61, 92, 0.12);
+    --shadow-lg: 0 8px 32px rgba(15, 61, 92, 0.15);
+    --shadow-xl: 0 12px 48px rgba(15, 61, 92, 0.2);
   }
 
-  .dark {
-    --background: 224 71% 4%; /* Dark blue */
-    --foreground: 213 31% 91%; /* Light gray */
-    --card: 224 71% 4%; /* Dark blue */
-    --card-foreground: 213 31% 91%; /* Light gray */
-    --popover: 224 71% 4%; /* Dark blue */
-    --popover-foreground: 213 31% 91%; /* Light gray */
-    --primary: 142 70% 45%; /* Light green */
-    --primary-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-    --secondary: 217.2 32.6% 17.5%; /* Dark blue */
-    --secondary-foreground: 210 40% 98%; /* Light gray */
-    --muted: 217.2 32.6% 17.5%; /* Dark blue */
-    --muted-foreground: 215 20.2% 65.1%; /* Medium gray */
-    --accent: 142 70% 50%; /* Light green */
-    --accent-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-    --destructive: 0 62.8% 30.6%; /* Dark red */
-    --destructive-foreground: 210 40% 98%; /* Light gray */
-    --border: 217.2 32.6% 17.5%; /* Dark blue */
-    --input: 217.2 32.6% 17.5%; /* Dark blue */
-    --ring: 142 70% 45%; /* Light green */
-    --folder-back: 142 70% 45%;
-    --folder-front: 145 75% 50%;
-    --folder-tab: 140 65% 40%;
-    
-    /* Climate-themed variables for dark mode */
-    --climate-primary: 142 70% 45%; /* Light green */
-    --climate-secondary: 180 60% 50%; /* Light teal */
-    --climate-accent: 200 80% 60%; /* Light sky blue */
-    --climate-warm: 30 90% 60%; /* Light warm tone */
-    --climate-neutral: 220 20% 15%; /* Dark neutral */
-    --climate-dark: 200 40% 90%; /* Light blue */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+
+  p {
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--color-ocean);
+    transition: var(--transition-base);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-teal);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-ocean);
+      outline-offset: 2px;
+    }
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-base);
+
+    &:focus-visible {
+      outline: 2px solid var(--color-ocean);
+      outline-offset: 2px;
+    }
   }
 }
 
-/* Apple-style typography - using SF Pro fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* ============================================
+   Component Styles
+   ============================================ */
 
-:root {
-  --apple-font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-  --apple-accent-color: #0071e3;
-  --apple-accent-color-rgb: 0, 113, 227;
-  --apple-background-color: #ffffff;
-  --apple-secondary-background-color: #f5f5f7;
-  --apple-tertiary-background-color: #e8e8e8;
-  --apple-text-color: #1d1d1f;
-  --apple-secondary-text-color: #86868b;
-  --apple-system-blue: #007AFF;
-  --apple-system-gray: #8e8e93;
-  --apple-system-gray2: #aeaeb2;
-  --apple-system-gray3: #c7c7cc;
-  --apple-system-gray4: #d1d1d6;
-  --apple-system-gray5: #e5e5ea;
-  --apple-system-gray6: #f2f2f7;
-  --apple-border-radius: 14px;
-  --apple-border-radius-medium: 12px;
-  --apple-border-radius-small: 10px;
-  --apple-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --apple-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --apple-shadow-large: 0 16px 40px rgba(0, 0, 0, 0.16);
-  --apple-transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-  --apple-glass-bg: rgba(255, 255, 255, 0.7);
-  --apple-glass-border: rgba(255, 255, 255, 0.8);
-  --apple-glass-backdrop: blur(20px);
-}
+@layer components {
+  /* Premium Button Styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-300;
+    letter-spacing: -0.01em;
+  }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  .btn-primary {
+    @apply bg-ocean text-cloud hover:bg-opacity-90 shadow-md hover:shadow-lg active:scale-95;
+  }
 
-body {
-  font-family: var(--apple-font-family);
-  background-color: var(--climate-neutral);
-  color: var(--foreground);
-  line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+  .btn-secondary {
+    @apply bg-teal text-cloud hover:bg-opacity-90 shadow-md hover:shadow-lg active:scale-95;
+  }
 
-/* Apple-style animations */
-.animated-element {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
-}
-.fade-in-up {
-  transform: translateY(20px);
-}
-.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.stagger-child {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.stagger-child.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .btn-outline {
+    @apply border-2 border-ocean text-ocean hover:bg-ocean/5 active:bg-ocean/10;
+  }
 
-/* Enhanced Apple-style buttons with climate theme */
-.apple-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--apple-border-radius-medium);
-  font-weight: 500;
-  transition: var(--apple-transition);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  border: none;
-  outline: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  font-family: var(--apple-font-family);
-  letter-spacing: -0.01em;
+  .btn-ghost {
+    @apply text-ocean hover:bg-ocean/5 active:bg-ocean/10;
+  }
+
+  /* Premium Card Styles */
+  .card {
+    @apply bg-white rounded-2xl shadow-md transition-all duration-300 overflow-hidden;
+    border: 1px solid var(--border-color-light);
+  }
+
+  .card-hover {
+    @apply card hover:shadow-lg hover:-translate-y-2;
+  }
+
+  /* Section Headers */
+  .section-header {
+    @apply space-y-4 mb-12;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold text-ocean;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-text-muted max-w-2xl;
+  }
+
+  /* Grid Layout */
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+
+  /* Container */
+  .container-premium {
+    @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  }
+
+  /* Text utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-ocean via-teal to-coral bg-clip-text text-transparent;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-charcoal/10 backdrop-blur-xl border border-charcoal/10;
+  }
 }
 
-.apple-button-primary {
-  background: var(--gradient-climate);
-  color: white;
-  padding: 16px 32px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
 
-.apple-button-primary:hover {
-  background: var(--climate-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(142, 176, 54, 0.35);
-}
-
-.apple-button-secondary {
-  background-color: transparent;
-  color: var(--climate-primary);
-  padding: 16px 32px;
-  font-weight: 500;
-  border: 1px solid var(--border);
-}
-
-.apple-button-secondary:hover {
-  background-color: var(--muted);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-/* Apple-style cards with climate theme */
-.apple-card {
-  background: white;
-  border-radius: var(--apple-border-radius);
-  box-shadow: var(--apple-shadow);
-  transition: var(--apple-transition);
-  overflow: hidden;
-  position: relative;
-  border: 1px solid var(--border);
-}
-
-.apple-card:hover {
-  box-shadow: var(--apple-shadow-medium);
-  transform: translateY(-6px);
-  transition: var(--apple-transition);
-  border-color: var(--climate-secondary);
-}
-
-/* Enhanced glassmorphism effect with climate theme */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: var(--apple-glass-backdrop);
-  -webkit-backdrop-filter: var(--apple-glass-backdrop);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--apple-border-radius);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--apple-border-radius-medium);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* Apple-style navigation with climate theme */
-.apple-navbar {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-  transition: var(--apple-transition);
-}
-
-/* Apple-style typography */
-.apple-title {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  font-family: var(--apple-font-family);
-}
-
-.apple-subtitle {
-  font-weight: 400;
-  color: var(--apple-secondary-text-color);
-  font-family: var(--apple-font-family);
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar for Webkit browsers */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--apple-system-gray6);
-  border-radius: 4px;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--apple-system-gray3);
-  border-radius: 4px;
+  background: var(--color-sand);
+  border-radius: 5px;
+
+  &:hover {
+    background: var(--color-teal);
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--apple-system-gray2);
+/* ============================================
+   Utility Classes for Premium Interactions
+   ============================================ */
+
+.smooth-hover {
+  transition: var(--transition-smooth);
 }
 
-/* Focus styles for accessibility with climate theme */
-*:focus-visible {
-  outline: 2px solid var(--climate-primary);
-  outline-offset: 2px;
-  border-radius: 4px;
+.premium-transition {
+  transition: var(--transition-smooth);
 }
 
-/* Animation for entrance */
-@keyframes slideUp {
+.fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ============================================
+   Keyframe Animations
+   ============================================ */
+
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -293,45 +271,63 @@ html {
   }
 }
 
-.slide-up {
-  animation: slideUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@keyframes kenburns {
-  0% { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.1) translate(5px, 10px); }
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.group:hover .kenburns-effect {
-  animation: kenburns 15s ease-out infinite;
+/* ============================================
+   Responsive Utilities
+   ============================================ */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
 }
 
-/* Parallax effect */
-.parallax-element {
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-.timeline-line-progress {
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.timeline-line-progress.is-visible {
-  transform: scaleY(1);
-}
-
-/* High frame rate animations */
-@media (prefers-reduced-motion: no-preference) {
-  .smooth-animation {
-    animation-duration: 0.3s;
-    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

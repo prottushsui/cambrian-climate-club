@@ -1,64 +1,85 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { achievements, galleries } from '../data/content';
 import SectionHeader from '../components/SectionHeader';
 import ImageGallery from '../components/ImageGallery';
-import VideoPlayer from '../components/VideoPlayer';
 import type { Achievement } from '../types/types';
 
-const TimelineItem: React.FC<{ item: Achievement, index: number }> = ({ item, index }) => (
-    <motion.li 
-        className="mb-12 ms-6"
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ delay: index * 0.15, type: "spring", stiffness: 80 }}
-    >
-        <motion.div 
-            className="absolute w-4 h-4 bg-white rounded-full mt-1.5 -start-2 border-4 border-primary-600 z-10 box-content"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.15 + 0.1, type: "spring" }}
-            whileHover={{ scale: 1.5, borderColor: "#059669" }}
-        />
-        <div className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-100">
-            <time className="mb-2 text-sm font-bold leading-none text-primary-600 block">{item.year}</time>
-            <h3 className="text-lg font-medium text-gray-800">{item.description}</h3>
-        </div>
-    </motion.li>
+const TimelineItem: React.FC<{ item: Achievement; index: number }> = ({ item, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ delay: index * 0.1 }}
+    className="relative mb-8"
+  >
+    <div className="flex gap-6">
+      {/* Timeline dot */}
+      <div className="relative flex flex-col items-center">
+        <motion.div
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1 + 0.1 }}
+          className="w-6 h-6 bg-ocean rounded-full border-4 border-sand flex items-center justify-center z-10"
+          whileHover={{ scale: 1.2 }}
+        >
+          <div className="w-2 h-2 bg-cloud rounded-full"></div>
+        </motion.div>
+        {index < achievements.length - 1 && (
+          <div className="w-1 h-16 bg-gradient-to-b from-ocean to-teal opacity-30 mt-2"></div>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 pt-1">
+        <motion.div
+          className="card-hover p-6"
+          whileHover={{ scale: 1.02 }}
+        >
+          <time className="text-sm font-bold text-ocean block mb-2">{item.year}</time>
+          <h3 className="text-lg font-semibold text-charcoal">{item.description}</h3>
+        </motion.div>
+      </div>
+    </div>
+  </motion.div>
 );
 
 const AchievementsPage: React.FC = () => {
   return (
-    <div>
-        <div className="container mx-auto px-4 py-20">
-            <SectionHeader 
-                title="Achievements & Milestones"
-                subtitle="Celebrating our key accomplishments and progress since our founding."
-            />
+    <div className="bg-cloud">
+      {/* Header Section */}
+      <section className="container-premium py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionHeader
+            title="Achievements & Milestones"
+            subtitle="Celebrating our key accomplishments and the impact we've created together."
+          />
+        </motion.div>
+      </section>
 
-            <div className="max-w-2xl mx-auto relative">
-                 {/* Timeline vertical line */}
-                <motion.div 
-                    className="absolute top-0 bottom-0 left-[23px] w-0.5 bg-slate-200 origin-top"
-                    initial={{ scaleY: 0 }}
-                    whileInView={{ scaleY: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: "easeInOut" }}
-                />
-                <ol className="relative ml-6">
-                    {achievements.map((item, index) => (
-                        <TimelineItem key={index} item={item} index={index} />
-                    ))}
-                </ol>
-            </div>
-        </div>
+      {/* Timeline Section */}
+      <section className="container-premium pb-24">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto"
+        >
+          {achievements.map((item, index) => (
+            <TimelineItem key={index} item={item} index={index} />
+          ))}
+        </motion.div>
+      </section>
 
-        <div className="bg-slate-50 border-t border-slate-200">
-            <ImageGallery galleries={galleries} />
-        </div>
+      {/* Gallery Section */}
+      <section className="bg-white border-t border-sand/40 py-24">
+        <ImageGallery galleries={galleries} />
+      </section>
     </div>
   );
 };
