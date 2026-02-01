@@ -1,103 +1,75 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const SocialLink: React.FC<{ href: string; label: string; path: string }> = ({ href, label, path }) => (
-    <motion.a 
-        href={href} 
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-charcoal-500 hover:text-primary-600 transition-colors block"
-        aria-label={label}
-        whileHover={{ scale: 1.15, color: '#0F3D5C' }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-    >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fillRule="evenodd" d={path} clipRule="evenodd" />
-        </svg>
-    </motion.a>
+  <a 
+    href={href} 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-text-secondary hover:text-primary-600 transition-colors"
+    aria-label={label}
+  >
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d={path} />
+    </svg>
+  </a>
 );
 
 const FooterLink: React.FC<{ to: string; children: React.ReactNode }> = ({ to, children }) => (
-    <motion.li 
-        whileHover={{ x: 3 }} 
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
-        <Link to={to} className="hover:text-primary-600 transition-colors flex items-center text-sm">
-            <span className="w-1.5 h-1.5 bg-primary-400 rounded-full mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>
-            {children}
-        </Link>
-    </motion.li>
+  <li>
+    <Link to={to} className="text-text-secondary hover:text-primary-600 transition-colors text-sm">
+      {children}
+    </Link>
+  </li>
 );
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-sandstone-300/80 backdrop-blur-sm border-t border-sandstone-400/60 pt-16 pb-8">
-      <div className="max-w-screen-xl mx-auto p-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-primary-600 text-text-light border-t border-primary-700 mt-12">
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           
-          {/* Column 1: Brand & About */}
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse" aria-label="Cambrian Climate Club Home">
-              <img src="/images/Club logo.png" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap text-charcoal-700">Cambrian Climate Club</span>
-            </Link>
-            <p className="text-charcoal-600 text-sm leading-relaxed">
-              Empowering students to take action for a sustainable future through education, innovation, and community service at Cambrian School & College, Campus 2.
+          {/* Column 1: Organization Info */}
+          <div>
+            <h3 className="font-semibold mb-3 text-sm uppercase tracking-wide">About</h3>
+            <p className="text-sm text-text-light/80 leading-relaxed">
+              Cambrian Climate Club is a student-led initiative dedicated to promoting sustainability and climate awareness at Cambrian School & College, Campus 2.
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-charcoal-800 font-semibold mb-4 uppercase text-xs tracking-wider">Quick Links</h3>
-            <ul className="space-y-2 text-sm text-charcoal-600">
+            <h3 className="font-semibold mb-3 text-sm uppercase tracking-wide">Quick Links</h3>
+            <ul className="space-y-2 text-sm">
               <FooterLink to="/about">About Us</FooterLink>
-              <FooterLink to="/projects">Our Projects</FooterLink>
+              <FooterLink to="/projects">Projects</FooterLink>
               <FooterLink to="/achievements">Achievements</FooterLink>
-              <FooterLink to="/leadership">Leadership Team</FooterLink>
-              <FooterLink to="/advisory-committee">Advisory Committee</FooterLink>
+              <FooterLink to="/leadership">Leadership</FooterLink>
             </ul>
           </div>
 
-          {/* Column 3: Contact Info */}
+          {/* Column 3: Contact & Social */}
           <div>
-            <h3 className="text-charcoal-800 font-semibold mb-4 uppercase text-xs tracking-wider">Contact Us</h3>
-            <ul className="space-y-3 text-sm text-charcoal-600">
-              <li className="flex items-start space-x-3">
-                 <svg className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                 <span className="leading-relaxed">Cambrian School & College, Campus 2<br/>Dhaka, Bangladesh</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                 <svg className="w-5 h-5 text-primary-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                 <a href="mailto:info@cambrianclimateclub.com" className="hover:text-primary-600 transition-colors">info@cambrianclimateclub.com</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Social Media */}
-          <div>
-            <h3 className="text-charcoal-800 font-semibold mb-4 uppercase text-xs tracking-wider">Follow Us</h3>
-            <p className="text-charcoal-600 text-sm mb-4">Stay connected with our latest updates, events, and environmental tips.</p>
-            <div className="flex space-x-4">
-              <SocialLink href="#" label="Facebook" path="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-              <SocialLink href="#" label="Instagram" path="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2z" />
-              <SocialLink href="#" label="Twitter" path="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+            <h3 className="font-semibold mb-3 text-sm uppercase tracking-wide">Connect</h3>
+            <div className="flex space-x-4 mb-4">
+              <SocialLink href="#" label="Facebook" path="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              <SocialLink href="#" label="Instagram" path="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.117.666c-.788.334-1.559.923-2.3 1.624-.74.8-1.456 1.68-1.89 2.566C.333 5.43.131 6.3.069 7.575.012 8.856 0 9.263 0 12s.015 3.148.072 4.428c.06 1.274.26 2.145.593 2.932a5.648 5.648 0 001.624 2.3c.8.656 1.68 1.273 2.566 1.707.787.333 1.658.532 2.932.591C8.856 23.988 9.263 24 12 24s3.148-.015 4.428-.072c1.274-.059 2.145-.259 2.932-.591.9-.434 1.766-1.051 2.466-1.707a5.648 5.648 0 001.624-2.3c.333-.787.532-1.658.591-2.932.058-1.28.072-1.687.072-4.428s-.015-3.148-.072-4.428c-.059-1.274-.259-2.145-.591-2.932a5.52 5.52 0 00-1.624-2.3C19.884 1.288 18.956.611 18.056.25c-.787-.333-1.658-.532-2.932-.591C15.144.012 14.737 0 12 0zm0 2.16c3.203 0 3.585.009 4.849.070 1.171.054 1.805.25 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.228.061 1.264.07 1.646.07 4.849s-.009 3.585-.07 4.849c-.054 1.171-.25 1.805-.415 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.228.413-1.264.061-1.646.07-4.849.07s-3.585-.009-4.849-.07c-1.171-.054-1.805-.25-2.227-.415-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.228-.061-1.264-.07-1.646-.07-4.849s.009-3.585.07-4.849c.054-1.171.25-1.805.415-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.228-.413 1.264-.061 1.646-.07 4.849-.07z" />
+              <SocialLink href="#" label="Twitter" path="M23.953 4.57a10 10 0 002.856-3.4c-1.3.73-2.8 1.25-4.4 1.6 1.25-1.645 2.193-3.12 2.544-4.77-1.922 1.29-4.15 2.16-6.53 2.48-1.51-1.61-3.66-2.62-6.044-2.62-4.577 0-8.294 3.717-8.294 8.294 0 .65.073 1.285.206 1.9-6.04-.3-11.38-3.196-14.97-7.6-.63 1.08-1.01 2.33-1.01 3.68 0 2.876 1.464 5.411 3.686 6.9-1.36-.046-2.64-.417-3.76-1.088.026.057.026.114.026.17 0 4.02 2.858 7.37 6.66 8.13-.696.188-1.432.288-2.19.288-.537 0-1.063-.05-1.579-.15 1.067 3.33 4.15 5.76 7.8 5.83-2.84 2.23-6.42 3.56-10.3 3.56-.67 0-1.33-.04-1.98-.11 3.68 2.36 8.05 3.74 12.73 3.74 15.28 0 23.6-12.67 23.6-23.62 0-.36-.01-.72-.02-1.06 1.62-1.17 3.02-2.64 4.13-4.32z" />
             </div>
+            <p className="text-xs text-text-light/70">
+              Cambrian School & College, Campus 2<br/>Dhaka, Bangladesh
+            </p>
           </div>
-
         </div>
-        
-        <hr className="my-8 border-sandstone-400/60" />
-        
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-charcoal-500 sm:text-center">© {currentYear} Cambrian Climate Club. All Rights Reserved.</span>
-          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-             <Link to="#" className="text-sm text-charcoal-500 hover:text-charcoal-900 transition-colors">Privacy Policy</Link>
-             <Link to="#" className="text-sm text-charcoal-500 hover:text-charcoal-900 transition-colors">Terms of Service</Link>
+
+        <div className="border-t border-primary-700 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-text-light/70">
+          <span>© {currentYear} Cambrian Climate Club. All rights reserved.</span>
+          <div className="flex space-x-4 mt-3 md:mt-0">
+            <Link to="#" className="hover:text-text-light transition-colors">Privacy Policy</Link>
+            <Link to="#" className="hover:text-text-light transition-colors">Terms</Link>
           </div>
         </div>
       </div>
