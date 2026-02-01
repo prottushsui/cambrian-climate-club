@@ -1,4 +1,3 @@
-/* Google Fonts Import - MUST come first */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -133,19 +132,54 @@
   }
 
   .btn-primary {
-    @apply bg-ocean text-cloud hover:opacity-90 shadow-md hover:shadow-lg active:scale-95;
+    background-color: var(--color-ocean);
+    color: var(--color-cloud);
+    box-shadow: var(--shadow-md);
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-300 active:scale-95;
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: var(--shadow-lg);
+    }
   }
 
   .btn-secondary {
-    @apply bg-teal text-cloud hover:opacity-90 shadow-md hover:shadow-lg active:scale-95;
+    background-color: var(--color-teal);
+    color: var(--color-cloud);
+    box-shadow: var(--shadow-md);
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-300 active:scale-95;
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: var(--shadow-lg);
+    }
   }
 
   .btn-outline {
-    @apply border-2 border-ocean text-ocean hover:bg-ocean/5 active:bg-ocean/10;
+    border: 2px solid var(--color-ocean);
+    color: var(--color-ocean);
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-300;
+
+    &:hover {
+      background-color: rgba(15, 61, 92, 0.05);
+    }
+
+    &:active {
+      background-color: rgba(15, 61, 92, 0.1);
+    }
   }
 
   .btn-ghost {
-    @apply text-ocean hover:bg-ocean/5 active:bg-ocean/10;
+    color: var(--color-ocean);
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-300;
+
+    &:hover {
+      background-color: rgba(15, 61, 92, 0.05);
+    }
+
+    &:active {
+      background-color: rgba(15, 61, 92, 0.1);
+    }
   }
 
   /* Premium Card Styles */
