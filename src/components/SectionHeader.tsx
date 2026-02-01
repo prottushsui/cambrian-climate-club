@@ -1,33 +1,22 @@
 
 import React, { memo } from 'react';
-import { motion } from 'framer-motion';
 
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
+  textColor?: string;
 }
 
-const SectionHeader: React.FC<SectionHeaderProps> = memo(({ title, subtitle }) => {
+const SectionHeader: React.FC<SectionHeaderProps> = memo(({ title, subtitle, textColor = "text-primary-600" }) => {
   return (
-    <div className="text-center mb-12 section-header">
-      <motion.h2 
-        className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight apple-title"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
+    <div className="text-center mb-12">
+      <h2 className={`text-3xl md:text-4xl font-bold tracking-tight ${textColor}`}>
         {title}
-      </motion.h2>
+      </h2>
       {subtitle && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          >
-             <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto font-light">{subtitle}</p>
-          </motion.div>
+        <p className="mt-3 text-base text-text-secondary max-w-2xl mx-auto">
+          {subtitle}
+        </p>
       )}
     </div>
   );

@@ -1,109 +1,43 @@
 
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
 import SectionHeader from '../components/SectionHeader';
-import { 
-  fadeInUpVariants, 
-  scaleInVariants, 
-  slideInLeftVariants, 
-  slideInRightVariants, 
-  containerVariants 
-} from '../constants/animation';
-
-const itemVariants: Variants = {
-    hidden: { opacity: 0, x: -20, scale: 0.95 },
-    visible: { 
-        opacity: 1, 
-        x: 0,
-        scale: 1,
-        transition: { type: "spring", stiffness: 80, damping: 15 }
-    }
-};
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="max-w-5xl mx-auto">
+    <div className="py-12 bg-sand-100">
+      <div className="max-w-6xl mx-auto px-4">
         <SectionHeader
           title="About Cambrian Climate Club"
           subtitle="Fostering a sustainable future, one initiative at a time."
         />
 
-        <motion.div 
-          className="bg-white/80 backdrop-blur-xl p-6 md:p-10 rounded-3xl shadow-lg border border-white/20 apple-card glass-card"
-          initial={{ opacity: 0, scale: 0.95, y: 30 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
-        >
-          <div className="grid md:grid-cols-3 gap-10 items-center">
-              <motion.div 
-                  className="md:col-span-1 flex justify-center"
-                  initial={{ scale: 0, rotate: -180, opacity: 0 }}
-                  whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: "spring", bounce: 0.5, duration: 1.5, delay: 0.2 }}
-                  whileHover={{ rotate: 5, scale: 1.05 }}
-              >
-                  <img src="/images/Club logo.png" alt="Cambrian Climate Club Logo" className="h-40 w-auto object-contain drop-shadow-lg rounded-2xl"/>
-              </motion.div>
-              <div className="md:col-span-2 space-y-6">
-                  <motion.h3 
-                      className="text-2xl font-semibold text-slate-800 apple-title"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 }}
-                  >
-                      Our Story
-                  </motion.h3>
-                  <motion.p 
-                      className="text-slate-600 text-lg leading-relaxed"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 }}
-                  >
-                      Founded in 2023 by a passionate group of over 20 students, the Cambrian Climate Club at Campus 2 was born from a shared desire to make a tangible difference in our immediate environment. We believe that meaningful change starts locally, and our mission is to empower students to become proactive leaders in sustainability and climate action.
-                  </motion.p>
-              </div>
+        <div className="bg-text-light p-8 rounded-lg border border-sand-300 shadow-md">
+          <div className="grid md:grid-cols-3 gap-8 items-center mb-12">
+            <div className="md:col-span-1 flex justify-center">
+              <img src="/images/Club logo.png" alt="Cambrian Climate Club Logo" className="h-32 w-auto object-contain"/>
+            </div>
+            <div className="md:col-span-2 space-y-4">
+              <h3 className="text-2xl font-semibold text-primary-600">Our Story</h3>
+              <p className="text-text-secondary leading-relaxed">
+                Founded in 2023 by a passionate group of over 20 students, the Cambrian Climate Club at Campus 2 was born from a shared desire to make a tangible difference in our immediate environment. We believe that meaningful change starts locally, and our mission is to empower students to become proactive leaders in sustainability and climate action.
+              </p>
+            </div>
           </div>
 
-          <div className="mt-12">
-              <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-              >
-                  <h3 className="text-2xl font-semibold text-slate-800 mb-8 text-center apple-title">Core Activities & Focus Areas</h3>
-              </motion.div>
-              
-              <motion.ul 
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5 text-slate-700"
-                  variants={containerVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-              >
-                {['Sustainability Projects', 'Environmental Education', 'Tree Plantation Drives', 'Plastic-Free Campus Initiatives', 'Rooftop Gardening', 'Climate Conferences'].map((activity) => (
-                  <motion.li 
-                      key={activity} 
-                      className="flex items-center p-4 bg-slate-50/60 backdrop-blur-sm rounded-2xl border border-gray-100 hover:shadow-md transition-shadow apple-card glass-effect"
-                      variants={itemVariants}
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(248, 250, 252, 0.8)", x: 3 }}
-                  >
-                      <motion.div 
-                          className="bg-blue-100 p-2 rounded-full mr-4 text-blue-600"
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                      >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                      </motion.div>
-                      <span className="font-medium text-lg">{activity}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
+          <div>
+            <h3 className="text-2xl font-semibold text-primary-600 mb-6 text-center">Core Activities & Focus Areas</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {['Sustainability Projects', 'Environmental Education', 'Tree Plantation Drives', 'Plastic-Free Campus Initiatives', 'Rooftop Gardening', 'Climate Conferences'].map((activity) => (
+                <li key={activity} className="flex items-center p-4 bg-sand-50 rounded-lg border border-sand-200 hover:shadow-base transition-shadow">
+                  <div className="bg-accent-100 p-2 rounded-full mr-3 text-accent-600">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                  </div>
+                  <span className="font-medium text-text-primary">{activity}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
