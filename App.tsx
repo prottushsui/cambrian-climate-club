@@ -8,7 +8,10 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import HomePage from '@/pages/HomePage';
 import AboutPage from '@/pages/AboutPage';
-import CombinedLeadershipPage from '@/pages/CombinedLeadershipPage';
+import LeadershipPage from '@/pages/LeadershipPage';
+import LeadershipCurrentPage from '@/pages/LeadershipCurrentPage';
+import LeadershipAdvisoryPage from '@/pages/LeadershipAdvisoryPage';
+import LeadershipAlumniPage from '@/pages/LeadershipAlumniPage';
 import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
 import DemoPage from '@/pages/DemoPage';
@@ -35,7 +38,10 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/leadership" element={<CombinedLeadershipPage />} />
+              <Route path="/leadership" element={<LeadershipPage />} />
+              <Route path="/leadership/current" element={<LeadershipCurrentPage />} />
+              <Route path="/leadership/advisory" element={<LeadershipAdvisoryPage />} />
+              <Route path="/leadership/alumni" element={<LeadershipAlumniPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/achievements" element={<AchievementsPage />} />
               <Route path="/demo" element={<DemoPage />} />

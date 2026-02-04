@@ -1,18 +1,13 @@
 import React from 'react';
 import ComingSoon from '@/components/ComingSoon';
 
-/**
- * QuizPage component - Main quiz interface
- * 
- * @component
- */
-const QuizPage: React.FC = () => {
+const LeadershipPage: React.FC = () => {
   return (
     <ComingSoon
-      title="Quiz"
+      title="Leadership"
       subtitle="Coming Soon"
     />
   );
 };
 
-export default QuizPage;
+export default LeadershipPage;
