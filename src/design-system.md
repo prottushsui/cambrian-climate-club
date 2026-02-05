@@ -1,113 +1,107 @@
 # Cambrian Climate Club Design System
 
 ## Overview
-The Cambrian Climate Club design system embodies calm, intelligent, credible, and elegant aesthetics with an editorial approach to environmental communication. The design avoids typical NGO activism in favor of academic credibility and sophisticated environmental awareness.
+The Cambrian Climate Club design system establishes an editorial, academic-grade digital presence. The experience prioritizes clarity, reading flow, and institutional credibility while keeping content intact.
 
 ## Color Palette
 
 ### Primary Colors
-- **Deep Ocean Blue**: `#0F3D5C` - Primary brand color representing depth, stability, and environmental consciousness
-- **Misty Teal**: `#4C8C8C` - Secondary color representing water, growth, and balance
-- **Sandstone Beige**: `#D9C7A0` - Background/neutral color representing earth, stability, and warmth
-- **Sunset Coral**: `#E68A7D` - Accent color representing energy, action, and hope
-- **Charcoal Grey**: `#2E2E2E` - Primary text color ensuring readability and contrast
-- **Cloud White**: `#F4F4F2` - Secondary background/highlight color for cards and elements
+- **Ink Navy**: `#0B1B2B` – Primary brand color for headings, navigation, and key emphasis
+- **Slate Teal**: `#2D4C5F` – Secondary tone for supportive UI elements and accents
+- **Parchment**: `#F5F1EA` – Primary background for calm, paper-like surfaces
+- **Copper**: `#B96A4A` – Accent color for calls-to-action and highlights
+- **Graphite**: `#1A1E24` – Main text color for strong contrast
+- **Pure White**: `#FFFFFF` – Cards and high-contrast surfaces
 
 ### Color Usage Guidelines
-- **Primary**: Headers, navigation, key CTAs, and dominant UI elements
-- **Secondary**: Supporting elements, secondary navigation, and complementary accents
-- **Background**: Overall page backgrounds and large area fills
-- **Accent**: Call-to-action buttons, highlights, and important notifications
-- **Text**: All textual content for optimal readability
-- **Highlight**: Cards, sections, and UI elements requiring emphasis
+- **Primary**: Navigation, key headlines, and primary CTAs
+- **Secondary**: Subheadings, secondary UI states, and structural emphasis
+- **Backgrounds**: Parchment for primary surfaces; white for elevated cards
+- **Accent**: CTAs, key metrics, and interactive focus states
+- **Text**: Graphite for body copy and primary labels
 
 ## Typography
 
 ### Font Stack
-- **Headings**: SF Pro Display, Inter, system-ui, sans-serif
-- **Body Text**: Inter, system-ui, sans-serif
+- **Headings**: Source Serif 4, Times New Roman, serif
+- **Body Text**: Source Sans 3, Inter, system-ui, sans-serif
 
 ### Hierarchy
-- **H1**: Large, bold headings for main page titles
-- **H2**: Section headers for major content divisions
-- **H3**: Subsection headers for detailed content organization
-- **Body**: Standard paragraph text with comfortable reading metrics
-- **Caption**: Supporting text, metadata, and auxiliary information
+- **H1**: 3.5–4rem editorial headline
+- **H2**: 2.25–2.75rem section headline
+- **H3**: 1.5–1.875rem subsection headline
+- **Body**: 1.05rem with 1.7–1.8 line height
+- **Caption**: 0.85–0.95rem for metadata and auxiliary text
 
 ## Spacing System
-Based on 4px grid units:
-- **xs**: 4px (0.25rem)
-- **sm**: 8px (0.5rem)
-- **md**: 12px (0.75rem)
-- **lg**: 16px (1rem)
-- **xl**: 24px (1.5rem)
-- **2xl**: 32px (2rem)
-- **3xl**: 48px (3rem)
+Based on an 8px grid:
+- **xs**: 8px
+- **sm**: 16px
+- **md**: 24px
+- **lg**: 32px
+- **xl**: 48px
+- **2xl**: 64px
+- **3xl**: 96px
+
+## Layout Grid
+- **Container**: Max-width 1120–1200px with generous horizontal padding
+- **Grid System**: 12-column responsive grid with 24px gutters
+- **Breakpoints**: Mobile-first, 768px tablet, 1024px desktop
 
 ## Component Library
 
-### Navigation Components
-- **Main Navigation**: Clean horizontal bar with subtle hover effects
-- **Breadcrumbs**: Minimal path indicators with chevron separators
-- **Pagination**: Centered controls with active state highlighting
+### Navigation
+- Fixed, understated navigation bar
+- Clear hierarchy between brand, links, and CTA
+- Mobile menu with linear, vertical list
 
-### Button Components
-- **Primary Button**: Deep Ocean Blue with white text, rounded corners
-- **Secondary Button**: Transparent with border, Deep Ocean Blue text
-- **Accent Button**: Sunset Coral with white text for critical actions
-- **Ghost Button**: Minimal style for subtle interactions
+### Buttons
+- **Primary**: Ink background, white text, subtle shadow
+- **Secondary**: Transparent or light surface with ink border
+- **Accent**: Copper background, white text
+- **Text**: Underlined link style for low-emphasis actions
 
-### Card Components
-- **Standard Card**: Sandstone Beige background with Charcoal Grey text
-- **Feature Card**: Elevated with subtle shadow and refined borders
-- **Profile Card**: Circular image with name and role information
-- **Project Card**: Image, title, and description with clean typography
+### Cards
+- **Editorial Card**: White surface, minimal shadow, crisp border
+- **Feature Card**: Elevated surface with rich typography
+- **Profile Card**: Portrait-first, structured metadata
 
-### Form Components
-- **Input Field**: Clean borders with focused state indicator
-- **Textarea**: Spacious with appropriate vertical rhythm
-- **Select Dropdown**: Consistent styling with custom arrow
-- **Checkbox/Radio**: Clear visual feedback with brand colors
+### Section Containers
+- Calm parchment background with clear spacing
+- Editorial dividers and eyebrow labels
 
-## Layout Grid
-- **Container**: Max-width 1200px with responsive padding
-- **Grid System**: 12-column flexible grid with consistent gutters
-- **Breakpoints**: Mobile-first with tablet and desktop variations
+### Media Blocks
+- Full-bleed images with soft overlays for text legibility
+- Consistent aspect ratios for galleries
 
-## Motion & Interaction Principles
+### Data/Metric Displays
+- Large numerals, serif headline styling
+- Supporting label with subdued ink or slate tone
 
-### Animation Philosophy
-- Purposeful movement that guides attention and reinforces hierarchy
-- Smooth transitions that enhance user experience without distraction
-- Micro-interactions that provide clear feedback to user actions
+### Forms
+- Clean fields with understated focus rings
+- Reduced visual noise, clear labels
 
-### Standard Animations
-- **Fade-in-up**: 0.8s duration for content appearing on scroll
-- **Stagger**: 0.5s duration for sequential element appearance
-- **Hover States**: Subtle elevation and color shifts
-- **Transitions**: 0.25s cubic-bezier for all interactive elements
+## Motion & Interaction
+
+### Philosophy
+Motion guides attention and communicates state. It should remain subtle and purposeful.
+
+### Standard Transitions
+- **Fade and rise**: 0.4–0.6s easing for content entry
+- **Hover**: 2–4px lift for cards and buttons
+- **Focus**: Visible ring in primary ink for accessibility
 
 ## Accessibility Standards
-- Minimum 4.5:1 contrast ratio for text and backgrounds
-- Keyboard navigation support for all interactive elements
-- Semantic HTML structure for screen readers
-- Focus indicators that meet WCAG standards
-
-## Responsive Breakpoints
-- **Mobile**: Up to 768px
-- **Tablet**: 768px to 1024px
-- **Desktop**: 1024px and above
+- Minimum contrast ratio 4.5:1
+- Keyboard navigation for all interactive controls
+- Semantic HTML and consistent focus states
+- Reduced-motion support by default
 
 ## Brand Voice & Tone
-- **Calm**: Measured, thoughtful communication
-- **Intelligent**: Well-researched, evidence-based content
-- **Credible**: Accurate, trustworthy, and authoritative
-- **Elegant**: Refined, sophisticated presentation
+- **Calm**: measured and confident
+- **Intelligent**: evidence-based and academic
+- **Credible**: authoritative and precise
+- **Editorial**: structured for long-form reading
 
-## Environmental Messaging Guidelines
-- Emphasize research, education, and thoughtful action
-- Avoid alarmist language in favor of informed optimism
-- Focus on solutions, progress, and positive impact
-- Maintain academic rigor while remaining accessible
-
-This design system ensures consistency across all touchpoints while maintaining the sophisticated, academic credibility required for an institutional website.
+This system ensures a refined, research-grade presentation while preserving the original informational content.
