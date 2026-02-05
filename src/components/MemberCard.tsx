@@ -23,9 +23,9 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
       className="editorial-card overflow-hidden text-center h-full flex flex-col transform-gpu"
       variants={itemVariants}
       whileHover={{ 
-        y: -12, 
-        scale: 1.02,
-        boxShadow: "0 25px 30px -5px rgb(0 0 0 / 0.15), 0 10px 10px -6px rgb(0 0 0 / 0.1)"
+        y: -14, 
+        scale: 1.03,
+        boxShadow: "0 30px 40px -8px rgb(0 0 0 / 0.16), 0 14px 12px -8px rgb(0 0 0 / 0.12)"
       }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
     >

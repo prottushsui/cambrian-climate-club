@@ -29,9 +29,9 @@ const ExecutiveMemberCard: React.FC<{ member: ExecutiveMember }> = ({ member }) 
     className="editorial-card p-6 text-center h-full flex flex-col items-center"
     variants={itemVariants}
     whileHover={{ 
-      y: -5,
-      scale: 1.02,
-      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1)" 
+      y: -8,
+      scale: 1.03,
+      boxShadow: "0 18px 30px -8px rgba(0, 0, 0, 0.14), 0 12px 12px -10px rgba(0, 0, 0, 0.12)" 
     }}
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
   >
@@ -49,9 +49,9 @@ const AdvisorCard: React.FC<{ advisor: Advisor }> = ({ advisor }) => (
     className="editorial-card overflow-hidden text-center h-full flex flex-col"
     variants={itemVariants}
     whileHover={{ 
-      y: -5,
-      scale: 1.02,
-      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1)" 
+      y: -8,
+      scale: 1.03,
+      boxShadow: "0 18px 30px -8px rgba(0, 0, 0, 0.14), 0 12px 12px -10px rgba(0, 0, 0, 0.12)" 
     }}
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
   >

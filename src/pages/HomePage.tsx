@@ -20,9 +20,9 @@ const StatCard: React.FC<{ value: React.ReactNode; label: string; 'data-testid'?
         className="bg-white p-6 rounded-xl text-center shadow-subtle border border-sandstone-200 transition-all duration-300"
         variants={itemVariants}
         whileHover={{ 
-            y: -4, 
-            scale: 1.02,
-            boxShadow: "0 12px 24px rgba(0, 0, 0, 0.08)" 
+            y: -6, 
+            scale: 1.03,
+            boxShadow: "0 18px 32px rgba(15, 23, 42, 0.16)" 
         }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
