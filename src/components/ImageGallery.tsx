@@ -104,7 +104,7 @@ const Carousel: React.FC<{ mediaItems: MediaItem[]; onMediaClick: (media: string
           <motion.div
             key={`${item.url}-${index}`}
             className={`flex-shrink-0 w-72 md:w-96 snap-center relative aspect-video cursor-pointer overflow-hidden rounded-xl shadow-elevated bg-sandstone-100 ${item.type === 'video' ? 'video-container' : ''}`}
-            whileHover={{ scale: 1.05, y: -8 }}
+            whileHover={{ scale: 1.03, y: -5 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.3 }}
             onClick={() => onMediaClick(item.url, item.type)}

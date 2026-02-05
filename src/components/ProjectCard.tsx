@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import type { Project } from '../types/types';
-import { cardHoverVariants } from '@/constants/animation';
 import OptimizedImage from './ui/OptimizedImage';
 
 interface ProjectCardProps {
@@ -24,10 +23,7 @@ const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = fa
   return (
     <motion.div 
       className="editorial-card overflow-hidden"
-      variants={cardHoverVariants}
-      initial="rest"
-      animate="rest"
-      whileHover="hover"
+      whileHover={{ y: -8, scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       data-testid={`project-card-${project.title.replace(/\s+/g, '-').toLowerCase()}`}

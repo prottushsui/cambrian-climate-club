@@ -23,7 +23,7 @@ const LeaderboardPage: React.FC = () => {
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
           <p className="editorial-kicker mb-4">Leaderboard</p>
-          <h2 className="text-3xl font-semibold text-charcoal-900 mb-4">Coming Soon</h2>
+          <h2 className="text-3xl font-semibold text-charcoal-900 mb-4">Comming Soon</h2>
           <p className="text-charcoal-600">
             The leaderboard is being rebuilt with verified results and a refined presentation. Please check back soon.
           </p>

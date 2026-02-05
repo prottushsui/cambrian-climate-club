@@ -103,7 +103,7 @@ const HomePage: React.FC = () => {
                 initial="hidden"
                 animate="visible"
                 className="editorial-card overflow-hidden flex flex-col h-full"
-                whileHover={{ y: -10, scale: 1.03 }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 whileTap={{ scale: 0.99 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 data-testid={`project-card-${index}`}

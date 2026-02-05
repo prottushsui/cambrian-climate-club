@@ -83,7 +83,7 @@ const HeroSection: React.FC = () => {
             <Link to="/projects" className="w-full sm:w-auto block">
               <motion.button
                 className="w-full sm:w-auto bg-primary-700 text-white font-semibold py-4 px-8 rounded-full shadow-elevated transition-all duration-300"
-                whileHover={{ scale: 1.04, y: -4, boxShadow: "0 20px 40px rgba(11, 27, 43, 0.25)" }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => window.location.hash = '#/projects'}
@@ -94,7 +94,7 @@ const HeroSection: React.FC = () => {
             <Link to="/leadership" className="w-full sm:w-auto block">
               <motion.button
                 className="w-full sm:w-auto bg-white text-primary-700 font-semibold py-4 px-8 rounded-full shadow-subtle border border-sandstone-200 transition-all duration-300"
-                whileHover={{ scale: 1.03, y: -3, boxShadow: "0 16px 32px rgba(15, 23, 42, 0.16)" }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => window.location.hash = '#/leadership'}
