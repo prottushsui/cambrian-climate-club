@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SectionHeader from '@/components/SectionHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -126,12 +126,12 @@ const QuizPage: React.FC = () => {
         {!selectedQuiz ? (
           // Quiz Selection View
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-semibold text-slate-800 mb-6">Available Quizzes</h2>
+            <h2 className="text-2xl font-semibold text-charcoal-900 mb-6">Available Quizzes</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {quizzes.map((quiz, index) => (
                 <motion.div
                   key={quiz.id}
-                  className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 cursor-pointer hover:shadow-xl transition-shadow"
+                  className="bg-white rounded-xl shadow-elevated p-6 border border-sandstone-200 cursor-pointer hover:shadow-premium transition-shadow"
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleQuizStart(quiz)}
@@ -139,11 +139,11 @@ const QuizPage: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <h3 className="text-xl font-bold text-emerald-600 mb-2">{quiz.title}</h3>
-                  <p className="text-slate-600 mb-4">{quiz.description}</p>
+                  <h3 className="text-xl font-semibold text-primary-700 mb-2">{quiz.title}</h3>
+                  <p className="text-charcoal-600 mb-4">{quiz.description}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-500">{quiz.questions.length} questions</span>
-                    <button className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
+                    <span className="text-sm text-charcoal-500">{quiz.questions.length} questions</span>
+                    <button className="px-4 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-800 transition-colors">
                       Start Quiz
                     </button>
                   </div>
@@ -155,28 +155,28 @@ const QuizPage: React.FC = () => {
           // Results View
           <div className="max-w-3xl mx-auto">
             <motion.div 
-              className="bg-white rounded-xl shadow-lg p-8 text-center"
+              className="bg-white rounded-xl shadow-elevated p-8 text-center"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              <h2 className="text-3xl font-bold text-emerald-600 mb-4">Quiz Completed!</h2>
-              <p className="text-5xl font-bold text-slate-800 mb-2">{score}/{selectedQuiz.questions.length}</p>
-              <p className="text-xl text-slate-600 mb-8">Correct Answers</p>
+              <h2 className="text-3xl font-semibold text-primary-700 mb-4">Quiz Completed!</h2>
+              <p className="text-5xl font-semibold text-charcoal-900 mb-2">{score}/{selectedQuiz.questions.length}</p>
+              <p className="text-xl text-charcoal-600 mb-8">Correct Answers</p>
               
               <div className="mb-8">
-                <div className="w-full bg-gray-200 rounded-full h-4 mb-2">
+                <div className="w-full bg-sandstone-200 rounded-full h-4 mb-2">
                   <div 
-                    className="bg-emerald-500 h-4 rounded-full transition-all duration-1000 ease-out"
+                    className="bg-primary-700 h-4 rounded-full transition-all duration-1000 ease-out"
                     style={{ width: `${(score / selectedQuiz.questions.length) * 100}%` }}
                   ></div>
                 </div>
-                <p className="text-slate-600">{Math.round((score / selectedQuiz.questions.length) * 100)}% Correct</p>
+                <p className="text-charcoal-600">{Math.round((score / selectedQuiz.questions.length) * 100)}% Correct</p>
               </div>
               
               <div className="flex justify-center gap-4">
                 <button 
                   onClick={resetQuiz}
-                  className="px-6 py-3 bg-slate-200 text-slate-800 rounded-lg hover:bg-slate-300 transition-colors"
+                  className="px-6 py-3 bg-sandstone-200 text-charcoal-800 rounded-lg hover:bg-sandstone-300 transition-colors"
                 >
                   Try Another Quiz
                 </button>
@@ -185,7 +185,7 @@ const QuizPage: React.FC = () => {
                     setSelectedQuiz(null);
                     resetQuiz();
                   }}
-                  className="px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                  className="px-6 py-3 bg-primary-700 text-white rounded-lg hover:bg-primary-800 transition-colors"
                 >
                   Back to Quizzes
                 </button>
@@ -196,20 +196,20 @@ const QuizPage: React.FC = () => {
           // Quiz Taking View
           <div className="max-w-3xl mx-auto">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-semibold text-slate-800">{selectedQuiz.title}</h2>
-              <span className="text-lg text-slate-600">
+              <h2 className="text-2xl font-semibold text-charcoal-900">{selectedQuiz.title}</h2>
+              <span className="text-lg text-charcoal-600">
                 Question {currentQuestionIndex + 1} of {selectedQuiz.questions.length}
               </span>
             </div>
             
             <motion.div 
-              className="bg-white rounded-xl shadow-lg p-6 mb-6"
+              className="bg-white rounded-xl shadow-elevated p-6 mb-6"
               key={currentQuestionIndex}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-xl font-semibold text-slate-800 mb-6">
+              <h3 className="text-xl font-semibold text-charcoal-900 mb-6">
                 {selectedQuiz.questions[currentQuestionIndex].text}
               </h3>
               
@@ -220,9 +220,9 @@ const QuizPage: React.FC = () => {
                     className={`w-full text-left p-4 rounded-lg border transition-colors ${
                       selectedOption === index 
                         ? index === selectedQuiz.questions[currentQuestionIndex].correctAnswer
-                          ? 'border-emerald-500 bg-emerald-50'
+                          ? 'border-primary-600 bg-sandstone-100'
                           : 'border-red-500 bg-red-50'
-                        : 'border-slate-200 hover:bg-slate-50'
+                        : 'border-sandstone-200 hover:bg-sandstone-50'
                     }`}
                     onClick={() => handleOptionSelect(index)}
                     disabled={selectedOption !== null}
@@ -233,7 +233,7 @@ const QuizPage: React.FC = () => {
                       <span className="mr-3 font-medium">{String.fromCharCode(65 + index)}.</span>
                       <span>{option}</span>
                       {selectedOption === index && index === selectedQuiz.questions[currentQuestionIndex].correctAnswer && (
-                        <span className="ml-auto text-emerald-500 font-semibold">✓ Correct!</span>
+                        <span className="ml-auto text-primary-700 font-semibold">✓ Correct!</span>
                       )}
                       {selectedOption === index && index !== selectedQuiz.questions[currentQuestionIndex].correctAnswer && (
                         <span className="ml-auto text-red-500 font-semibold">✗ Incorrect</span>
@@ -247,7 +247,7 @@ const QuizPage: React.FC = () => {
             <div className="flex justify-between">
               <button 
                 onClick={resetQuiz}
-                className="px-6 py-3 bg-slate-200 text-slate-800 rounded-lg hover:bg-slate-300 transition-colors"
+                className="px-6 py-3 bg-sandstone-200 text-charcoal-800 rounded-lg hover:bg-sandstone-300 transition-colors"
               >
                 Back to Quizzes
               </button>
@@ -257,8 +257,8 @@ const QuizPage: React.FC = () => {
                 disabled={selectedOption === null}
                 className={`px-6 py-3 rounded-lg transition-colors ${
                   selectedOption !== null 
-                    ? 'bg-emerald-500 text-white hover:bg-emerald-600' 
-                    : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                    ? 'bg-primary-700 text-white hover:bg-primary-800' 
+                    : 'bg-sandstone-200 text-charcoal-400 cursor-not-allowed'
                 }`}
               >
                 {currentQuestionIndex < selectedQuiz.questions.length - 1 ? 'Next Question' : 'Finish Quiz'}

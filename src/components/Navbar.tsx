@@ -19,10 +19,14 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
     to={to}
     onClick={onClick}
     className={({ isActive }) =>
-      `relative block py-3 px-4 rounded-full transition-all duration-300 ${
+      `relative block py-2.5 px-4 rounded-full transition-all duration-300 ${
         isMobile
-            ? isActive ? 'bg-primary-500 text-cloud-400 font-semibold' : 'text-charcoal-600 hover:bg-sandstone-300'
-            : isActive ? 'text-primary-600 font-semibold' : 'text-charcoal-600 hover:text-primary-600'
+          ? isActive
+            ? 'bg-primary-600 text-cloud-50 font-semibold'
+            : 'text-charcoal-700 hover:bg-sandstone-200'
+          : isActive
+            ? 'text-primary-700 font-semibold'
+            : 'text-charcoal-700 hover:text-primary-700'
       }`
     }
   >
@@ -36,10 +40,10 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick: () => 
             {children}
             {!isMobile && (
               <motion.div
-                  className="absolute left-0 right-0 -bottom-1 h-0.5 bg-primary-600 rounded-full"
-                  initial={{ scaleX: 0 }}
-                  animate={isActive ? { scaleX: 1 } : { scaleX: 0 }}
-                  transition={{ duration: 0.3 }}
+                className="absolute left-0 right-0 -bottom-1 h-0.5 bg-coral-500 rounded-full"
+                initial={{ scaleX: 0 }}
+                animate={isActive ? { scaleX: 1 } : { scaleX: 0 }}
+                transition={{ duration: 0.3 }}
               />
             )}
         </motion.div>
@@ -73,8 +77,8 @@ const Navbar: React.FC = memo(() => {
   ];
 
   return (
-    <nav className="bg-sandstone-400/80 backdrop-blur-xl border-b border-sandstone-500/30 fixed w-full z-50 top-0 start-0 transition-all duration-300 glass-effect shadow-sm" aria-label="Main navigation">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="bg-sandstone-100/95 backdrop-blur border-b border-sandstone-200 fixed w-full z-50 top-0 start-0 transition-all duration-300" aria-label="Main navigation">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
         <Link 
           to="/" 
           className="flex items-center space-x-3 rtl:space-x-reverse z-50 relative" 
@@ -87,13 +91,13 @@ const Navbar: React.FC = memo(() => {
           >
              <img src="/images/Club logo.png" className="h-10 w-auto" alt="Cambrian Climate Club Logo" />
           </motion.div>
-          <span className="self-center text-xl font-semibold whitespace-nowrap text-charcoal-600 hidden sm:block">Cambrian Climate Club</span>
+          <span className="self-center text-lg font-semibold tracking-wide text-charcoal-900 hidden sm:block">Cambrian Climate Club</span>
         </Link>
         
         <button
           onClick={toggleMenu}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-charcoal-500 rounded-full md:hidden hover:bg-sandstone-300/50 focus:outline-none focus:ring-2 focus:ring-primary-200 z-50 relative transition-all duration-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-charcoal-600 rounded-full md:hidden hover:bg-sandstone-200 focus:outline-none focus:ring-2 focus:ring-primary-200 z-50 relative transition-all duration-200"
           aria-controls="navbar-default"
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close main menu" : "Open main menu"}
@@ -136,7 +140,7 @@ const Navbar: React.FC = memo(() => {
       <AnimatePresence>
         {isOpen && (
             <motion.div
-                className="absolute top-full left-0 w-full bg-sandstone-400/90 backdrop-blur-xl border-b border-sandstone-500/30 shadow-xl md:hidden overflow-hidden glass-effect"
+                className="absolute top-full left-0 w-full bg-sandstone-100/95 backdrop-blur border-b border-sandstone-200 shadow-lg md:hidden overflow-hidden"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}

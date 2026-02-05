@@ -3,10 +3,6 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import SectionHeader from '../components/SectionHeader';
 import { 
-  fadeInUpVariants, 
-  scaleInVariants, 
-  slideInLeftVariants, 
-  slideInRightVariants, 
   containerVariants 
 } from '../constants/animation';
 
@@ -30,7 +26,7 @@ const AboutPage: React.FC = () => {
         />
 
         <motion.div 
-          className="bg-white/80 backdrop-blur-xl p-6 md:p-10 rounded-3xl shadow-lg border border-white/20 apple-card glass-card"
+          className="bg-white p-6 md:p-10 rounded-3xl shadow-elevated border border-sandstone-200"
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
@@ -49,7 +45,7 @@ const AboutPage: React.FC = () => {
               </motion.div>
               <div className="md:col-span-2 space-y-6">
                   <motion.h3 
-                      className="text-2xl font-semibold text-slate-800 apple-title"
+                      className="text-2xl font-semibold text-charcoal-900"
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
@@ -57,7 +53,7 @@ const AboutPage: React.FC = () => {
                       Our Story
                   </motion.h3>
                   <motion.p 
-                      className="text-slate-600 text-lg leading-relaxed"
+                      className="text-charcoal-700 text-lg leading-relaxed"
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 }}
@@ -74,11 +70,11 @@ const AboutPage: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
               >
-                  <h3 className="text-2xl font-semibold text-slate-800 mb-8 text-center apple-title">Core Activities & Focus Areas</h3>
+                  <h3 className="text-2xl font-semibold text-charcoal-900 mb-8 text-center">Core Activities & Focus Areas</h3>
               </motion.div>
               
               <motion.ul 
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5 text-slate-700"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5 text-charcoal-700"
                   variants={containerVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -87,12 +83,12 @@ const AboutPage: React.FC = () => {
                 {['Sustainability Projects', 'Environmental Education', 'Tree Plantation Drives', 'Plastic-Free Campus Initiatives', 'Rooftop Gardening', 'Climate Conferences'].map((activity) => (
                   <motion.li 
                       key={activity} 
-                      className="flex items-center p-4 bg-slate-50/60 backdrop-blur-sm rounded-2xl border border-gray-100 hover:shadow-md transition-shadow apple-card glass-effect"
+                      className="flex items-center p-4 bg-sandstone-50 rounded-2xl border border-sandstone-200 hover:shadow-md transition-shadow"
                       variants={itemVariants}
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(248, 250, 252, 0.8)", x: 3 }}
+                      whileHover={{ scale: 1.02, backgroundColor: "rgba(245, 241, 234, 0.8)", x: 3 }}
                   >
                       <motion.div 
-                          className="bg-blue-100 p-2 rounded-full mr-4 text-blue-600"
+                          className="bg-primary-100 p-2 rounded-full mr-4 text-primary-700"
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                       >

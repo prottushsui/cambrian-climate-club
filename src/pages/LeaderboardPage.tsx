@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SectionHeader from '@/components/SectionHeader';
 import { motion } from 'framer-motion';
 
@@ -75,7 +75,7 @@ const LeaderboardPage: React.FC = () => {
       case 3:
         return 'bg-amber-100 text-amber-800 border-amber-300';
       default:
-        return 'bg-slate-100 text-slate-800 border-slate-300';
+        return 'bg-sandstone-100 text-charcoal-800 border-sandstone-300';
     }
   };
 
@@ -101,15 +101,15 @@ const LeaderboardPage: React.FC = () => {
       
       <div className="mt-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white rounded-xl shadow-elevated p-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-              <h2 className="text-2xl font-semibold text-slate-800">Climate Quiz Rankings</h2>
+              <h2 className="text-2xl font-semibold text-charcoal-900">Climate Quiz Rankings</h2>
               
               <div className="flex gap-2">
                 <select
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
-                  className="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="px-4 py-2 border border-sandstone-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
                 >
                   <option value="all">All Participants</option>
                   <option value="top10">Top 10</option>
@@ -123,7 +123,7 @@ const LeaderboardPage: React.FC = () => {
                       const [key, direction] = e.target.value.split('-') as [keyof LeaderboardEntry, 'asc' | 'desc'];
                       setSortConfig({ key, direction });
                     }}
-                    className="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 appearance-none"
+                    className="px-4 py-2 border border-sandstone-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 appearance-none"
                   >
                     <option value="score-desc">Sort by Score (High to Low)</option>
                     <option value="score-asc">Sort by Score (Low to High)</option>
@@ -135,51 +135,51 @@ const LeaderboardPage: React.FC = () => {
             </div>
             
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-slate-200">
-                <thead className="bg-slate-50">
+              <table className="min-w-full divide-y divide-sandstone-200">
+                <thead className="bg-sandstone-50">
                   <tr>
                     <th 
                       scope="col" 
-                      className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider cursor-pointer hover:bg-slate-100"
+                      className="px-6 py-3 text-left text-xs font-medium text-charcoal-500 uppercase tracking-wider cursor-pointer hover:bg-sandstone-100"
                       onClick={() => handleSort('id')}
                     >
                       Rank
                     </th>
                     <th 
                       scope="col" 
-                      className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider cursor-pointer hover:bg-slate-100"
+                      className="px-6 py-3 text-left text-xs font-medium text-charcoal-500 uppercase tracking-wider cursor-pointer hover:bg-sandstone-100"
                       onClick={() => handleSort('name')}
                     >
                       Participant
                     </th>
                     <th 
                       scope="col" 
-                      className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider cursor-pointer hover:bg-slate-100"
+                      className="px-6 py-3 text-left text-xs font-medium text-charcoal-500 uppercase tracking-wider cursor-pointer hover:bg-sandstone-100"
                       onClick={() => handleSort('score')}
                     >
                       Score
                     </th>
                     <th 
                       scope="col" 
-                      className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider cursor-pointer hover:bg-slate-100"
+                      className="px-6 py-3 text-left text-xs font-medium text-charcoal-500 uppercase tracking-wider cursor-pointer hover:bg-sandstone-100"
                       onClick={() => handleSort('quizCount')}
                     >
                       Quizzes Taken
                     </th>
                     <th 
                       scope="col" 
-                      className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider cursor-pointer hover:bg-slate-100"
+                      className="px-6 py-3 text-left text-xs font-medium text-charcoal-500 uppercase tracking-wider cursor-pointer hover:bg-sandstone-100"
                       onClick={() => handleSort('date')}
                     >
                       Last Active
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-slate-200">
+                <tbody className="bg-white divide-y divide-sandstone-200">
                   {sortedAndFilteredData.map((entry, index) => (
                     <motion.tr 
                       key={entry.id}
-                      className={`hover:bg-slate-50 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-25'}`}
+                      className={`hover:bg-sandstone-50 ${index % 2 === 0 ? 'bg-white' : 'bg-sandstone-50/60'}`}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
@@ -192,28 +192,28 @@ const LeaderboardPage: React.FC = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
-                            <div className="bg-emerald-100 rounded-full h-10 w-10 flex items-center justify-center text-emerald-800 font-bold">
+                            <div className="bg-primary-100 rounded-full h-10 w-10 flex items-center justify-center text-primary-700 font-bold">
                               {entry.name.charAt(0)}
                             </div>
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-slate-900">{entry.name}</div>
-                            <div className="text-sm text-slate-500">Member</div>
+                            <div className="text-sm font-medium text-charcoal-900">{entry.name}</div>
+                            <div className="text-sm text-charcoal-500">Member</div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-slate-900 font-semibold">{entry.score}%</div>
-                        <div className="text-sm text-slate-500">
+                        <div className="text-sm text-charcoal-900 font-semibold">{entry.score}%</div>
+                        <div className="text-sm text-charcoal-500">
                           {entry.score >= 90 ? 'Excellent' : 
                            entry.score >= 80 ? 'Great' : 
                            entry.score >= 70 ? 'Good' : 'Needs Improvement'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-charcoal-900">
                         {entry.quizCount} quizzes
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-charcoal-500">
                         {new Date(entry.date).toLocaleDateString()}
                       </td>
                     </motion.tr>
@@ -222,26 +222,26 @@ const LeaderboardPage: React.FC = () => {
               </table>
             </div>
             
-            <div className="mt-8 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border border-emerald-100">
-              <h3 className="text-xl font-semibold text-emerald-800 mb-4">How the Leaderboard Works</h3>
+            <div className="mt-8 p-6 bg-sandstone-50 rounded-xl border border-sandstone-200">
+              <h3 className="text-xl font-semibold text-charcoal-900 mb-4">How the Leaderboard Works</h3>
               <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-500 flex items-center justify-center mr-2 mt-1">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary-700 flex items-center justify-center mr-2 mt-1">
                     <span className="text-white text-xs">1</span>
                   </div>
-                  <p className="text-slate-700">Scores are calculated based on quiz performance</p>
+                  <p className="text-charcoal-700">Scores are calculated based on quiz performance</p>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-500 flex items-center justify-center mr-2 mt-1">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary-700 flex items-center justify-center mr-2 mt-1">
                     <span className="text-white text-xs">2</span>
                   </div>
-                  <p className="text-slate-700">Higher scores appear higher on the leaderboard</p>
+                  <p className="text-charcoal-700">Higher scores appear higher on the leaderboard</p>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-500 flex items-center justify-center mr-2 mt-1">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary-700 flex items-center justify-center mr-2 mt-1">
                     <span className="text-white text-xs">3</span>
                   </div>
-                  <p className="text-slate-700">Participation in more quizzes improves your ranking</p>
+                  <p className="text-charcoal-700">Participation in more quizzes improves your ranking</p>
                 </li>
               </ul>
             </div>
