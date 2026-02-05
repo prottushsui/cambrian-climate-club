@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { achievements, galleries } from '../data/content';
 import SectionHeader from '../components/SectionHeader';
 import ImageGallery from '../components/ImageGallery';
-import VideoPlayer from '../components/VideoPlayer';
 import type { Achievement } from '../types/types';
 
 const TimelineItem: React.FC<{ item: Achievement, index: number }> = ({ item, index }) => (
@@ -21,11 +20,11 @@ const TimelineItem: React.FC<{ item: Achievement, index: number }> = ({ item, in
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.15 + 0.1, type: "spring" }}
-            whileHover={{ scale: 1.5, borderColor: "#059669" }}
+            whileHover={{ scale: 1.5, borderColor: "#0B1B2B" }}
         />
-        <div className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-slate-100">
-            <time className="mb-2 text-sm font-bold leading-none text-primary-600 block">{item.year}</time>
-            <h3 className="text-base font-medium text-gray-800">{item.description}</h3>
+        <div className="p-5 bg-white rounded-lg shadow-subtle hover:shadow-md transition-shadow border border-sandstone-200">
+            <time className="mb-2 text-sm font-bold leading-none text-primary-700 block">{item.year}</time>
+            <h3 className="text-base font-medium text-charcoal-800">{item.description}</h3>
         </div>
     </motion.li>
 );
@@ -43,7 +42,7 @@ const AchievementsPage: React.FC = () => {
               <div className="relative">
                    {/* Timeline vertical line */}
                   <motion.div 
-                      className="absolute top-0 bottom-0 left-[23px] w-0.5 bg-slate-200 origin-top"
+                      className="absolute top-0 bottom-0 left-[23px] w-0.5 bg-sandstone-300 origin-top"
                       initial={{ scaleY: 0 }}
                       whileInView={{ scaleY: 1 }}
                       viewport={{ once: true }}
@@ -58,7 +57,7 @@ const AchievementsPage: React.FC = () => {
             </div>
         </div>
 
-        <div className="bg-slate-50 border-t border-slate-200 py-12">
+        <div className="bg-sandstone-50 border-t border-sandstone-200 py-12">
           <div className="max-w-6xl mx-auto">
             <ImageGallery galleries={galleries} />
           </div>

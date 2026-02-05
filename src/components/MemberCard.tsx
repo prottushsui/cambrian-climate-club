@@ -20,7 +20,7 @@ const itemVariants: Variants = {
 const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
   return (
     <motion.div 
-      className="bg-white rounded-2xl shadow-lg overflow-hidden text-center h-full flex flex-col transform-gpu"
+      className="editorial-card overflow-hidden text-center h-full flex flex-col transform-gpu"
       variants={itemVariants}
       whileHover={{ 
         y: -12, 
@@ -29,7 +29,7 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
       }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
     >
-      <div className="relative h-64 bg-slate-100 overflow-hidden">
+      <div className="relative h-64 bg-sandstone-100 overflow-hidden">
         <motion.img
           src={member.imageUrl}
           alt={member.name}
@@ -40,7 +40,7 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
         />
         {member.specialRecognition && (
             <motion.div 
-              className="absolute top-2 right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full z-10 shadow-md"
+              className="absolute top-2 right-2 bg-coral-400 text-white text-xs font-bold px-2 py-1 rounded-full z-10 shadow-md"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, type: "spring" }}
@@ -50,10 +50,10 @@ const MemberCard: React.FC<MemberCardProps> = memo(({ member }) => {
         )}
       </div>
       <div className="p-6 flex-grow flex flex-col justify-center relative z-10 bg-white">
-        <h3 className="text-xl font-bold text-primary-900">{member.name}</h3>
+        <h3 className="text-xl font-semibold text-charcoal-900">{member.name}</h3>
         <p className="text-primary-700 font-semibold mt-1">{member.role} {member.term && `(${member.term})`}</p>
-        <p className="text-slate-500 text-sm mt-2">{member.id}</p>
-        <p className="text-slate-500 text-sm">{member.classInfo}, {member.campus}</p>
+        <p className="text-charcoal-500 text-sm mt-2">{member.id}</p>
+        <p className="text-charcoal-500 text-sm">{member.classInfo}, {member.campus}</p>
       </div>
     </motion.div>
   );
