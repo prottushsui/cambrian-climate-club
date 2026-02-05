@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import SectionHeader from '@/components/SectionHeader';
 import MemberCard from '@/components/MemberCard';
 import { leadershipTeam } from '@/data/content';
+import type { Member } from '@/types/types';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -14,31 +15,28 @@ const containerVariants = {
   },
 };
 
-const LeadershipCurrentPage: React.FC = () => {
-  const leadershipWithoutSpecial = leadershipTeam.filter((member) => !member.specialRecognition);
+const LeadershipSpecialRecognitionPage: React.FC = () => {
+  const specialRecognitionMember = leadershipTeam.find((member) => member.specialRecognition) as Member;
 
   return (
     <div className="container mx-auto px-4 py-16">
       <SectionHeader
-        title="Leadership (Current Members)"
-        subtitle="Current Executive Members"
+        title="Special Recognition"
+        subtitle="Lead Developer of the Website"
       />
-
-      <section className="mb-16" aria-labelledby="core-leadership">
+      <section aria-labelledby="special-recognition">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="max-w-md mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {leadershipWithoutSpecial.map((member) => (
-            <MemberCard key={member.id} member={member} />
-          ))}
+          <MemberCard member={specialRecognitionMember} />
         </motion.div>
       </section>
     </div>
   );
 };
 
-export default LeadershipCurrentPage;
+export default LeadershipSpecialRecognitionPage;

@@ -18,6 +18,7 @@ const containerVariants = {
 
 const LeadershipPage: React.FC = () => {
   const specialRecognitionMember = leadershipTeam.find((member) => member.specialRecognition) as Member;
+  const leadershipWithoutSpecial = leadershipTeam.filter((member) => !member.specialRecognition);
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -27,11 +28,12 @@ const LeadershipPage: React.FC = () => {
       />
 
       <section className="mb-16" aria-labelledby="leadership-sections">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { to: '/leadership/current', title: 'Leadership (Current Members)' },
             { to: '/leadership/alumni', title: 'Alumni' },
             { to: '/leadership/advisory', title: 'Advisory Committee' },
+            { to: '/leadership/special-recognition', title: 'Special Recognition' },
           ].map((section) => (
             <Link
               key={section.to}
@@ -45,6 +47,21 @@ const LeadershipPage: React.FC = () => {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mb-16" aria-labelledby="leadership-members">
+        <SectionHeader title="Leadership (Current Members)" subtitle="Current Executive Members" />
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {leadershipWithoutSpecial.map((member) => (
+            <MemberCard key={member.id} member={member} />
+          ))}
+        </motion.div>
       </section>
 
       <section aria-labelledby="special-recognition">

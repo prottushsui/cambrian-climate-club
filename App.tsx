@@ -12,6 +12,7 @@ import LeadershipPage from '@/pages/LeadershipPage';
 import LeadershipCurrentPage from '@/pages/LeadershipCurrentPage';
 import LeadershipAdvisoryPage from '@/pages/LeadershipAdvisoryPage';
 import LeadershipAlumniPage from '@/pages/LeadershipAlumniPage';
+import LeadershipSpecialRecognitionPage from '@/pages/LeadershipSpecialRecognitionPage';
 import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
 import DemoPage from '@/pages/DemoPage';
@@ -42,6 +43,7 @@ const App = () => {
               <Route path="/leadership/current" element={<LeadershipCurrentPage />} />
               <Route path="/leadership/advisory" element={<LeadershipAdvisoryPage />} />
               <Route path="/leadership/alumni" element={<LeadershipAlumniPage />} />
+              <Route path="/leadership/special-recognition" element={<LeadershipSpecialRecognitionPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/achievements" element={<AchievementsPage />} />
               <Route path="/demo" element={<DemoPage />} />
