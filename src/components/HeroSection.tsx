@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
@@ -8,52 +8,17 @@ import {
   slideInRightVariants
 } from '@/constants/animation';
 import OptimizedImage from './ui/OptimizedImage';
-import { Button } from './ui/Button';
 
 const HeroSection: React.FC = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   const heroTitle = "Cambrian Climate Club — Campus 2".split("—");
   const titleWords = heroTitle.map(part => part.trim().split(" "));
 
   return (
     <section 
-      className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 overflow-hidden min-h-[90vh] flex items-center dark:from-slate-900 dark:via-blue-900 dark:to-emerald-900"
+      className="relative bg-sandstone-50 overflow-hidden min-h-[85vh] flex items-center"
       aria-labelledby="hero-heading"
     >
-      {/* Animated Background Elements */}
-      <motion.div 
-        className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-gradient-to-r from-emerald-200/30 to-teal-200/30 rounded-full opacity-50 filter blur-3xl dark:from-emerald-800/30 dark:to-teal-800/30"
-        animate={{ 
-          y: [0, 40, 0], 
-          x: [0, 20, 0],
-          scale: [1, 1.1, 1] 
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div 
-        className="absolute bottom-[-10%] right-[-5%] w-80 h-80 bg-gradient-to-r from-blue-200/30 to-cyan-200/30 rounded-full opacity-50 filter blur-3xl dark:from-blue-800/30 dark:to-cyan-800/30"
-        animate={{ 
-          y: [0, -50, 0], 
-          x: [0, -30, 0],
-          scale: [1, 1.2, 1] 
-        }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      />
-      <motion.div 
-        className="absolute top-[20%] right-[10%] w-32 h-32 bg-gradient-to-r from-green-200/40 to-emerald-200/40 rounded-full opacity-60 filter blur-2xl dark:from-green-700/40 dark:to-emerald-700/40"
-        animate={{ 
-          y: [0, 20, 0], 
-          scale: [1, 1.5, 1], 
-          rotate: [0, 180, 360] 
-        }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      />
-
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/70 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center gap-12 relative z-10">
         <motion.div 
           className="lg:w-1/2 text-center lg:text-left"
@@ -61,15 +26,16 @@ const HeroSection: React.FC = () => {
           animate="visible"
           variants={slideInLeftVariants}
         >
+          <p className="editorial-kicker mb-4">Cambrian School & College, Campus 2</p>
           <motion.h1 
             id="hero-heading"
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight min-h-[144px] md:min-h-[192px] apple-title leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal-900 tracking-tight min-h-[144px] md:min-h-[192px] leading-tight"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             {titleWords.map((part, partIndex) => (
-              <span key={partIndex} className={partIndex > 0 ? "block text-emerald-700 dark:text-emerald-400 mt-2" : "block"}>
+              <span key={partIndex} className={partIndex > 0 ? "block text-primary-700 mt-2" : "block"}>
                 {partIndex > 0 ? "— " : ""}
                 {part.map((word, wordIndex) => (
                   <span key={wordIndex} className="inline-block whitespace-nowrap mr-2 md:mr-4">
@@ -89,7 +55,7 @@ const HeroSection: React.FC = () => {
             ))}
           </motion.h1>
           <motion.p 
-            className="mt-6 text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light"
+            className="mt-6 text-lg md:text-xl text-charcoal-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
@@ -99,12 +65,12 @@ const HeroSection: React.FC = () => {
           
           {/* Clear mission statement */}
           <motion.div 
-            className="mt-8 p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 dark:bg-slate-800/80 max-w-2xl mx-auto lg:mx-0"
+            className="mt-8 p-6 bg-white rounded-2xl shadow-elevated border border-sandstone-200 max-w-2xl mx-auto lg:mx-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
           >
-            <p className="text-lg font-semibold text-center text-emerald-700 dark:text-emerald-400">
+            <p className="text-lg font-semibold text-center text-primary-700">
               <strong>Mission:</strong> Empowering students to become proactive leaders in sustainability and climate action through hands-on projects and community engagement.
             </p>
           </motion.div>
@@ -116,10 +82,10 @@ const HeroSection: React.FC = () => {
           >
             <Link to="/projects" className="w-full sm:w-auto block">
               <motion.button
-                className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-emerald-500/30 transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(16, 185, 129, 0.4)" }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="w-full sm:w-auto bg-primary-700 text-white font-semibold py-4 px-8 rounded-full shadow-elevated transition-all duration-300"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => window.location.hash = '#/projects'}
               >
                 Explore Projects
@@ -127,10 +93,10 @@ const HeroSection: React.FC = () => {
             </Link>
             <Link to="/leadership" className="w-full sm:w-auto block">
               <motion.button
-                className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-emerald-600 font-semibold py-4 px-8 rounded-full shadow-lg border border-white/50 transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)" }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="w-full sm:w-auto bg-white text-primary-700 font-semibold py-4 px-8 rounded-full shadow-subtle border border-sandstone-200 transition-all duration-300"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => window.location.hash = '#/leadership'}
               >
                 Meet the Team
@@ -145,7 +111,7 @@ const HeroSection: React.FC = () => {
           variants={containerVariants}
         >
           <motion.div 
-            className="col-span-1 row-span-2 relative group overflow-hidden rounded-3xl"
+            className="col-span-1 row-span-2 relative group overflow-hidden rounded-3xl border border-sandstone-200 shadow-subtle"
             variants={slideInRightVariants}
             whileHover={{ y: -10 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -156,10 +122,10 @@ const HeroSection: React.FC = () => {
               className="w-full h-full object-cover" 
               placeholder="/images/homepagepicture1.jpg"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/40 to-transparent group-hover:from-charcoal-900/20 transition-all duration-300 rounded-3xl"></div>
           </motion.div>
           <motion.div 
-            className="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl"
+            className="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl border border-sandstone-200 shadow-subtle"
             variants={slideInRightVariants}
             whileHover={{ y: -8 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -170,10 +136,10 @@ const HeroSection: React.FC = () => {
               className="w-full h-full object-cover" 
               placeholder="/images/homepagepicture2.jpg"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 to-transparent group-hover:from-charcoal-900/15 transition-all duration-300 rounded-3xl"></div>
           </motion.div>
           <motion.div 
-            className="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl"
+            className="col-span-1 row-span-1 relative group overflow-hidden rounded-3xl border border-sandstone-200 shadow-subtle"
             variants={slideInRightVariants}
             whileHover={{ y: -8 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -184,7 +150,7 @@ const HeroSection: React.FC = () => {
               className="w-full h-full object-cover" 
               placeholder="/images/homepagepicture3.jpg"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent group-hover:from-black/10 transition-all duration-300 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 to-transparent group-hover:from-charcoal-900/15 transition-all duration-300 rounded-3xl"></div>
           </motion.div>
         </motion.div>
       </div>
