@@ -83,14 +83,14 @@ const Carousel: React.FC<{ mediaItems: MediaItem[]; onMediaClick: (media: string
       {/* Navigation Buttons */}
       <button 
         onClick={() => scroll('left')}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 md:-ml-6 bg-white p-3 rounded-full shadow-xl text-primary-600 opacity-0 group-hover:opacity-100 transition-all duration-300 disabled:opacity-0 z-20 hover:bg-primary-50 hover:scale-110 focus:opacity-100"
+        className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 md:-ml-6 bg-white p-3 rounded-full shadow-elevated text-primary-700 opacity-0 group-hover:opacity-100 transition-all duration-300 disabled:opacity-0 z-20 hover:bg-sandstone-100 hover:scale-110 focus:opacity-100"
         aria-label="Scroll left"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
       </button>
       <button 
         onClick={() => scroll('right')}
-        className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 md:-mr-6 bg-white p-3 rounded-full shadow-xl text-primary-600 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 hover:bg-primary-50 hover:scale-110 focus:opacity-100"
+        className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 md:-mr-6 bg-white p-3 rounded-full shadow-elevated text-primary-700 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 hover:bg-sandstone-100 hover:scale-110 focus:opacity-100"
         aria-label="Scroll right"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
@@ -103,7 +103,7 @@ const Carousel: React.FC<{ mediaItems: MediaItem[]; onMediaClick: (media: string
         {mediaItems.map((item, index) => (
           <motion.div
             key={`${item.url}-${index}`}
-            className={`flex-shrink-0 w-72 md:w-96 snap-center relative aspect-video cursor-pointer overflow-hidden rounded-xl shadow-lg bg-slate-100 ${item.type === 'video' ? 'video-container' : ''}`}
+            className={`flex-shrink-0 w-72 md:w-96 snap-center relative aspect-video cursor-pointer overflow-hidden rounded-xl shadow-elevated bg-sandstone-100 ${item.type === 'video' ? 'video-container' : ''}`}
             whileHover={{ scale: 1.03, y: -5 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.3 }}
@@ -129,7 +129,7 @@ const Carousel: React.FC<{ mediaItems: MediaItem[]; onMediaClick: (media: string
                  <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileHover={{ opacity: 1, scale: 1 }}
-                    className="bg-white/90 p-3 rounded-full shadow-lg"
+                    className="bg-white/90 p-3 rounded-full shadow-elevated"
                  >
                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
@@ -229,8 +229,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = memo(({ galleries }) => {
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
             <div className="flex items-center mb-6 px-2">
-                <div className="h-8 w-1.5 bg-primary-500 rounded-full mr-3"></div>
-                <h3 className="text-2xl font-bold text-slate-800">{gallery.title}</h3>
+                <div className="h-8 w-1.5 bg-coral-500 rounded-full mr-3"></div>
+                <h3 className="text-2xl font-semibold text-charcoal-900">{gallery.title}</h3>
             </div>
             <Carousel mediaItems={convertToMediaItems(gallery)} onMediaClick={handleMediaClick} title={gallery.title} />
           </motion.section>

@@ -6,82 +6,82 @@ export const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05
+      staggerChildren: 0.12,
+      delayChildren: 0.1
     }
   }
 };
 
 export const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 15 },
+  hidden: { opacity: 0, y: 24 },
   visible: { 
     opacity: 1, 
     y: 0,
     transition: { 
-      type: "spring", 
-      stiffness: 100, 
-      damping: 20, 
+      type: "spring",
+      stiffness: 120,
+      damping: 18,
       mass: 1,
-      duration: 0.4
+      duration: 0.55
     }
   }
 };
 
 export const fadeInUpVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       type: "spring",
-      damping: 15,
-      stiffness: 120,
-      duration: 0.4
+      damping: 18,
+      stiffness: 130,
+      duration: 0.55
     }
   }
 };
 
 // Simple scale in animation
 export const scaleInVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0, scale: 0.94 },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
       type: "spring",
-      damping: 15,
-      stiffness: 150,
-      duration: 0.4
+      damping: 18,
+      stiffness: 160,
+      duration: 0.55
     }
   }
 };
 
 // Simple slide in from left
 export const slideInLeftVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
+  hidden: { opacity: 0, x: -28 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
       type: "spring",
-      damping: 15,
-      stiffness: 120,
-      duration: 0.4
+      damping: 18,
+      stiffness: 130,
+      duration: 0.55
     }
   }
 };
 
 // Simple slide in from right
 export const slideInRightVariants: Variants = {
-  hidden: { opacity: 0, x: 20 },
+  hidden: { opacity: 0, x: 28 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
       type: "spring",
-      damping: 15,
-      stiffness: 120,
-      duration: 0.4
+      damping: 18,
+      stiffness: 130,
+      duration: 0.55
     }
   }
 };
@@ -90,15 +90,17 @@ export const slideInRightVariants: Variants = {
 export const cardHoverVariants = {
   rest: {
     y: 0,
-    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)"
+    scale: 1,
+    boxShadow: "0 2px 8px rgba(15, 23, 42, 0.08)"
   },
   hover: {
-    y: -4,
-    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.08)",
+    y: -8,
+    scale: 1.02,
+    boxShadow: "0 16px 30px rgba(15, 23, 42, 0.16)",
     transition: {
       type: "spring",
-      damping: 15,
-      stiffness: 300
+      damping: 18,
+      stiffness: 320
     }
   }
 };
@@ -110,12 +112,12 @@ export const buttonHoverVariants = {
     y: 0
   },
   hover: {
-    scale: 1.02,
-    y: -1,
+    scale: 1.04,
+    y: -2,
     transition: {
       type: "spring",
-      damping: 15,
-      stiffness: 400
+      damping: 18,
+      stiffness: 420
     }
   }
 };

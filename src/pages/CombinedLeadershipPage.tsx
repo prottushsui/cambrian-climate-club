@@ -26,36 +26,36 @@ const itemVariants = {
 
 const ExecutiveMemberCard: React.FC<{ member: ExecutiveMember }> = ({ member }) => (
   <motion.div 
-    className="bg-white rounded-2xl shadow-lg p-6 text-center h-full flex flex-col items-center"
+    className="editorial-card p-6 text-center h-full flex flex-col items-center"
     variants={itemVariants}
     whileHover={{ 
-      y: -5,
-      scale: 1.02,
-      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1)" 
+      y: -8,
+      scale: 1.03,
+      boxShadow: "0 18px 30px -8px rgba(0, 0, 0, 0.14), 0 12px 12px -10px rgba(0, 0, 0, 0.12)" 
     }}
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
   >
-    <div className="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mb-4 mx-auto">
-      <span className="text-lg font-bold text-slate-700">ID</span>
+    <div className="w-16 h-16 bg-sandstone-200 rounded-full flex items-center justify-center mb-4 mx-auto">
+      <span className="text-lg font-bold text-charcoal-700">ID</span>
     </div>
-    <h3 className="text-lg font-bold text-slate-800">{member.name}</h3>
-    <p className="text-slate-600 font-medium mt-1">{member.role}</p>
-    <p className="text-sm text-slate-500 mt-1 font-mono">{member.id}</p>
+    <h3 className="text-lg font-semibold text-charcoal-900">{member.name}</h3>
+    <p className="text-charcoal-600 font-medium mt-1">{member.role}</p>
+    <p className="text-sm text-charcoal-500 mt-1 font-mono">{member.id}</p>
   </motion.div>
 );
 
 const AdvisorCard: React.FC<{ advisor: Advisor }> = ({ advisor }) => (
   <motion.div 
-    className="bg-white rounded-2xl shadow-lg overflow-hidden text-center h-full flex flex-col"
+    className="editorial-card overflow-hidden text-center h-full flex flex-col"
     variants={itemVariants}
     whileHover={{ 
-      y: -5,
-      scale: 1.02,
-      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1)" 
+      y: -8,
+      scale: 1.03,
+      boxShadow: "0 18px 30px -8px rgba(0, 0, 0, 0.14), 0 12px 12px -10px rgba(0, 0, 0, 0.12)" 
     }}
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
   >
-    <div className="h-48 bg-slate-100 overflow-hidden relative">
+    <div className="h-48 bg-sandstone-100 overflow-hidden relative">
       <img 
         src={advisor.imageUrl} 
         alt={advisor.name} 
@@ -68,8 +68,8 @@ const AdvisorCard: React.FC<{ advisor: Advisor }> = ({ advisor }) => (
       />
     </div>
     <div className="p-6">
-      <h3 className="text-lg font-bold text-slate-800">{advisor.name}</h3>
-      <p className="text-slate-600 font-medium mt-1">{advisor.role}</p>
+      <h3 className="text-lg font-semibold text-charcoal-900">{advisor.name}</h3>
+      <p className="text-charcoal-600 font-medium mt-1">{advisor.role}</p>
     </div>
   </motion.div>
 );
@@ -128,7 +128,7 @@ const CombinedLeadershipPage: React.FC = () => {
         
         <div className="space-y-12">
           <div>
-            <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Current Executive Members</h3>
+            <h3 className="text-xl font-semibold text-charcoal-900 mb-6 text-center">Current Executive Members</h3>
             <motion.div 
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
               variants={containerVariants}
@@ -143,7 +143,7 @@ const CombinedLeadershipPage: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Alumni Executive Members</h3>
+            <h3 className="text-xl font-semibold text-charcoal-900 mb-6 text-center">Alumni Executive Members</h3>
             <motion.div 
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
               variants={containerVariants}
