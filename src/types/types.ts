@@ -6,7 +6,13 @@ export interface Member {
   classInfo?: string;
   campus?: string;
   imageUrl: string;
-  specialRecognition?: boolean;
+}
+
+export interface SpecialRecognitionMember {
+  name: string;
+  title: string;
+  badge: string;
+  imageUrl: string;
 }
 
 export interface ExecutiveMember {

@@ -2,6 +2,7 @@ import type {
   Member,
   ExecutiveMember,
   Advisor,
+  SpecialRecognitionMember,
   Project,
   Achievement,
   Gallery,
@@ -38,12 +39,11 @@ export const leadershipTeam: Member[] = [
   {
     name: 'Md. Mottakin Bin Arif',
     id: 'Cam-CC-240004',
-    role: 'Publicity Secretary',
+    role: 'Secretary (Publicity)',
     term: '2024–2025',
     classInfo: 'Class 9 EV',
     campus: 'Campus 2',
     imageUrl: '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
-    specialRecognition: true,
   },
   {
     name: 'Kazi Tasfia Priota',
@@ -71,6 +71,15 @@ export const leadershipTeam: Member[] = [
     classInfo: 'Class 9 BV (B)',
     campus: 'Campus 2',
     imageUrl: '/images/advisor&leadership/Kishore Sutradhar.jpg',
+  },
+];
+
+export const specialRecognition: SpecialRecognitionMember[] = [
+  {
+    name: 'Md. Mottakin Bin Arif',
+    title: 'Lead Developer of the Official Cambrian Climate Club Website',
+    badge: 'Special Recognition',
+    imageUrl: '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
   },
 ];
 
@@ -134,7 +143,7 @@ export const currentMembers: ExecutiveMember[] = [
     serial: 5,
     name: 'Md. Mottakin Bin Arif',
     id: 'Cam-CC-240004',
-    role: 'Publicity Secretary',
+    role: 'Secretary (Publicity)',
   },
   {
     serial: 6,
