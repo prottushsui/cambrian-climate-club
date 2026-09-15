@@ -1,4 +1,3 @@
-```gitignore
 # Dependencies
 node_modules/
 
@@ -72,6 +71,7 @@ coverage.xml
 .env
 .env.local
 *.env.*
+!.env.example
 
 # Editors and IDEs
 .vscode/
@@ -83,10 +83,14 @@ coverage.xml
 # OS generated files
 .DS_Store
 Thumbs.db
-```
+Desktop.ini
 
-Wait, looking at the file changes again - they are all source code files (.css, .tsx) with no build artifacts, dependencies, or temporary files. Following rule #6:
+# TypeScript build information
+*.tsbuildinfo
 
-```gitignore
+# Vite cache
+.vite/
 
-```
+# Local tooling / reports
+reports/
+.tmp/

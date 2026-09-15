@@ -38,17 +38,21 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [src]);
 
   return (
-    <div 
+    <div
       className={`relative overflow-hidden ${className}`}
       style={{ width, height }}
     >
       {isLoading && placeholder && (
-        <div 
+        <div
           className="absolute inset-0 bg-gray-200 animate-pulse"
-          style={{ backgroundImage: `url(${placeholder})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          style={{
+            backgroundImage: `url(${placeholder})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         />
       )}
-      
+
       <img
         ref={imgRef}
         src={src}
@@ -61,7 +65,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         loading="lazy"
         {...props}
       />
-      
+
       {hasError && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
           <span className="text-gray-500">Image unavailable</span>

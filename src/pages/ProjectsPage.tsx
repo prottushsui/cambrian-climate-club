@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/content';
@@ -10,9 +9,9 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12
-    }
-  }
+      staggerChildren: 0.12,
+    },
+  },
 };
 
 const ProjectsPage: React.FC = () => {
@@ -23,14 +22,14 @@ const ProjectsPage: React.FC = () => {
           title="Our Projects"
           subtitle="Key initiatives we are working on to promote sustainability. More details coming soon!"
         />
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: '-50px' }}
         >
-          {projects.map((project) => (
+          {projects.map(project => (
             <ProjectCard key={project.title} project={project} />
           ))}
         </motion.div>
