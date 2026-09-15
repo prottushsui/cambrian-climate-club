@@ -9,6 +9,7 @@ import AboutPage from '@/pages/AboutPage';
 import CombinedLeadershipPage from '@/pages/CombinedLeadershipPage';
 import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
 const App = () => (
   <HashRouter>
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/leadership" element={<CombinedLeadershipPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/achievements" element={<AchievementsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />
