@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import { Component, type ErrorInfo, type ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -7,37 +7,45 @@ interface Props {
 
 interface State {
   hasError: boolean;
-  error: Error | null;
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = { hasError: false, error: null };
+  state: State = { hasError: false };
+
+  static getDerivedStateFromError(): State {
+    return { hasError: true };
   }
 
-  static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error };
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    // Keep diagnostics in the developer console without exposing internal
+    // implementation details or stack traces to site visitors.
+    console.error('Application rendering error', error, errorInfo);
   }
+
+  handleReload = () => {
+    window.location.reload();
+  };
 
   render() {
     if (this.state.hasError) {
       return (
         this.props.fallback || (
-          <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-            <h1 className="text-2xl font-bold text-red-600 mb-4">
+          <main className="flex min-h-screen flex-col items-center justify-center bg-sandstone-50 px-4 py-16 text-center">
+            <p className="editorial-kicker mb-3">Unexpected error</p>
+            <h1 className="font-heading text-3xl font-semibold text-charcoal-900">
               Something went wrong
             </h1>
-            <p className="text-gray-600 mb-4">
-              {this.state.error?.message || 'An unexpected error occurred'}
+            <p className="mt-3 max-w-md text-charcoal-600">
+              The page could not be displayed. Please reload and try again.
             </p>
             <button
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-              onClick={() => window.location.reload()}
+              type="button"
+              className="mt-6 rounded-lg bg-primary px-5 py-3 font-semibold text-white transition hover:bg-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              onClick={this.handleReload}
             >
-              Reload Page
+              Reload page
             </button>
-          </div>
+          </main>
         )
       );
     }
