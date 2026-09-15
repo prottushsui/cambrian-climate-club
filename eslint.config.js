@@ -3,13 +3,19 @@ import globals from 'globals';
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**', '**/*.ts', '**/*.tsx'],
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      'coverage/**',
+      'build/**',
+      '*.config.*',
+    ],
   },
   js.configs.recommended,
   {
-    files: ['**/*.js'],
+    files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
     languageOptions: {
-      ecmaVersion: 2022,
+      ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
         ...globals.node,
