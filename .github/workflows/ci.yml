@@ -27,13 +27,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Ensure local secrets and generated output are not tracked
+      - name: Verify repository hygiene
         shell: bash
         run: |
           test ! -e .env.local
           test ! -e .env
-          test ! -e dist
+          if git ls-files --error-unmatch dist >/dev/null 2>&1; then
+            echo 'dist/ must not be tracked'
+            exit 1
+          fi
+          mkdir -p dist
           git check-ignore -q dist/
+          rm -rf dist
 
       - name: Type-check
         run: npm run type-check
@@ -46,3 +51,10 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Verify generated output is ignored
+        shell: bash
+        run: |
+          test -d dist
+          git check-ignore -q dist/
+          test -z "$(git ls-files -- dist/)"
