@@ -5,7 +5,7 @@ import OptimizedImage from './ui/OptimizedImage';
 
 interface ProjectCardProps {
   project: Project;
-  isFeatured?: boolean;
+  _isFeatured?: boolean;
 }
 
 /**
@@ -19,7 +19,7 @@ interface ProjectCardProps {
  *   <ProjectCard project={project} isFeatured={true} />
  * )
  */
-const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, isFeatured = false }) => {
+const ProjectCard: React.FC<ProjectCardProps> = memo(({ project, _isFeatured = false }) => {
   return (
     <motion.div 
       className="editorial-card overflow-hidden"

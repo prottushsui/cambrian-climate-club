@@ -1,42 +1,12 @@
-# Environment files
-.env
-.env.local
-.env.*.local
-
+```
 # Dependencies
 node_modules/
-
-# Build output
-dist/
-build/
 
 # Logs
 *.log
 
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Testing
-coverage/
-.nyc_output/
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Vite
-.vite/
-
-# Server
-.server/
+# Environment
+.env
+.env.local
+*.env.*
+```

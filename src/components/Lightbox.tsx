@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, memo, useCallback } from 'react';
 
 interface LightboxProps {
   imageUrl: string;
@@ -8,6 +7,11 @@ interface LightboxProps {
 
 const Lightbox: React.FC<LightboxProps> = memo(({ imageUrl, onClose }) => {
   const [show, setShow] = useState(false);
+  
+  const handleClose = useCallback(() => {
+    setShow(false);
+    setTimeout(onClose, 300); // match transition duration
+  }, [onClose]);
 
   useEffect(() => {
     setShow(true); // Animate in
@@ -20,12 +24,7 @@ const Lightbox: React.FC<LightboxProps> = memo(({ imageUrl, onClose }) => {
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const handleClose = () => {
-    setShow(false);
-    setTimeout(onClose, 300); // match transition duration
-  };
+  }, [handleClose]);
 
   return (
     <div
