@@ -4,7 +4,6 @@ import { Analytics } from '@vercel/analytics/react';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ErrorBoundary from '@/components/ErrorBoundary';
 import HomePage from '@/pages/HomePage';
 import AboutPage from '@/pages/AboutPage';
 import CombinedLeadershipPage from '@/pages/CombinedLeadershipPage';
