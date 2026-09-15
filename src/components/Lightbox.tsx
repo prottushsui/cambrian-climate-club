@@ -12,7 +12,8 @@ const Lightbox = memo(({ imageUrl, onClose }: LightboxProps) => {
   const previousActiveElementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    previousActiveElementRef.current = document.activeElement as HTMLElement | null;
+    previousActiveElementRef.current =
+      document.activeElement as HTMLElement | null;
     document.body.style.overflow = 'hidden';
     setVisible(true);
     closeButtonRef.current?.focus();

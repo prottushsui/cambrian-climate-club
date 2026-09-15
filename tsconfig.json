@@ -19,5 +19,11 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["App.tsx", "index.tsx", "src/**/*.ts", "src/**/*.tsx", "vite.config.ts"]
+  "include": [
+    "App.tsx",
+    "index.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts"
+  ]
 }

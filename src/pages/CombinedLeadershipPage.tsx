@@ -112,7 +112,9 @@ const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
       />
     </div>
     <div className="p-6">
-      <h3 className="text-lg font-semibold text-charcoal-900">{advisor.name}</h3>
+      <h3 className="text-lg font-semibold text-charcoal-900">
+        {advisor.name}
+      </h3>
       <p className="text-charcoal-600 font-medium mt-1">{advisor.role}</p>
     </div>
   </motion.article>
@@ -229,7 +231,10 @@ const CombinedLeadershipPage = () => (
         viewport={{ once: true, margin: '-50px' }}
       >
         {advisoryCommittee.map(advisor => (
-          <AdvisorCard key={`${advisor.name}-${advisor.role}`} advisor={advisor} />
+          <AdvisorCard
+            key={`${advisor.name}-${advisor.role}`}
+            advisor={advisor}
+          />
         ))}
       </motion.div>
     </section>

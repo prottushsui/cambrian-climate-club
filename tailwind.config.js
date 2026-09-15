@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./App.tsx",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./constants/**/*.{js,ts,jsx,tsx}",
-    "./utils/**/*.{js,ts,jsx,tsx}",
-    "./data/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './App.tsx',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './constants/**/*.{js,ts,jsx,tsx}',
+    './utils/**/*.{js,ts,jsx,tsx}',
+    './data/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -105,8 +105,8 @@ export default {
       },
       borderRadius: {
         md: '0.5rem', // 8px
-        lg: '0.75rem',  // 12px
-        xl: '1.25rem',     // 20px
+        lg: '0.75rem', // 12px
+        xl: '1.25rem', // 20px
       },
       boxShadow: {
         subtle: '0 2px 6px rgba(15, 23, 42, 0.06)',
@@ -115,7 +115,7 @@ export default {
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-        'stagger': 'stagger 0.5s ease-out forwards',
+        stagger: 'stagger 0.5s ease-out forwards',
       },
       keyframes: {
         fadeInUp: {
@@ -126,8 +126,8 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(15px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-      }
-    }
+      },
+    },
   },
   plugins: [],
-}
+};

@@ -17,7 +17,12 @@ const App = () => (
       <ScrollToTop />
       <div className="flex flex-col min-h-screen" data-testid="app-container">
         <Navbar />
-        <main id="main-content" className="flex-grow pt-20" role="main" tabIndex={-1}>
+        <main
+          id="main-content"
+          className="flex-grow pt-20"
+          role="main"
+          tabIndex={-1}
+        >
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
