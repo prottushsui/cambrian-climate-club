@@ -25,7 +25,7 @@ export const leadershipTeam: Member[] = [
     term: '2023–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: '/images/advisor&leadership/Maria Anamika Bairagee.jpg',
+    imageUrl: '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
   },
   {
     name: 'Towfiquzaman',
@@ -77,9 +77,22 @@ export const leadershipTeam: Member[] = [
 export const specialRecognition: SpecialRecognitionMember[] = [
   {
     name: 'Md. Mottakin Bin Arif',
-    title: 'Lead Developer of the Official Cambrian Climate Club Website',
+    title:
+      'Lead Developer of the Official Cambrian Climate Club Website and Publisher of the First Edition of Climate Chronicles (2025–2026)',
     badge: 'Special Recognition',
     imageUrl: '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
+  },
+  {
+    name: 'Md. Motammim Bin Arif',
+    title: 'Chief Editor of the First Edition of Climate Chronicles (2025–2026)',
+    badge: 'Special Recognition',
+    imageUrl: '/images/advisor&leadership/Md. Motammim Bin Arif.jpg',
+  },
+  {
+    name: 'Hasan Al Jayed',
+    title: 'Editor of the First Edition of Climate Chronicles (2025–2026)',
+    badge: 'Special Recognition',
+    imageUrl: '/images/Executive Commitee/Hasan Al Jayed.jpeg',
   },
 ];
 
