@@ -293,19 +293,19 @@ export const currentMembers: ExecutiveMember[] = [
   {
     serial: 31,
     name: 'Karima Akhter',
-    id: 'Cam-CC-250011',
+    id: 'Cam-CC-250003',
     role: 'Executive Member',
   },
   {
     serial: 32,
     name: 'Isha Tasnim Khan',
-    id: '',
+    id: 'Cam-CC-250004',
     role: 'Executive Member',
   },
   {
     serial: 33,
     name: 'Noshin',
-    id: '',
+    id: 'Cam-CC-250005',
     role: 'Executive Member',
   },
   {
@@ -317,7 +317,7 @@ export const currentMembers: ExecutiveMember[] = [
   {
     serial: 35,
     name: 'Fariha Haque',
-    id: '',
+    id: 'Cam-CC-250013',
     role: 'Executive Member',
   },
   {
