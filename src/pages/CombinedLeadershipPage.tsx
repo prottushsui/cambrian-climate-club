@@ -31,20 +31,24 @@ const itemVariants = {
   },
 };
 
+// Only verified name-to-file matches are mapped here.
+// Any executive/alumni member without a confirmed portrait keeps the ID placeholder.
 const executiveImages: Record<string, string> = {
   'Md. Motammim Bin Arif':
     '/images/advisor&leadership/Md. Motammim Bin Arif.jpg',
   'Maria Anamika Boiragee':
     '/images/advisor&leadership/Maria Anamika Bairagee.jpg',
   Towfiquzaman: '/images/advisor&leadership/H.M Towfiquzzaman.jpg',
-  'Md. Mottakin Bin Arif':
-    '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
   'Kazi Tasfia Priota':
     '/images/advisor&leadership/Kazi Tasfia Priota.jpg',
-  'Samira Subha': '/images/advisor&leadership/Samirah Subha.jpeg',
+  'Md. Mottakin Bin Arif':
+    '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
   'Kishor Sutradhar':
     '/images/advisor&leadership/Kishore Sutradhar.jpg',
-  'Hasan Al Jayed': '/images/Executive Commitee/Hasan Al Jayed.jpeg',
+  'Hasan Al Jayed':
+    '/images/Executive Commitee/Hasan Al Jayed.jpeg',
+  'Samira Subha':
+    '/images/advisor&leadership/Samirah Subha.jpeg',
 };
 
 const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => {
