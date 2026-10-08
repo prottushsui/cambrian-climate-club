@@ -311,7 +311,7 @@ export const currentMembers: ExecutiveMember[] = [
   {
     serial: 34,
     name: 'Radia Binte Ekra',
-    id: '',
+    id: 'Cam-CC-25005',
     role: 'Executive Member',
   },
   {
