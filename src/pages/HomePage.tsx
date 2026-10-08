@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { projects } from '@/data/content';
+import { projects, galleries } from '@/data/content';
 import SectionHeader from '@/components/SectionHeader';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import HeroSection from '@/components/HeroSection';
+import ImageGallery from '@/components/ImageGallery';
 import { containerVariants, itemVariants } from '@/constants/animation';
 
 // Static counter component - no animation
@@ -173,6 +174,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+      <ImageGallery galleries={galleries} />
     </div>
   );
 };
