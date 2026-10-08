@@ -76,6 +76,7 @@ const Navbar: React.FC = memo(() => {
     { to: '/leadership', label: 'Leadership' },
     { to: '/projects', label: 'Projects' },
     { to: '/achievements', label: 'Achievements' },
+    { to: '/climate-chronicles', label: 'Climate Chronicles' },
   ];
 
   return (
