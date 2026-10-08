@@ -25,7 +25,7 @@ export const leadershipTeam: Member[] = [
     term: '2023–2025',
     classInfo: 'Class 10 EV',
     campus: 'Campus 2',
-    imageUrl: '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
+    imageUrl: '/images/advisor&leadership/Maria Anamika Bairagee.jpg',
   },
   {
     name: 'Towfiquzaman',
