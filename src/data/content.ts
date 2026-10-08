@@ -568,6 +568,37 @@ export const galleries: Gallery[] = [
     ],
   },
   {
+    title: 'SPSC',
+    images: [
+      '/images/SPSC/SPSC 1.jpeg',
+      '/images/SPSC/SPSC 2.jpeg',
+      '/images/SPSC/SPSC 3.jpeg',
+      '/images/SPSC/SPSC 4.jpeg',
+      '/images/SPSC/SPSC 5.jpeg',
+      '/images/SPSC/SPSC 6.jpeg',
+      '/images/SPSC/SPSC 7.jpeg',
+      '/images/SPSC/SPSC 8.jpeg',
+      '/images/SPSC/SPSC 9.jpeg',
+      '/images/SPSC/SPSC 10.jpeg',
+      '/images/SPSC/SPSC 11.jpeg',
+      '/images/SPSC/SPSC 12.jpeg',
+      '/images/SPSC/SPSC 13.jpeg',
+      '/images/SPSC/SPSC 14.jpeg',
+      '/images/SPSC/SPSC 15.jpeg',
+      '/images/SPSC/SPSC 16.jpeg',
+      '/images/SPSC/SPSC 17.jpeg',
+      '/images/SPSC/SPSC 18.jpeg',
+      '/images/SPSC/SPSC 19.jpeg',
+    ],
+  },
+  {
+    title: 'Awareness Materials',
+    images: [
+      '/images/Awareness Materials/Awareness 1.jpeg',
+      '/images/Awareness Materials/Awareness 2.jpeg',
+    ],
+  },
+  {
     title: 'Greening Activities',
     images: [
       '/images/greening/Greening- 1.jpg',
