@@ -77,7 +77,7 @@ const VIDEO_ARCHIVE: string[] = [
   '/Video/Video 19.mp4',
   '/Video/Video 20.mp4',
   '/Video/Video 21 (1).mp4',
-  '/Video/Video 22.mp4.mp4',
+  '/Video/Video 22.mp4',
   '/Video/Video 3.mp4',
   '/Video/Video 4.mp4',
   '/Video/Video 5.mp4',
