@@ -31,29 +31,61 @@ const itemVariants = {
   },
 };
 
-const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => (
-  <motion.article
-    className="editorial-card p-6 text-center h-full flex flex-col items-center"
-    variants={itemVariants}
-    whileHover={{
-      y: -6,
-      scale: 1.015,
-      boxShadow:
-        '0 16px 28px -8px rgb(0 0 0 / 0.12), 0 10px 10px -10px rgb(0 0 0 / 0.1)',
-    }}
-    transition={{ type: 'spring', stiffness: 280, damping: 22 }}
-  >
-    <div
-      aria-hidden="true"
-      className="w-16 h-16 bg-sandstone-200 rounded-full flex items-center justify-center mb-4 mx-auto"
+const executiveImages: Record<string, string> = {
+  'Md. Motammim Bin Arif':
+    '/images/advisor&leadership/Md. Motammim Bin Arif.jpg',
+  'Maria Anamika Boiragee':
+    '/images/advisor&leadership/Maria Anamika Bairagee.jpg',
+  Towfiquzaman: '/images/advisor&leadership/H.M Towfiquzzaman.jpg',
+  'Md. Mottakin Bin Arif':
+    '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
+  'Kazi Tasfia Priota':
+    '/images/advisor&leadership/Kazi Tasfia Priota.jpg',
+  'Samira Subha': '/images/advisor&leadership/Samirah Subha.jpeg',
+  'Kishor Sutradhar':
+    '/images/advisor&leadership/Kishore Sutradhar.jpg',
+  'Hasan Al Jayed': '/images/Executive Commitee/Hasan Al Jayed.jpeg',
+};
+
+const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => {
+  const imageUrl = executiveImages[member.name];
+
+  return (
+    <motion.article
+      className="editorial-card p-6 text-center h-full flex flex-col items-center"
+      variants={itemVariants}
+      whileHover={{
+        y: -6,
+        scale: 1.015,
+        boxShadow:
+          '0 16px 28px -8px rgb(0 0 0 / 0.12), 0 10px 10px -10px rgb(0 0 0 / 0.1)',
+      }}
+      transition={{ type: 'spring', stiffness: 280, damping: 22 }}
     >
-      <span className="text-lg font-bold text-charcoal-700">ID</span>
-    </div>
-    <h3 className="text-lg font-semibold text-charcoal-900">{member.name}</h3>
-    <p className="text-charcoal-600 font-medium mt-1">{member.role}</p>
-    <p className="text-sm text-charcoal-500 mt-1 font-mono">{member.id}</p>
-  </motion.article>
-);
+      <div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto bg-sandstone-200 ring-2 ring-white shadow-sm">
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div
+            aria-hidden="true"
+            className="w-full h-full flex items-center justify-center"
+          >
+            <span className="text-lg font-bold text-charcoal-700">ID</span>
+          </div>
+        )}
+      </div>
+      <h3 className="text-lg font-semibold text-charcoal-900">{member.name}</h3>
+      <p className="text-charcoal-600 font-medium mt-1">{member.role}</p>
+      <p className="text-sm text-charcoal-500 mt-1 font-mono">{member.id}</p>
+    </motion.article>
+  );
+};
 
 const SpecialRecognitionCard = ({
   member,
