@@ -36,9 +36,9 @@ const itemVariants = {
 const executiveImages: Record<string, string> = {
   'Md. Motammim Bin Arif':
     '/images/advisor&leadership/Md. Motammim Bin Arif.jpg',
-  'Maria Anamika Boiragee':
+  'Maria Anamika Bairagee':
     '/images/advisor&leadership/Maria Anamika Bairagee.jpg',
-  Towfiquzaman: '/images/advisor&leadership/H.M Towfiquzzaman.jpg',
+  'H.M Towfiquzzaman': '/images/advisor&leadership/H.M Towfiquzzaman.jpg',
   'Kazi Tasfia Priota':
     '/images/advisor&leadership/Kazi Tasfia Priota.jpg',
   'Md. Mottakin Bin Arif':
