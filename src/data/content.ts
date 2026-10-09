@@ -111,7 +111,7 @@ export const currentMembers: ExecutiveMember[] = [
   { serial: 38, name: 'Subaha Tabassum', id: 'Cam-CC-250002', role: 'Executive Member' },
   { serial: 39, name: 'Shahira Binte Monir', id: 'Cam-CC-250010', role: 'Executive Member' },
   { serial: 40, name: 'Muhtasim Alam Kibria', id: 'Cam-CC-250007', role: 'Executive Member' },
-  { serial: 41, name: 'Afsina Nisa', id: 'Cam-CC-250007', role: 'Executive Member' },
+  { serial: 41, name: 'Afsina Nisa', id: 'Cam-CC-250018', role: 'Executive Member' },
   { serial: 42, name: 'Mehrima Jannat Sneha', id: 'Cam-CC-250008', role: 'Executive Member' },
   { serial: 43, name: 'Jannatul Nayem', id: 'Cam-CC-240018', role: 'Executive Member' },
   { serial: 44, name: 'Ariyan Iqbal', id: 'Cam-CC-250015', role: 'Executive Member' },
