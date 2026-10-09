@@ -51,7 +51,13 @@ const executiveImages: Record<string, string> = {
     '/images/advisor&leadership/Samirah Subha.jpeg',
 };
 
-const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => {
+const ExecutiveMemberCard = ({
+  member,
+  blank = false,
+}: {
+  member: ExecutiveMember;
+  blank?: boolean;
+}) => {
   const imageUrl = executiveImages[member.name];
 
   return (
@@ -66,27 +72,31 @@ const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => {
       }}
       transition={{ type: 'spring', stiffness: 280, damping: 22 }}
     >
-      <div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto bg-sandstone-200 ring-2 ring-white shadow-sm">
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt=""
-            className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        ) : (
-          <div
-            aria-hidden="true"
-            className="w-full h-full flex items-center justify-center"
-          >
-            <span className="text-lg font-bold text-charcoal-700">ID</span>
+{!blank && (
+        <>
+          <div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto bg-sandstone-200 ring-2 ring-white shadow-sm">
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt=""
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div
+                aria-hidden="true"
+                className="w-full h-full flex items-center justify-center"
+              >
+                <span className="text-lg font-bold text-charcoal-700">ID</span>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <h3 className="text-lg font-semibold text-charcoal-900">{member.name}</h3>
-      <p className="text-charcoal-600 font-medium mt-1">{member.role}</p>
-      <p className="text-sm text-charcoal-500 mt-1 font-mono">{member.id}</p>
+          <h3 className="text-lg font-semibold text-charcoal-900">{member.name}</h3>
+          <p className="text-charcoal-600 font-medium mt-1">{member.role}</p>
+          <p className="text-sm text-charcoal-500 mt-1 font-mono">{member.id}</p>
+        </>
+      )}
     </motion.article>
   );
 };
@@ -245,8 +255,9 @@ const CombinedLeadershipPage = () => (
           >
             {alumniMembers.map((member, index) => (
               <ExecutiveMemberCard
-                key={`${member.id}-${member.name}-${index}`}
+                key={`retired-blank-${index}`}
                 member={member}
+                blank
               />
             ))}
           </motion.div>
