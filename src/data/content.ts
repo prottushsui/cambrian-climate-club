@@ -54,7 +54,7 @@ export const specialRecognition: SpecialRecognitionMember[] = [
   },
   {
     name: 'Hasan Al Jayed',
-    title: 'Editor of the First Edition of Climate Chronicles (2025–2026)',
+    title: 'Chief Designer of the First Edition of Climate Chronicles (2025–2026)',
     badge: 'Special Recognition',
     imageUrl: '/images/Executive Commitee/Hasan Al Jayed.jpeg',
   },
