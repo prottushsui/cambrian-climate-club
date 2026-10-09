@@ -12,7 +12,7 @@ export const leadershipTeam: Member[] = [
   {
     name: 'Md. Mottakin Bin Arif',
     id: 'Cam-CC-240004',
-    role: 'Secretary (Publicity)',
+    role: 'Acting President & Secretary (Publicity)',
     term: '2024–2025',
     classInfo: 'Class 9 EV',
     campus: 'Campus 2',
@@ -76,7 +76,7 @@ export const alumniMembers: ExecutiveMember[] = [
 ];
 
 export const currentMembers: ExecutiveMember[] = [
-  { serial: 5, name: 'Md. Mottakin Bin Arif', id: 'Cam-CC-240004', role: 'Secretary (Publicity)' },
+  { serial: 5, name: 'Md. Mottakin Bin Arif', id: 'Cam-CC-240004', role: 'Acting President & Secretary (Publicity)' },
   { serial: 6, name: 'Kishor Sutradhar', id: 'Cam-CC-240005', role: 'Treasurer' },
   { serial: 7, name: 'Md. Muktader Islam Shoibal', id: 'Cam-CC-240006', role: 'Executive Member' },
   { serial: 8, name: 'Ragib Ahammed', id: 'Cam-CC-240007', role: 'Executive Member' },
