@@ -8,7 +8,7 @@ import type {
   Gallery,
 } from '@/types/types';
 
-export const leadershipTeam: Member[
+export const leadershipTeam: Member[] = [
   {
     name: 'Md. Mottakin Bin Arif',
     id: 'Cam-CC-240004',
@@ -60,9 +60,7 @@ export const specialRecognition: SpecialRecognitionMember[] = [
   },
 ];
 
-export const alumniMembers: ExecutiveMember[
-
-] = [
+export const alumniMembers: ExecutiveMember[] = [
 {
     name: 'Mariam Jannati Tisha',
     id: 'Cam-CC-230003',
@@ -90,7 +88,7 @@ export const alumniMembers: ExecutiveMember[
     id: 'Cam-CC-230013',
     role: 'Executive Member',
   },
-  { name: 'Nokibul Islam', id: 'Cam-CC-230015', role: 'Executive Member' },,
+  { name: 'Nokibul Islam', id: 'Cam-CC-230015', role: 'Executive Member' },
   {
     name: 'Md. Motammim Bin Arif',
     id: 'Cam-CC-240001',
@@ -323,7 +321,7 @@ export const alumniMembers: ExecutiveMember[
   }
 ];
 
-export const currentMembers: ExecutiveMember[
+export const currentMembers: ExecutiveMember[] = [
   {
     serial: 5,
     name: 'Md. Mottakin Bin Arif',
