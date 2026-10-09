@@ -63,7 +63,7 @@ export const specialRecognition: SpecialRecognitionMember[] = [
 export const alumniMembers: ExecutiveMember[
 
 ] = [
-  {
+{
     name: 'Mariam Jannati Tisha',
     id: 'Cam-CC-230003',
     role: 'General Secretary (2023), Organizing Secretary (2024)',
@@ -90,7 +90,202 @@ export const alumniMembers: ExecutiveMember[
     id: 'Cam-CC-230013',
     role: 'Executive Member',
   },
-  { name: 'Nokibul Islam', id: 'Cam-CC-230015', role: 'Executive Member' },
+  { name: 'Nokibul Islam', id: 'Cam-CC-230015', role: 'Executive Member' },,
+  {
+    name: 'Md. Motammim Bin Arif',
+    id: 'Cam-CC-240001',
+    role: 'Former President (2024–2025)',
+  },
+  {
+    name: 'Maria Anamika Boiragee',
+    id: 'Cam-CC-230002',
+    role: 'Former Vice-President (2023–2025)',
+  },
+  {
+    name: 'Towfiquzaman',
+    id: 'Cam-CC-240002',
+    role: 'Former General Secretary (2024–2025)',
+  },
+  {
+    name: 'Kazi Tasfia Priota',
+    id: 'Cam-CC-240003',
+    role: 'Former Office Secretary (2024–2025)',
+  },
+  {
+    name: 'Md. Muktader Islam Shoibal',
+    id: 'Cam-CC-240006',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Ragib Ahammed',
+    id: 'Cam-CC-240007',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Tamanna Ferdous',
+    id: 'Cam-CC-240008',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Amir Hossain',
+    id: 'Cam-CC-240009',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Labonno Mashfiq',
+    id: 'Cam-CC-240010',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Hasan Al Jayed',
+    id: 'Cam-CC-240011',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Md. Muntazir Rahman',
+    id: 'Cam-CC-240012',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Sofiuddin Hossain Sabbir',
+    id: 'Cam-CC-240013',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Md. Kabir',
+    id: 'Cam-CC-240014',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Afra Tahsin Ilma',
+    id: 'Cam-CC-240015',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Nahida Haque Nedha',
+    id: 'Cam-CC-240016',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Sabika Ayub',
+    id: 'Cam-CC-240017',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Azana Hasan Adhora',
+    id: 'Cam-CC-240018',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Md. Sayem',
+    id: 'Cam-CC-240019',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Jannatul',
+    id: 'Cam-CC-240020',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Maryam Jannati Tisha',
+    id: 'Cam-CC-240023',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Md. Shahnewaz',
+    id: 'Cam-CC-250006',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Sadikur Rahman Sadi',
+    id: 'Cam-CC-230010',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Karima Akhter',
+    id: 'Cam-CC-250003',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Isha Tasnim Khan',
+    id: 'Cam-CC-250004',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Noshin',
+    id: 'Cam-CC-250005',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Radia Binte Ekra',
+    id: 'Cam-CC-25005',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Fariha Haque',
+    id: 'Cam-CC-250013',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Mohtamim Rafiu Tashan',
+    id: 'Cam-CC-250014',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Tahir Absar Mridul',
+    id: 'Cam-CC-250012',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Subaha Tabassum',
+    id: 'Cam-CC-250002',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Shahira Binte Monir',
+    id: 'Cam-CC-250010',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Muhtasim Alam Kibria',
+    id: 'Cam-CC-250007',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Mehrima Jannat Sneha',
+    id: 'Cam-CC-250008',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Ariyan Iqbal',
+    id: 'Cam-CC-250015',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Muhammad Ali Razeen',
+    id: 'Cam-CC-250001',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Mutakassif Kabir (Nishith)',
+    id: 'Cam-CC-250009',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Nafisa Binte Hoque',
+    id: 'Cam-CC-250016',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Abdur Rahman',
+    id: 'Cam-CC-250017',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Aungkita Ritchil',
+    id: 'Cam-CC-250019',
+    role: 'Former Executive Member',
+  }
 ];
 
 export const currentMembers: ExecutiveMember[
