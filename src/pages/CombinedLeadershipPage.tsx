@@ -45,9 +45,13 @@ const executiveImages: Record<string, string> = {
     '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
   'Kishor Sutradhar':
     '/images/advisor&leadership/Kishore Sutradhar.jpg',
+  'Kishore Sutradhar':
+    '/images/advisor&leadership/Kishore Sutradhar.jpg',
   'Hasan Al Jayed':
     '/images/Executive Commitee/Hasan Al Jayed.jpeg',
   'Samira Subha':
+    '/images/advisor&leadership/Samirah Subha.jpeg',
+  'Samirah Subha':
     '/images/advisor&leadership/Samirah Subha.jpeg',
 };
 
