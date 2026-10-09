@@ -72,10 +72,10 @@ export const alumniMembers: ExecutiveMember[] = [
   { name: 'AZM Mashnobi', id: 'Cam-CC-230009', role: 'Executive Member' },
   { name: 'Md. Mohiuddin Kabir', id: 'Cam-CC-230013', role: 'Executive Member' },
   { name: 'Nokibul Islam', id: 'Cam-CC-230015', role: 'Executive Member' },
-  { name: 'Md. Motammim Bin Arif', id: 'Cam-CC-240001', role: 'President (2026–20__) — Nil' },
-  { name: 'Maria Anamika Bairagee', id: 'Cam-CC-230002', role: 'Vice-President (2026–20__) — Nil' },
-  { name: 'H.M Towfiquzzaman', id: 'Cam-CC-240002', role: 'General Secretary (2026–20__) — Nil' },
-  { name: 'Kazi Tasfia Priota', id: 'Cam-CC-240003', role: 'Office Secretary (2026–20__) — Nil' },
+  { name: 'Md. Motammim Bin Arif', id: 'Cam-CC-240001', role: 'President (2024–2025)' },
+  { name: 'Maria Anamika Bairagee', id: 'Cam-CC-230002', role: 'Vice-President (2024–2025)' },
+  { name: 'H.M Towfiquzzaman', id: 'Cam-CC-240002', role: 'General Secretary (2024–2025)' },
+  { name: 'Kazi Tasfia Priota', id: 'Cam-CC-240003', role: 'Office Secretary (2024–2025)' },
 ];
 
 export const currentMembers: ExecutiveMember[] = [
