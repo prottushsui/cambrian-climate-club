@@ -285,6 +285,41 @@ export const alumniMembers: ExecutiveMember[
     name: 'Aungkita Ritchil',
     id: 'Cam-CC-250019',
     role: 'Former Executive Member',
+  },
+  {
+    name: 'Rahman Hossain',
+    id: 'Cam-CC-240010',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Munsif Wahid',
+    id: 'Cam-CC-240011',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Hassan Abdur Rahman',
+    id: 'Cam-CC-240014',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Muksina Molla',
+    id: 'Cam-CC-240016',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Rakin',
+    id: 'Cam-CC-240017',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Afsina Nisa',
+    id: 'Cam-CC-250007',
+    role: 'Former Executive Member',
+  },
+  {
+    name: 'Jannatul Nayem',
+    id: 'Cam-CC-240018',
+    role: 'Former Executive Member',
   }
 ];
 
