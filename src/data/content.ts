@@ -61,6 +61,9 @@ export const specialRecognition: SpecialRecognitionMember[] = [
 ];
 
 export const alumniMembers: ExecutiveMember[] = [
+  { name: 'Afra Tahsin Ilma', id: 'Cam-CC-230001', role: 'Executive Member' },
+  { name: 'Ragib Ahammed', id: 'Cam-CC-240007', role: 'Executive Member' },
+  { name: 'Labonno Mashfiq', id: 'Cam-CC-230014', role: 'Executive Member' },
   { name: 'Mariam Jannati Tisha', id: 'Cam-CC-230003', role: 'General Secretary (2023), Organizing Secretary (2024)' },
   { name: 'Ahmed Zarir', id: 'Cam-CC-230004', role: 'Organizing Secretary (2023)' },
   { name: 'Samin Tahmid', id: 'Cam-CC-230005', role: 'Office Secretary (2023)' },
@@ -79,17 +82,14 @@ export const currentMembers: ExecutiveMember[] = [
   { serial: 5, name: 'Md. Mottakin Bin Arif', id: 'Cam-CC-240004', role: 'Acting President & Secretary (Publicity)' },
   { serial: 6, name: 'Kishor Sutradhar', id: 'Cam-CC-240005', role: 'Treasurer' },
   { serial: 7, name: 'Md. Muktader Islam Shoibal', id: 'Cam-CC-240006', role: 'Executive Member' },
-  { serial: 8, name: 'Ragib Ahammed', id: 'Cam-CC-240007', role: 'Executive Member' },
   { serial: 9, name: 'Tamanna Ferdous', id: 'Cam-CC-240008', role: 'Executive Member' },
   { serial: 10, name: 'Amir Hossain', id: 'Cam-CC-240009', role: 'Executive Member' },
-  { serial: 11, name: 'Labonno Mashfiq', id: 'Cam-CC-240010', role: 'Executive Member' },
   { serial: 12, name: 'Hasan Al Jayed', id: 'Cam-CC-240011', role: 'Executive Member' },
   { serial: 13, name: 'Rahman Hossain', id: 'Cam-CC-240010', role: 'Executive Member' },
   { serial: 14, name: 'Munsif Wahid', id: 'Cam-CC-240011', role: 'Executive Member' },
   { serial: 15, name: 'Md. Muntazir Rahman', id: 'Cam-CC-240012', role: 'Executive Member' },
   { serial: 16, name: 'Sofiuddin Hossain Sabbir', id: 'Cam-CC-240013', role: 'Executive Member' },
   { serial: 17, name: 'Md. Kabir', id: 'Cam-CC-240014', role: 'Executive Member' },
-  { serial: 18, name: 'Afra Tahsin Ilma', id: 'Cam-CC-240015', role: 'Executive Member' },
   { serial: 19, name: 'Nahida Haque Nedha', id: 'Cam-CC-240016', role: 'Executive Member' },
   { serial: 20, name: 'Sabika Ayub', id: 'Cam-CC-240017', role: 'Executive Member' },
   { serial: 21, name: 'Samira Subha', id: 'Cam-CC-240022', role: 'Organizing Secretary' },
