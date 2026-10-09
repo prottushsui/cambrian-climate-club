@@ -178,6 +178,26 @@ const CombinedLeadershipPage = () => (
         {leadershipTeam.map(member => (
           <MemberCard key={`${member.id}-${member.name}`} member={member} />
         ))}
+        {[
+          'President',
+          'General Secretary',
+          'Vice President',
+          'Office Secretary',
+        ].map(position => (
+          <motion.article
+            key={position}
+            className="editorial-card overflow-hidden text-center h-full flex flex-col transform-gpu"
+            variants={itemVariants}
+          >
+            <div
+              className="relative h-64 bg-sandstone-100 overflow-hidden"
+              aria-hidden="true"
+            />
+            <div className="p-6 flex-grow flex flex-col justify-center relative z-10 bg-white">
+              <p className="text-primary-700 font-semibold">{position}</p>
+            </div>
+          </motion.article>
+        ))}
       </motion.div>
     </section>
 
