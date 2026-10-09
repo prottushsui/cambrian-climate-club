@@ -60,7 +60,9 @@ export const specialRecognition: SpecialRecognitionMember[] = [
   },
 ];
 
-export const alumniMembers: ExecutiveMember[] = [
+export const alumniMembers: ExecutiveMember[
+
+] = [
   {
     name: 'Mariam Jannati Tisha',
     id: 'Cam-CC-230003',
