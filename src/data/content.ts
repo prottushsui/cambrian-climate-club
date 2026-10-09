@@ -10,6 +10,33 @@ import type {
 
 export const leadershipTeam: Member[] = [
   {
+    name: 'Md. Motammim Bin Arif',
+    id: 'Cam-CC-240001',
+    role: 'Former President',
+    term: '2024–2025 · Retired',
+    classInfo: 'Class 10 EV',
+    campus: 'Campus 2',
+    imageUrl: '/images/advisor&leadership/Md. Motammim Bin Arif.jpg',
+  },
+  {
+    name: 'Maria Anamika Boiragee',
+    id: 'Cam-CC-230002',
+    role: 'Former Vice-President',
+    term: '2023–2025 · Retired',
+    classInfo: 'Class 10 EV',
+    campus: 'Campus 2',
+    imageUrl: '/images/advisor&leadership/Maria Anamika Bairagee.jpg',
+  },
+  {
+    name: 'Towfiquzaman',
+    id: 'Cam-CC-240002',
+    role: 'Former General Secretary',
+    term: '2024–2025 · Retired',
+    classInfo: 'Class 10 BV (B)',
+    campus: 'Campus 2',
+    imageUrl: '/images/advisor&leadership/H.M Towfiquzzaman.jpg',
+  },
+  {
     name: 'Md. Mottakin Bin Arif',
     id: 'Cam-CC-240004',
     role: 'Secretary (Publicity)',
@@ -17,6 +44,15 @@ export const leadershipTeam: Member[] = [
     classInfo: 'Class 9 EV',
     campus: 'Campus 2',
     imageUrl: '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
+  },
+  {
+    name: 'Kazi Tasfia Priota',
+    id: 'Cam-CC-240003',
+    role: 'Former Office Secretary',
+    term: '2024–2025 · Retired',
+    classInfo: 'Class 10 BV (G)',
+    campus: 'Campus 2',
+    imageUrl: '/images/advisor&leadership/Kazi Tasfia Priota.jpg',
   },
   {
     name: 'Samira Subha',
