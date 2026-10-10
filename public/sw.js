@@ -1,9 +1,12 @@
+// The offline shell is deliberately small and self-contained so it can render
+// even when the React app and its remote assets are unavailable.
 const CACHE_NAME = 'cambrian-climate-club-v1';
 const OFFLINE_URL = '/offline.html';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
+      // A service worker must cache its fallback before it can safely activate.
       await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
       await self.skipWaiting();
     }),
@@ -12,11 +15,16 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys()
+    caches
+      .keys()
       .then((keys) =>
         Promise.all(
+          // Remove only this app's older caches; leave unrelated site caches alone.
           keys
-            .filter((key) => key.startsWith('cambrian-climate-club-') && key !== CACHE_NAME)
+            .filter(
+              (key) =>
+                key.startsWith('cambrian-climate-club-') && key !== CACHE_NAME,
+            )
             .map((key) => caches.delete(key)),
         ),
       )
@@ -28,6 +36,7 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   const url = new URL(request.url);
 
+  // Never intercept writes or third-party requests; the site is a static app.
   if (request.method !== 'GET' || url.origin !== self.location.origin) {
     return;
   }
@@ -36,11 +45,14 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then(async (response) => {
+          // A reachable server can still be unhealthy; show the cached fallback
+          // for server errors while preserving ordinary client-side 4xx responses.
           if (response.status >= 500) {
             const cache = await caches.open(CACHE_NAME);
             return (await cache.match(OFFLINE_URL)) || response;
           }
 
+          // Save successful pages so a previously visited route can load offline.
           if (response.ok) {
             const copy = response.clone();
             event.waitUntil(
@@ -50,6 +62,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(async () => {
+          // Prefer the exact page requested; use the friendly shell as a fallback.
           const cache = await caches.open(CACHE_NAME);
           return (await cache.match(request)) || (await cache.match(OFFLINE_URL));
         }),
