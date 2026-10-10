@@ -2,92 +2,100 @@
 
 The official website for the Cambrian Climate Club, a student-led environmental and sustainability organization at Cambrian School & College, Campus 2.
 
-## About
+**Live website:** https://cambrian-climate-club-v2.vercel.app
 
-This website serves as the digital home for the Cambrian Climate Club, providing information about the club's mission, projects, leadership, and achievements. The club promotes environmental awareness and sustainability initiatives within the school community and beyond.
+## What the site contains
 
-## Features
+- Home, About, Leadership, Projects, Achievements, and Climate Chronicles pages.
+- Responsive layouts styled with Tailwind CSS and a custom editorial design system.
+- Club leadership, alumni, advisors, projects, achievements, galleries, and video archive.
+- Framer Motion animations configured to respect the visitor's reduced-motion preference.
+- Vercel Analytics integration.
 
-- **Focused public pages**: Home, About, Leadership, Projects, and Achievements.
-- **Responsive design**: Tailwind CSS layouts optimized for mobile, tablet, and desktop screens.
-- **Club content archive**: Leadership profiles, project summaries, achievement milestones, images, and videos are driven from local content data.
-- **Accessible navigation**: Keyboard-focus styles, labeled navigation, and semantic page structure.
-- **Motion with user preferences**: Framer Motion animations respect reduced-motion settings.
-- **Analytics-ready**: Vercel Analytics is included in the application shell.
+## Technology
 
-## Technology Stack
+- React 18 + TypeScript
+- React Router DOM (hash-based routing)
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Vercel Analytics
+- Optional Express static server for deployments that need a Node process
 
-- **Frontend**: React 18 with TypeScript
-- **Routing**: React Router DOM
-- **Styling**: Tailwind CSS with a custom editorial design system
-- **Animations**: Framer Motion
-- **Build Tool**: Vite
-- **Server**: Optional Express static server for production builds
+## Requirements
 
-## Project Structure
-
-```text
-├── App.tsx                         # Application shell and routes
-├── index.html                      # HTML entry point
-├── index.tsx                       # React entry point
-├── index.css                       # Global styles and Tailwind layers
-├── public/                         # Referenced static images and videos
-├── src/
-│   ├── components/                 # Shared UI and layout components
-│   ├── constants/                  # Shared animation variants
-│   ├── data/content.ts             # Club content, projects, achievements, galleries
-│   ├── pages/                      # Home, About, Leadership, Projects, Achievements
-│   └── types/types.ts              # Shared TypeScript content types
-├── server.js                       # Static production server
-├── tailwind.config.js              # Design tokens and Tailwind configuration
-└── vite.config.ts                  # Vite build configuration
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18 or higher
+- Node.js 22 (see `.nvmrc`)
 - npm
 
-### Installation
+## Start locally
 
 ```bash
-npm install
-```
-
-### Development
-
-```bash
+npm ci
 npm run dev
 ```
 
-The Vite development server runs on port 3000 by default.
+Vite is configured to use port 3000. The development server prints the actual local URL when it starts.
 
-### Type Check
+## Quality checks
+
+Run these before opening a pull request or deploying:
 
 ```bash
 npm run type-check
-```
-
-### Build for Production
-
-```bash
+npm run lint
+npm run format:check
 npm run build
-```
-
-The production build is written to `dist/`.
-
-### Preview Production Build
-
-```bash
 npm run preview
 ```
 
-## Content Updates
+To apply the configured formatting locally:
 
-Most user-facing club content lives in `src/data/content.ts`. Update that file when changing leadership profiles, project descriptions, milestones, gallery groups, or referenced media paths.
+```bash
+npm run format
+```
+
+The production build is generated in `dist/`. `npm run preview` serves that build locally so you can inspect it before release.
+
+## Repository layout
+
+```text
+├── App.tsx                      # Application shell and routes
+├── index.tsx                    # React entry point and error boundary
+├── index.html                   # HTML document metadata and mount point
+├── index.css                    # Global styles
+├── public/                      # Static images, portraits, and videos
+├── src/
+│   ├── components/              # Shared UI components
+│   ├── constants/               # Shared animation constants
+│   ├── data/content.ts          # Club content and media references
+│   ├── pages/                   # Route-level page components
+│   ├── types/                   # Shared TypeScript types
+│   └── design-system.md         # Design-system notes
+├── docs/HANDOVER.md             # Setup, maintenance, deployment and troubleshooting
+├── server.js                    # Optional Express server for dist/
+├── vite.config.ts               # Vite configuration
+├── vercel.json                  # Vercel response headers
+└── .github/workflows/ci.yml     # Automated verification
+```
+
+## Updating content and media
+
+Most club information lives in `src/data/content.ts`. Gallery videos are listed in `VIDEO_ARCHIVE` inside `src/components/ImageGallery.tsx`. Static assets belong under `public/` and are referenced using root-relative URLs (for example, `/images/Club%20logo.png`).
+
+Read [the handover guide](docs/HANDOVER.md) before making structural, routing, hosting, or asset changes. It explains the project conventions and release checklist.
+
+## Deployment
+
+The repository is configured for Vercel. Verify that CI passes and the Vercel deployment succeeds after changes to `main`; a successful Git push is not proof of a successful production release.
+
+An optional Express server can serve a built site with:
+
+```bash
+npm ci
+npm run build
+npm start
+```
 
 ## License
 
-This project is licensed under the terms specified in the LICENSE file.
+See [LICENSE](LICENSE).
