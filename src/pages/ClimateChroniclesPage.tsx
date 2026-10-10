@@ -16,7 +16,7 @@ const ClimateChroniclesPage = () => {
     // Check the public asset before rendering an iframe; a missing PDF should
     // produce a clear empty state instead of a broken document viewer.
     fetch(MAGAZINE_PDF_URL, { method: 'HEAD' })
-      .then((response) => {
+      .then(response => {
         if (!cancelled) {
           setMagazineAvailable(response.ok);
           setCheckedMagazine(true);
@@ -51,29 +51,19 @@ const ClimateChroniclesPage = () => {
           >
             Climate Chronicles
           </h1>
-          <p
-            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-600"
-          >
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-600">
             Stories, ideas, and action from the Cambrian Climate Club. Read the
             2025–2026 issue below or open the complete magazine separately.
           </p>
         </div>
 
-        <div
-          className="mt-12 overflow-hidden rounded-2xl border border-sandstone-200 bg-white shadow-sm"
-        >
-          <div
-            className="flex flex-col gap-4 border-b border-sandstone-200 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8"
-          >
+        <div className="mt-12 overflow-hidden rounded-2xl border border-sandstone-200 bg-white shadow-sm">
+          <div className="flex flex-col gap-4 border-b border-sandstone-200 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div>
-              <p
-                className="text-sm font-semibold uppercase tracking-[0.16em] text-primary-700"
-              >
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary-700">
                 2025–2026 edition
               </p>
-              <h2
-                className="mt-1 font-heading text-2xl font-semibold text-charcoal-900"
-              >
+              <h2 className="mt-1 font-heading text-2xl font-semibold text-charcoal-900">
                 The complete magazine
               </h2>
             </div>
@@ -115,9 +105,7 @@ const ClimateChroniclesPage = () => {
               >
                 {checkedMagazine ? '📖' : '🌱'}
               </span>
-              <h3
-                className="font-heading text-2xl font-semibold text-charcoal-900"
-              >
+              <h3 className="font-heading text-2xl font-semibold text-charcoal-900">
                 {checkedMagazine
                   ? 'The next page is waiting on the magazine file.'
                   : 'Preparing the reading room…'}
@@ -131,9 +119,7 @@ const ClimateChroniclesPage = () => {
           )}
         </div>
 
-        <p
-          className="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-charcoal-500"
-        >
+        <p className="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-charcoal-500">
           For the best reading experience, use the viewer controls to zoom in or
           open the PDF in a new tab. The magazine file is kept separate from the
           website code so future editions can be updated independently.
