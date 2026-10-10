@@ -68,7 +68,7 @@ Large video files materially increase repository size and clone time. Before add
 
 ### Publishing a Climate Chronicles issue
 
-Place the final 2025–2026 PDF at `public/resources/climate-chronicle/climate-chronicle-2025-2026.pdf`. The Climate Chronicles page checks this URL before rendering its embedded reader, download action, and open-in-new-tab link. If the file is missing or cannot be reached, the page shows a placeholder instead of a broken viewer. Keep the original PDF intact; the browser reader handles page navigation and zoom, so do not convert the pages to images or change their order.
+The current 2025–2026 PDF is stored at `public/Climate Chronicle/Climate Chronicle 25-26.pdf`. The Climate Chronicles page embeds this file and provides download and open-in-new-tab actions. Its URL uses `%20` for spaces and must match the asset's capitalization exactly. Keep the original PDF intact; the browser reader handles page navigation and zoom, so do not convert the pages to images or change their order. For a future edition, add the new PDF under a clearly named folder and update the page's `MAGAZINE_PDF_URL` deliberately.
 
 ## Adding a page
 

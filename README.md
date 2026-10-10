@@ -86,13 +86,13 @@ Most club information lives in `src/data/content.ts`. Gallery videos are listed 
 
 ### Publishing a Climate Chronicles issue
 
-Place the final PDF at:
+The 2025–2026 issue is already stored at:
 
 ```text
-public/resources/climate-chronicle/climate-chronicle-2025-2026.pdf
+public/Climate Chronicle/Climate Chronicle 25-26.pdf
 ```
 
-The Climate Chronicles page checks for that public asset before displaying the embedded reader and download link. If the file is absent, the page shows a clear placeholder instead of a broken PDF frame. Keep the original PDF intact; the browser's built-in reader handles page navigation and zoom without converting or reordering pages.
+The Climate Chronicles page embeds this existing PDF and provides separate download and open-in-new-tab actions. The URL encodes the spaces and preserves the folder and filename exactly as stored. Keep the original PDF intact; the browser's built-in reader handles page navigation and zoom without converting or reordering pages.
 
 Read [the handover guide](docs/HANDOVER.md) before making structural, routing, hosting, or asset changes. It explains the project conventions and release checklist.
 
