@@ -70,7 +70,7 @@ const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => {
       }}
       transition={{ type: 'spring', stiffness: 280, damping: 22 }}
     >
-<div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto bg-sandstone-200 ring-2 ring-white shadow-sm">
+      <div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto bg-sandstone-200 ring-2 ring-white shadow-sm">
         {imageUrl ? (
           <img
             src={imageUrl}
