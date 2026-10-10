@@ -27,6 +27,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Temporary audit remediation trial
+        shell: bash
+        run: |
+          npm audit fix --force
+          npm audit --json > "$RUNNER_TEMP/audit.json" || true
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const a=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP + "/audit.json","utf8"));
+            console.log("AUDIT_SUMMARY " + JSON.stringify(a.metadata?.vulnerabilities));
+            console.log("AUDIT_PACKAGES " + JSON.stringify(Object.entries(a.vulnerabilities ?? {}).map(([name,v])=>({name,severity:v.severity,range:v.range,fixAvailable:v.fixAvailable,via:v.via.map(x=>typeof x==="string"?x:x.title)}))));
+            console.log("UPDATED_PACKAGE_JSON " + JSON.stringify(JSON.parse(fs.readFileSync("package.json","utf8"))));
+            console.log("UPDATED_LOCK_HEAD " + fs.readFileSync("package-lock.json","utf8").slice(0,1000));
+          '
+          npm run type-check
+          npm run lint
+          npm run format:check
+          npm run check:assets
+          npm run build
+
       - name: Verify repository hygiene
         shell: bash
         run: |
