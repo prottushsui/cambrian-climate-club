@@ -2,7 +2,10 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const projectRoot = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+);
 const publicRoot = path.join(projectRoot, 'public');
 const sourceRoots = [
   path.join(projectRoot, 'App.tsx'),
@@ -10,7 +13,14 @@ const sourceRoots = [
   path.join(projectRoot, 'index.html'),
   path.join(projectRoot, 'src'),
 ];
-const sourceExtensions = new Set(['.ts', '.tsx', '.js', '.jsx', '.html', '.css']);
+const sourceExtensions = new Set([
+  '.ts',
+  '.tsx',
+  '.js',
+  '.jsx',
+  '.html',
+  '.css',
+]);
 const assetReference = /['"`](\/(?:images|Video)\/[^'"`]+)['"`]/g;
 const sourceFiles = [];
 
@@ -61,9 +71,13 @@ for (const sourceFile of sourceFiles) {
 if (missing.size > 0) {
   console.error('Missing static assets referenced by source files:');
   for (const [asset, sources] of missing) {
-    console.error(`- /${asset} (referenced in: ${[...new Set(sources)].join(', ')})`);
+    console.error(
+      `- /${asset} (referenced in: ${[...new Set(sources)].join(', ')})`,
+    );
   }
   process.exitCode = 1;
 } else {
-  console.log(`Checked static asset references in ${sourceFiles.length} source files; all referenced images and videos exist.`);
+  console.log(
+    `Checked static asset references in ${sourceFiles.length} source files; all referenced images and videos exist.`,
+  );
 }
