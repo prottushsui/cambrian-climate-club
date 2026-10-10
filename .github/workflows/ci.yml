@@ -49,6 +49,9 @@ jobs:
       - name: Formatting
         run: npm run format:check
 
+      - name: Verify static asset references
+        run: npm run check:assets
+
       - name: Build
         run: npm run build
 
