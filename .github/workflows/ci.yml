@@ -49,6 +49,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Temporary formatter output
+        run: npx prettier src/pages/ClimateChroniclesPage.tsx
+
       - name: Formatting
         run: npm run format:check
 
