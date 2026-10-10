@@ -23,13 +23,16 @@ function collectFiles(entry) {
   }
 
   for (const child of readdirSync(entry, { withFileTypes: true })) {
-    if (child.name === 'node_modules' || child.name === 'dist' || child.name === '.git') {
+    if (
+      child.name === 'node_modules' ||
+      child.name === 'dist' ||
+      child.name === '.git'
+    ) {
       continue;
     }
     collectFiles(path.join(entry, child.name));
   }
 }
-
 
 for (const root of sourceRoots) collectFiles(root);
 
