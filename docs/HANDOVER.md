@@ -42,18 +42,18 @@ The GitHub Actions workflow runs installation, repository-hygiene checks, type c
 
 ## Where to make common changes
 
-| Change | Location |
-| --- | --- |
-| Club members, advisors, alumni, leadership terms | `src/data/content.ts` |
-| Project cards and achievement milestones | `src/data/content.ts` |
-| Gallery groupings and image lists | `src/data/content.ts` |
-| Video archive ordering | `src/components/ImageGallery.tsx` (`VIDEO_ARCHIVE`) |
-| Navigation links | `src/components/Navbar.tsx` and route definitions in `App.tsx` |
-| Page content and layouts | `src/pages/` |
-| Shared navigation, footer, cards, gallery and lightbox | `src/components/` |
-| Global styles and design tokens | `index.css`, `tailwind.config.js`, `src/design-system.md` |
-| Static images and video | `public/images/`, `public/Video/` |
-| Build and local server configuration | `vite.config.ts`, `vercel.json`, `server.js` |
+| Change                                             | Location                                                       |
+| -------------------------------------------------- | -------------------------------------------------------------- |
+| Club members, advisors, alumni, leadership terms   | `src/data/content.ts`                                         |
+| Project cards and achievement milestones           | `src/data/content.ts`                                         |
+| Gallery groupings and image lists                  | `src/data/content.ts`                                         |
+| Video archive ordering                             | `src/components/ImageGallery.tsx` (`VIDEO_ARCHIVE`)          |
+| Navigation links                                   | `src/components/Navbar.tsx` and routes in `App.tsx`          |
+| Page content and layouts                           | `src/pages/`                                                  |
+| Shared navigation, footer, cards, gallery, lightbox | `src/components/`                                             |
+| Global styles and design tokens                    | `index.css`, `tailwind.config.js`, `src/design-system.md`  |
+| Static images and video                            | `public/images/`, `public/Video/`                            |
+| Build and local server configuration               | `vite.config.ts`, `vercel.json`, `server.js`                |
 
 ## Adding or changing media
 
