@@ -12,7 +12,7 @@ app.use(express.static(distDirectory, { index: 'index.html' }));
 
 // The client uses hash-based routing, so every non-file request can safely
 // fall back to the Vite entry point without server-side route interpretation.
-app.get('*', (_req, res) => {
+app.get('/{*splat}', (_req, res) => {
   res.sendFile(path.join(distDirectory, 'index.html'));
 });
 
