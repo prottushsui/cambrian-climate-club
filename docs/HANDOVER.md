@@ -110,6 +110,6 @@ Use each service's official ownership-transfer process. Never commit API keys, p
 
 ## Known follow-up work
 
-- **Dependency security:** the latest audit reports 11 findings (3 moderate, 7 high, 1 critical), including a critical `proxy-addr` advisory and Tailwind CSS 3 dependency advisories. Run `npm audit` after installing dependencies, apply compatible patch-level fixes first, and test the full build. The Tailwind 3 findings point to a major Tailwind 4 upgrade; treat that as a separate migration with visual regression testing rather than applying a forced upgrade during routine maintenance.
+- **Dependency security:** the lockfile now pins `proxy-addr` to patched version `2.0.8`; the next CI install reported 10 remaining findings (3 moderate, 7 high) and no critical findings. The remaining advisories are in the development/build dependency tree, including Tailwind CSS 3.x dependencies. Run `npm audit` after installing dependencies and apply compatible patch-level fixes first. The Tailwind 3 findings point to a major Tailwind 4 upgrade; treat that as a separate migration with visual regression testing rather than applying a forced upgrade during routine maintenance.
 - Add automated checks for referenced static assets and a lightweight route/media smoke test if the project grows.
 - Review accessibility and performance on real mobile devices before major releases.
