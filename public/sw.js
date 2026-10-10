@@ -64,7 +64,9 @@ self.addEventListener('fetch', (event) => {
         .catch(async () => {
           // Prefer the exact page requested; use the friendly shell as a fallback.
           const cache = await caches.open(CACHE_NAME);
-          return (await cache.match(request)) || (await cache.match(OFFLINE_URL));
+          return (
+            (await cache.match(request)) || (await cache.match(OFFLINE_URL))
+          );
         }),
     );
     return;
