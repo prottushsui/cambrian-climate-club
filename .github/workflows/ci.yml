@@ -49,14 +49,6 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Print canonical formatting for review
-        run: |
-          for file in public/offline.html public/sw.js src/ErrorBoundary.tsx src/pages/ClimateChroniclesPage.tsx; do
-            echo "FORMAT-BEGIN:$file"
-            npx prettier "$file"
-            echo "FORMAT-END:$file"
-          done
-
       - name: Formatting
         run: npm run format:check
 
