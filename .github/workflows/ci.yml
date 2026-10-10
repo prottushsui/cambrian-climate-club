@@ -46,11 +46,6 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Temporary formatting diagnostics
-        run: |
-          npx prettier --write docs/HANDOVER.md scripts/check-public-assets.mjs src/pages/CombinedLeadershipPage.tsx
-          git diff -- docs/HANDOVER.md scripts/check-public-assets.mjs src/pages/CombinedLeadershipPage.tsx
-
       - name: Formatting
         run: npm run format:check
 
