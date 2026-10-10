@@ -63,7 +63,9 @@ const ClimateChroniclesPage = () => {
             aria-live="polite"
           >
             <div>
-              <span className="text-4xl" aria-hidden="true">📖</span>
+              <span className="text-4xl" aria-hidden="true">
+                📖
+              </span>
               <p className="mt-4 font-heading text-xl font-semibold text-charcoal-900">
                 Preparing your reading room…
               </p>
@@ -123,11 +125,23 @@ const ClimateChroniclesPage = () => {
                   aria-hidden="true"
                 />
                 <div className="relative mx-auto grid min-h-[390px] max-w-4xl grid-cols-1 overflow-hidden rounded-r-2xl rounded-l-md bg-primary shadow-2xl sm:min-h-[490px] sm:grid-cols-[12px_1fr]">
-                  <div className="hidden bg-primary-950 sm:block" aria-hidden="true" />
+                  <div
+                    className="hidden bg-primary-950 sm:block"
+                    aria-hidden="true"
+                  />
                   <div className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary-800 via-primary to-primary-950 px-7 py-12 text-center text-white sm:px-14">
-                    <div className="pointer-events-none absolute inset-3 rounded-r-xl border border-white/15 sm:inset-5" aria-hidden="true" />
-                    <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-white/10" aria-hidden="true" />
-                    <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full border border-white/10" aria-hidden="true" />
+                    <div
+                      className="pointer-events-none absolute inset-3 rounded-r-xl border border-white/15 sm:inset-5"
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-white/10"
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full border border-white/10"
+                      aria-hidden="true"
+                    />
                     <p className="relative text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
                       Cambrian Climate Club presents
                     </p>
@@ -139,7 +153,10 @@ const ClimateChroniclesPage = () => {
                       <br />
                       Chronicles
                     </h2>
-                    <div className="relative my-6 h-px w-20 bg-white/50" aria-hidden="true" />
+                    <div
+                      className="relative my-6 h-px w-20 bg-white/50"
+                      aria-hidden="true"
+                    />
                     <p className="relative text-sm uppercase tracking-[0.22em] text-white/75">
                       The 2025–2026 edition
                     </p>
@@ -164,7 +181,13 @@ const ClimateChroniclesPage = () => {
             ) : (
               <motion.section
                 className="mt-8 sm:mt-10"
-                initial={{ opacity: 0, rotateY: -9, rotateX: 2, scale: 0.97, y: 20 }}
+                initial={{
+                  opacity: 0,
+                  rotateY: -9,
+                  rotateX: 2,
+                  scale: 0.97,
+                  y: 20,
+                }}
                 animate={{ opacity: 1, rotateY: 0, rotateX: 0, scale: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 style={{ transformOrigin: 'left center', perspective: 1600 }}
