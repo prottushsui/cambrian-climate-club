@@ -46,6 +46,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Temporary handover formatting diagnostics
+        run: |
+          npx prettier --write docs/HANDOVER.md
+          git diff -- docs/HANDOVER.md
+
       - name: Formatting
         run: npm run format:check
 
