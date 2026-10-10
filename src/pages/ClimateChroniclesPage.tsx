@@ -78,13 +78,23 @@ const ClimateChroniclesPage = () => {
               </h2>
             </div>
             {magazineAvailable && (
-              <a
-                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                href={MAGAZINE_PDF_URL}
-                download="climate-chronicle-2025-2026.pdf"
-              >
-                Download PDF
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  href={MAGAZINE_PDF_URL}
+                  download="climate-chronicle-2025-2026.pdf"
+                >
+                  Download PDF
+                </a>
+                <a
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg border border-sandstone-300 bg-white px-5 py-3 text-sm font-semibold text-charcoal-900 transition hover:bg-sandstone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  href={MAGAZINE_PDF_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open in new tab
+                </a>
+              </div>
             )}
           </div>
 
