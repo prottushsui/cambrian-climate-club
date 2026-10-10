@@ -3,36 +3,36 @@
 const CACHE_NAME = 'cambrian-climate-club-v1';
 const OFFLINE_URL = '/offline.html';
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(async (cache) => {
+    caches.open(CACHE_NAME).then(async cache => {
       // A service worker must cache its fallback before it can safely activate.
       await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
       await self.skipWaiting();
-    }),
+    })
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) =>
+      .then(keys =>
         Promise.all(
           // Remove only this app's older caches; leave unrelated site caches alone.
           keys
             .filter(
-              (key) =>
-                key.startsWith('cambrian-climate-club-') && key !== CACHE_NAME,
+              key =>
+                key.startsWith('cambrian-climate-club-') && key !== CACHE_NAME
             )
-            .map((key) => caches.delete(key)),
-        ),
+            .map(key => caches.delete(key))
+        )
       )
-      .then(() => self.clients.claim()),
+      .then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
 
@@ -44,7 +44,7 @@ self.addEventListener('fetch', (event) => {
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
-        .then(async (response) => {
+        .then(async response => {
           // A reachable server can still be unhealthy; show the cached fallback
           // for server errors while preserving ordinary client-side 4xx responses.
           if (response.status >= 500) {
@@ -56,7 +56,7 @@ self.addEventListener('fetch', (event) => {
           if (response.ok) {
             const copy = response.clone();
             event.waitUntil(
-              caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)),
+              caches.open(CACHE_NAME).then(cache => cache.put(request, copy))
             );
           }
           return response;
@@ -67,7 +67,7 @@ self.addEventListener('fetch', (event) => {
           return (
             (await cache.match(request)) || (await cache.match(OFFLINE_URL))
           );
-        }),
+        })
     );
     return;
   }
@@ -75,17 +75,17 @@ self.addEventListener('fetch', (event) => {
   // Cache successful same-origin static assets for repeat visits and offline use.
   event.respondWith(
     caches.match(request).then(
-      (cached) =>
+      cached =>
         cached ||
-        fetch(request).then((response) => {
+        fetch(request).then(response => {
           if (response.ok && response.type === 'basic') {
             const copy = response.clone();
             event.waitUntil(
-              caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)),
+              caches.open(CACHE_NAME).then(cache => cache.put(request, copy))
             );
           }
           return response;
-        }),
-    ),
+        })
+    )
   );
 });
