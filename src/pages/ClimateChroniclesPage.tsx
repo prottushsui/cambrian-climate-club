@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 // Keep the magazine at a stable URL so the PDF can be replaced without
 // changing the page component or its download link.
 const MAGAZINE_PDF_URL =
-  '/resources/climate-chronicle/climate-chronicle-2025-2026.pdf';
+  '/Climate%20Chronicle/Climate%20Chronicle%2025-26.pdf';
 
 const ClimateChroniclesPage = () => {
   const [magazineAvailable, setMagazineAvailable] = useState(false);
@@ -112,7 +112,7 @@ const ClimateChroniclesPage = () => {
               </h3>
               <p className="mt-3 max-w-lg leading-relaxed text-charcoal-600">
                 {checkedMagazine
-                  ? 'The PDF has not been added yet. Once the final issue is uploaded, it will appear here with a download option. The original page order will be preserved.'
+                  ? 'The magazine file could not be reached. Please try again in a moment or reopen this page. The original publication remains unchanged.'
                   : 'Checking for the published 2025–2026 issue.'}
               </p>
             </div>
