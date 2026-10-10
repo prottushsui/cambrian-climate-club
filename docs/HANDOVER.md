@@ -50,7 +50,7 @@ The GitHub Actions workflow runs installation, repository-hygiene checks, type c
 | Video archive ordering                              | `src/components/ImageGallery.tsx` (`VIDEO_ARCHIVE`)       |
 | Navigation links                                    | `src/components/Navbar.tsx` and routes in `App.tsx`       |
 | Page content and layouts                            | `src/pages/`                                              |
-| Shared navigation, footer, cards, gallery, lightbox  | `src/components/`                                         |
+| Shared navigation, footer, cards, gallery, lightbox | `src/components/`                                         |
 | Global styles and design tokens                     | `index.css`, `tailwind.config.js`, `src/design-system.md` |
 | Static images and video                             | `public/images/`, `public/Video/`                         |
 | Build and local server configuration                | `vite.config.ts`, `vercel.json`, `server.js`              |
