@@ -40,6 +40,7 @@ jobs:
               .replace("@tailwind base;\\n@tailwind components;\\n@tailwind utilities;", "@import \\\"tailwindcss\\\";\\n@config \\\"./tailwind.config.js\\\";");
             fs.writeFileSync("index.css", css);
           '
+          npx prettier --write postcss.config.js
           npm audit --audit-level=low
           npm run type-check
           npm run lint
