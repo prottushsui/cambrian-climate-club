@@ -53,7 +53,7 @@ The GitHub Actions workflow runs installation, repository-hygiene checks, type c
 | Shared navigation, footer, cards, gallery, lightbox  | `src/components/`                                         |
 | Global styles and design tokens                     | `index.css`, `tailwind.config.js`, `src/design-system.md` |
 | Static images and video                             | `public/images/`, `public/Video/`                         |
-| Build and local server configuration                | `vite.config.ts`, `vercel.json`, `server.js`             |
+| Build and local server configuration                | `vite.config.ts`, `vercel.json`, `server.js`              |
 
 ## Adding or changing media
 
@@ -110,6 +110,6 @@ Use each service's official ownership-transfer process. Never commit API keys, p
 
 ## Known follow-up work
 
-- Keep the CI workflow green and resolve all dependency audit findings based on their actual dependency paths and compatibility.
+- **Dependency security:** the latest audit reports 11 findings (3 moderate, 7 high, 1 critical), including a critical `proxy-addr` advisory and Tailwind CSS 3 dependency advisories. Run `npm audit` after installing dependencies, apply compatible patch-level fixes first, and test the full build. The Tailwind 3 findings point to a major Tailwind 4 upgrade; treat that as a separate migration with visual regression testing rather than applying a forced upgrade during routine maintenance.
 - Add automated checks for referenced static assets and a lightweight route/media smoke test if the project grows.
 - Review accessibility and performance on real mobile devices before major releases.
