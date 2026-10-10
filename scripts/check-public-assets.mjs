@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  '..',
+  '..'
 );
 const publicRoot = path.join(projectRoot, 'public');
 const sourceRoots = [
@@ -72,12 +72,12 @@ if (missing.size > 0) {
   console.error('Missing static assets referenced by source files:');
   for (const [asset, sources] of missing) {
     console.error(
-      `- /${asset} (referenced in: ${[...new Set(sources)].join(', ')})`,
+      `- /${asset} (referenced in: ${[...new Set(sources)].join(', ')})`
     );
   }
   process.exitCode = 1;
 } else {
   console.log(
-    `Checked static asset references in ${sourceFiles.length} source files; all referenced images and videos exist.`,
+    `Checked static asset references in ${sourceFiles.length} source files; all referenced images and videos exist.`
   );
 }
