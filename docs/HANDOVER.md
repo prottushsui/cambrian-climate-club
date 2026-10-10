@@ -66,6 +66,10 @@ The GitHub Actions workflow runs installation, repository-hygiene checks, type c
 
 Large video files materially increase repository size and clone time. Before adding more, consider whether the club should host videos on a media platform and embed them instead. Do not remove existing assets as part of a refactor without checking every reference.
 
+### Publishing a Climate Chronicles issue
+
+Place the final 2025–2026 PDF at `public/resources/climate-chronicle/climate-chronicle-2025-2026.pdf`. The Climate Chronicles page checks this URL before rendering its embedded reader, download action, and open-in-new-tab link. If the file is missing or cannot be reached, the page shows a placeholder instead of a broken viewer. Keep the original PDF intact; the browser reader handles page navigation and zoom, so do not convert the pages to images or change their order.
+
 ## Adding a page
 
 1. Create the page component under `src/pages/`.
@@ -77,6 +81,8 @@ Large video files materially increase repository size and clone time. Before add
 ## Deployment
 
 The repository includes Vercel configuration and the live site is currently configured through the Vercel project. A push to `main` does not by itself prove a successful deployment: check the GitHub Actions result and the Vercel deployment status.
+
+The service worker caches the offline fallback and successful same-origin pages/assets. Offline fallback is available only after the visitor has loaded the site successfully at least once; it cannot guarantee a response on a first visit or when the hosting origin cannot serve the cached resources.
 
 For the optional Express server:
 
