@@ -1,4 +1,4 @@
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -16,7 +16,7 @@ const sourceFiles = [];
 
 function collectFiles(entry) {
   if (!existsSync(entry)) return;
-  const stat = (awaitStat(entry));
+  const stat = statSync(entry);
   if (stat.isFile()) {
     if (sourceExtensions.has(path.extname(entry))) sourceFiles.push(entry);
     return;
@@ -30,19 +30,13 @@ function collectFiles(entry) {
   }
 }
 
-function awaitStat(entry) {
-  // Kept synchronous so this small check has no runtime dependencies.
-  return requireStat(entry);
-}
-
-import { statSync as requireStat } from 'node:fs';
 
 for (const root of sourceRoots) collectFiles(root);
 
 const missing = new Map();
 
 for (const sourceFile of sourceFiles) {
-  const source = (await import('node:fs')).readFileSync(sourceFile, 'utf8');
+  const source = readFileSync(sourceFile, 'utf8');
   for (const match of source.matchAll(assetReference)) {
     let decodedPath;
     try {
