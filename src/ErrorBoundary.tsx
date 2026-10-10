@@ -27,7 +27,9 @@ class ErrorBoundary extends Component<Props, State> {
   };
 
   handleGoHome = () => {
-    window.location.assign(`${window.location.pathname}${window.location.search}#/`);
+    window.location.assign(
+      `${window.location.pathname}${window.location.search}#/`
+    );
   };
 
   render() {
@@ -52,8 +54,8 @@ class ErrorBoundary extends Component<Props, State> {
               Let my man cook.
             </h1>
             <p className="mt-4 max-w-md text-charcoal-600">
-              Something got tangled behind the scenes. The Climate Club is
-              still growing — give us a moment, then try again.
+              Something got tangled behind the scenes. The Climate Club is still
+              growing — give us a moment, then try again.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <button

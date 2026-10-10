@@ -9,6 +9,8 @@ The official website for the Cambrian Climate Club, a student-led environmental 
 - Home, About, Leadership, Projects, Achievements, and Climate Chronicles pages.
 - Responsive layouts styled with Tailwind CSS and a custom editorial design system.
 - Club leadership, alumni, advisors, projects, achievements, galleries, and video archive.
+- An embedded Climate Chronicles PDF reader with a separate download option when an issue file is published.
+- A friendly application-error screen and a service-worker offline fallback for visitors who have previously loaded the site.
 - Framer Motion animations configured to respect the visitor's reduced-motion preference.
 - Vercel Analytics integration.
 
@@ -82,6 +84,16 @@ The production build is generated in `dist/`. `npm run preview` serves that buil
 
 Most club information lives in `src/data/content.ts`. Gallery videos are listed in `VIDEO_ARCHIVE` inside `src/components/ImageGallery.tsx`. Static assets belong under `public/` and are referenced using root-relative URLs (for example, `/images/Club%20logo.png`).
 
+### Publishing a Climate Chronicles issue
+
+Place the final PDF at:
+
+```text
+public/resources/climate-chronicle/climate-chronicle-2025-2026.pdf
+```
+
+The Climate Chronicles page checks for that public asset before displaying the embedded reader and download link. If the file is absent, the page shows a clear placeholder instead of a broken PDF frame. Keep the original PDF intact; the browser's built-in reader handles page navigation and zoom without converting or reordering pages.
+
 Read [the handover guide](docs/HANDOVER.md) before making structural, routing, hosting, or asset changes. It explains the project conventions and release checklist.
 
 ## Deployment
@@ -95,6 +107,10 @@ npm ci
 npm run build
 npm start
 ```
+
+## Offline behavior
+
+The service worker caches the small offline page and successful same-origin pages/assets. It can show the fallback for offline navigation and server errors after a visitor has successfully loaded the site at least once. It cannot guarantee a fallback on a first visit or when the hosting origin cannot serve the service worker or cached resources.
 
 ## License
 
