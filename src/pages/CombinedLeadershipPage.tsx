@@ -39,20 +39,14 @@ const executiveImages: Record<string, string> = {
   'Maria Anamika Bairagee':
     '/images/advisor&leadership/Maria Anamika Bairagee.jpg',
   'H.M Towfiquzzaman': '/images/advisor&leadership/H.M Towfiquzzaman.jpg',
-  'Kazi Tasfia Priota':
-    '/images/advisor&leadership/Kazi Tasfia Priota.jpg',
+  'Kazi Tasfia Priota': '/images/advisor&leadership/Kazi Tasfia Priota.jpg',
   'Md. Mottakin Bin Arif':
     '/images/advisor&leadership/Md. Mottakin Bin Arif.jpg',
-  'Kishor Sutradhar':
-    '/images/advisor&leadership/Kishore Sutradhar.jpg',
-  'Kishore Sutradhar':
-    '/images/advisor&leadership/Kishore Sutradhar.jpg',
-  'Hasan Al Jayed':
-    '/images/Executive Commitee/Hasan Al Jayed.jpeg',
-  'Samira Subha':
-    '/images/advisor&leadership/Samirah Subha.jpeg',
-  'Samirah Subha':
-    '/images/advisor&leadership/Samirah Subha.jpeg',
+  'Kishor Sutradhar': '/images/advisor&leadership/Kishore Sutradhar.jpg',
+  'Kishore Sutradhar': '/images/advisor&leadership/Kishore Sutradhar.jpg',
+  'Hasan Al Jayed': '/images/Executive Commitee/Hasan Al Jayed.jpeg',
+  'Samira Subha': '/images/advisor&leadership/Samirah Subha.jpeg',
+  'Samirah Subha': '/images/advisor&leadership/Samirah Subha.jpeg',
 };
 
 const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => {
@@ -70,9 +64,7 @@ const ExecutiveMemberCard = ({ member }: { member: ExecutiveMember }) => {
       }}
       transition={{ type: 'spring', stiffness: 280, damping: 22 }}
     >
-      <div
-        className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto bg-sandstone-200 ring-2 ring-white shadow-sm"
-      >
+      <div className="w-16 h-16 rounded-full overflow-hidden mb-4 mx-auto bg-sandstone-200 ring-2 ring-white shadow-sm">
         {imageUrl ? (
           <img
             src={imageUrl}
