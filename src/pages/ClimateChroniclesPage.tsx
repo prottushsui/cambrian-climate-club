@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 
 // Keep the magazine at a stable URL so the PDF can be replaced without
 // changing the page component or its download link.
-const MAGAZINE_PDF_URL =
-  '/Climate%20Chronicle/Climate%20Chronicle%2025-26.pdf';
+const MAGAZINE_PDF_URL = '/Climate%20Chronicle/Climate%20Chronicle%2025-26.pdf';
 
 const ClimateChroniclesPage = () => {
   const [magazineAvailable, setMagazineAvailable] = useState(false);
@@ -76,13 +75,9 @@ const ClimateChroniclesPage = () => {
           </div>
         ) : magazineAvailable ? (
           <div className="mt-10 sm:mt-14">
-            <div
-              className="flex flex-col gap-5 rounded-2xl border border-sandstone-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-7"
-            >
+            <div className="flex flex-col gap-5 rounded-2xl border border-sandstone-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-7">
               <div className="flex items-start gap-4">
-                <div
-                  className="flex h-14 w-12 shrink-0 items-center justify-center rounded-md bg-primary text-2xl text-white shadow-md"
-                >
+                <div className="flex h-14 w-12 shrink-0 items-center justify-center rounded-md bg-primary text-2xl text-white shadow-md">
                   <span aria-hidden="true">▤</span>
                 </div>
                 <div>
@@ -128,16 +123,12 @@ const ClimateChroniclesPage = () => {
                   className="pointer-events-none absolute bottom-0 left-6 right-6 top-6 rounded-[2rem] bg-primary/10 blur-2xl sm:left-16 sm:right-16"
                   aria-hidden="true"
                 />
-                <div
-                  className="relative mx-auto grid min-h-[390px] max-w-4xl grid-cols-1 overflow-hidden rounded-r-2xl rounded-l-md bg-primary shadow-2xl sm:min-h-[490px] sm:grid-cols-[12px_1fr]"
-                >
+                <div className="relative mx-auto grid min-h-[390px] max-w-4xl grid-cols-1 overflow-hidden rounded-r-2xl rounded-l-md bg-primary shadow-2xl sm:min-h-[490px] sm:grid-cols-[12px_1fr]">
                   <div
                     className="hidden bg-primary-950 sm:block"
                     aria-hidden="true"
                   />
-                  <div
-                    className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary-800 via-primary to-primary-950 px-7 py-12 text-center text-white sm:px-14"
-                  >
+                  <div className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary-800 via-primary to-primary-950 px-7 py-12 text-center text-white sm:px-14">
                     <div
                       className="pointer-events-none absolute inset-3 rounded-r-xl border border-white/15 sm:inset-5"
                       aria-hidden="true"
@@ -153,14 +144,10 @@ const ClimateChroniclesPage = () => {
                     <p className="relative text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
                       Cambrian Climate Club presents
                     </p>
-                    <div
-                      className="relative my-7 flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/5 text-4xl shadow-inner sm:my-9 sm:h-24 sm:w-24"
-                    >
+                    <div className="relative my-7 flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/5 text-4xl shadow-inner sm:my-9 sm:h-24 sm:w-24">
                       <span aria-hidden="true">✳</span>
                     </div>
-                    <h2
-                      className="relative max-w-xl font-heading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl"
-                    >
+                    <h2 className="relative max-w-xl font-heading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
                       Climate
                       <br />
                       Chronicles
@@ -224,16 +211,12 @@ const ClimateChroniclesPage = () => {
                   </button>
                 </div>
 
-                <div
-                  className="relative rounded-2xl bg-[#d9d2c4] p-2 shadow-[0_24px_70px_-28px_rgba(11,27,43,0.55)] sm:rounded-3xl sm:p-4"
-                >
+                <div className="relative rounded-2xl bg-[#d9d2c4] p-2 shadow-[0_24px_70px_-28px_rgba(11,27,43,0.55)] sm:rounded-3xl sm:p-4">
                   <div
                     className="pointer-events-none absolute bottom-5 left-5 top-5 z-10 hidden w-2 rounded-full bg-primary/15 sm:block"
                     aria-hidden="true"
                   />
-                  <div
-                    className="overflow-hidden rounded-lg border border-black/10 bg-white shadow-inner sm:rounded-xl"
-                  >
+                  <div className="overflow-hidden rounded-lg border border-black/10 bg-white shadow-inner sm:rounded-xl">
                     <iframe
                       className="block h-[68vh] min-h-[520px] w-full bg-white sm:h-[82vh] sm:min-h-[680px]"
                       src={MAGAZINE_PDF_URL}
