@@ -51,6 +51,7 @@ const ClimateChroniclesPage = () => {
       : 'spread',
   );
   const [isFlipping, setIsFlipping] = useState(false);
+  const [flipArmed, setFlipArmed] = useState(false);
   const [flipDirection, setFlipDirection] = useState<FlipDirection>('next');
   const [readerError, setReaderError] = useState(false);
   const leftCanvas = useRef<HTMLCanvasElement>(null);
@@ -64,6 +65,11 @@ const ClimateChroniclesPage = () => {
     const updateMode = (event: MediaQueryListEvent) => {
       setReadingMode(event.matches ? 'single' : 'spread');
       setIsFlipping(false);
+      setFlipArmed(false);
+      if (flipTimer.current !== null) {
+        window.clearTimeout(flipTimer.current);
+        flipTimer.current = null;
+      }
     };
     media.addEventListener('change', updateMode);
     return () => media.removeEventListener('change', updateMode);
@@ -199,15 +205,35 @@ const ClimateChroniclesPage = () => {
       backPage = pageNumber + 1;
     }
 
-    void drawPage(leftCanvas.current, leftPage);
-    void drawPage(rightCanvas.current, rightPage);
-    void drawPage(flipFrontCanvas.current, frontPage);
-    void drawPage(flipBackCanvas.current, backPage);
+    void Promise.all([
+      drawPage(leftCanvas.current, leftPage),
+      drawPage(rightCanvas.current, rightPage),
+      drawPage(flipFrontCanvas.current, frontPage),
+      drawPage(flipBackCanvas.current, backPage),
+    ]).then(() => {
+      if (!cancelled && isFlipping) setFlipArmed(true);
+    });
 
     return () => {
       cancelled = true;
     };
   }, [pdf, bookIsOpen, pageNumber, readingMode, isFlipping, flipDirection]);
+
+  useEffect(() => {
+    if (!isFlipping || !flipArmed) return;
+    flipTimer.current = window.setTimeout(() => {
+      setPageNumber(current => current + (flipDirection === 'next' ? pageStep : -pageStep));
+      setIsFlipping(false);
+      setFlipArmed(false);
+      flipTimer.current = null;
+    }, FLIP_DURATION);
+    return () => {
+      if (flipTimer.current !== null) {
+        window.clearTimeout(flipTimer.current);
+        flipTimer.current = null;
+      }
+    };
+  }, [isFlipping, flipArmed, flipDirection, pageStep]);
 
   const pageStep = readingMode === 'spread' ? 2 : 1;
   const lastVisiblePage = Math.min(
@@ -221,12 +247,8 @@ const ClimateChroniclesPage = () => {
     if (target < 1 || target > pdf.numPages) return;
 
     setFlipDirection(direction);
+    setFlipArmed(false);
     setIsFlipping(true);
-    flipTimer.current = window.setTimeout(() => {
-      setPageNumber(target);
-      setIsFlipping(false);
-      flipTimer.current = null;
-    }, FLIP_DURATION);
   };
 
   const changeReadingMode = (mode: ReadingMode) => {
@@ -361,7 +383,7 @@ const ClimateChroniclesPage = () => {
                               transformStyle: 'preserve-3d',
                               opacity: isFlipping ? 1 : 0,
                               pointerEvents: isFlipping ? 'auto' : 'none',
-                              animation: isFlipping
+                              animation: isFlipping && flipArmed
                                 ? `${flipDirection === 'next' ? 'climate-page-turn-next' : 'climate-page-turn-previous'} ${FLIP_DURATION}ms cubic-bezier(0.52, 0.08, 0.18, 1) forwards`
                                 : 'none',
                               boxShadow: flipDirection === 'next'
