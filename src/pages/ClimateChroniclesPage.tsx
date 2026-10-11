@@ -5,13 +5,19 @@ const MAGAZINE_PDF_URL = '/Climate%20Chronicle/Climate%20Chronicle%2025-26.pdf';
 const MAGAZINE_COVER_URL =
   '/Climate%20Chronicle/Climate%20Chronicle%20Cover%20pages/CC%20Cover%20page.jpg';
 const PDFJS_VERSION = '3.11.174';
+const FLIP_DURATION = 720;
+
+interface PdfViewport {
+  width: number;
+  height: number;
+}
 
 interface PdfPage {
-  getViewport: (options: { scale: number }) => { width: number; height: number };
+  getViewport: (options: { scale: number }) => PdfViewport;
   render: (options: {
     canvasContext: CanvasRenderingContext2D;
-    viewport: { width: number; height: number };
-  }) => { promise: Promise<void> };
+    viewport: PdfViewport;
+  }) => { promise: Promise<void>; cancel?: () => void };
 }
 
 interface PdfDocument {
@@ -31,6 +37,7 @@ declare global {
 }
 
 type ReadingMode = 'spread' | 'single';
+type FlipDirection = 'next' | 'previous';
 
 const ClimateChroniclesPage = () => {
   const [magazineAvailable, setMagazineAvailable] = useState(false);
@@ -44,19 +51,39 @@ const ClimateChroniclesPage = () => {
       : 'spread',
   );
   const [isFlipping, setIsFlipping] = useState(false);
-  const [flipDirection, setFlipDirection] = useState<'next' | 'previous'>('next');
+  const [flipArmed, setFlipArmed] = useState(false);
+  const [flipDirection, setFlipDirection] = useState<FlipDirection>('next');
   const [readerError, setReaderError] = useState(false);
   const leftCanvas = useRef<HTMLCanvasElement>(null);
   const rightCanvas = useRef<HTMLCanvasElement>(null);
+  const flipFrontCanvas = useRef<HTMLCanvasElement>(null);
+  const flipBackCanvas = useRef<HTMLCanvasElement>(null);
+  const flipTimer = useRef<number | null>(null);
+  const pageCache = useRef<Map<number, HTMLCanvasElement>>(new Map());
+
+  const pageStep = readingMode === 'spread' ? 2 : 1;
 
   useEffect(() => {
     const media = window.matchMedia('(max-width: 767px)');
     const updateMode = (event: MediaQueryListEvent) => {
       setReadingMode(event.matches ? 'single' : 'spread');
+      setIsFlipping(false);
+      setFlipArmed(false);
+      if (flipTimer.current !== null) {
+        window.clearTimeout(flipTimer.current);
+        flipTimer.current = null;
+      }
     };
     media.addEventListener('change', updateMode);
     return () => media.removeEventListener('change', updateMode);
   }, []);
+
+  useEffect(
+    () => () => {
+      if (flipTimer.current !== null) window.clearTimeout(flipTimer.current);
+    },
+    [],
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -81,6 +108,7 @@ const ClimateChroniclesPage = () => {
   useEffect(() => {
     if (!bookIsOpen || !magazineAvailable) return;
     let cancelled = false;
+
     const loadPdf = async () => {
       try {
         if (!window.pdfjsLib) {
@@ -89,9 +117,12 @@ const ClimateChroniclesPage = () => {
               'script[data-climate-pdfjs]',
             );
             if (existing) {
-              existing.addEventListener('load', () => resolve(), { once: true });
-              existing.addEventListener('error', () => reject(new Error('PDF reader failed to load')), { once: true });
-              if (window.pdfjsLib) resolve();
+              if (window.pdfjsLib) {
+                resolve();
+              } else {
+                existing.addEventListener('load', () => resolve(), { once: true });
+                existing.addEventListener('error', () => reject(new Error('PDF reader failed to load')), { once: true });
+              }
               return;
             }
             const script = document.createElement('script');
@@ -114,6 +145,7 @@ const ClimateChroniclesPage = () => {
         if (!cancelled) setReaderError(true);
       }
     };
+
     void loadPdf();
     return () => {
       cancelled = true;
@@ -121,60 +153,152 @@ const ClimateChroniclesPage = () => {
   }, [bookIsOpen, magazineAvailable]);
 
   useEffect(() => {
-    if (!pdf || !leftCanvas.current) return;
+    if (!pdf || !bookIsOpen) return;
     let cancelled = false;
-    const draw = async (number: number, canvas: HTMLCanvasElement) => {
+    const renderTasks: Array<{ cancel?: () => void }> = [];
+
+    const drawPage = async (canvas: HTMLCanvasElement | null, number: number) => {
+      if (!canvas) return;
       const context = canvas.getContext('2d');
       if (!context) return;
-      if (number > pdf.numPages) {
+
+      if (number < 1 || number > pdf.numPages) {
         canvas.width = 1;
         canvas.height = 1;
         context.clearRect(0, 0, 1, 1);
         return;
       }
+
       try {
-        const page = await pdf.getPage(Math.max(number, 1));
+        const cachedPage = pageCache.current.get(number);
+        if (cachedPage) {
+          canvas.width = cachedPage.width;
+          canvas.height = cachedPage.height;
+          context.drawImage(cachedPage, 0, 0);
+          return;
+        }
+
+        const page = await pdf.getPage(number);
         if (cancelled) return;
-        const viewport = page.getViewport({ scale: 1.5 });
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        await page.render({ canvasContext: context, viewport }).promise;
+        const baseViewport = page.getViewport({ scale: 1 });
+        // Render once at a crisp, capped resolution; reuse the bitmap on later turns.
+        const pixelRatio = Math.min(1.35, Math.max(1, window.devicePixelRatio || 1));
+        const viewport = page.getViewport({ scale: (820 / baseViewport.height) * pixelRatio });
+        const pageCanvas = document.createElement('canvas');
+        const pageContext = pageCanvas.getContext('2d');
+        if (!pageContext) return;
+        pageCanvas.width = viewport.width;
+        pageCanvas.height = viewport.height;
+        const renderTask = page.render({ canvasContext: pageContext, viewport });
+        renderTasks.push(renderTask);
+        await renderTask.promise;
+        if (cancelled) return;
+
+        pageCache.current.set(number, pageCanvas);
+        // Keep a small rolling cache to avoid retaining every page of a large PDF.
+        if (pageCache.current.size > 8) {
+          const oldestPage = pageCache.current.keys().next().value;
+          if (oldestPage !== undefined) pageCache.current.delete(oldestPage);
+        }
+        canvas.width = pageCanvas.width;
+        canvas.height = pageCanvas.height;
+        context.drawImage(pageCanvas, 0, 0);
       } catch {
         if (!cancelled) setReaderError(true);
       }
     };
-    void draw(pageNumber, leftCanvas.current);
-    if (readingMode === 'spread' && rightCanvas.current) {
-      void draw(pageNumber + 1, rightCanvas.current);
+
+    let leftPage = pageNumber;
+    let rightPage = pageNumber + 1;
+    let frontPage = pageNumber + 1;
+    let backPage = pageNumber + 2;
+
+    if (readingMode === 'spread' && isFlipping && flipDirection === 'next') {
+      rightPage = pageNumber + 3;
+    } else if (readingMode === 'spread' && isFlipping && flipDirection === 'previous') {
+      leftPage = pageNumber - 2;
+      frontPage = pageNumber;
+      backPage = pageNumber - 1;
+    } else if (readingMode === 'single' && isFlipping && flipDirection === 'next') {
+      leftPage = pageNumber + 1;
+      rightPage = pageNumber + 1;
+      frontPage = pageNumber;
+      backPage = pageNumber + 1;
+    } else if (readingMode === 'single' && isFlipping && flipDirection === 'previous') {
+      leftPage = pageNumber - 1;
+      rightPage = pageNumber - 1;
+      frontPage = pageNumber;
+      backPage = pageNumber - 1;
+    } else if (readingMode === 'single') {
+      frontPage = pageNumber;
+      backPage = pageNumber + 1;
     }
+
+    void Promise.all([
+      drawPage(leftCanvas.current, leftPage),
+      drawPage(rightCanvas.current, rightPage),
+      drawPage(flipFrontCanvas.current, frontPage),
+      drawPage(flipBackCanvas.current, backPage),
+    ]).then(() => {
+      if (!cancelled && isFlipping) setFlipArmed(true);
+    });
+
     return () => {
       cancelled = true;
+      renderTasks.forEach(task => task.cancel?.());
     };
-  }, [pdf, pageNumber, readingMode]);
+  }, [pdf, bookIsOpen, pageNumber, readingMode, isFlipping, flipDirection]);
 
-  const pageStep = readingMode === 'spread' ? 2 : 1;
+  useEffect(() => {
+    if (!isFlipping || !flipArmed) return;
+    flipTimer.current = window.setTimeout(() => {
+      setPageNumber(current => current + (flipDirection === 'next' ? pageStep : -pageStep));
+      setIsFlipping(false);
+      setFlipArmed(false);
+      flipTimer.current = null;
+    }, FLIP_DURATION);
+    return () => {
+      if (flipTimer.current !== null) {
+        window.clearTimeout(flipTimer.current);
+        flipTimer.current = null;
+      }
+    };
+  }, [isFlipping, flipArmed, flipDirection, pageStep]);
+
   const lastVisiblePage = Math.min(
     pageNumber + (readingMode === 'spread' ? 1 : 0),
     pdf?.numPages ?? pageNumber,
   );
 
-  const turnPage = (direction: 'next' | 'previous') => {
+  const turnPage = (direction: FlipDirection) => {
     if (!pdf || isFlipping) return;
     const target = direction === 'next' ? pageNumber + pageStep : pageNumber - pageStep;
     if (target < 1 || target > pdf.numPages) return;
+
     setFlipDirection(direction);
+    setFlipArmed(false);
     setIsFlipping(true);
-    window.setTimeout(() => {
-      setPageNumber(target);
-      setIsFlipping(false);
-    }, 420);
   };
 
   const changeReadingMode = (mode: ReadingMode) => {
-    if (mode === readingMode) return;
+    if (mode === readingMode || isFlipping) return;
     setReadingMode(mode);
-    // Keep the page currently in view as the first page in the new layout.
   };
+
+  const flipStyle =
+    readingMode === 'spread'
+      ? {
+          left: flipDirection === 'next' ? '50%' : '0%',
+          width: '50%',
+          transformOrigin: flipDirection === 'next' ? 'left center' : 'right center',
+          transform: 'rotateY(0deg)',
+        }
+      : {
+          left: '0%',
+          width: '100%',
+          transformOrigin: flipDirection === 'next' ? 'left center' : 'right center',
+          transform: 'rotateY(0deg)',
+        };
 
   return (
     <div className="min-h-[70vh] overflow-hidden bg-sandstone-50 px-4 py-14 sm:py-20">
@@ -232,13 +356,13 @@ const ClimateChroniclesPage = () => {
                 </div>
               </motion.div>
             ) : (
-              <motion.section className="mt-8 sm:mt-10" initial={{ opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.5 }} aria-label="Climate Chronicles page-flip reader">
+              <motion.section className="mt-8 sm:mt-10" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} aria-label="Climate Chronicles page-flip reader">
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3 px-1">
-                  <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-700">The reading room</p><p className="mt-1 text-sm text-charcoal-600">Your magazine opens to the original PDF pages.</p></div>
+                  <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-700">The reading room</p><p className="mt-1 text-sm text-charcoal-600">Turn a page to keep reading the original issue.</p></div>
                   <div className="flex flex-wrap items-center gap-2">
                     <div className="inline-flex rounded-xl border border-sandstone-300 bg-white p-1" role="group" aria-label="Reading layout">
-                      <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'spread' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('spread')} aria-pressed={readingMode === 'spread'} type="button">2 pages</button>
-                      <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'single' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('single')} aria-pressed={readingMode === 'single'} type="button">1 page</button>
+                      <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'spread' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('spread')} aria-pressed={readingMode === 'spread'} type="button" disabled={isFlipping}>2 pages</button>
+                      <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'single' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('single')} aria-pressed={readingMode === 'single'} type="button" disabled={isFlipping}>1 page</button>
                     </div>
                     <button className="inline-flex min-h-10 items-center justify-center rounded-lg border border-sandstone-300 bg-white px-4 py-2 text-sm font-semibold text-charcoal-900 transition hover:bg-sandstone-100" onClick={() => setBookIsOpen(false)} type="button">‹ Close book</button>
                   </div>
@@ -254,20 +378,56 @@ const ClimateChroniclesPage = () => {
                   <div className="flex min-h-[420px] items-center justify-center rounded-2xl border border-sandstone-200 bg-white text-center text-charcoal-600 shadow-sm" role="status">Preparing the pages…</div>
                 ) : (
                   <div className="mx-auto max-w-6xl">
-                    <div className="rounded-2xl bg-[#d9d2c4] p-3 shadow-[0_24px_70px_-28px_rgba(11,27,43,0.55)] sm:rounded-3xl sm:p-6">
-                      <div className={`relative mx-auto flex w-full ${readingMode === 'spread' ? 'max-w-[1120px] items-stretch' : 'max-w-[680px] justify-center'}`} style={{ perspective: '1800px' }}>
-                        <div className={`relative min-w-0 flex-1 overflow-hidden bg-white ${readingMode === 'spread' ? 'rounded-l-lg shadow-[-8px_0_18px_rgba(0,0,0,0.12)]' : 'rounded-l-lg'}`} style={{ aspectRatio: readingMode === 'spread' ? '0.707' : '0.707', transform: isFlipping ? `rotateY(${flipDirection === 'next' ? '2deg' : '-2deg'})` : 'none', transition: 'transform 420ms ease' }}>
-                          <canvas ref={leftCanvas} className="absolute inset-0 h-full w-full object-contain" aria-label={`Page ${pageNumber}`} />
-                          <div className="pointer-events-none absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/10 to-transparent" aria-hidden="true" />
-                        </div>
-                        {readingMode === 'spread' && (
-                          <>
-                            <div className="z-10 w-2 shrink-0 bg-gradient-to-r from-black/20 via-[#eee8dc] to-black/20 shadow-[0_0_10px_rgba(0,0,0,0.18)]" aria-hidden="true" />
-                            <div className="relative min-w-0 flex-1 overflow-hidden rounded-r-lg bg-white shadow-[8px_0_18px_rgba(0,0,0,0.12)]" style={{ aspectRatio: '0.707' }}>
-                              <canvas ref={rightCanvas} className="absolute inset-0 h-full w-full object-contain" aria-label={`Page ${Math.min(pageNumber + 1, pdf.numPages)}`} />
-                              <div className="pointer-events-none absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/10 to-transparent" aria-hidden="true" />
+                    <div className="rounded-2xl border border-[#c9c0af] bg-gradient-to-br from-[#e7e0d3] via-[#d7cebd] to-[#c7bda9] p-3 shadow-[0_28px_70px_-30px_rgba(11,27,43,0.6)] sm:rounded-3xl sm:p-6">
+                      <style>{`@keyframes climate-page-turn-next { from { transform: rotateY(0deg); } to { transform: rotateY(-180deg); } } @keyframes climate-page-turn-previous { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); } } @media (prefers-reduced-motion: reduce) { .climate-page-turn { animation-duration: 1ms !important; } }`}</style>
+                      <div
+                        className={`relative mx-auto overflow-hidden rounded-md ${readingMode === 'spread' ? 'max-w-[1120px]' : 'max-w-[680px]'}`}
+                        style={{
+                          aspectRatio: readingMode === 'spread' ? '1.414 / 1' : '0.707 / 1',
+                          perspective: '2400px',
+                          transformStyle: 'preserve-3d',
+                          boxShadow: '0 12px 30px rgba(33, 28, 19, 0.22), 0 2px 5px rgba(33, 28, 19, 0.12)',
+                        }}
+                      >
+                        <div className={`absolute inset-0 grid ${readingMode === 'spread' ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                          <div className="relative min-w-0 overflow-hidden bg-white" style={{ boxShadow: readingMode === 'spread' ? 'inset -12px 0 18px -18px rgba(0,0,0,.8)' : 'none' }}>
+                            <canvas ref={leftCanvas} className="absolute inset-0 h-full w-full" aria-label={`Page ${pageNumber}`} />
+                          </div>
+                          {readingMode === 'spread' && (
+                            <div className="relative min-w-0 overflow-hidden bg-white" style={{ boxShadow: 'inset 12px 0 18px -18px rgba(0,0,0,.8)' }}>
+                              <canvas ref={rightCanvas} className="absolute inset-0 h-full w-full" aria-label={`Page ${Math.min(pageNumber + 1, pdf.numPages)}`} />
                             </div>
-                          </>
+                          )}
+                        </div>
+
+                        {readingMode === 'spread' && (
+                          <div className="pointer-events-none absolute inset-y-0 left-1/2 z-20 w-[10px] -translate-x-1/2" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,.22), rgba(255,255,255,.48) 45%, rgba(0,0,0,.12))' }} aria-hidden="true" />
+                        )}
+
+                        {(
+                          <div
+                            className="climate-page-turn absolute inset-y-0 z-30 overflow-visible"
+                            style={{
+                              ...flipStyle,
+                              transformStyle: 'preserve-3d',
+                              opacity: isFlipping ? 1 : 0,
+                              pointerEvents: isFlipping ? 'auto' : 'none',
+                              animation: isFlipping && flipArmed
+                                ? `${flipDirection === 'next' ? 'climate-page-turn-next' : 'climate-page-turn-previous'} ${FLIP_DURATION}ms cubic-bezier(0.52, 0.08, 0.18, 1) forwards`
+                                : 'none',
+                              willChange: isFlipping && flipArmed ? 'transform' : 'auto',
+                              backfaceVisibility: 'hidden',
+                            }}
+                          >
+                            <div className="absolute inset-0 overflow-hidden bg-white" style={{ backfaceVisibility: 'hidden' }}>
+                              <canvas ref={flipFrontCanvas} className="absolute inset-0 h-full w-full" aria-hidden="true" />
+                              <div className="pointer-events-none absolute inset-0" style={{ background: flipDirection === 'next' ? 'linear-gradient(90deg, rgba(0,0,0,.22), transparent 26%, rgba(255,255,255,.04) 72%, rgba(0,0,0,.08))' : 'linear-gradient(270deg, rgba(0,0,0,.22), transparent 26%, rgba(255,255,255,.04) 72%, rgba(0,0,0,.08))' }} />
+                            </div>
+                            <div className="absolute inset-0 overflow-hidden bg-white" style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}>
+                              <canvas ref={flipBackCanvas} className="absolute inset-0 h-full w-full" aria-hidden="true" />
+                              <div className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,.15), transparent 22%, transparent 78%, rgba(0,0,0,.08))' }} />
+                            </div>
+                          </div>
                         )}
                       </div>
                     </div>
