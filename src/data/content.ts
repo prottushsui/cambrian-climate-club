@@ -390,19 +390,19 @@ export const advisoryCommittee: Advisor[] = [
 export const projects: Project[] = [
   {
     title: 'Campus Cleanliness Drive',
-    imageUrl: '/images/Campus Cleanliness Drive.jpg',
+    imageUrl: '/images/Campus%20Cleanliness%20Drive.jpg',
     description:
       'Our ongoing initiative to maintain cleanliness across the campus, organizing regular cleanup drives and promoting waste segregation practices among students and staff.',
   },
   {
     title: 'Campus Greening Initiative',
-    imageUrl: '/images/Campus Greening Initiative.jpg',
+    imageUrl: '/images/Campus%20Greening%20Initiative.jpg',
     description:
       'A comprehensive program to increase green cover on campus by planting native trees and creating small gardens in designated areas around the school.',
   },
   {
     title: 'Climate Action E-Magazine',
-    imageUrl: '/images/homepagepicture3.jpg',
+    imageUrl: '/images/Climate%20Action%20E-Magazine.jpg',
     description:
       'Our digital magazine highlighting climate issues, environmental success stories, and educational content to raise awareness among students and the community.',
   },
@@ -440,7 +440,7 @@ export const achievements: Achievement[] = [
 ];
 
 export const galleries: Gallery[] = [
-  { title: 'Climate Club Logo', images: ['/images/Club logo.png'] },
+  { title: 'Climate Club Logo', images: ['/images/Climate%20Club%20Logo.png'] },
   {
     title: 'Achievements',
     images: [
@@ -561,6 +561,7 @@ export const galleries: Gallery[] = [
       '/images/Awareness Materials/Awareness 30.jpeg',
       '/images/Awareness Materials/Awareness 31.jpeg',
       '/images/Awareness Materials/Awareness 36.jpeg',
+      '/images/Awareness Materials/Awareness 37.jpg',
     ],
   },
   {

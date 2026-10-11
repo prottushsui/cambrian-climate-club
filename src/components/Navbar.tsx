@@ -96,7 +96,7 @@ const Navbar: React.FC = memo(() => {
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           >
             <img
-              src="/images/Club logo.png"
+              src="/images/Climate%20Club%20Logo.png"
               className="h-10 w-auto"
               alt="Cambrian Climate Club Logo"
             />

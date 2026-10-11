@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
               aria-label="Cambrian Climate Club Home"
             >
               <img
-                src="/images/Club logo.png"
+                src="/images/Climate%20Club%20Logo.png"
                 className="h-10 w-auto"
                 alt="Cambrian Climate Club Logo"
               />
