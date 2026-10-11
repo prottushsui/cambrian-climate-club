@@ -121,7 +121,7 @@ const ClimateChroniclesPage = () => {
   }, [bookIsOpen, magazineAvailable]);
 
   useEffect(() => {
-    if (!pdf || !leftCanvas.current || !rightCanvas.current) return;
+    if (!pdf || !leftCanvas.current) return;
     let cancelled = false;
     const draw = async (number: number, canvas: HTMLCanvasElement) => {
       const context = canvas.getContext('2d');
@@ -144,12 +144,8 @@ const ClimateChroniclesPage = () => {
       }
     };
     void draw(pageNumber, leftCanvas.current);
-    if (readingMode === 'spread') {
+    if (readingMode === 'spread' && rightCanvas.current) {
       void draw(pageNumber + 1, rightCanvas.current);
-    } else {
-      const canvas = rightCanvas.current;
-      const context = canvas.getContext('2d');
-      if (context) context.clearRect(0, 0, canvas.width, canvas.height);
     }
     return () => {
       cancelled = true;
