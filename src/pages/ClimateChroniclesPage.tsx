@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const MAGAZINE_PDF_URL = '/Climate%20Chronicle/Climate%20Chronicle%2025-26.pdf';
+const MAGAZINE_COVER_URL =
+  '/Climate%20Chronicle/Climate%20Chronicle%20Cover%20pages/CC%20Cover%20page.jpg';
 const PDFJS_VERSION = '3.11.174';
 
 interface PdfPage {
@@ -28,17 +30,33 @@ declare global {
   }
 }
 
+type ReadingMode = 'spread' | 'single';
+
 const ClimateChroniclesPage = () => {
   const [magazineAvailable, setMagazineAvailable] = useState(false);
   const [checkedMagazine, setCheckedMagazine] = useState(false);
   const [bookIsOpen, setBookIsOpen] = useState(false);
   const [pdf, setPdf] = useState<PdfDocument | null>(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [readingMode, setReadingMode] = useState<ReadingMode>(
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+      ? 'single'
+      : 'spread',
+  );
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipDirection, setFlipDirection] = useState<'next' | 'previous'>('next');
   const [readerError, setReaderError] = useState(false);
-  const currentCanvas = useRef<HTMLCanvasElement>(null);
-  const nextCanvas = useRef<HTMLCanvasElement>(null);
+  const leftCanvas = useRef<HTMLCanvasElement>(null);
+  const rightCanvas = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 767px)');
+    const updateMode = (event: MediaQueryListEvent) => {
+      setReadingMode(event.matches ? 'single' : 'spread');
+    };
+    media.addEventListener('change', updateMode);
+    return () => media.removeEventListener('change', updateMode);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -103,15 +121,21 @@ const ClimateChroniclesPage = () => {
   }, [bookIsOpen, magazineAvailable]);
 
   useEffect(() => {
-    if (!pdf || !currentCanvas.current || !nextCanvas.current) return;
+    if (!pdf || !leftCanvas.current) return;
     let cancelled = false;
     const draw = async (number: number, canvas: HTMLCanvasElement) => {
+      const context = canvas.getContext('2d');
+      if (!context) return;
+      if (number > pdf.numPages) {
+        canvas.width = 1;
+        canvas.height = 1;
+        context.clearRect(0, 0, 1, 1);
+        return;
+      }
       try {
-        const page = await pdf.getPage(Math.min(Math.max(number, 1), pdf.numPages));
+        const page = await pdf.getPage(Math.max(number, 1));
         if (cancelled) return;
-        const viewport = page.getViewport({ scale: 1.35 });
-        const context = canvas.getContext('2d');
-        if (!context) return;
+        const viewport = page.getViewport({ scale: 1.5 });
         canvas.width = viewport.width;
         canvas.height = viewport.height;
         await page.render({ canvasContext: context, viewport }).promise;
@@ -119,23 +143,37 @@ const ClimateChroniclesPage = () => {
         if (!cancelled) setReaderError(true);
       }
     };
-    void draw(pageNumber, currentCanvas.current);
-    void draw(Math.min(pageNumber + 1, pdf.numPages), nextCanvas.current);
+    void draw(pageNumber, leftCanvas.current);
+    if (readingMode === 'spread' && rightCanvas.current) {
+      void draw(pageNumber + 1, rightCanvas.current);
+    }
     return () => {
       cancelled = true;
     };
-  }, [pdf, pageNumber]);
+  }, [pdf, pageNumber, readingMode]);
+
+  const pageStep = readingMode === 'spread' ? 2 : 1;
+  const lastVisiblePage = Math.min(
+    pageNumber + (readingMode === 'spread' ? 1 : 0),
+    pdf?.numPages ?? pageNumber,
+  );
 
   const turnPage = (direction: 'next' | 'previous') => {
     if (!pdf || isFlipping) return;
-    const target = direction === 'next' ? pageNumber + 1 : pageNumber - 1;
+    const target = direction === 'next' ? pageNumber + pageStep : pageNumber - pageStep;
     if (target < 1 || target > pdf.numPages) return;
     setFlipDirection(direction);
     setIsFlipping(true);
     window.setTimeout(() => {
       setPageNumber(target);
       setIsFlipping(false);
-    }, 620);
+    }, 420);
+  };
+
+  const changeReadingMode = (mode: ReadingMode) => {
+    if (mode === readingMode) return;
+    setReadingMode(mode);
+    // Keep the page currently in view as the first page in the new layout.
   };
 
   return (
@@ -177,26 +215,33 @@ const ClimateChroniclesPage = () => {
             {!bookIsOpen ? (
               <motion.div className="relative mx-auto mt-9 max-w-5xl px-2 pb-5 pt-2 sm:mt-12 sm:px-8" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
                 <div className="pointer-events-none absolute bottom-0 left-6 right-6 top-6 rounded-[2rem] bg-primary/10 blur-2xl sm:left-16 sm:right-16" aria-hidden="true" />
-                <div className="relative mx-auto grid min-h-[390px] max-w-4xl grid-cols-1 overflow-hidden rounded-r-2xl rounded-l-md bg-primary shadow-2xl sm:min-h-[490px] sm:grid-cols-[12px_1fr]">
-                  <div className="hidden bg-primary-950 sm:block" aria-hidden="true" />
-                  <div className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary-800 via-primary to-primary-950 px-7 py-12 text-center text-white sm:px-14">
-                    <div className="pointer-events-none absolute inset-3 rounded-r-xl border border-white/15 sm:inset-5" aria-hidden="true" />
-                    <p className="relative text-xs font-semibold uppercase tracking-[0.28em] text-white/70">Cambrian Climate Club presents</p>
-                    <div className="relative my-7 flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/5 text-4xl shadow-inner sm:my-9 sm:h-24 sm:w-24" aria-hidden="true">✳</div>
-                    <h2 className="relative max-w-xl font-heading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">Climate<br />Chronicles</h2>
-                    <div className="relative my-6 h-px w-20 bg-white/50" aria-hidden="true" />
-                    <p className="relative text-sm uppercase tracking-[0.22em] text-white/75">The 2025–2026 edition</p>
-                    <p className="relative mt-3 max-w-md text-sm leading-relaxed text-white/75 sm:text-base">Stories from our community. Ideas for our future. A planet worth turning the page for.</p>
-                    <button className="relative mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-white px-7 py-3 text-sm font-semibold text-primary shadow-lg transition hover:-translate-y-0.5 hover:bg-sandstone-50 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary" onClick={() => setBookIsOpen(true)} type="button">Open the magazine <span aria-hidden="true">→</span></button>
-                    <p className="relative mt-4 text-xs text-white/55">A proper page-turning reader awaits inside.</p>
+                <div className="relative mx-auto max-w-4xl overflow-hidden rounded-r-2xl rounded-l-md bg-primary shadow-2xl">
+                  <div className="grid min-h-[430px] grid-cols-1 sm:min-h-[560px] sm:grid-cols-[12px_1fr]">
+                    <div className="hidden bg-primary-950 sm:block" aria-hidden="true" />
+                    <div className="relative flex flex-col items-center justify-center overflow-hidden bg-charcoal-950 p-3 sm:p-5">
+                      <div className="pointer-events-none absolute inset-3 rounded-r-xl border border-white/15 sm:inset-5" aria-hidden="true" />
+                      <img
+                        src={MAGAZINE_COVER_URL}
+                        alt="Climate Chronicles — official 2025–2026 magazine cover"
+                        className="relative z-0 max-h-[430px] w-auto max-w-full rounded-sm object-contain shadow-2xl sm:max-h-[490px]"
+                        onError={() => setReaderError(true)}
+                      />
+                      <button className="relative z-10 mt-5 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-white px-7 py-3 text-sm font-semibold text-primary shadow-lg transition hover:-translate-y-0.5 hover:bg-sandstone-50 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary" onClick={() => { setReaderError(false); setBookIsOpen(true); }} type="button">Open the magazine <span aria-hidden="true">→</span></button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ) : (
               <motion.section className="mt-8 sm:mt-10" initial={{ opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.5 }} aria-label="Climate Chronicles page-flip reader">
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3 px-1">
-                  <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-700">The reading room</p><p className="mt-1 text-sm text-charcoal-600">Turn the pages with the controls below.</p></div>
-                  <button className="inline-flex min-h-10 items-center justify-center rounded-lg border border-sandstone-300 bg-white px-4 py-2 text-sm font-semibold text-charcoal-900 transition hover:bg-sandstone-100" onClick={() => setBookIsOpen(false)} type="button">‹ Close book</button>
+                  <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-700">The reading room</p><p className="mt-1 text-sm text-charcoal-600">Your magazine opens to the original PDF pages.</p></div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="inline-flex rounded-xl border border-sandstone-300 bg-white p-1" role="group" aria-label="Reading layout">
+                      <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'spread' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('spread')} aria-pressed={readingMode === 'spread'} type="button">2 pages</button>
+                      <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'single' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('single')} aria-pressed={readingMode === 'single'} type="button">1 page</button>
+                    </div>
+                    <button className="inline-flex min-h-10 items-center justify-center rounded-lg border border-sandstone-300 bg-white px-4 py-2 text-sm font-semibold text-charcoal-900 transition hover:bg-sandstone-100" onClick={() => setBookIsOpen(false)} type="button">‹ Close book</button>
+                  </div>
                 </div>
 
                 {readerError ? (
@@ -208,34 +253,30 @@ const ClimateChroniclesPage = () => {
                 ) : !pdf ? (
                   <div className="flex min-h-[420px] items-center justify-center rounded-2xl border border-sandstone-200 bg-white text-center text-charcoal-600 shadow-sm" role="status">Preparing the pages…</div>
                 ) : (
-                  <div className="mx-auto max-w-4xl">
+                  <div className="mx-auto max-w-6xl">
                     <div className="rounded-2xl bg-[#d9d2c4] p-3 shadow-[0_24px_70px_-28px_rgba(11,27,43,0.55)] sm:rounded-3xl sm:p-6">
-                      <div className="relative mx-auto w-full max-w-[680px]" style={{ perspective: '1800px' }}>
-                        <div className="relative overflow-hidden rounded-r-lg bg-white shadow-2xl" style={{ aspectRatio: '0.707', background: '#fff' }}>
-                          <canvas ref={nextCanvas} className="absolute inset-0 h-full w-full object-contain" aria-label={`Page ${Math.min(pageNumber + 1, pdf.numPages)}`} />
-                          <canvas
-                            ref={currentCanvas}
-                            className="absolute inset-0 h-full w-full object-contain"
-                            aria-label={`Page ${pageNumber}`}
-                            style={{
-                              transform: isFlipping ? `rotateY(${flipDirection === 'next' ? '-180deg' : '180deg'})` : 'rotateY(0deg)',
-                              transformOrigin: flipDirection === 'next' ? 'left center' : 'right center',
-                              transformStyle: 'preserve-3d',
-                              backfaceVisibility: 'hidden',
-                              transition: isFlipping ? 'transform 620ms cubic-bezier(0.2, 0.7, 0.2, 1)' : 'none',
-                              boxShadow: isFlipping ? '0 4px 22px rgba(0,0,0,0.22)' : 'none',
-                            }}
-                          />
-                          <div className="pointer-events-none absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/10 to-transparent" aria-hidden="true" />
+                      <div className={`relative mx-auto flex w-full ${readingMode === 'spread' ? 'max-w-[1120px] items-stretch' : 'max-w-[680px] justify-center'}`} style={{ perspective: '1800px' }}>
+                        <div className={`relative min-w-0 flex-1 overflow-hidden bg-white ${readingMode === 'spread' ? 'rounded-l-lg shadow-[-8px_0_18px_rgba(0,0,0,0.12)]' : 'rounded-l-lg'}`} style={{ aspectRatio: readingMode === 'spread' ? '0.707' : '0.707', transform: isFlipping ? `rotateY(${flipDirection === 'next' ? '2deg' : '-2deg'})` : 'none', transition: 'transform 420ms ease' }}>
+                          <canvas ref={leftCanvas} className="absolute inset-0 h-full w-full object-contain" aria-label={`Page ${pageNumber}`} />
+                          <div className="pointer-events-none absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/10 to-transparent" aria-hidden="true" />
                         </div>
+                        {readingMode === 'spread' && (
+                          <>
+                            <div className="z-10 w-2 shrink-0 bg-gradient-to-r from-black/20 via-[#eee8dc] to-black/20 shadow-[0_0_10px_rgba(0,0,0,0.18)]" aria-hidden="true" />
+                            <div className="relative min-w-0 flex-1 overflow-hidden rounded-r-lg bg-white shadow-[8px_0_18px_rgba(0,0,0,0.12)]" style={{ aspectRatio: '0.707' }}>
+                              <canvas ref={rightCanvas} className="absolute inset-0 h-full w-full object-contain" aria-label={`Page ${Math.min(pageNumber + 1, pdf.numPages)}`} />
+                              <div className="pointer-events-none absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/10 to-transparent" aria-hidden="true" />
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                     <div className="mt-5 flex items-center justify-between gap-3">
                       <button className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-sandstone-300 bg-white px-4 py-3 text-sm font-semibold text-charcoal-900 transition hover:bg-sandstone-100 disabled:cursor-not-allowed disabled:opacity-40" onClick={() => turnPage('previous')} disabled={pageNumber <= 1 || isFlipping} type="button">← Previous</button>
-                      <p className="text-sm font-medium tabular-nums text-charcoal-700" aria-live="polite">Page {pageNumber} of {pdf.numPages}</p>
-                      <button className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800 disabled:cursor-not-allowed disabled:opacity-40" onClick={() => turnPage('next')} disabled={pageNumber >= pdf.numPages || isFlipping} type="button">Next page →</button>
+                      <p className="text-center text-sm font-medium tabular-nums text-charcoal-700" aria-live="polite">{readingMode === 'spread' && lastVisiblePage !== pageNumber ? `Pages ${pageNumber}–${lastVisiblePage}` : `Page ${pageNumber}`} of {pdf.numPages}</p>
+                      <button className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800 disabled:cursor-not-allowed disabled:opacity-40" onClick={() => turnPage('next')} disabled={pageNumber + pageStep > pdf.numPages || isFlipping} type="button">Next {readingMode === 'spread' ? 'spread' : 'page'} →</button>
                     </div>
-                    <p className="mt-4 text-center text-xs leading-relaxed text-charcoal-500">Your original PDF is preserved. Use Download or Open PDF separately for printing, searching, and offline reading.</p>
+                    <p className="mt-4 text-center text-xs leading-relaxed text-charcoal-500">The original PDF is preserved. Use Download or Open PDF separately for printing, searching, and offline reading.</p>
                   </div>
                 )}
               </motion.section>
