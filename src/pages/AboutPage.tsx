@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
               whileHover={{ rotate: 5, scale: 1.05 }}
             >
               <img
-                src="/images/Club logo.png"
+                src="/images/Climate%20Club%20Logo.png"
                 alt="Cambrian Climate Club Logo"
                 className="h-40 w-auto object-contain drop-shadow-lg rounded-2xl"
               />
