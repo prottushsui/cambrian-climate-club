@@ -54,7 +54,6 @@ const ClimateChroniclesPage = () => {
   const [flipArmed, setFlipArmed] = useState(false);
   const [flipDirection, setFlipDirection] = useState<FlipDirection>('next');
   const [readerError, setReaderError] = useState(false);
-  const [softPrint, setSoftPrint] = useState(true);
   const leftCanvas = useRef<HTMLCanvasElement>(null);
   const rightCanvas = useRef<HTMLCanvasElement>(null);
   const flipFrontCanvas = useRef<HTMLCanvasElement>(null);
@@ -365,15 +364,6 @@ const ClimateChroniclesPage = () => {
                       <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'spread' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('spread')} aria-pressed={readingMode === 'spread'} type="button" disabled={isFlipping}>2 pages</button>
                       <button className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${readingMode === 'single' ? 'bg-primary text-white' : 'text-charcoal-700 hover:bg-sandstone-100'}`} onClick={() => changeReadingMode('single')} aria-pressed={readingMode === 'single'} type="button" disabled={isFlipping}>1 page</button>
                     </div>
-                    <button
-                      className={`inline-flex min-h-10 items-center justify-center rounded-lg border px-4 py-2 text-sm font-semibold transition ${softPrint ? 'border-primary/30 bg-primary/10 text-primary-800' : 'border-sandstone-300 bg-white text-charcoal-900 hover:bg-sandstone-100'}`}
-                      onClick={() => setSoftPrint(value => !value)}
-                      type="button"
-                      aria-pressed={softPrint}
-                      title="Apply a very subtle soft-print finish to the rendered pages"
-                    >
-                      Soft print {softPrint ? 'on' : 'off'}
-                    </button>
                     <button className="inline-flex min-h-10 items-center justify-center rounded-lg border border-sandstone-300 bg-white px-4 py-2 text-sm font-semibold text-charcoal-900 transition hover:bg-sandstone-100" onClick={() => setBookIsOpen(false)} type="button">‹ Close book</button>
                   </div>
                 </div>
@@ -401,11 +391,11 @@ const ClimateChroniclesPage = () => {
                       >
                         <div className={`absolute inset-0 grid ${readingMode === 'spread' ? 'grid-cols-2' : 'grid-cols-1'}`}>
                           <div className="relative min-w-0 overflow-hidden bg-white" style={{ boxShadow: readingMode === 'spread' ? 'inset -12px 0 18px -18px rgba(0,0,0,.8)' : 'none' }}>
-                            <canvas ref={leftCanvas} className="absolute inset-0 h-full w-full" style={{ filter: softPrint ? 'blur(0.18px) saturate(0.94) contrast(0.985)' : 'none' }} aria-label={`Page ${pageNumber}`} />
+                            <canvas ref={leftCanvas} className="absolute inset-0 h-full w-full" style={{ filter: 'blur(0.18px) saturate(0.94) contrast(0.985)' }} aria-label={`Page ${pageNumber}`} />
                           </div>
                           {readingMode === 'spread' && (
                             <div className="relative min-w-0 overflow-hidden bg-white" style={{ boxShadow: 'inset 12px 0 18px -18px rgba(0,0,0,.8)' }}>
-                              <canvas ref={rightCanvas} className="absolute inset-0 h-full w-full" style={{ filter: softPrint ? 'blur(0.18px) saturate(0.94) contrast(0.985)' : 'none' }} aria-label={`Page ${Math.min(pageNumber + 1, pdf.numPages)}`} />
+                              <canvas ref={rightCanvas} className="absolute inset-0 h-full w-full" style={{ filter: 'blur(0.18px) saturate(0.94) contrast(0.985)' }} aria-label={`Page ${Math.min(pageNumber + 1, pdf.numPages)}`} />
                             </div>
                           )}
                         </div>
@@ -430,11 +420,11 @@ const ClimateChroniclesPage = () => {
                             }}
                           >
                             <div className="absolute inset-0 overflow-hidden bg-white" style={{ backfaceVisibility: 'hidden' }}>
-                              <canvas ref={flipFrontCanvas} className="absolute inset-0 h-full w-full" style={{ filter: softPrint ? 'blur(0.18px) saturate(0.94) contrast(0.985)' : 'none' }} aria-hidden="true" />
+                              <canvas ref={flipFrontCanvas} className="absolute inset-0 h-full w-full" style={{ filter: 'blur(0.18px) saturate(0.94) contrast(0.985)' }} aria-hidden="true" />
                               <div className="pointer-events-none absolute inset-0" style={{ background: flipDirection === 'next' ? 'linear-gradient(90deg, rgba(0,0,0,.22), transparent 26%, rgba(255,255,255,.04) 72%, rgba(0,0,0,.08))' : 'linear-gradient(270deg, rgba(0,0,0,.22), transparent 26%, rgba(255,255,255,.04) 72%, rgba(0,0,0,.08))' }} />
                             </div>
                             <div className="absolute inset-0 overflow-hidden bg-white" style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}>
-                              <canvas ref={flipBackCanvas} className="absolute inset-0 h-full w-full" style={{ filter: softPrint ? 'blur(0.18px) saturate(0.94) contrast(0.985)' : 'none' }} aria-hidden="true" />
+                              <canvas ref={flipBackCanvas} className="absolute inset-0 h-full w-full" style={{ filter: 'blur(0.18px) saturate(0.94) contrast(0.985)' }} aria-hidden="true" />
                               <div className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,.15), transparent 22%, transparent 78%, rgba(0,0,0,.08))' }} />
                             </div>
                           </div>
