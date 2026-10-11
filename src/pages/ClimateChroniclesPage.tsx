@@ -59,6 +59,7 @@ const ClimateChroniclesPage = () => {
   const flipFrontCanvas = useRef<HTMLCanvasElement>(null);
   const flipBackCanvas = useRef<HTMLCanvasElement>(null);
   const flipTimer = useRef<number | null>(null);
+  const pageCache = useRef<Map<number, HTMLCanvasElement>>(new Map());
 
   const pageStep = readingMode === 'spread' ? 2 : 1;
 
@@ -169,16 +170,39 @@ const ClimateChroniclesPage = () => {
       }
 
       try {
+        const cachedPage = pageCache.current.get(number);
+        if (cachedPage) {
+          canvas.width = cachedPage.width;
+          canvas.height = cachedPage.height;
+          context.drawImage(cachedPage, 0, 0);
+          return;
+        }
+
         const page = await pdf.getPage(number);
         if (cancelled) return;
         const baseViewport = page.getViewport({ scale: 1 });
-        const pixelRatio = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
-        const viewport = page.getViewport({ scale: (1050 / baseViewport.height) * pixelRatio });
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        const renderTask = page.render({ canvasContext: context, viewport });
+        // Render once at a crisp, capped resolution; reuse the bitmap on later turns.
+        const pixelRatio = Math.min(1.35, Math.max(1, window.devicePixelRatio || 1));
+        const viewport = page.getViewport({ scale: (820 / baseViewport.height) * pixelRatio });
+        const pageCanvas = document.createElement('canvas');
+        const pageContext = pageCanvas.getContext('2d');
+        if (!pageContext) return;
+        pageCanvas.width = viewport.width;
+        pageCanvas.height = viewport.height;
+        const renderTask = page.render({ canvasContext: pageContext, viewport });
         renderTasks.push(renderTask);
         await renderTask.promise;
+        if (cancelled) return;
+
+        pageCache.current.set(number, pageCanvas);
+        // Keep a small rolling cache to avoid retaining every page of a large PDF.
+        if (pageCache.current.size > 8) {
+          const oldestPage = pageCache.current.keys().next().value;
+          if (oldestPage !== undefined) pageCache.current.delete(oldestPage);
+        }
+        canvas.width = pageCanvas.width;
+        canvas.height = pageCanvas.height;
+        context.drawImage(pageCanvas, 0, 0);
       } catch {
         if (!cancelled) setReaderError(true);
       }
@@ -391,9 +415,8 @@ const ClimateChroniclesPage = () => {
                               animation: isFlipping && flipArmed
                                 ? `${flipDirection === 'next' ? 'climate-page-turn-next' : 'climate-page-turn-previous'} ${FLIP_DURATION}ms cubic-bezier(0.52, 0.08, 0.18, 1) forwards`
                                 : 'none',
-                              boxShadow: flipDirection === 'next'
-                                ? '-14px 0 24px rgba(0,0,0,.14)'
-                                : '14px 0 24px rgba(0,0,0,.14)',
+                              willChange: isFlipping && flipArmed ? 'transform' : 'auto',
+                              backfaceVisibility: 'hidden',
                             }}
                           >
                             <div className="absolute inset-0 overflow-hidden bg-white" style={{ backfaceVisibility: 'hidden' }}>
