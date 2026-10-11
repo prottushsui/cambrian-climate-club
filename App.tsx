@@ -10,6 +10,7 @@ import CombinedLeadershipPage from '@/pages/CombinedLeadershipPage';
 import ProjectsPage from '@/pages/ProjectsPage';
 import AchievementsPage from '@/pages/AchievementsPage';
 import ClimateChroniclesPage from '@/pages/ClimateChroniclesPage';
+import WhatsNewPage from '@/pages/WhatsNewPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => (
               path="/climate-chronicles"
               element={<ClimateChroniclesPage />}
             />
+            <Route path="/whats-new" element={<WhatsNewPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
