@@ -60,6 +60,8 @@ const ClimateChroniclesPage = () => {
   const flipBackCanvas = useRef<HTMLCanvasElement>(null);
   const flipTimer = useRef<number | null>(null);
 
+  const pageStep = readingMode === 'spread' ? 2 : 1;
+
   useEffect(() => {
     const media = window.matchMedia('(max-width: 767px)');
     const updateMode = (event: MediaQueryListEvent) => {
@@ -239,7 +241,6 @@ const ClimateChroniclesPage = () => {
     };
   }, [isFlipping, flipArmed, flipDirection, pageStep]);
 
-  const pageStep = readingMode === 'spread' ? 2 : 1;
   const lastVisiblePage = Math.min(
     pageNumber + (readingMode === 'spread' ? 1 : 0),
     pdf?.numPages ?? pageNumber,
