@@ -86,6 +86,7 @@ const Footer: React.FC = () => {
               <FooterLink to="/projects">Our Projects</FooterLink>
               <FooterLink to="/achievements">Achievements</FooterLink>
               <FooterLink to="/leadership">Leadership Team</FooterLink>
+              <FooterLink to="/whats-new">What’s New</FooterLink>
               <FooterLink to="/advisory-committee">
                 Advisory Committee
               </FooterLink>
