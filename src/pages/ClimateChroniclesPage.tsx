@@ -17,7 +17,7 @@ interface PdfPage {
   render: (options: {
     canvasContext: CanvasRenderingContext2D;
     viewport: PdfViewport;
-  }) => { promise: Promise<void> };
+  }) => { promise: Promise<void>; cancel?: () => void };
 }
 
 interface PdfDocument {
@@ -152,6 +152,7 @@ const ClimateChroniclesPage = () => {
   useEffect(() => {
     if (!pdf || !bookIsOpen) return;
     let cancelled = false;
+    const renderTasks: Array<{ cancel?: () => void }> = [];
 
     const drawPage = async (canvas: HTMLCanvasElement | null, number: number) => {
       if (!canvas) return;
@@ -173,7 +174,9 @@ const ClimateChroniclesPage = () => {
         const viewport = page.getViewport({ scale: (1050 / baseViewport.height) * pixelRatio });
         canvas.width = viewport.width;
         canvas.height = viewport.height;
-        await page.render({ canvasContext: context, viewport }).promise;
+        const renderTask = page.render({ canvasContext: context, viewport });
+        renderTasks.push(renderTask);
+        await renderTask.promise;
       } catch {
         if (!cancelled) setReaderError(true);
       }
@@ -216,6 +219,7 @@ const ClimateChroniclesPage = () => {
 
     return () => {
       cancelled = true;
+      renderTasks.forEach(task => task.cancel?.());
     };
   }, [pdf, bookIsOpen, pageNumber, readingMode, isFlipping, flipDirection]);
 
@@ -350,7 +354,7 @@ const ClimateChroniclesPage = () => {
                 ) : (
                   <div className="mx-auto max-w-6xl">
                     <div className="rounded-2xl border border-[#c9c0af] bg-gradient-to-br from-[#e7e0d3] via-[#d7cebd] to-[#c7bda9] p-3 shadow-[0_28px_70px_-30px_rgba(11,27,43,0.6)] sm:rounded-3xl sm:p-6">
-                      <style>{`@keyframes climate-page-turn-next { from { transform: rotateY(0deg); } to { transform: rotateY(-180deg); } } @keyframes climate-page-turn-previous { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); } } @media (prefers-reduced-motion: reduce) { .climate-page-turn-reduced { animation-duration: 1ms !important; } }`}</style>
+                      <style>{`@keyframes climate-page-turn-next { from { transform: rotateY(0deg); } to { transform: rotateY(-180deg); } } @keyframes climate-page-turn-previous { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); } } @media (prefers-reduced-motion: reduce) { .climate-page-turn { animation-duration: 1ms !important; } }`}</style>
                       <div
                         className={`relative mx-auto overflow-hidden rounded-md ${readingMode === 'spread' ? 'max-w-[1120px]' : 'max-w-[680px]'}`}
                         style={{
@@ -377,7 +381,7 @@ const ClimateChroniclesPage = () => {
 
                         {(
                           <div
-                            className="absolute inset-y-0 z-30 overflow-visible"
+                            className="climate-page-turn absolute inset-y-0 z-30 overflow-visible"
                             style={{
                               ...flipStyle,
                               transformStyle: 'preserve-3d',
