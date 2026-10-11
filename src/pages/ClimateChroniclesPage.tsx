@@ -240,17 +240,13 @@ const ClimateChroniclesPage = () => {
           left: flipDirection === 'next' ? '50%' : '0%',
           width: '50%',
           transformOrigin: flipDirection === 'next' ? 'left center' : 'right center',
-          transform: isFlipping
-            ? `rotateY(${flipDirection === 'next' ? '-' : ''}180deg)`
-            : 'rotateY(0deg)',
+          transform: 'rotateY(0deg)',
         }
       : {
           left: '0%',
           width: '100%',
           transformOrigin: flipDirection === 'next' ? 'left center' : 'right center',
-          transform: isFlipping
-            ? `rotateY(${flipDirection === 'next' ? '-' : ''}180deg)`
-            : 'rotateY(0deg)',
+          transform: 'rotateY(0deg)',
         };
 
   return (
@@ -332,6 +328,7 @@ const ClimateChroniclesPage = () => {
                 ) : (
                   <div className="mx-auto max-w-6xl">
                     <div className="rounded-2xl border border-[#c9c0af] bg-gradient-to-br from-[#e7e0d3] via-[#d7cebd] to-[#c7bda9] p-3 shadow-[0_28px_70px_-30px_rgba(11,27,43,0.6)] sm:rounded-3xl sm:p-6">
+                      <style>{`@keyframes climate-page-turn-next { from { transform: rotateY(0deg); } to { transform: rotateY(-180deg); } } @keyframes climate-page-turn-previous { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); } } @media (prefers-reduced-motion: reduce) { .climate-page-turn-reduced { animation-duration: 1ms !important; } }`}</style>
                       <div
                         className={`relative mx-auto overflow-hidden rounded-md ${readingMode === 'spread' ? 'max-w-[1120px]' : 'max-w-[680px]'}`}
                         style={{
@@ -356,14 +353,17 @@ const ClimateChroniclesPage = () => {
                           <div className="pointer-events-none absolute inset-y-0 left-1/2 z-20 w-[10px] -translate-x-1/2" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,.22), rgba(255,255,255,.48) 45%, rgba(0,0,0,.12))' }} aria-hidden="true" />
                         )}
 
-                        {isFlipping && (
+                        {(
                           <div
                             className="absolute inset-y-0 z-30 overflow-visible"
                             style={{
                               ...flipStyle,
                               transformStyle: 'preserve-3d',
-                              backfaceVisibility: 'hidden',
-                              transition: `transform ${FLIP_DURATION}ms cubic-bezier(0.52, 0.08, 0.18, 1)`,
+                              opacity: isFlipping ? 1 : 0,
+                              pointerEvents: isFlipping ? 'auto' : 'none',
+                              animation: isFlipping
+                                ? `${flipDirection === 'next' ? 'climate-page-turn-next' : 'climate-page-turn-previous'} ${FLIP_DURATION}ms cubic-bezier(0.52, 0.08, 0.18, 1) forwards`
+                                : 'none',
                               boxShadow: flipDirection === 'next'
                                 ? '-14px 0 24px rgba(0,0,0,.14)'
                                 : '14px 0 24px rgba(0,0,0,.14)',
