@@ -163,7 +163,7 @@ const WhatsNewPage: React.FC = () => {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/90">
-              3 major release themes
+              Major drops, additions & QoL
             </span>
             <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/90">
               People, media & reliability
