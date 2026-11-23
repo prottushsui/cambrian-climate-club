@@ -104,14 +104,14 @@ const HeroSection: React.FC = () => {
               </motion.span>
             </Link>
             <Link to="/leadership" className="w-full sm:w-auto block">
-              <motion.button
+              <motion.span
                 className="w-full sm:w-auto bg-white text-primary-700 font-semibold py-4 px-8 rounded-full shadow-subtle border border-sandstone-200 transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
                 Meet the Team
-              </motion.button>
+              </motion.span>
             </Link>
           </motion.div>
         </motion.div>
