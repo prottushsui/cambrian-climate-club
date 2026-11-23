@@ -10,8 +10,8 @@ const distDirectory = path.join(__dirname, 'dist');
 app.disable('x-powered-by');
 app.use(express.static(distDirectory, { index: 'index.html' }));
 
-// The client uses hash-based routing, so every non-file request can safely
-// fall back to the Vite entry point without server-side route interpretation.
+// BrowserRouter needs the app shell for direct navigation to client-side routes.
+// Static files are served first; remaining paths fall back to the Vite entry point.
 app.get('/{*splat}', (_req, res) => {
   res.sendFile(path.join(distDirectory, 'index.html'));
 });
