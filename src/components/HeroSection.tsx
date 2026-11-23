@@ -94,15 +94,14 @@ const HeroSection: React.FC = () => {
             transition={{ delay: 1.4, duration: 0.8 }}
           >
             <Link to="/projects" className="w-full sm:w-auto block">
-              <motion.button
+              <motion.span
                 className="w-full sm:w-auto bg-primary-700 text-white font-semibold py-4 px-8 rounded-full shadow-elevated transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                onClick={() => (window.location.hash = '#/projects')}
               >
                 Explore Projects
-              </motion.button>
+              </motion.span>
             </Link>
             <Link to="/leadership" className="w-full sm:w-auto block">
               <motion.button
@@ -110,7 +109,6 @@ const HeroSection: React.FC = () => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                onClick={() => (window.location.hash = '#/leadership')}
               >
                 Meet the Team
               </motion.button>
