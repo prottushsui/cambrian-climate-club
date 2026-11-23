@@ -27,9 +27,7 @@ class ErrorBoundary extends Component<Props, State> {
   };
 
   handleGoHome = () => {
-    window.location.assign(
-      `${window.location.pathname}${window.location.search}#/`
-    );
+    window.location.assign('/');
   };
 
   render() {
