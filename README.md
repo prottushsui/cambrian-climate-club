@@ -1,8 +1,8 @@
-# Cambrian Climate Club Website
+# Cambrian Climate Club
 
 The official website for the Cambrian Climate Club, a student-led environmental and sustainability organization at Cambrian School & College, Campus 2.
 
-**Live website:** https://cambrian-climate-club-v2.vercel.app
+**Official website:** https://cambrian-climate-club.vercel.app/
 
 ## What the site contains
 
@@ -17,7 +17,7 @@ The official website for the Cambrian Climate Club, a student-led environmental 
 ## Technology
 
 - React 18 + TypeScript
-- React Router DOM (hash-based routing)
+- React Router DOM with BrowserRouter and clean page URLs
 - Vite
 - Tailwind CSS
 - Framer Motion
@@ -76,7 +76,7 @@ The production build is generated in `dist/`. `npm run preview` serves that buil
 ├── docs/HANDOVER.md             # Setup, maintenance, deployment and troubleshooting
 ├── server.js                    # Optional Express server for dist/
 ├── vite.config.ts               # Vite configuration
-├── vercel.json                  # Vercel response headers
+├── vercel.json                  # Vercel SPA rewrite and response headers
 └── .github/workflows/ci.yml     # Automated verification
 ```
 
