@@ -95,7 +95,7 @@ const HeroSection: React.FC = () => {
           >
             <Link to="/projects" className="w-full sm:w-auto block">
               <motion.span
-                className="w-full sm:w-auto bg-primary-700 text-white font-semibold py-4 px-8 rounded-full shadow-elevated transition-all duration-300"
+                className="inline-flex w-full sm:w-auto items-center justify-center bg-primary-700 text-white font-semibold py-4 px-8 rounded-full shadow-elevated transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -105,7 +105,7 @@ const HeroSection: React.FC = () => {
             </Link>
             <Link to="/leadership" className="w-full sm:w-auto block">
               <motion.span
-                className="w-full sm:w-auto bg-white text-primary-700 font-semibold py-4 px-8 rounded-full shadow-subtle border border-sandstone-200 transition-all duration-300"
+                className="inline-flex w-full sm:w-auto items-center justify-center bg-white text-primary-700 font-semibold py-4 px-8 rounded-full shadow-subtle border border-sandstone-200 transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
