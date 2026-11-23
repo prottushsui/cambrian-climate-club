@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cambrian-climate-club.vercel.app/sitemap.xml
