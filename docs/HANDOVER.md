@@ -9,7 +9,7 @@ This document is the operational guide for maintaining the Cambrian Climate Club
 - **Build tool:** Vite. Production output is written to `dist/`.
 - **Primary hosting:** Vercel (configured in `vercel.json`).
 - **Optional Node server:** Express static server in `server.js`; it serves an already-built `dist/` directory.
-- **Routing:** hash-based routing through `HashRouter`. Routes look like `/#/about`; preserve this unless hosting and routing are deliberately migrated together.
+- **Routing:** browser-history routing through `BrowserRouter`. Pages use crawlable paths such as `/about` and `/projects`; Vercel rewrites non-file paths to `index.html`. Legacy `/#/...` bookmarks are converted to the equivalent clean path at startup.
 - **Main content source:** `src/data/content.ts`.
 - **Static media:** `public/`. Paths used in React are URL paths, for example `/images/Club%20logo.png` or `/Video/Video%201.mp4`.
 
@@ -98,7 +98,7 @@ The server requires the generated `dist/` directory and reads the port from `POR
 
 - **A change is not visible:** wait for deployment to finish, hard-refresh with Ctrl+F5, and check that the intended commit is deployed.
 - **Image/video is missing:** compare the referenced URL with the exact file path under `public/`; filename case matters on Linux hosting.
-- **A route is missing:** verify both the route in `App.tsx` and the link in `Navbar.tsx`. Keep hash routing unless the hosting fallback is intentionally changed.
+- **A route is missing:** verify the route in `App.tsx`, its link in `Navbar.tsx`, and the SPA rewrite in `vercel.json`. Direct navigation to each clean path should load the app.
 - **CI fails at formatting:** run `npm run format`, review the diff, then commit the formatted files.
 - **The build fails after a dependency update:** restore the last known-good lockfile, update dependencies in a separate change, and run the full check sequence before deployment.
 - **The Express server does not start:** confirm Node.js 22 is in use and `npm run build` has created `dist/index.html`.
