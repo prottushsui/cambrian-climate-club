@@ -1,6 +1,6 @@
 // The offline shell is deliberately small and self-contained so it can render
 // even when the React app and its remote assets are unavailable.
-const CACHE_NAME = 'cambrian-climate-club-v1';
+const CACHE_NAME = 'cambrian-climate-club-v2';
 const OFFLINE_URL = '/offline.html';
 
 self.addEventListener('install', event => {
