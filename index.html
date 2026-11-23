@@ -34,10 +34,34 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Cambrian Climate Club",
-        "alternateName": ["CCC", "cambrian-climate-club.vercel.app"],
-        "url": "https://cambrian-climate-club.vercel.app/"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://cambrian-climate-club.vercel.app/#website",
+            "name": "Cambrian Climate Club",
+            "alternateName": [
+              "CCC",
+              "cambrian-climate-club.vercel.app"
+            ],
+            "url": "https://cambrian-climate-club.vercel.app/",
+            "publisher": {
+              "@id": "https://cambrian-climate-club.vercel.app/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cambrian-climate-club.vercel.app/#organization",
+            "name": "Cambrian Climate Club",
+            "alternateName": "CCC",
+            "url": "https://cambrian-climate-club.vercel.app/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://cambrian-climate-club.vercel.app/images/Climate%20Club%20Logo.png"
+            },
+            "foundingDate": "2023",
+            "description": "Student-led climate action, environmental education, projects, achievements, and leadership."
+          }
+        ]
       }
     </script>
     <link rel="icon" type="image/png" href="/images/Climate%20Club%20Logo.png" />
